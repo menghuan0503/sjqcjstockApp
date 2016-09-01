@@ -203,7 +203,7 @@ public class Utils {
      */
     public static String getNumberFormat(String str) {
         String format = "########0.00";
-        if (str == null || "".equals(str)  || "null".equals(str)) {
+        if (str == null || "".equals(str) || "null".equals(str)) {
             return "0.00";
         }
         str = str.replace("%", "");
@@ -243,23 +243,25 @@ public class Utils {
 
     /**
      * 往字符串中查入冒号
+     *
      * @param str 1021
      * @return 10:21
      */
-    public static String  setInsertMark(String str){
-        StringBuilder sb=new StringBuilder(str);
-        sb.insert(3,":");
+    public static String setInsertMark(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        sb.insert(3, ":");
         return sb.toString();
     }
 
     /**
      * 往字符串中查入斜杠
+     *
      * @param str 1021
      * @return 10/21
      */
-    public static String  setInsertMark1(String str){
-        StringBuilder sb=new StringBuilder(str);
-        sb.insert(2,"/");
+    public static String setInsertMark1(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        sb.insert(2, "/");
         return sb.toString();
     }
 
@@ -273,29 +275,30 @@ public class Utils {
             return "";
         }
         double DStr = Double.valueOf(str);
-        DStr = DStr/10000;
+        DStr = DStr / 10000;
         DecimalFormat df = new DecimalFormat(format);
         return df.format(DStr);
     }
 
     /**
      * 传入时间进行拼接成 YYYY-MM-DD
+     *
      * @param year
      * @param month
      * @param day
      * @return
      */
-    public static String getStringDate(int year,int month,int day){
-        String str = year +"-";
-        if (month<10){
-            str += "0"+month+"-";
-        }else{
-            str += month+"-";
+    public static String getStringDate(int year, int month, int day) {
+        String str = year + "-";
+        if (month < 10) {
+            str += "0" + month + "-";
+        } else {
+            str += month + "-";
         }
-        if (day<10){
-            str += "0"+day;
-        }else{
-            str += day+"";
+        if (day < 10) {
+            str += "0" + day;
+        } else {
+            str += day + "";
         }
         return str;
     }
@@ -310,14 +313,14 @@ public class Utils {
             return "";
         }
         double DStr = Double.valueOf(str);
-        if (DStr>=100000000){
-            DStr = DStr/100000000;
+        if (DStr >= 100000000) {
+            DStr = DStr / 100000000;
             DecimalFormat df = new DecimalFormat(format);
-            str = df.format(DStr)+"亿";
-        }else if (DStr>=10000){
-            DStr = DStr/10000;
+            str = df.format(DStr) + "亿";
+        } else if (DStr >= 10000) {
+            DStr = DStr / 10000;
             DecimalFormat df = new DecimalFormat(format);
-            str = df.format(DStr)+"万";
+            str = df.format(DStr) + "万";
         }
         return str;
     }
@@ -330,7 +333,7 @@ public class Utils {
     public static String getFormatDate(String str) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy/MM/dd");
-        String date  = "";
+        String date = "";
         try {
             date = formatter1.format(formatter.parse(str));
         } catch (ParseException e) {
@@ -340,42 +343,43 @@ public class Utils {
     }
 
     /**
-     *给传入两位数的年份减去一 并且只传回后两位
+     * 给传入两位数的年份减去一 并且只传回后两位
      *
      * @return
      */
-    public static String getYearFormat(String str){
+    public static String getYearFormat(String str) {
         int year = Integer.valueOf(str);
-        if (year == 0){
+        if (year == 0) {
             str = "99";
-        }else{
-            str = (year - 1)+"";
+        } else {
+            str = (year - 1) + "";
         }
-        if (str.length()<2){
-            str = "0"+str;
+        if (str.length() < 2) {
+            str = "0" + str;
         }
         return str;
     }
 
     /**
      * 判断当前是否可以追加新的数据（如果）
+     *
      * @return
      */
-    public static Boolean isTimeOne(String time){
-        time = time.substring(0,8);
+    public static Boolean isTimeOne(String time) {
+        time = time.substring(0, 8);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date curDate = new Date(System.currentTimeMillis());
         // 当前年月日
         String timestr = formatter.format(curDate);
         // 如果当前时间大于获取到的时间那么久不追加
-        if (Double.valueOf(timestr) > Double.valueOf(time)){
+        if (Double.valueOf(timestr) > Double.valueOf(time)) {
             return false;
         }
-        Calendar cal=Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-        int hour=cal.get(Calendar.HOUR);
-        int minute=cal.get(Calendar.MINUTE);
-        if (hour > 9 || (hour == 9 && minute >30)){
+        int hour = cal.get(Calendar.HOUR);
+        int minute = cal.get(Calendar.MINUTE);
+        if (hour > 9 || (hour == 9 && minute > 30)) {
             return true;
         }
         return false;
@@ -383,13 +387,14 @@ public class Utils {
 
     /**
      * 判断当前是否是星期一
+     *
      * @return
      */
-    public static Boolean isWeekOne(){
-        Calendar cal=Calendar.getInstance();
+    public static Boolean isWeekOne() {
+        Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-        int week=cal.get(Calendar.DAY_OF_WEEK)-1;
-        if (week == 1){
+        int week = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (week == 1) {
             return true;
         }
         return false;
@@ -397,13 +402,14 @@ public class Utils {
 
     /**
      * 判断当前是否是一号
+     *
      * @return
      */
-    public static Boolean isDayOne(){
-        Calendar cal=Calendar.getInstance();
+    public static Boolean isDayOne() {
+        Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-        int day=cal.get(Calendar.DAY_OF_MONTH);
-        if (day == 1){
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        if (day == 1) {
             return true;
         }
         return false;

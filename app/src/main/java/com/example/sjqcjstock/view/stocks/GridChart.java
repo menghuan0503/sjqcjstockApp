@@ -978,6 +978,7 @@ public class GridChart extends BaseChart implements ITouchEventNotify,
             canvas.drawText(axisYTitlesR.get(2), this.axisMarginLeft + 2f,
                     super.getHeight() - this.axisMarginBottom - 2f
                             - 2f, mPaintFont);
+
             // 绘制低涨跌幅
             canvas.drawText(axisYTitlesR.get(3), super.getWidth() - axisMarginRight - axisYTitlesR.get(3).length() * latitudeFontSize / 2 - 5,
                     super.getHeight() - this.axisMarginBottom - 2f

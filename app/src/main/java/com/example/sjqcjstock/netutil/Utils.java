@@ -390,26 +390,41 @@ public class Utils {
      *
      * @return
      */
-    public static Boolean isWeekOne() {
+    public static Boolean isWeekOne(String date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Calendar c = Calendar.getInstance();
+        int dayForWeek = 0;
+        try {
+            c.setTime(format.parse("20" + date));
+            if (c.get(Calendar.DAY_OF_WEEK) == 1) {
+                dayForWeek = 7;
+            } else {
+                dayForWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         int week = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (week == 1) {
+        if (dayForWeek > week) {
             return true;
         }
         return false;
     }
 
     /**
-     * 判断当前是否是一号
+     * 判断当前是否当月数据
+     * date 当最后第一个日期
      *
      * @return
      */
-    public static Boolean isDayOne() {
+    public static Boolean isDayOne(String date) {
+        int days = Integer.valueOf(date.substring(4, 2));
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         int day = cal.get(Calendar.DAY_OF_MONTH);
-        if (day == 1) {
+        if (days > day) {
             return true;
         }
         return false;

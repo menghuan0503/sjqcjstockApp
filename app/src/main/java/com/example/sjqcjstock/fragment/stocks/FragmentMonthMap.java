@@ -304,7 +304,7 @@ public class FragmentMonthMap extends Fragment {
                 }
                 volume = Float.valueOf(Utils.getNumberFormatW(strS[5]));
                 // 判断当前是否是星期一
-                if (Utils.isDayOne()) {
+                if (Utils.isDayOne(time)) {
                     // K线图数据的添加
                     ohlcAll.add(new OHLCEntity(valueK, Float.valueOf(strS[3]), Float.valueOf(strS[4]), valueS, strS[0]));
                     // 柱状图数据的添加

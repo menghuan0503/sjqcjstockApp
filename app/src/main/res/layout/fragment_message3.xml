@@ -1,0 +1,183 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/pickrecivecomment1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="收到的评论"
+                android:textColor="#444444" />
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
+
+        <LinearLayout
+            android:id="@+id/picksendcomment1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="发出的评论"
+                android:textColor="#444444" />
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1px"-->
+            <!--android:background="@drawable/line" />-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/pickatme1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@color/color_ffffff"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:visibility="gone" >-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:text=" @到我的" />-->
+
+            <!--<Button-->
+                <!--style="@style/GreenButton"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:background="@drawable/gracearrow1" />-->
+
+
+        <!--</LinearLayout>-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
+
+        <LinearLayout
+            android:id="@+id/pickatmecomment1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="\@提到我的"
+                android:textColor="#444444" />
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
+
+        <LinearLayout
+            android:id="@+id/pickpersonalnews1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="我的私信"
+                android:textColor="#444444" />
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
+
+    <LinearLayout
+        android:id="@+id/system_message"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_ffffff"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingLeft="12dp"
+            android:text="打赏消息"
+            android:textColor="#444444" />
+
+        <Button
+            style="@style/arrow_img"
+            android:layout_gravity="center"
+            android:clickable="false" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line" />
+
+</LinearLayout>
+
+</RelativeLayout>

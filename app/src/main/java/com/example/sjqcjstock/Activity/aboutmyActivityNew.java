@@ -12,34 +12,33 @@ import com.example.sjqcjstock.app.ExitApplication;
 
 public class aboutmyActivityNew extends Activity {
 
-	// 获取控件
-	private LinearLayout goback1;
+    // 获取控件
+    private LinearLayout goback1;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.aboutwenew);
-		// 将Activity反复链表
-		ExitApplication.getInstance().addActivity(this);
-		initView();
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.aboutwenew);
+        // 将Activity反复链表
+        ExitApplication.getInstance().addActivity(this);
+        initView();
 
-	}
+    }
 
-	private void initView() {
-		// TODO Auto-generated method stub
-		goback1 = (LinearLayout) findViewById(R.id.goback1);
-		goback1.setOnClickListener(new pickgoback2_listener());
-	}
+    private void initView() {
+        // TODO Auto-generated method stub
+        goback1 = (LinearLayout) findViewById(R.id.goback1);
+        goback1.setOnClickListener(new pickgoback2_listener());
+    }
 
-	// 回退按钮
-	class pickgoback2_listener implements OnClickListener {
-		@Override
-		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
-			finish();
-		}
-	}
+    // 回退按钮
+    class pickgoback2_listener implements OnClickListener {
+        @Override
+        public void onClick(View arg0) {
+            // TODO Auto-generated method stub
+            finish();
+        }
+    }
 }

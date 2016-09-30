@@ -95,7 +95,6 @@ public class FragmentAnalogHome extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("mh--*-**-", "福祥股份");
                 Intent inten = new Intent();
                 inten.putExtra("code", "300497");
                 inten.putExtra("name", "福祥股份");

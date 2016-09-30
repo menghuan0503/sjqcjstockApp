@@ -36,6 +36,7 @@ import com.example.sjqcjstock.netutil.HttpUtil;
 import com.example.sjqcjstock.netutil.JsonTools;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.Activity.ActivityMessage;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.example.sjqcjstock.view.CustomToast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -86,6 +87,8 @@ public class FragmentMy extends Fragment {
 	// 缓存用户信息
 	private String appUserStr ="";
 	private ImageView vipImg;
+	// 未读消息条数
+	private TextView messageCountTv;
 
 	@Override
 	public void onResume() {
@@ -100,6 +103,7 @@ public class FragmentMy extends Fragment {
 		// 缓存类
 		mCache = ACache.get(getActivity());
 		initView(view);
+		setMessageCount();
 		return view;
 	}
 
@@ -112,6 +116,25 @@ public class FragmentMy extends Fragment {
 		}else{
 			mCache.put("AppUserx",appUserStr);
 			mCache.put("AppUserMoneyx",appUserMoneyStr);
+		}
+	}
+
+	/**
+	 * 设置消息体条数
+	 */
+	public void setMessageCount(){
+		if(Constants.unreadCountInfo != null && Constants.unreadCountInfo.getStatus().equals("1")){
+			int total = Constants.unreadCountInfo.getData().getUnread_total();
+			String totalStr = total+"";
+			if (total > 99){
+				totalStr = "99+";
+			}
+			messageCountTv.setText(totalStr);
+			if (totalStr.equals("0")) {
+				messageCountTv.setVisibility(View.GONE);
+			}else{
+				messageCountTv.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -159,6 +182,8 @@ public class FragmentMy extends Fragment {
 		headimg2 = (ImageView) view.findViewById(R.id.headimg2);
 		pickaddweibo1 = (ImageView) view.findViewById(R.id.pickaddweibo1);
 		vipImg = (ImageView) view.findViewById(R.id.vip_img);
+
+		messageCountTv = (TextView) view.findViewById(R.id.message_count_tv);
 
 		following_count1.setText("0");
 		follower_count1.setText("0");
@@ -482,12 +507,7 @@ public class FragmentMy extends Fragment {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						String isVip = datamap.get("user_group")+"";
-						if ("1".equals(isVip)){
-							vipImg.setVisibility(View.VISIBLE);
-						}else{
-							vipImg.setVisibility(View.GONE);
-						}
+						ViewUtil.setUpVip(datamap.get("user_group")+"",vipImg);
 					}
 				}
 			}

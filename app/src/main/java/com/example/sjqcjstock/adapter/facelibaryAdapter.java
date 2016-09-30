@@ -26,12 +26,6 @@ public class facelibaryAdapter extends BaseAdapter {
 		this.listData = listData;
 	}
 
-	private String[] imagesUrl;
-
-	public void setImagesUrl(String[] imagesUrl) {
-		this.imagesUrl = imagesUrl;
-	}
-
 	@Override
 	public int getCount() {
 		// return imagesUrl.length;

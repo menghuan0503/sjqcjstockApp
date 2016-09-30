@@ -84,8 +84,8 @@ public class MyAttentionActivity extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 try {
                     Intent intent = new Intent(MyAttentionActivity.this, forumnotedetailActivity.class);
-                    intent.putExtra("weibo_id", (String) myattentioncommonnoteData.get(arg2 - 1).get("feed_id"));
-                    intent.putExtra("uid", (String) myattentioncommonnoteData.get(arg2 - 1).get("uid"));
+                    intent.putExtra("weibo_id", (String) myattentioncommonnoteData.get(arg2).get("feed_id"));
+                    intent.putExtra("uid", (String) myattentioncommonnoteData.get(arg2).get("uid"));
 
                     // 传递转发微博的信息
                     if ("repost".equals(myattentioncommonnoteData.get(arg2).get("type").toString())) {
@@ -355,11 +355,7 @@ public class MyAttentionActivity extends Activity {
                                     String avatar_middlestr = source_user_infostrmap
                                             .get("avatar_middle")+"";
                                     String userGroup = source_user_infostrmap.get("user_group")+"";
-                                    if (userGroup.length()>4){
-                                        map2.put("isVipSource", "1");
-                                    }else{
-                                        map2.put("isVipSource", "0");
-                                    }
+                                    map2.put("isVipSource", userGroup);
                                     map2.put("sourceuidstr", sourceuidstr);
                                     map2.put("sourceuname", sourceunamestr);
                                     // map2.put("sourceuctime", ctimestr);
@@ -498,11 +494,7 @@ public class MyAttentionActivity extends Activity {
                             String unamestr = user_infostrmap.get("uname")+"";
                             String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
                             String userGroup = user_infostrmap.get("user_group")+"";
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);
                             map2.put("avatar_middle", avatar_middlestr);

@@ -288,11 +288,7 @@ public class atmeActivity extends Activity{
                                     feed_contentstr = "该微博已不存在";
                                 }
                                 String userGroup = dataat_listdatastrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVip", "1");
-                                }else{
-                                    map2.put("isVip", "0");
-                                }
+                                map2.put("isVip", userGroup);
 
                                 map2.put("feed_content", feed_contentstr);
                                 map2.put("feed_id", feed_idstr);
@@ -332,11 +328,7 @@ public class atmeActivity extends Activity{
                                         atfeed_contentstr = atfeed_contentstr
                                                 .replace("&nbsp;", " ");
                                         userGroup = transpond_datastrmap.get("user_group")+"";
-                                        if (userGroup.length()>4){
-                                            map2.put("isVipSource", "1");
-                                        }else{
-                                            map2.put("isVipSource", "0");
-                                        }
+                                        map2.put("isVipSource", userGroup);
                                         map2.put("atfeed_content",atfeed_contentstr);
                                         map2.put("atfeed_id", atfeed_idstr);
                                         map2.put("atfeed_uid", atuid_idstr);

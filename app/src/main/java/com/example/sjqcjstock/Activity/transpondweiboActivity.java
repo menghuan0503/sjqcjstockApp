@@ -171,9 +171,7 @@ public class transpondweiboActivity extends Activity {
 
 	// 获得微博id
 	private String feedidstr;
-//	private String feeduidstr;
-//	private String content;
-//	private String uname;
+
 	// 是否同时评论
 	private String iscommentstr = "0";
 
@@ -181,9 +179,11 @@ public class transpondweiboActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+		// 4表示禁言用户不能转发微博
+		if (Constants.userType.equals("4")) {
+			finish();
+		}
 		setContentView(R.layout.transpondweibo);
 
 		// 将Activity反复链表

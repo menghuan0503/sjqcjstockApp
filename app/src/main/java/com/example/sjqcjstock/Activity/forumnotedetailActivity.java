@@ -193,7 +193,10 @@ public class forumnotedetailActivity extends Activity implements
     private ScrollView myScrollView;
 
     public void commentoptions(int position) {
-        // TODO Auto-generated method stub
+        // 4表示禁言用户不能回复评论
+        if (Constants.userType.equals("4")) {
+            return;
+        }
         currentposition = position;
         pickcommentoptions1.setVisibility(View.VISIBLE);
         if (Constants.staticmyuidstr.equals(listreplyinfoData.get(
@@ -208,13 +211,12 @@ public class forumnotedetailActivity extends Activity implements
         pickcommentoptions1.getBackground().setAlpha(150);
     }
 
-    //删除微博的时候会调用到该方法
+    //更新微博评论的方法
     private void refercommentreply() {
         // TODO Auto-generated method stub
         listreplyinfoData.clear();
         current = 1;
         geneItems();
-        geneItemsnotedetail();
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -233,6 +235,13 @@ public class forumnotedetailActivity extends Activity implements
             StrictMode.setThreadPolicy(policy);
         }
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 当评论或者回复后进行页面刷新
+        refercommentreply();
     }
 
     private void initView() {
@@ -369,7 +378,7 @@ public class forumnotedetailActivity extends Activity implements
                 new String[]{"feed_id", weiboidstr},
                 new String[]{"mid", Constants.staticmyuidstr}
         ));
-        geneItems();
+//        geneItems();
         replyinfolistview = (SoListView) findViewById(R.id.replyinfolist2);
         // 存储数据的数组列表
         listreplyinfoData = new ArrayList<HashMap<String, Object>>();
@@ -790,9 +799,9 @@ public class forumnotedetailActivity extends Activity implements
 
     // 计算ListView的总高度并设置
 
-    /**
-     * @param listView
-     */
+//    /**
+//     * @param listView
+//     */
 //
 //    private void setListViewHeightBasedOnChildren(ListView listView) {
 //        ListAdapter listAdapter = listView.getAdapter();
@@ -890,12 +899,8 @@ public class forumnotedetailActivity extends Activity implements
                             ImageLoader.getInstance().displayImage(avatar_middlestr,
                                     headimg1, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
 
-                            String userGroup = jsonuserinfo.get("user_group") + "";
-                            if (userGroup.length() > 4) {
-                                vipImg.setVisibility(View.VISIBLE);
-                            } else {
-                                vipImg.setVisibility(View.GONE);
-                            }
+                            // 显示Vip标识的
+                            ViewUtil.setUpVip(weibomap.get("user_group")+"",vipImg);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -1133,11 +1138,7 @@ public class forumnotedetailActivity extends Activity implements
                                 JSONObject jsonObject = new JSONObject(repostUserinfoStr.toString());
                                 repostusername1.setText(jsonObject.getString("uname"));
                                 String userGroup = jsonObject.get("user_group") + "";
-                                if (userGroup.length() > 4) {
-                                    vipImgSource.setVisibility(View.VISIBLE);
-                                } else {
-                                    vipImgSource.setVisibility(View.GONE);
-                                }
+                                ViewUtil.setUpVip(userGroup, vipImgSource);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -1263,11 +1264,7 @@ public class forumnotedetailActivity extends Activity implements
                                 }
 
                                 String userGroup = user_infomap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map3.put("isVip", "1");
-                                }else{
-                                    map3.put("isVip", "0");
-                                }
+                                map3.put("isVip", userGroup);
                                 map3.put("uid", uidstr);
                                 map3.put("uname", unamestr2);
                                 map3.put("avatar_middle", avatar_middlestr2);
@@ -1277,9 +1274,12 @@ public class forumnotedetailActivity extends Activity implements
                     }
                 }
                 replyinfoAdapter.notifyDataSetChanged();
-                ViewUtil.setListViewHeightBasedOnChildren(replyinfolistview);
-                // 滚动到顶部
-                myScrollView.smoothScrollTo(0, 0);
+                if (current == 1){
+                    // 评论大于两页就不用滚动到顶部去
+                    // 滚动到顶部
+                    ViewUtil.setListViewHeightBasedOnChildren(replyinfolistview);
+                    myScrollView.smoothScrollTo(0, 0);
+                }
                 if (listreplyinfoData.size() >= count) {
                     xlistviewFooterContent.setVisibility(View.GONE);
                 }

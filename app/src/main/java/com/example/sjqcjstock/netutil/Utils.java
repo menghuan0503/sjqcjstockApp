@@ -392,23 +392,32 @@ public class Utils {
      */
     public static Boolean isWeekOne(String date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        Calendar c = Calendar.getInstance();
-        int dayForWeek = 0;
+        Calendar calendar = Calendar.getInstance();
         try {
-            c.setTime(format.parse("20" + date));
-            if (c.get(Calendar.DAY_OF_WEEK) == 1) {
-                dayForWeek = 7;
-            } else {
-                dayForWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
+            // 传入时间
+            calendar.setTime(format.parse("20" + date));
+            int week = calendar.get(Calendar.WEEK_OF_YEAR);
+            int mouth = calendar.get(Calendar.MONTH);
+            // JDK think 2015-12-31 as 2016 1th week
+            //如果月份是12月，且求出来的周数是第一周，说明该日期实质上是这一年的第53周，也是下一年的第一周
+            if (mouth >= 11 && week <= 1) {
+                week += 52;
+            }
+            // 当前时间
+            calendar.setTime(new Date());
+            int weekNew = calendar.get(Calendar.WEEK_OF_YEAR);
+            mouth = calendar.get(Calendar.MONTH);
+            // JDK think 2015-12-31 as 2016 1th week
+            //如果月份是12月，且求出来的周数是第一周，说明该日期实质上是这一年的第53周，也是下一年的第一周
+            if (mouth >= 11 && week <= 1) {
+                weekNew += 52;
+            }
+            // 如果不为同一周就然后true进行追加数据
+            if (week != weekNew){
+                return  true;
             }
         } catch (ParseException e) {
             e.printStackTrace();
-        }
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        int week = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (dayForWeek > week) {
-            return true;
         }
         return false;
     }

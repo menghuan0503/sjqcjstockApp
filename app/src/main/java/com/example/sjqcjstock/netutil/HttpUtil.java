@@ -184,6 +184,7 @@ public class HttpUtil {
         return url_path;
     }
 
+    // post 提交
     public static String doInBackground(TaskParams... params) {
         if (params.length == 0)
             return null;
@@ -198,10 +199,11 @@ public class HttpUtil {
             conn = (HttpURLConnection) new URL(tp.getUrl()).openConnection();
             // POST GET
             conn.setDoOutput(true);
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
             conn.setConnectTimeout(6000);
 			conn.setReadTimeout(6000);
             out = conn.getOutputStream();
+            Log.e("mh-con34n:-", "+" +conn.getRequestMethod());
             String paramsstr = tp.getEncodeParams();
             out.write(paramsstr.getBytes());
             out.flush();
@@ -221,6 +223,54 @@ public class HttpUtil {
             e.printStackTrace();
         } catch (Exception e) {
 //            Log.e("网络关闭出错了！Exception", e.getMessage()+"");
+            resstr = null;
+            e.printStackTrace();
+        }  finally {
+            try {
+                if (out != null)
+                    out.close();
+                if (in != null)
+                    in.close();
+                if (conn != null)
+                    conn.disconnect();
+            } catch (IOException e) {
+                resstr = null;
+            }
+        }
+        return resstr;
+    }
+
+    // get 提交
+    public static String doInBackgroundGet(TaskParams... params) {
+        if (params.length == 0)
+            return null;
+        TaskParams tp = params[0];
+        HttpURLConnection conn = null;
+        OutputStream out = null;
+        InputStream in = null;
+        String resstr = null;
+        Log.e("mh-URl:-", "+" + tp.getUrl());
+        Log.e("mh-Params:-", "+" + tp.getEncodeParams());
+        try {
+            conn = (HttpURLConnection) new URL(tp.getUrl()).openConnection();
+            // POST GET
+            conn.setDoOutput(false);
+            conn.setRequestMethod("GET");
+            conn.setConnectTimeout(6000);
+            conn.setReadTimeout(6000);
+            int code = conn.getResponseCode();
+            if (code == HttpURLConnection.HTTP_OK) {
+                in = conn.getInputStream();
+                resstr = HttpUtil.changeInputStream2((in));
+            }
+            if("".equals(resstr)){
+                resstr = null;
+            }
+            Log.e("mh-resstr:-", "+" + resstr);
+        } catch (IOException e) {
+            resstr = null;
+            e.printStackTrace();
+        } catch (Exception e) {
             resstr = null;
             e.printStackTrace();
         }  finally {

@@ -97,9 +97,7 @@ public class usersettingActivity extends Activity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
                             //ExitApplication.getInstance().exit(usersettingActivity.this);
-
                             //获得编辑器
 					SharedPreferences.Editor editor=getSharedPreferences("loginInfo",MODE_PRIVATE).edit();//获得编辑这个文件的编辑器
 					//退出置空用户信息
@@ -116,6 +114,8 @@ public class usersettingActivity extends Activity {
                             mCache.put("Messagex", "");
                             // 发出的评论
                             mCache.put("MyCommentSendx", "");
+                            // 打赏列表信息
+                            mCache.put("RewardMessagex", "");
                             // 系统信息
                             mCache.put("SystemMessagex", "");
                             // 收到的评论
@@ -132,7 +132,6 @@ public class usersettingActivity extends Activity {
                             mCache.put("AppCollectionx", "");
                             // 我的微博
                             mCache.put("loadMoreMyfeedx","");
-
                             Intent intent = new Intent(usersettingActivity.this, loginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);

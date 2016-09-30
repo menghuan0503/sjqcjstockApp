@@ -43,6 +43,7 @@ import com.example.sjqcjstock.netutil.JsonTools;
 import com.example.sjqcjstock.netutil.Md5Util;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.netutil.Utils;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.example.sjqcjstock.userdefined.MyScrollView;
 import com.example.sjqcjstock.userdefined.RoundImageView;
 import com.example.sjqcjstock.view.CustomToast;
@@ -171,6 +172,14 @@ public class FragmentHome extends Fragment {
                 super.onPostExecute(result);
                 try {
                     String avatar_middle = new JSONObject(result).getJSONObject("data").getString("avatar_middle");
+                    String userGroup = new JSONObject(result).getJSONObject("data").getString("user_group");
+                    if (userGroup.length()>10) {
+                        userGroup = userGroup.substring(userGroup.lastIndexOf("{"));
+                        userGroup = userGroup.substring(0, userGroup.indexOf("}") + 1);
+                        Constants.userType = new JSONObject(userGroup).getString("user_group_id");
+                    }else{
+                        Constants.userType = "1";
+                    }
                     Constants.headImg = avatar_middle;
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -276,7 +285,7 @@ public class FragmentHome extends Fragment {
         new SendInfoTaskmywealth().execute(new TaskParams(Constants.appUserMoneyUrl,
                 new String[]{"mid", Constants.staticmyuidstr}
         ));
-        // 从网络获取用户详细信息(只是为了获取用户头像在发私信的时候用，以后可能要删除)
+        // 从网络获取用户详细信息(只是为了获取用户头像在发私信的时候用，新增获取用户级别是否是禁言用户)
         new SendInfoTaskmyuserinform().execute(new TaskParams(
                 Constants.Url + "?app=public&mod=Profile&act=AppUser",
                 new String[]{"mid", Constants.staticmyuidstr}
@@ -291,29 +300,21 @@ public class FragmentHome extends Fragment {
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"p", "1"}
         ));
-
         /** 当日牛股榜集合 */
         todayuprankinglist = (ListView) view
                 .findViewById(R.id.todayuprankinglist);
-
         // 存储数据的数组列表
         listtodayuprankingData = new ArrayList<HashMap<String, String>>();
-
         // 为ListView 添加适配器
         todayuprankingAdapter = new todayuprankingAdapter(getActivity()
                 .getApplicationContext());
-
         todayuprankinglist.setAdapter(todayuprankingAdapter);
-
         todayuprankinglist.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                // TODO Auto-generated method stub
-
             }
-
         });
         /** 当周牛股榜集合 */
         thisweekupranking = (ListView) view
@@ -325,26 +326,19 @@ public class FragmentHome extends Fragment {
         thisweekuprankingAdapter = new com.example.sjqcjstock.adapter.thisweekuprankingAdapter(
                 getActivity().getApplicationContext(),
                 listthisweekuprankingData);
-
         thisweekupranking.setAdapter(thisweekuprankingAdapter);
-
         thisweekupranking.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                // TODO Auto-generated method stub
 
             }
 
         });
         loadCacheData();
         loadData();
-        // 重新设置ListView的高度
-        Utils.setListViewHeightBasedOnChildren(supermanlistview);
-        Utils.setListViewHeightBasedOnChildren(essencelistview);
-        Utils.setListViewHeightBasedOnChildren(todayuprankinglist);
-        Utils.setListViewHeightBasedOnChildren(thisweekupranking);
+
     }
 
     @Override
@@ -381,15 +375,22 @@ public class FragmentHome extends Fragment {
         String str = mCache.getAsString("Appindexx");
         listessenceData = Utils.getListMap(str);
         essencelistAdapter.setlistData(listessenceData);
+        ViewUtil.setListViewHeightBasedOnChildren(essencelistview);
+
         str = mCache.getAsString("AppTodayBallotTodayx");
         listtodayuprankingData = Utils.getListMap(str);
         todayuprankingAdapter.setlistData(listtodayuprankingData);
+        ViewUtil.setListViewHeightBasedOnChildren(todayuprankinglist);
+
         str = mCache.getAsString("AppTodayBallotWeekx");
         appTodayBallotWeekList = Utils.getListMap(str);
         thisweekuprankingAdapter.setlistData(appTodayBallotWeekList);
+        ViewUtil.setListViewHeightBasedOnChildren(thisweekupranking);
+
         str = mCache.getAsString("APPUserSortx");
         listsupermanData = Utils.getListMap(str);
         supermanAdapter.setlistData(listsupermanData);
+        ViewUtil.setListViewHeightBasedOnChildren(supermanlistview);
     }
 
     /**
@@ -543,6 +544,7 @@ public class FragmentHome extends Fragment {
 
                 }
                 thisweekuprankingAdapter.setlistData(listthisweekuprankingData);
+                ViewUtil.setListViewHeightBasedOnChildren(thisweekupranking);
                 appTodayBallotWeekList = (ArrayList<HashMap<String, String>>) listthisweekuprankingData.clone();
             }
             dialog.dismiss();
@@ -604,8 +606,8 @@ public class FragmentHome extends Fragment {
                                     .toString();
                         }
                         // 用户名
-                        String unamestr = datastrmap.get("uname").toString();
-                        String uidstr = datastrmap.get("uid").toString();
+                        String unamestr = datastrmap.get("uname")+"";
+                        String uidstr = datastrmap.get("uid")+"";
                         HashMap<String, String> map2 = new HashMap<String, String>();
                         map2.put("currentPrice", currentPricestr);
                         map2.put("increase", increasestr);
@@ -622,6 +624,7 @@ public class FragmentHome extends Fragment {
                     }
                 }
                 todayuprankingAdapter.setlistData(listtodayuprankingData);
+                ViewUtil.setListViewHeightBasedOnChildren(todayuprankinglist);
                 appTodayBallotTodayList = (ArrayList<HashMap<String, String>>) listtodayuprankingData.clone();
             }
             dialog.dismiss();
@@ -709,6 +712,7 @@ public class FragmentHome extends Fragment {
                     }
                 }
                 supermanAdapter.setlistData(listsupermanData);
+                ViewUtil.setListViewHeightBasedOnChildren(supermanlistview);
                 aPPUserSortList = (ArrayList<HashMap<String, String>>) listsupermanData.clone();
             }
         }
@@ -776,6 +780,8 @@ public class FragmentHome extends Fragment {
                         }
                     }
                     essencelistAdapter.setlistData(listessenceData);
+                    // 重新设置ListView的高度
+                    Utils.setListViewHeightBasedOnChildren(essencelistview);
                     appindexList = (ArrayList<HashMap<String, String>>) listessenceData.clone();
                 }
             }
@@ -859,6 +865,9 @@ public class FragmentHome extends Fragment {
         protected void onPostExecute(String result) {
             // 先获取缓存
             globalSwfStr = mCache.getAsString("globalSwf");
+            if (globalSwfStr == null){
+                globalSwfStr = "";
+            }
             if (result == null || "".equals(result)) {
                 result = globalSwfStr;
             } else {
@@ -883,6 +892,9 @@ public class FragmentHome extends Fragment {
                 }
             } catch (JSONException e) {
                 // mh 应该是要去找缓存的
+                e.printStackTrace();
+                return;
+            }catch (Exception e) {
                 e.printStackTrace();
                 return;
             }

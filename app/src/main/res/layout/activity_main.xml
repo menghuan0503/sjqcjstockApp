@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -6,15 +6,15 @@
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="11"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_tabBar"/>
 
     <RadioGroup
         android:id="@+id/main_tabBar"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="#EEEEEE"
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -80,4 +80,21 @@
 
     </RadioGroup>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/message_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:background="@drawable/bg_round_textview"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/main_tabBar"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

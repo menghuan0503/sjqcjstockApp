@@ -1,11 +1,19 @@
 package com.example.sjqcjstock.netutil;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 一些视图的共通处理方法
@@ -53,6 +61,29 @@ public class ViewUtil {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+
+
+    /**
+     * 处理该用户是否是VIP 并委托设置图像
+     * @param str
+     * @param imageView
+     */
+    public static void setUpVip(String str, ImageView imageView){
+        if (str == null){
+            return;
+        }
+        if (str.length()>10){
+            imageView.setVisibility(View.VISIBLE);
+        }else{
+            imageView.setVisibility(View.GONE);
+            return;
+        }
+            str = str.substring(str.lastIndexOf("http"));
+            str = str.substring(0,str.indexOf("\""));
+        if (str.length()>10)
+            ImageLoader.getInstance().displayImage(str,
+                    imageView, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
     }
 
 

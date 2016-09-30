@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sjqcjstock.R;
+import com.example.sjqcjstock.netutil.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,11 +72,7 @@ public class personalstocklistAdapter extends BaseAdapter{
 		ImageView vipImg = (ImageView) convertView.findViewById(R.id.vip_img);
 		String isVip = listData.get(position).get(
 				"isVip")+"";
-		if ("1".equals(isVip)){
-			vipImg.setVisibility(View.VISIBLE);
-		}else{
-			vipImg.setVisibility(View.GONE);
-		}
+		ViewUtil.setUpVip(isVip, vipImg);
 
 		return convertView;
 	}

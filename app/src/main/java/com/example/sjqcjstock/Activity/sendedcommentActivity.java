@@ -265,11 +265,7 @@ public class sendedcommentActivity extends Activity {
                                         .formatDateTime(Utils
                                                 .getStringtoDate(replyctimestr));
                                 String userGroup = user_infostrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVip", "1");
-                                }else{
-                                    map2.put("isVip", "0");
-                                }
+                                map2.put("isVip", userGroup);
                                 map2.put("replyctimestr", replyctimestr);
                                 map2.put("contentunamestr", unamestr2);
                                 map2.put("avatar_middlestr", avatar_middlestr);
@@ -330,11 +326,7 @@ public class sendedcommentActivity extends Activity {
                                 }
 
                                 String userGroup = sourceInfostrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVipSource", "1");
-                                }else{
-                                    map2.put("isVipSource", "0");
-                                }
+                                map2.put("isVipSource", userGroup);
                                 map2.put("sourceunamestr", unamestr);
                                 map2.put("sourceuidstr", uidstr);
                                 map2.put("sourcefeed_id", feed_idstr);

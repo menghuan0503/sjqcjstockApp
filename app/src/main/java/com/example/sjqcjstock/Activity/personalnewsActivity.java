@@ -180,6 +180,8 @@ public class personalnewsActivity extends Activity{
                 List<Map<String, Object>> datastrlists = null;
                 String data2str = null;
                 List<Map<String, Object>> data2strlists = null;
+                // 判断用户是否还存在
+                boolean isRn = true;
                 //是否刷新列表，清空私信列表集合
                 if ("1".equals(isreferlist)) {
                     listpersonalnewsData.clear();
@@ -210,10 +212,8 @@ public class personalnewsActivity extends Activity{
                                 data2strlists = JsonTools.listKeyMaps(data2str);
                             }
                             for (Map<String, Object> data2strmap : data2strlists) {
-
                                 //获取list_id参数
                                 String list_idstr = data2strmap.get("list_id")+"";
-
                                 // 创建时间
                                 String mtimestr = data2strmap.get("mtime")+"";
 
@@ -242,7 +242,7 @@ public class personalnewsActivity extends Activity{
 
                                     //如果用户信息为false，则该用户不存在
                                     if ("false".equals(user_infostr)) {
-                                        map2.put("unamestr", "该用户已不存在");
+                                        isRn = false;
                                     }
                                     for (Map<String, Object> user_infostrmap : user_infostrlists) {
 
@@ -254,11 +254,7 @@ public class personalnewsActivity extends Activity{
 
                                         } else {
                                             String userGroup = user_infostrmap.get("user_group")+"";
-                                            if (userGroup.length()>4){
-                                                map2.put("isVip", "1");
-                                            }else{
-                                                map2.put("isVip", "0");
-                                            }
+                                            map2.put("isVip", userGroup);
                                             map2.put("unamestr", fromunamestr);
                                             map2.put("uidstr", uidstr);
                                             uidstr = Md5Util.getMd5(uidstr);
@@ -266,6 +262,12 @@ public class personalnewsActivity extends Activity{
                                             map2.put("avatar_middlestr", uidstr);
                                         }
                                     }
+                                }
+
+                                if(!isRn){
+                                    // 如果用户不存在就跳过当前消息体继续处理下一条消息体
+                                    isRn = true;
+                                    continue;
                                 }
 
                                 // 被私信者的信息

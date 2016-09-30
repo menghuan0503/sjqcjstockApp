@@ -1,7 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_ffffff">
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_toptitle" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            layout="@layout/head_back_reuse" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="搜索"
+            style="@style/top_title" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +46,20 @@
                 android:paddingLeft="12dp"
                 android:text="收到的评论"
                 android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/message1_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
 
             <Button
                 style="@style/arrow_img"
@@ -51,6 +88,20 @@
                 android:paddingLeft="12dp"
                 android:text="发出的评论"
                 android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/message2_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
 
             <Button
                 style="@style/arrow_img"
@@ -112,6 +163,20 @@
                 android:text="\@提到我的"
                 android:textColor="#444444" />
 
+            <TextView
+                android:id="@+id/message3_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
             <Button
                 style="@style/arrow_img"
                 android:layout_gravity="center"
@@ -139,6 +204,20 @@
                 android:text="我的私信"
                 android:textColor="#444444" />
 
+            <TextView
+                android:id="@+id/message4_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
             <Button
                 style="@style/arrow_img"
                 android:layout_gravity="center"
@@ -151,7 +230,7 @@
             android:background="@drawable/line" />
 
     <LinearLayout
-        android:id="@+id/system_message"
+        android:id="@+id/reward_message"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/color_ffffff"
@@ -166,6 +245,20 @@
             android:text="打赏消息"
             android:textColor="#444444" />
 
+        <TextView
+            android:id="@+id/message5_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_round_textview"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
         <Button
             style="@style/arrow_img"
             android:layout_gravity="center"
@@ -177,7 +270,48 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@drawable/line" />
+        <LinearLayout
+            android:id="@+id/system_message"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="系统公告"
+                android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/message6_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
 
 </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

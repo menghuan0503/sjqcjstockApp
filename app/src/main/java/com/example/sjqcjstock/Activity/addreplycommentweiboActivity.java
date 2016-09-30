@@ -59,7 +59,7 @@ public class addreplycommentweiboActivity extends Activity {
 	private static final int REQUEST_CODE_CAPTURE_CAMEIA = 2; // 照相获取
 
 	// 图文混排
-	SpannableStringBuilder spannable;
+	private SpannableStringBuilder spannable;
 
 	// 获取控件
 	private RelativeLayout LinearLayout01;
@@ -77,11 +77,11 @@ public class addreplycommentweiboActivity extends Activity {
 
 
 	// 定义适配器
-	facelibaryAdapter facelibaryAdapter;
+	private facelibaryAdapter facelibaryAdapter;
 	private GridView facegridView1;
 	// 定义于数据库同步的字段集合
 	// private String[] name;
-	ArrayList<HashMap<String, Object>> listData;
+	private ArrayList<HashMap<String, Object>> listData;
 
 	// 判断弹出获取图片操作的标识 0代表显示，1代表隐藏
 	private String isdisplaygetimg = "0";
@@ -90,21 +90,24 @@ public class addreplycommentweiboActivity extends Activity {
 	private String isdisplayfacelibrary = "0";
 
 	// 从intent获取weiboidstr
-	String weiboidstr;
-	String feeduidstr;
-	String to_uidstr;
-	String comment_idstr;
-	String oldnamestr;
+	private String weiboidstr;
+	private String feeduidstr;
+	private String to_uidstr;
+	private String comment_idstr;
+	private String oldnamestr;
 
 	// 实在是否转发的标识
-	String ifShareFeed = "0";
+	private String ifShareFeed = "0";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+		// 4表示禁言用户不能转发微博
+		if (Constants.userType.equals("4")) {
+			finish();
+		}
 		setContentView(R.layout.replycommentweibo);
 
 		// 将Activity反复链表
@@ -472,7 +475,7 @@ public class addreplycommentweiboActivity extends Activity {
 		@Override
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			CustomToast.makeText(getApplicationContext(), "hahaha", Toast.LENGTH_LONG).show();
+//			CustomToast.makeText(getApplicationContext(), "hahaha", Toast.LENGTH_LONG).show();
 			// LinearLayout01.setVisibility(View.VISIBLE);
 
 		}

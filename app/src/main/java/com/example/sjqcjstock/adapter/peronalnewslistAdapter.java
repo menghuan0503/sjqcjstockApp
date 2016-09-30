@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.netutil.ImageUtil;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -100,11 +101,7 @@ public class peronalnewslistAdapter extends BaseAdapter{
 				.findViewById(R.id.vip_img);
 		String isVip =  listData.get(position).get(
 				"isVip");
-		if ("1".equals(isVip)){
-			vipImg.setVisibility(View.VISIBLE);
-		}else{
-			vipImg.setVisibility(View.GONE);
-		}
+		ViewUtil.setUpVip(isVip, vipImg);
 		return convertView;
 	}
 	

@@ -176,11 +176,7 @@ public class myfansActivity extends Activity{
                                 String avatar_middlestr = data2strmap.get("avatar_middle")+"";
                                 HashMap<String, Object> map2 = new HashMap<String, Object>();
                                 String userGroup = data2strmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVip", "1");
-                                }else{
-                                    map2.put("isVip", "0");
-                                }
+                                map2.put("isVip", userGroup);
                                 map2.put("uid", uidstr);
                                 map2.put("uname", unamestr);
                                 map2.put("intro", introstr);

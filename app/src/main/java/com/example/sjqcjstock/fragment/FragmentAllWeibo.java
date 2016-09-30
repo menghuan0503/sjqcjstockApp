@@ -321,11 +321,7 @@ public class FragmentAllWeibo extends Fragment {
                                     sourceunamestr = source_user_infostrmap.get("uname").toString();
                                     avatar_middlestr = source_user_infostrmap.get("avatar_middle").toString();
                                     String userGroup = source_user_infostrmap.get("user_group").toString();
-                                    if (userGroup.length()>4){
-                                        map2.put("isVipSource", "1");
-                                    }else{
-                                        map2.put("isVipSource", "0");
-                                    }
+                                    map2.put("isVipSource", userGroup);
                                     map2.put("sourceuidstr", sourceuidstr);
                                     map2.put("sourceuname", sourceunamestr);
                                     map2.put("sourceavatar_middlestr", avatar_middlestr);
@@ -400,11 +396,7 @@ public class FragmentAllWeibo extends Fragment {
                             String unamestr = user_infostrmap.get("uname").toString();
                             String avatar_middlestr2 = user_infostrmap.get("avatar_middle").toString();
                             String userGroup = user_infostrmap.get("user_group").toString();
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);
                             map2.put("avatar_middle", avatar_middlestr2);

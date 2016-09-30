@@ -220,11 +220,7 @@ public class atfriendActivity extends Activity {
 //                            }
                             HashMap<String, Object> map2 = new HashMap<String, Object>();
                             String userGroup = datastrmap.get("user_group")+"";
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("avatar_middlestr", avatar_smallstr);
                             map2.put("unamestr", unamestr);
                             listatfrientData.add(map2);
@@ -286,11 +282,7 @@ public class atfriendActivity extends Activity {
                                         +"";
                                 HashMap<String, Object> map2 = new HashMap<String, Object>();
                                 String userGroup = datastrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVip", "1");
-                                }else{
-                                    map2.put("isVip", "0");
-                                }
+                                map2.put("isVip", userGroup);
                                 map2.put("avatar_middlestr", avatar_middlestr);
                                 map2.put("unamestr", unamestr);
                                 listatfrientData.add(map2);

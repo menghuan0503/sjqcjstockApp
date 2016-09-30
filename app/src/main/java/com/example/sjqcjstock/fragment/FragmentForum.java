@@ -211,6 +211,10 @@ public class FragmentForum extends Fragment implements ViewPager.OnPageChangeLis
     class addforum1_listener implements OnClickListener {
         @Override
         public void onClick(View arg0) {
+            // 4表示禁言用户不能发帖
+            if (Constants.userType.equals("4")) {
+                return;
+            }
             // 跳转到写博文的页面
             Intent intent = new Intent(getActivity(), commentshortweiboActivity.class);
             startActivityForResult(intent, REQUEST_CODE_shortweibofinish);

@@ -23,6 +23,7 @@ import com.example.sjqcjstock.netutil.HttpUtil;
 import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.netutil.Utils;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -499,16 +500,8 @@ public class commonnoteAdapter extends BaseAdapter {
                 "isVip");
         String isVipSource = listData.get(position).get(
                 "isVipSource");
-        if ("1".equals(isVip)){
-            holder.vipImg.setVisibility(View.VISIBLE);
-        }else{
-            holder.vipImg.setVisibility(View.GONE);
-        }
-        if ("1".equals(isVipSource)){
-            holder.vipImgSource.setVisibility(View.VISIBLE);
-        }else{
-            holder.vipImgSource.setVisibility(View.GONE);
-        }
+        ViewUtil.setUpVip(isVip, holder.vipImg);
+        ViewUtil.setUpVip(isVipSource, holder.vipImgSource);
 
         return convertView;
     }

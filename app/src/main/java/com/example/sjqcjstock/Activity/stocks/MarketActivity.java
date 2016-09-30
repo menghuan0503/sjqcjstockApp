@@ -142,7 +142,6 @@ public class MarketActivity extends Activity {
             public void run() {
                 // 获取16年该股票的数据
                 String strData = HttpUtil.getIntentData("http://qt.gtimg.cn/q=sz000858,sz300526,sz000011,sz300497,sz000629,sz000725");
-                Log.e("mh123:",strData);
                 processData(strData);
                 handler.sendEmptyMessage(0);
             }

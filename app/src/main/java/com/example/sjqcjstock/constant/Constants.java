@@ -3,6 +3,7 @@ package com.example.sjqcjstock.constant;
 import android.graphics.Bitmap;
 
 import com.example.sjqcjstock.R;
+import com.example.sjqcjstock.entity.UnreadCount;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
@@ -27,6 +28,8 @@ public  class Constants {
 
 	// 存储用户头像地址
 	public static String headImg = "";
+	// 存储用户类别（主要用于是否是禁言用户 如果为4 就为禁言用户）
+	public static String userType = "1";
 
 	//public static String staticpasswordstr="3665306";
 	public static String staticpasswordstr="";
@@ -53,8 +56,10 @@ public  class Constants {
 	public static String subscribeListUrl = Url+"?app=public&mod=AppFeedList&act=SubscribeList";
 	// 提交打赏水晶币的接口
 	public static String apprewardUrl = Url+"?app=public&mod=AppFeedList&act=Appreward";
+	// 获取打赏列表消息的接口
+	public static String rewardMessagedUrl = Url+"?app=public&mod=AppFeedList&act=SystemMessage";
 	// 获取系统消息的接口
-	public static String systemMessagedUrl = Url+"?app=public&mod=AppFeedList&act=SystemMessage";
+	public static String systemMessagedUrl = Url+"?app=public&mod=Index&act=getSysMessage";
 	// 我的收藏的的接口
 	public static String myCollectionUrl = Url+"?app=public&mod=AppFeedList&act=AppCollection";
 	// 我的订阅的的接口
@@ -72,6 +77,8 @@ public  class Constants {
 	public static String unifiedorder =Url+"?app=public&mod=App&act=wxpay";
 	// 查询订单是否成功的接口
 	public static String queryOrder = Url+"?app=public&mod=App&act=queryOrder";
+	// 未读消息体的结构
+	public static String unreadCount = Url+"?app=public&mod=Index&act=getAppUnreadCount";
 
 	// 页面加载是显示的语句
 	public static String loadMessage = "正在玩命加载中...";
@@ -79,6 +86,9 @@ public  class Constants {
 	public static String noNetwork = "获取数据失败，网络不给力！";
 	// 无数据的时候
 	public static String noData = "亲你访问的页面暂时还没有数据！";
+
+	// 各种消息条数的实体类
+	public static UnreadCount unreadCountInfo;
 
 //	// 图片加载化的一些共通设置
 //	public static DisplayImageOptions options=new DisplayImageOptions.Builder().

@@ -579,7 +579,6 @@ public class GridChart extends BaseChart implements ITouchEventNotify,
 //			} else if (event.getPointerCount() == 2) {
 //
 //			}
-            Log.e("mh:", "父类的滑动事件按");
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
                 // 获取点击坐�?
                 clickPostX = event.getX();

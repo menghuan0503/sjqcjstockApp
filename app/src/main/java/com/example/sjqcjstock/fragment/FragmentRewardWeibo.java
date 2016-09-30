@@ -409,11 +409,7 @@ public class FragmentRewardWeibo extends Fragment {
 
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
                             String userGroup = user_infostrmap.get("user_group").toString();
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("uid", user_infostrmap.get("uid").toString());
                             map2.put("uname", user_infostrmap.get("uname").toString());
                             map2.put("avatar_middle", user_infostrmap.get("avatar_middle").toString());

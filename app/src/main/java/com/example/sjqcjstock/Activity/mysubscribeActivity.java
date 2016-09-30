@@ -330,11 +330,7 @@ public class mysubscribeActivity extends Activity{
                             String unamestr = user_infostrmap.get("uname")+"";
                             String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
                             String userGroup = user_infostrmap.get("user_group")+"";
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);
                             map2.put("avatar_middle", avatar_middlestr);

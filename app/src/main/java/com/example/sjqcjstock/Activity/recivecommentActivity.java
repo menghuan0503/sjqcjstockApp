@@ -239,11 +239,7 @@ public class recivecommentActivity extends Activity{
                                             +"";
                                 }
                                 String userGroup = user_infostrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVip", "1");
-                                }else{
-                                    map2.put("isVip", "0");
-                                }
+                                map2.put("isVip", userGroup);
                                 map2.put("contentunamestr", unamestr);
                                 map2.put("avatar_middlestr", avatar_middlestr);
                                 map2.put("uidstr", uidstr);
@@ -322,11 +318,7 @@ public class recivecommentActivity extends Activity{
                                         sourceInfostrmap.get("feed_id")
                                                 .toString());
                                 String userGroup = sourceInfostrmap.get("user_group")+"";
-                                if (userGroup.length()>4){
-                                    map2.put("isVipSource", "1");
-                                }else{
-                                    map2.put("isVipSource", "0");
-                                }
+                                map2.put("isVipSource", userGroup);
                             }
                             listrecivecommentData.add(map2);
                         }

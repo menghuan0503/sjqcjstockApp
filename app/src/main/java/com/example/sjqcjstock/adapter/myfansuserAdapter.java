@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.sjqcjstock.Activity.stocks.UserDetailNewActivity;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.netutil.ImageUtil;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -88,11 +89,7 @@ public class myfansuserAdapter extends BaseAdapter{
 		String isVip =  listData.get(position).get(
 				"isVip")+"";
 		ImageView vipImg=(ImageView)convertView.findViewById(R.id.vip_img);
-		if ("1".equals(isVip)){
-			vipImg.setVisibility(View.VISIBLE);
-		}else{
-			vipImg.setVisibility(View.GONE);
-		}
+		ViewUtil.setUpVip(isVip, vipImg);
 		return convertView;
 	}
 }

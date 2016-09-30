@@ -17,6 +17,7 @@ import com.example.sjqcjstock.Activity.forumnotedetailActivity;
 import com.example.sjqcjstock.Activity.stocks.UserDetailNewActivity;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.netutil.ImageUtil;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -382,16 +383,8 @@ public class recivecommentAdapter extends BaseAdapter {
                 "isVip");
         String isVipSource = listData.get(position).get(
                 "isVipSource");
-        if ("1".equals(isVip)){
-            holder.vipImg.setVisibility(View.VISIBLE);
-        }else{
-            holder.vipImg.setVisibility(View.GONE);
-        }
-        if ("1".equals(isVipSource)){
-            holder.vipImgSource.setVisibility(View.VISIBLE);
-        }else{
-            holder.vipImgSource.setVisibility(View.GONE);
-        }
+        ViewUtil.setUpVip(isVip, holder.vipImg);
+        ViewUtil.setUpVip(isVipSource, holder.vipImgSource);
         return convertView;
     }
 

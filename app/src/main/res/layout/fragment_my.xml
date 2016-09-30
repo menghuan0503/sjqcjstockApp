@@ -562,12 +562,31 @@
                         android:text="消息"
                         android:textColor="@color/color_text1" />
 
+                    <TextView
+                        android:id="@+id/message_count_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/bg_round_textview"
+                        android:textColor="@color/white"
+                        android:visibility="gone"/>
+
                     <Button
                         style="@style/arrow_img"
                         android:layout_gravity="center"
                         android:clickable="false" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_line" />
 
                 <LinearLayout
                     android:id="@+id/mh_account_ll"

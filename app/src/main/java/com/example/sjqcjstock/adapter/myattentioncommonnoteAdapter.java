@@ -23,6 +23,7 @@ import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.JsonTools;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.netutil.Utils;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -475,11 +476,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
 //		check.setChecked((state.get(position)==null?false:true));
         String isVip = listData.get(position).get(
                 "isVip");
-        if ("1".equals(isVip)){
-            holder.vipImg.setVisibility(View.VISIBLE);
-        }else{
-            holder.vipImg.setVisibility(View.GONE);
-        }
+        ViewUtil.setUpVip(isVip, holder.vipImg);
 
         return convertView;
     }

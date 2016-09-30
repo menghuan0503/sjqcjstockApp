@@ -32,6 +32,7 @@ import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.JsonTools;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.netutil.Utils;
+import com.example.sjqcjstock.netutil.ViewUtil;
 import com.example.sjqcjstock.view.CustomToast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -331,12 +332,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                         ImageLoader.getInstance().displayImage(avatar_middlestr,
                                 headimg2, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
 
-                        String userGroup = weibomap.get("user_group")+"";
-                        if (userGroup.length()>4){
-                            vipImg.setVisibility(View.VISIBLE);
-                        }else{
-                            vipImg.setVisibility(View.GONE);
-                        }
+                        ViewUtil.setUpVip(weibomap.get("user_group")+"",vipImg);
                     }
                 }
             }

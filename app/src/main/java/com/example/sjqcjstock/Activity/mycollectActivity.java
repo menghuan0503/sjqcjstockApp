@@ -264,11 +264,7 @@ public class mycollectActivity extends Activity {
                             }
                             HashMap<String, String> map2 = new HashMap<String, String>();
                             String userGroup = data2strmap.get("user_group")+"";
-                            if (userGroup.length()>4){
-                                map2.put("isVip", "1");
-                            }else{
-                                map2.put("isVip", "0");
-                            }
+                            map2.put("isVip", userGroup);
                             map2.put("uname", unamestr2);
                             map2.put("avatar_middle", avatar_middle2);
                             String source_datastr;
@@ -391,11 +387,7 @@ public class mycollectActivity extends Activity {
                                             sourceunamestr = source_user_infostrmap.get("uname")+"";
                                             avatar_middlestr = source_user_infostrmap.get("avatar_middle")+"";
                                             userGroup = source_user_infostrmap.get("user_group")+"";
-                                            if (userGroup.length()>4){
-                                                map2.put("isVipSource", "1");
-                                            }else{
-                                                map2.put("isVipSource", "0");
-                                            }
+                                            map2.put("isVipSource", userGroup);
                                             map2.put("sourceuidstr", sourceuidstr);
                                             map2.put("sourceuname", sourceunamestr);
                                             map2.put("sourceavatar_middlestr", avatar_middlestr);

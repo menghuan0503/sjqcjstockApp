@@ -34,10 +34,10 @@ public class recivecommentAdapter extends BaseAdapter {
     }
 
     public void setlistData(ArrayList<HashMap<String, String>> listData) {
-            if (this.listData != null)
-                this.listData.clear();
-            this.listData = (ArrayList<HashMap<String, String>>) listData.clone();
-            notifyDataSetChanged();
+        if (this.listData != null)
+            this.listData.clear();
+        this.listData = (ArrayList<HashMap<String, String>>) listData.clone();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -379,7 +379,7 @@ public class recivecommentAdapter extends BaseAdapter {
 //            }
 //        });
 
-        String isVip =  listData.get(position).get(
+        String isVip = listData.get(position).get(
                 "isVip");
         String isVipSource = listData.get(position).get(
                 "isVipSource");

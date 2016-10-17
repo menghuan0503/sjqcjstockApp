@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="资讯页面" />
+            android:text="资讯详情" />
 
         <LinearLayout
             android:id="@+id/share1"

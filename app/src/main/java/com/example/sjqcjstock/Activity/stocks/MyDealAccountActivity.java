@@ -111,8 +111,8 @@ public class MyDealAccountActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent inten = new Intent();
-                inten.putExtra("name", ((TextView)view.findViewById(R.id.name_tv)).getText()+"");
-                inten.putExtra("code", ((TextView)view.findViewById(R.id.code_tv)).getText()+"");
+                inten.putExtra("name", ((TextView) view.findViewById(R.id.name_tv)).getText() + "");
+                inten.putExtra("code", ((TextView) view.findViewById(R.id.code_tv)).getText() + "");
                 inten.setClass(MyDealAccountActivity.this, SharesDetailedActivity.class);
                 startActivity(inten);
             }

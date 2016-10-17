@@ -26,158 +26,155 @@ import java.util.List;
 
 /**
  * <p>保存线图表示用单个线的对象、多条线的时候请使用相应的数据结构保存数据</p>
- * @author menghuan 
- * @version v1.0 2013/12/25 12:24:49 
+ *
+ * @author menghuan
+ * @version v1.0 2013/12/25 12:24:49
  */
 public class LineEntity {
-	
-	/** 
-	 * <p>线表示数据的点</p>
-	 */
-	private List<SpotEntity> lineData;
-	
-	/**
-	 * <p>线的标题，用于标识别这条线</p>
-	 */
-	private String title;
-	
-	/**
-	 * <p>线的颜色</p>
-	 */
-	private int lineColor;
-	
-	/** 
-	 * <p>是否在图表上显示该线</p>
-	 */
-	private boolean display = true;
 
-	/** 
-	 * <p>该线是否是实线</p>
-	 */
-	private boolean realLine=true;
+    /**
+     * <p>线表示数据的点</p>
+     */
+    private List<SpotEntity> lineData;
 
-	/**
-	 * <p>该线是否包围成有背景色</p>
-	 */
-	private boolean isBackger = false;
+    /**
+     * <p>线的标题，用于标识别这条线</p>
+     */
+    private String title;
 
-	/** 
-	 * <p>该线的粗细</p>
-	 */
-	private float lineSize=2f;
+    /**
+     * <p>线的颜色</p>
+     */
+    private int lineColor;
 
-	/**
-	 * <p>LineEntity类对象的构造函数</p>
-	 *
-	 */
-	public LineEntity() {
-		super();
-	}
+    /**
+     * <p>是否在图表上显示该线</p>
+     */
+    private boolean display = true;
 
-	/**
-	 * <p>LineEntity类对象的构造函数</p>
-	 *
-	 * @param lineData
-	 * <p>线表示数据</p>
-	 * @param title
-	 * <p>线的标题，用于标识别这条线</p>
-	 * @param lineColor 
-	 * <p>线的颜色</p>
-	 */
-	public LineEntity(List<SpotEntity> lineData, String title, int lineColor) {
-		super();
-		this.lineData = lineData;
-		this.title = title;
-		this.lineColor = lineColor;
-	}
-	
-	/**
-	 * @param value 
-	 */
-	public void put(SpotEntity value){
-		if (null == lineData){
-			lineData = new ArrayList<SpotEntity>();
-		}
-		lineData.add(value);
-	}
+    /**
+     * <p>该线是否是实线</p>
+     */
+    private boolean realLine = true;
 
-	/**
-	 * @return the lineData
-	 */
-	public List<SpotEntity> getLineData() {
-		return lineData;
-	}
+    /**
+     * <p>该线是否包围成有背景色</p>
+     */
+    private boolean isBackger = false;
 
-	/**
-	 * @param lineData the lineData to set
-	 */
-	public void setLineData(List<SpotEntity> lineData) {
-		this.lineData = lineData;
-	}
+    /**
+     * <p>该线的粗细</p>
+     */
+    private float lineSize = 2f;
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
+    /**
+     * <p>LineEntity类对象的构造函数</p>
+     */
+    public LineEntity() {
+        super();
+    }
 
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * <p>LineEntity类对象的构造函数</p>
+     *
+     * @param lineData  <p>线表示数据</p>
+     * @param title     <p>线的标题，用于标识别这条线</p>
+     * @param lineColor <p>线的颜色</p>
+     */
+    public LineEntity(List<SpotEntity> lineData, String title, int lineColor) {
+        super();
+        this.lineData = lineData;
+        this.title = title;
+        this.lineColor = lineColor;
+    }
 
-	/**
-	 * @return the lineColor
-	 */
-	public int getLineColor() {
-		return lineColor;
-	}
+    /**
+     * @param value
+     */
+    public void put(SpotEntity value) {
+        if (null == lineData) {
+            lineData = new ArrayList<SpotEntity>();
+        }
+        lineData.add(value);
+    }
 
-	/**
-	 * @param lineColor the lineColor to set
-	 */
-	public void setLineColor(int lineColor) {
-		this.lineColor = lineColor;
-	}
+    /**
+     * @return the lineData
+     */
+    public List<SpotEntity> getLineData() {
+        return lineData;
+    }
 
-	/**
-	 * @return the display
-	 */
-	public boolean isDisplay() {
-		return display;
-	}
+    /**
+     * @param lineData the lineData to set
+     */
+    public void setLineData(List<SpotEntity> lineData) {
+        this.lineData = lineData;
+    }
 
-	/**
-	 * @param display the display to set
-	 */
-	public void setDisplay(boolean display) {
-		this.display = display;
-	}	
-	
-	public boolean isRealLine() {
-		return realLine;
-	}
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
 
-	public void setRealLine(boolean realLine) {
-		this.realLine = realLine;
-	}
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public float getLineSize() {
-		return lineSize;
-	}
+    /**
+     * @return the lineColor
+     */
+    public int getLineColor() {
+        return lineColor;
+    }
 
-	public void setLineSize(float lineSize) {
-		this.lineSize = lineSize;
-	}
+    /**
+     * @param lineColor the lineColor to set
+     */
+    public void setLineColor(int lineColor) {
+        this.lineColor = lineColor;
+    }
 
-	public boolean isBackger() {
-		return isBackger;
-	}
+    /**
+     * @return the display
+     */
+    public boolean isDisplay() {
+        return display;
+    }
 
-	public void setBackger(boolean backger) {
-		isBackger = backger;
-	}
+    /**
+     * @param display the display to set
+     */
+    public void setDisplay(boolean display) {
+        this.display = display;
+    }
+
+    public boolean isRealLine() {
+        return realLine;
+    }
+
+    public void setRealLine(boolean realLine) {
+        this.realLine = realLine;
+    }
+
+    public float getLineSize() {
+        return lineSize;
+    }
+
+    public void setLineSize(float lineSize) {
+        this.lineSize = lineSize;
+    }
+
+    public boolean isBackger() {
+        return isBackger;
+    }
+
+    public void setBackger(boolean backger) {
+        isBackger = backger;
+    }
 }

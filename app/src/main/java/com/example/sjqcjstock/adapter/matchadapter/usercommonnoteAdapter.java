@@ -40,9 +40,9 @@ public class usercommonnoteAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    public void setlistData(ArrayList<HashMap<String,Object>> listData){
+    public void setlistData(ArrayList<HashMap<String, Object>> listData) {
         if (listData != null) {
-            this.listData = (ArrayList<HashMap<String,Object>>) listData.clone();
+            this.listData = (ArrayList<HashMap<String, Object>>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -267,7 +267,7 @@ public class usercommonnoteAdapter extends BaseAdapter {
                     if (Utils.isFastDoubleClick2()) {
                         return;
                     }
-                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg",
+                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},
@@ -287,7 +287,7 @@ public class usercommonnoteAdapter extends BaseAdapter {
                     if (Utils.isFastDoubleClick2()) {
                         return;
                     }
-                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg",
+                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},

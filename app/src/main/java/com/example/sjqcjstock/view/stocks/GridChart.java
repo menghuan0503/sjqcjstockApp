@@ -31,7 +31,6 @@ import android.graphics.PathEffect;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.sjqcjstock.entity.stocks.SpotEntity;
@@ -835,9 +834,9 @@ public class GridChart extends BaseChart implements ITouchEventNotify,
                     // draw line 并且第一条经线不画
                     if (displayLongitude && i > 0) {
                         // 中间的线加粗
-                        if(counts / 2 == i){
+                        if (counts / 2 == i) {
                             mPaintLine.setStrokeWidth(2);
-                        }else{
+                        } else {
                             mPaintLine.setStrokeWidth(1);
                         }
 //                        Path paths = new Path();
@@ -921,9 +920,9 @@ public class GridChart extends BaseChart implements ITouchEventNotify,
                     // draw line 并且第一条纬线不画
                     if (displayLatitude && i > 0) {
                         // 中间那条线粗点
-                        if(counts / 2 == i){
+                        if (counts / 2 == i) {
                             mPaintLine.setStrokeWidth(2);
-                        }else{
+                        } else {
                             mPaintLine.setStrokeWidth(1);
                         }
                         canvas.drawLine(axisMarginLeft,

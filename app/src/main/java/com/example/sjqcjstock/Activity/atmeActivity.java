@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * 提到我的评论
  */
-public class atmeActivity extends Activity{
+public class atmeActivity extends Activity {
     private LinearLayout goback1;
     // 定义List集合容器
     private atmeAdapter atmeAdapter;
@@ -66,7 +66,7 @@ public class atmeActivity extends Activity{
 
     @Override
     protected void onDestroy() {
-        if(appMentionList != null && appMentionList.size()>0){
+        if (appMentionList != null && appMentionList.size() > 0) {
             // 做缓存
             mCache.put("AppMentionx", Utils.getListMapStr(appMentionList));
         }
@@ -124,7 +124,7 @@ public class atmeActivity extends Activity{
 
     private void geneItems() {
         new SendInfoTaskatmecomment().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=AppMention",
+                Constants.Url + "?app=public&mod=AppFeedList&act=AppMention",
                 new String[]{"mid",
                         Constants.staticmyuidstr}, new String[]{
                 "login_password", Constants.staticpasswordstr},
@@ -142,7 +142,7 @@ public class atmeActivity extends Activity{
                 if ("1".equals(isreferlist)) {
                     appMentionList = (ArrayList<HashMap<String, String>>) listatmecommentData.clone();
                 }
-            }else{
+            } else {
                 // 千万别忘了告诉控件刷新完毕了哦！加载失败
                 ptrl.refreshFinish(PullToRefreshLayout.FAIL);
             }
@@ -188,7 +188,7 @@ public class atmeActivity extends Activity{
                 }
                 for (Map<String, Object> map : lists) {
                     if (datastr == null) {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                         datastrlists = JsonTools.listKeyMaps("[" + datastr
                                 + "]");
                     }
@@ -197,7 +197,7 @@ public class atmeActivity extends Activity{
                     }
                     for (Map<String, Object> datastrmap : datastrlists) {
                         if (at_liststr == null) {
-                            at_liststr = datastrmap.get("at_list")+"";
+                            at_liststr = datastrmap.get("at_list") + "";
                             at_liststrlists = JsonTools.listKeyMaps("["
                                     + at_liststr + "]");
                         }
@@ -207,7 +207,7 @@ public class atmeActivity extends Activity{
                         for (Map<String, Object> at_liststrmap : at_liststrlists) {
                             if (dataat_listdatastr == null) {
                                 dataat_listdatastr = at_liststrmap.get(
-                                        "data")+"";
+                                        "data") + "";
                                 dataat_listdatastrlists = JsonTools
                                         .listKeyMaps(dataat_listdatastr);
                             }
@@ -223,32 +223,32 @@ public class atmeActivity extends Activity{
                                     feed_idstr = "";
                                 } else {
                                     feed_idstr = dataat_listdatastrmap.get(
-                                            "feed_id")+"";
+                                            "feed_id") + "";
                                 }
                                 if (dataat_listdatastrmap.get("type") == null) {
                                     typestr = "";
                                 } else {
                                     typestr = dataat_listdatastrmap.get(
-                                            "type")+"";
+                                            "type") + "";
                                 }
                                 if (dataat_listdatastrmap.get("uid") == null) {
                                     uidstr = "";
                                 } else {
                                     uidstr = dataat_listdatastrmap.get(
-                                            "uid")+"";
+                                            "uid") + "";
                                 }
                                 if (dataat_listdatastrmap.get("uname") == null) {
                                     unamestr = "";
                                 } else {
                                     unamestr = dataat_listdatastrmap.get(
-                                            "uname")+"";
+                                            "uname") + "";
                                 }
                                 if (dataat_listdatastrmap
                                         .get("feed_content") == null) {
                                     feed_contentstr = "";
                                 } else {
                                     feed_contentstr = dataat_listdatastrmap
-                                            .get("feed_content")+"";
+                                            .get("feed_content") + "";
                                 }
                                 // String feed_contentstr=
                                 // dataat_listdatastrmap.get("feed_content")+"";
@@ -259,7 +259,7 @@ public class atmeActivity extends Activity{
                                 } else {
                                     avatar_middlestr = dataat_listdatastrmap
                                             .get("avatar_middle")
-                                            +"";
+                                            + "";
                                 }
 
                                 String publish_timestr;
@@ -268,7 +268,7 @@ public class atmeActivity extends Activity{
                                     publish_timestr = "";
                                 } else {
                                     publish_timestr = dataat_listdatastrmap
-                                            .get("publish_time")+"";
+                                            .get("publish_time") + "";
                                     publish_timestr = CalendarUtil
                                             .formatDateTime(Utils
                                                     .getStringtoDate(publish_timestr));
@@ -285,9 +285,9 @@ public class atmeActivity extends Activity{
                                 feed_contentstr = feed_contentstr.replace(
                                         "&nbsp;", "");
                                 if ("".equals(feed_contentstr)) {
-                                    feed_contentstr = "该微博已不存在";
+                                    feed_contentstr = "微博分享";
                                 }
-                                String userGroup = dataat_listdatastrmap.get("user_group")+"";
+                                String userGroup = dataat_listdatastrmap.get("user_group") + "";
                                 map2.put("isVip", userGroup);
 
                                 map2.put("feed_content", feed_contentstr);
@@ -305,7 +305,7 @@ public class atmeActivity extends Activity{
                                 } else {
                                     String transpond_datastr = dataat_listdatastrmap
                                             .get("transpond_data")
-                                            +"";
+                                            + "";
 
                                     List<Map<String, Object>> transpond_datastrlists = JsonTools
                                             .listKeyMaps("["
@@ -314,25 +314,25 @@ public class atmeActivity extends Activity{
 
                                     for (Map<String, Object> transpond_datastrmap : transpond_datastrlists) {
                                         String atfeed_idstr = transpond_datastrmap
-                                                .get("feed_id")+"";
+                                                .get("feed_id") + "";
                                         String atuid_idstr = transpond_datastrmap
-                                                .get("uid")+"";
+                                                .get("uid") + "";
                                         String atfeed_contentstr = transpond_datastrmap
-                                                .get("content")+"";
+                                                .get("content") + "";
                                         String uname = transpond_datastrmap
-                                                .get("uname")+"";
+                                                .get("uname") + "";
                                         // 正则表达式处理 去Html代码
                                         String regex = "\\<[^\\>]+\\>";
                                         atfeed_contentstr = atfeed_contentstr
                                                 .replaceAll(regex, "");
                                         atfeed_contentstr = atfeed_contentstr
                                                 .replace("&nbsp;", " ");
-                                        userGroup = transpond_datastrmap.get("user_group")+"";
+                                        userGroup = transpond_datastrmap.get("user_group") + "";
                                         map2.put("isVipSource", userGroup);
-                                        map2.put("atfeed_content",atfeed_contentstr);
+                                        map2.put("atfeed_content", atfeed_contentstr);
                                         map2.put("atfeed_id", atfeed_idstr);
                                         map2.put("atfeed_uid", atuid_idstr);
-                                        map2.put("uname", uname);
+                                        map2.put("unames", uname);
                                     }
                                 }
                                 listatmecommentData.add(map2);

@@ -22,146 +22,142 @@
 
 package com.example.sjqcjstock.entity.stocks;
 
-/** 
+/**
  * <p>保存每一个点的对象</p>
  *
- * @author menghuan 
- * @version v1.0 2014-1-2 下午12:10:33 
- *  
+ * @author menghuan
+ * @version v1.0 2014-1-2 下午12:10:33
  */
 public class SpotEntity {
 
-	/**
-	 * <p>点的数据大小</p>
-	 * */
-	private float spotData;
+    /**
+     * <p>点的数据大小</p>
+     */
+    private float spotData;
 
-	/**
-	 * <p>点对应的时间</p>
-	 * */
-	private String spotTime;
+    /**
+     * <p>点对应的时间</p>
+     */
+    private String spotTime;
 
-	/**
-	 * <p>点的显示类型(0:普通；1：圆形；2：三角形；3：菱形；4：正方形 ；5：细点)</p>
-	 * */
-	private int spotType;
+    /**
+     * <p>点的显示类型(0:普通；1：圆形；2：三角形；3：菱形；4：正方形 ；5：细点)</p>
+     */
+    private int spotType;
 
-	/**
-	 * <p>点的半径大小</p>
-	 * */
-	private float spotR;
-	
-	/**
-	 * <p>点的颜色</p>
-	 * */
-	private int spotColor;
-	
-	/**
-	 * <p>点的粗细</p>
-	 * */
-	private int spotSize;
-	
-	/** 
-	 * <p>填充色</p>
-	 */ 
-	private int padColor;
+    /**
+     * <p>点的半径大小</p>
+     */
+    private float spotR;
 
-	/** 
-	 * <p>透明度</p>
-	 */ 
-	private int alpha=255;
+    /**
+     * <p>点的颜色</p>
+     */
+    private int spotColor;
 
-	public SpotEntity()
-	{
-		
-	}
+    /**
+     * <p>点的粗细</p>
+     */
+    private int spotSize;
 
-	public SpotEntity(float spotData,String spotTime)
-	{
-		this.spotData=spotData;
-		this.spotTime=spotTime;
-		this.spotType=0;
-	}
+    /**
+     * <p>填充色</p>
+     */
+    private int padColor;
 
-	public SpotEntity(float spotData,int spotType,float spotR,int spotColor,int spotSize,int padColor)
-	{
-		this.spotData=spotData;
-		this.spotType=spotType;
-		this.spotR=spotR;
-		this.spotColor=spotColor;
-		this.spotSize=spotSize;
-		this.padColor=padColor;
-	}
-	
-	public SpotEntity(float spotData,float spotR,int spotColor,int spotSize,int padColor)
-	{
-		this.spotData=spotData;
-		this.spotR=spotR;
-		this.spotColor=spotColor;
-		this.spotSize=spotSize;
-		this.padColor=padColor;
-	}
-	
-	public float getSpotData() {
-		return spotData;
-	}
+    /**
+     * <p>透明度</p>
+     */
+    private int alpha = 255;
 
-	public void setSpotData(float spotData) {
-		this.spotData = spotData;
-	}
+    public SpotEntity() {
 
-	public int getSpotType() {
-		return spotType;
-	}
+    }
 
-	public void setSpotType(int spotType) {
-		this.spotType = spotType;
-	}
+    public SpotEntity(float spotData, String spotTime) {
+        this.spotData = spotData;
+        this.spotTime = spotTime;
+        this.spotType = 0;
+    }
 
-	public float getSpotR() {
-		return spotR;
-	}
+    public SpotEntity(float spotData, int spotType, float spotR, int spotColor, int spotSize, int padColor) {
+        this.spotData = spotData;
+        this.spotType = spotType;
+        this.spotR = spotR;
+        this.spotColor = spotColor;
+        this.spotSize = spotSize;
+        this.padColor = padColor;
+    }
 
-	public void setSpotR(float spotR) {
-		this.spotR = spotR;
-	}
+    public SpotEntity(float spotData, float spotR, int spotColor, int spotSize, int padColor) {
+        this.spotData = spotData;
+        this.spotR = spotR;
+        this.spotColor = spotColor;
+        this.spotSize = spotSize;
+        this.padColor = padColor;
+    }
 
-	public int getSpotColor() {
-		return spotColor;
-	}
+    public float getSpotData() {
+        return spotData;
+    }
 
-	public void setSpotColor(int spotColor) {
-		this.spotColor = spotColor;
-	}
+    public void setSpotData(float spotData) {
+        this.spotData = spotData;
+    }
 
-	public int getSpotSize() {
-		return spotSize;
-	}
+    public int getSpotType() {
+        return spotType;
+    }
 
-	public void setSpotSize(int spotSize) {
-		this.spotSize = spotSize;
-	}
+    public void setSpotType(int spotType) {
+        this.spotType = spotType;
+    }
 
-	public int getPadColor() {
-		return padColor;
-	}
+    public float getSpotR() {
+        return spotR;
+    }
 
-	public void setPadColor(int padColor) {
-		this.padColor = padColor;
-	}
-	
-	public int getAlpha() {
-		return alpha;
-	}
+    public void setSpotR(float spotR) {
+        this.spotR = spotR;
+    }
 
-	public void setAlpha(int alpha) {
-		this.alpha = alpha;
-	}
+    public int getSpotColor() {
+        return spotColor;
+    }
 
-	public String getSpotTime() {
-		return spotTime;
-	}
-	public void setSpotTime(String spotTime) {
-		this.spotTime = spotTime;
-	}
+    public void setSpotColor(int spotColor) {
+        this.spotColor = spotColor;
+    }
+
+    public int getSpotSize() {
+        return spotSize;
+    }
+
+    public void setSpotSize(int spotSize) {
+        this.spotSize = spotSize;
+    }
+
+    public int getPadColor() {
+        return padColor;
+    }
+
+    public void setPadColor(int padColor) {
+        this.padColor = padColor;
+    }
+
+    public int getAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
+    }
+
+    public String getSpotTime() {
+        return spotTime;
+    }
+
+    public void setSpotTime(String spotTime) {
+        this.spotTime = spotTime;
+    }
 }

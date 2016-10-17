@@ -425,8 +425,8 @@ public class commentlongweiboActivity extends Activity {
             List<EditData> editList = editor.buildEditData();
             dealEditData(editList);
             String title = "";
-            title = editcomtitleforweibo1.getText()+"";
-            String longweibobodystr = longweibobody+"";
+            title = editcomtitleforweibo1.getText() + "";
+            String longweibobodystr = longweibobody + "";
             if ("".equals(title.trim())) {
                 CustomToast.makeText(getApplicationContext(), "标题不能为空", Toast.LENGTH_SHORT).show();
 
@@ -448,12 +448,12 @@ public class commentlongweiboActivity extends Activity {
 
                 titlebuilder.append(longweibobodystr);
 
-                String titlestr = titlebuilder+"";
+                String titlestr = titlebuilder + "";
                 // 发送长微博
 
                 new SendInfoTaskaddlongweibo()
                         .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed",
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed",
                                 new String[]{"mid", Constants.staticmyuidstr},
                                 new String[]{"login_password", Constants.staticpasswordstr},
                                 new String[]{"tokey", Constants.statictokeystr},
@@ -613,7 +613,7 @@ public class commentlongweiboActivity extends Activity {
                         } catch (Exception e) {
                         }
                         // spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment
                                 .getExternalStorageDirectory()
                                 + "/sglrBitmap/"
@@ -653,7 +653,7 @@ public class commentlongweiboActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发长文成功", Toast.LENGTH_LONG).show();
@@ -718,7 +718,7 @@ public class commentlongweiboActivity extends Activity {
             long sjc = System.currentTimeMillis();
             int numcode = (int) ((Math.random() * 9 + 1) * 100000);
             HttpPost httpPost = new HttpPost(
-                    Constants.Url+"?app=public&mod=AppFeedList&act=saveEditorImg&dir=image&sjc="
+                    Constants.Url + "?app=public&mod=AppFeedList&act=saveEditorImg&dir=image&sjc="
                             + "1" + sjc + numcode);
             MultipartEntity entity = new MultipartEntity(
                     HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -746,7 +746,7 @@ public class commentlongweiboActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(resstr);
             for (Map<String, Object> map : lists) {
-                urlstr = map.get("url")+"";
+                urlstr = map.get("url") + "";
             }
 
             // 返回图片url

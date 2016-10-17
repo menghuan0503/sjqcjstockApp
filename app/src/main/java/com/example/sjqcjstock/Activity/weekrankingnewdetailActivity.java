@@ -69,9 +69,9 @@ public class weekrankingnewdetailActivity extends Activity {
         // 名人组还是精英组
         typestr = intent.getStringExtra("type");
         TextView titleName = (TextView) findViewById(R.id.title_name);
-        if(typestr.equals("1")){
+        if (typestr.equals("1")) {
             titleName.setText("名人组");
-        }else{
+        } else {
             titleName.setText("精英组");
         }
 
@@ -100,7 +100,7 @@ public class weekrankingnewdetailActivity extends Activity {
         });
         new SendInfoTask()
                 .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppListWeekBallot&macth="
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppListWeekBallot&macth="
                                         + matchstr
                                         + "&type="
                                         + typestr
@@ -138,8 +138,8 @@ public class weekrankingnewdetailActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists) {
                     if (datastr == null) {
-                        datastr = map.get("data")+"";
-                        if(datastr.equals("[]")){
+                        datastr = map.get("data") + "";
+                        if (datastr.equals("[]")) {
                             CustomToast.makeText(getApplicationContext(), "暂无数据", 1)
                                     .show();
                         }
@@ -152,7 +152,7 @@ public class weekrankingnewdetailActivity extends Activity {
                         // String ballot_idstr=
                         // ballot2strmap.get("ballot_id")+"";
                         // 用户id
-                        String uidstr = datastrmap.get("uid")+"";
+                        String uidstr = datastrmap.get("uid") + "";
                         // 股票编码
                         // String sharesstr=
                         // ballot2strmap.get("shares")+"";
@@ -170,9 +170,9 @@ public class weekrankingnewdetailActivity extends Activity {
                         // String weekly= datastrmap.get("weekly")+"";
                         // 股票名字
                         String shares_namestr = datastrmap.get("shares_name")
-                                +"";
+                                + "";
                         String shares2_namestr = datastrmap.get("shares2_name")
-                                +"";
+                                + "";
 
                         // String
                         // shares_namestr=datastrmap.get("shares_reason")+"";
@@ -184,7 +184,7 @@ public class weekrankingnewdetailActivity extends Activity {
                             pricestr = "0.00";
                         } else {
                             pricestr = datastrmap.get("list_ballot_price")
-                                    +"";
+                                    + "";
                             pricestr = Utils.getNumberFormat(pricestr);
                         }
                         // 当前价2
@@ -192,31 +192,31 @@ public class weekrankingnewdetailActivity extends Activity {
                             price2str = "0.00";
                         } else {
                             price2str = datastrmap.get("list_ballot_price2")
-                                    +"";
+                                    + "";
                             price2str = Utils.getNumberFormat(price2str);
                         }
                         // 第1只最高涨幅
                         String integration3str = datastrmap.get("integration1")
-                                +"";
+                                + "";
                         integration3str = Utils.getNumberFormat(integration3str);
 
                         // 第2只最高涨幅
                         String integration4str = datastrmap.get("integration2")
-                                +"";
+                                + "";
                         integration4str = Utils.getNumberFormat(integration4str);
 
                         // 第1只最高涨幅
                         String integration1str = datastrmap.get("integration3")
-                                +"";
+                                + "";
                         integration1str = Utils.getNumberFormat(integration1str);
                         // 最2只最高涨幅
                         String integration2str = datastrmap.get("integration4")
-                                +"";
+                                + "";
                         integration2str = Utils.getNumberFormat(integration2str);
 
                         // 周积分
                         String list_pricestr = datastrmap.get("integration")
-                                +"";
+                                + "";
 
                         // //总积分
                         // String ballot_jifenstr=
@@ -225,7 +225,7 @@ public class weekrankingnewdetailActivity extends Activity {
                         if (datastrmap.get("uname") == null) {
                             unamestr = "暂无";
                         } else {
-                            unamestr = datastrmap.get("uname")+"";
+                            unamestr = datastrmap.get("uname") + "";
                         }
 
                         HashMap<String, Object> map2 = new HashMap<String, Object>();

@@ -72,7 +72,7 @@ public class RegisterActivity extends Activity {
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    new SendInfoTasktestusername().execute(new TaskParams(Constants.Url+"?app=public&mod=Register&act=IsUnameAvailable",
+                    new SendInfoTasktestusername().execute(new TaskParams(Constants.Url + "?app=public&mod=Register&act=IsUnameAvailable",
                                     //new String[] { "login_email", "1061550505@qq.com" },
                                     //new String[] { "login_password", "12345678" },
                                     new String[]{"old_name", "dfsdf"},
@@ -183,7 +183,7 @@ public class RegisterActivity extends Activity {
                 str6 = verificationstr;
             }
 
-            new SendInfoTaskregister().execute(new TaskParams(Constants.Url+"?app=public&mod=Register&act=AppRegister",
+            new SendInfoTaskregister().execute(new TaskParams(Constants.Url + "?app=public&mod=Register&act=AppRegister",
                             new String[]{"uname", str1},
                             new String[]{"email", str4 + "@qq.com"},
                             new String[]{"password", str3},
@@ -214,7 +214,7 @@ public class RegisterActivity extends Activity {
                 CustomToast.makeText(getApplicationContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                 return;
             }
-            new SendInfoTaskverify().execute(new TaskParams(Constants.Url+"?app=public&mod=Register&act=verification",
+            new SendInfoTaskverify().execute(new TaskParams(Constants.Url + "?app=public&mod=Register&act=verification",
                             new String[]{"phone", fillphonecode1.getText().toString()}
                     )
             );
@@ -250,17 +250,17 @@ public class RegisterActivity extends Activity {
                     if (map.get("status").toString() == null) {
                         statusstr = "";
                     } else {
-                        statusstr = map.get("status")+"";
+                        statusstr = map.get("status") + "";
                     }
                     if (map.get("info").toString() == null) {
                         infostr = "";
                     } else {
-                        infostr = map.get("info")+"";
+                        infostr = map.get("info") + "";
                     }
                     if (map.get("data").toString() == null) {
                         datastr = "";
                     } else {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                     }
                     if ("1".equals(statusstr)) {
                         CustomToast.makeText(getApplicationContext(), "验证码发送成功", Toast.LENGTH_LONG).show();
@@ -276,8 +276,8 @@ public class RegisterActivity extends Activity {
                     List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
 
-                        verify_idstr = datastrmap.get("id")+"";
-                        verificationstr = datastrmap.get("verification")+"";
+                        verify_idstr = datastrmap.get("id") + "";
+                        verificationstr = datastrmap.get("verification") + "";
                         //String statusstr= datastrmap.get("status")+"";
 
                     }
@@ -318,19 +318,19 @@ public class RegisterActivity extends Activity {
                     if (map.get("data") == null) {
                         datastr = "0";
                     } else {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                     }
 
                     if (map.get("info") == null) {
                         infostr = "";
                     } else {
 
-                        infostr = map.get("info")+"";
+                        infostr = map.get("info") + "";
                     }
                     if (map.get("status") == null) {
                         statusstr = "";
                     } else {
-                        statusstr = map.get("status")+"";
+                        statusstr = map.get("status") + "";
                     }
 
                     shortmessage1.setText("免费获取");
@@ -339,7 +339,7 @@ public class RegisterActivity extends Activity {
                         //				Intent intent =new Intent(RegisterActivity.this,MainTab.class);
                         //				startActivity(intent);
 
-                        new SendInfoTask().execute(new TaskParams(Constants.Url+"?app=public&mod=Passport&act=AppLogin",
+                        new SendInfoTask().execute(new TaskParams(Constants.Url + "?app=public&mod=Passport&act=AppLogin",
                                         //new String[] { "login_email", "1061550505@qq.com" },
                                         //new String[] { "login_password", "12345678" },
                                         //new String[] { "login_remember", "1"}
@@ -398,12 +398,12 @@ public class RegisterActivity extends Activity {
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
                     String infostr;
-                    String statusstr = map.get("status")+"";
+                    String statusstr = map.get("status") + "";
 
                     if (map.get("info") == null) {
                         infostr = "该用户名可用";
                     } else {
-                        infostr = map.get("info")+"";
+                        infostr = map.get("info") + "";
                     }
                     //isexist1.setText(infostr);
                     //
@@ -447,7 +447,7 @@ public class RegisterActivity extends Activity {
                     if (map.get("info") == null) {
                         infostr = "该电话可以使用";
                     } else {
-                        infostr = map.get("info")+"";
+                        infostr = map.get("info") + "";
                     }
                     CustomToast.makeText(getApplicationContext(), infostr, Toast.LENGTH_SHORT).show();
 
@@ -483,13 +483,13 @@ public class RegisterActivity extends Activity {
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
                     String infostr;
-                    String statusstr = map.get("status")+"";
+                    String statusstr = map.get("status") + "";
 
                     if (map.get("info") == null) {
                         //infostr="该email不存在";
                         //infostr="";
                     } else {
-                        infostr = map.get("info")+"";
+                        infostr = map.get("info") + "";
                         CustomToast.makeText(getApplicationContext(), infostr, Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -522,18 +522,18 @@ public class RegisterActivity extends Activity {
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
 
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("status")+"";
+                    String statusstr = map.get("status") + "";
 
                     if (!"1".equals(statusstr)) {
                         CustomToast.makeText(getApplicationContext(), "用户名或密码错误,请重试", Toast.LENGTH_SHORT).show();
                     }
                     String unamestr;
-                    String uidstr = map.get("uid")+"";
+                    String uidstr = map.get("uid") + "";
 
                     if (map.get("name") == null) {
                         unamestr = "";
                     } else {
-                        unamestr = map.get("name")+"";
+                        unamestr = map.get("name") + "";
                     }
                     /**向SharedPreferemces中存储数据*/
                     //获得编辑器
@@ -545,9 +545,9 @@ public class RegisterActivity extends Activity {
                     editor.commit();
 
                     //获得编辑器
-                    Editor editor1=getSharedPreferences("loginInfo",MODE_PRIVATE).edit();//获得编辑这个文件的编辑器）
+                    Editor editor1 = getSharedPreferences("loginInfo", MODE_PRIVATE).edit();//获得编辑这个文件的编辑器）
                     //存储数据
-                    editor1.putString("isLogin","1");
+                    editor1.putString("isLogin", "1");
                     editor1.putString("uidstr", uidstr);
                     editor1.putString("unamestr", loginusername1.getText().toString());
                     editor1.putString("loginPwd", fillpassword2.getText().toString());

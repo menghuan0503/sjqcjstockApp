@@ -166,7 +166,7 @@ public class userinfoeditActivity extends Activity {
                 if (arg1) {//获得焦点
 
                 } else {//失去焦点
-                    new SendInfoTasktesting().execute(new TaskParams(Constants.Url+"?app=public&mod=Register&act=IsUnameAvailable",
+                    new SendInfoTasktesting().execute(new TaskParams(Constants.Url + "?app=public&mod=Register&act=IsUnameAvailable",
                                     //new String[] { "login_email", "1061550505@qq.com" },
                                     //new String[] { "login_password", "12345678" },
                                     new String[]{"old_name", "dfsfsdfsd"},
@@ -256,10 +256,10 @@ public class userinfoeditActivity extends Activity {
             } else {
                 sexstr3 = "0";
             }
-            String username3 = editname1.getText()+"";
-            String userinfo3 = userinfo1.getText()+"";
+            String username3 = editname1.getText() + "";
+            String userinfo3 = userinfo1.getText() + "";
             checkRadioButton.getText();
-            new SendInfoTaskedituserinfo().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+            new SendInfoTaskedituserinfo().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                             //new String[] { "login_email", "1061550505@qq.com" },
                             //new String[] { "login_password", "12345678" },
                             new String[]{"mid", Constants.staticmyuidstr},
@@ -368,23 +368,23 @@ public class userinfoeditActivity extends Activity {
                         //解析json字符串获得List<Map<String,Object>>
                         List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                         for (Map<String, Object> map : lists) {
-                            String statusstr = map.get("status")+"";
-                            String datastr = map.get("data")+"";
+                            String statusstr = map.get("status") + "";
+                            String datastr = map.get("data") + "";
                             List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
 
 
                             for (Map<String, Object> datastrmap : datastrlists) {
-                                fullpicurlstr = datastrmap.get("fullpicurl")+"";
-                                picheightstr = datastrmap.get("picheight")+"";
-                                picurlstr = datastrmap.get("picurl")+"";
-                                picwidthstr = datastrmap.get("picwidth")+"";
+                                fullpicurlstr = datastrmap.get("fullpicurl") + "";
+                                picheightstr = datastrmap.get("picheight") + "";
+                                picurlstr = datastrmap.get("picurl") + "";
+                                picwidthstr = datastrmap.get("picwidth") + "";
 
                             }
 
 
                         }
 
-                        new SendInfoTasksaveheadimg().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
+                        new SendInfoTasksaveheadimg().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
                                         new String[]{"mid", Constants.staticmyuidstr},
                                         new String[]{"login_password", Constants.staticpasswordstr},
                                         new String[]{"picurl", picurlstr},
@@ -454,23 +454,23 @@ public class userinfoeditActivity extends Activity {
                             //解析json字符串获得List<Map<String,Object>>
                             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                             for (Map<String, Object> map : lists) {
-                                String statusstr = map.get("status")+"";
-                                String datastr = map.get("data")+"";
+                                String statusstr = map.get("status") + "";
+                                String datastr = map.get("data") + "";
                                 List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
 
 
                                 for (Map<String, Object> datastrmap : datastrlists) {
-                                    fullpicurlstr = datastrmap.get("fullpicurl")+"";
-                                    picheightstr = datastrmap.get("picheight")+"";
-                                    picurlstr = datastrmap.get("picurl")+"";
-                                    picwidthstr = datastrmap.get("picwidth")+"";
+                                    fullpicurlstr = datastrmap.get("fullpicurl") + "";
+                                    picheightstr = datastrmap.get("picheight") + "";
+                                    picurlstr = datastrmap.get("picurl") + "";
+                                    picwidthstr = datastrmap.get("picwidth") + "";
 
                                 }
 
 
                             }
 
-                            new SendInfoTasksaveheadimg().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
+                            new SendInfoTasksaveheadimg().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
                                             new String[]{"mid", Constants.staticmyuidstr},
                                             new String[]{"login_password", Constants.staticpasswordstr},
                                             new String[]{"picurl", picurlstr},
@@ -504,7 +504,7 @@ public class userinfoeditActivity extends Activity {
                         }
 
                         //spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment.getExternalStorageDirectory() + "/sglrBitmap/" + uuid + ".jpg";
                         saveImage(photo, envstr);
                     } else {
@@ -540,16 +540,16 @@ public class userinfoeditActivity extends Activity {
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
                 String middlestr = "";
-                String datastr = map.get("data")+"";
+                String datastr = map.get("data") + "";
 
                 List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps(datastr);
 
                 for (Map<String, Object> datastrmap : datastrlists) {
-                    String bigstr = map.get("big")+"";
-                    middlestr = map.get("middle")+"";
-                    String smallstr = map.get("small")+"";
-                    String tinystr = map.get("tiny")+"";
-                    String statusstr = map.get("status")+"";
+                    String bigstr = map.get("big") + "";
+                    middlestr = map.get("middle") + "";
+                    String smallstr = map.get("small") + "";
+                    String tinystr = map.get("tiny") + "";
+                    String statusstr = map.get("status") + "";
 
                 }
 
@@ -624,12 +624,12 @@ public class userinfoeditActivity extends Activity {
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
                 String infostr;
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if (map.get("info") == null) {
                     infostr = "该用户名不存在";
                 } else {
-                    infostr = map.get("info")+"";
+                    infostr = map.get("info") + "";
                 }
                 isexist1.setText(infostr);
 
@@ -663,7 +663,7 @@ public class userinfoeditActivity extends Activity {
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
                 String infostr;
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
 //				if(map.get("info")==null){
 //					infostr="该用户名不存在";
@@ -722,7 +722,7 @@ public class userinfoeditActivity extends Activity {
 
              * */
 
-            HttpPost httpPost = new HttpPost(Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveAvatar&step=upload");
+            HttpPost httpPost = new HttpPost(Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=upload");
 
             MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
             entity.addPart("mid", new StringBody(Constants.staticmyuidstr));

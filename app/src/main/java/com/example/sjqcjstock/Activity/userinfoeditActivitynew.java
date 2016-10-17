@@ -311,7 +311,7 @@ public class userinfoeditActivitynew extends Activity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(msg.what==1){
+            if (msg.what == 1) {
 
                 String fullpicurlstr = "";
                 String picheightstr = "";
@@ -327,25 +327,25 @@ public class userinfoeditActivitynew extends Activity {
                 List<Map<String, Object>> lists = JsonTools
                         .listKeyMaps(resultImg);
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("status")+"";
-                    String datastr = map.get("data")+"";
+                    String statusstr = map.get("status") + "";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
 
                     for (Map<String, Object> datastrmap : datastrlists) {
                         fullpicurlstr = datastrmap.get("fullpicurl")
-                                +"";
+                                + "";
                         picheightstr = datastrmap.get("picheight")
-                                +"";
-                        picurlstr = datastrmap.get("picurl")+"";
+                                + "";
+                        picurlstr = datastrmap.get("picurl") + "";
                         picwidthstr = datastrmap.get("picwidth")
-                                +"";
+                                + "";
 
                     }
                 }
                 new SendInfoTasksaveheadimg()
                         .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
                                         new String[]{"mid",
                                                 Constants.staticmyuidstr},
                                         new String[]{"login_password",
@@ -377,7 +377,7 @@ public class userinfoeditActivitynew extends Activity {
                                 )
 
                         );
-            }else if(msg.what==2){
+            } else if (msg.what == 2) {
                 String fullpicurlstr = "";
                 String picheightstr = "";
                 String picurlstr = "";
@@ -392,20 +392,20 @@ public class userinfoeditActivitynew extends Activity {
                 List<Map<String, Object>> lists = JsonTools
                         .listKeyMaps(resultImg);
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("status")+"";
-                    String datastr = map.get("data")+"";
+                    String statusstr = map.get("status") + "";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
 
                     for (Map<String, Object> datastrmap : datastrlists) {
                         fullpicurlstr = datastrmap
-                                .get("fullpicurl")+"";
+                                .get("fullpicurl") + "";
                         picheightstr = datastrmap.get("picheight")
-                                +"";
+                                + "";
                         picurlstr = datastrmap.get("picurl")
-                                +"";
+                                + "";
                         picwidthstr = datastrmap.get("picwidth")
-                                +"";
+                                + "";
 
                     }
 
@@ -413,7 +413,7 @@ public class userinfoeditActivitynew extends Activity {
 
                 new SendInfoTasksaveheadimg()
                         .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=save",
                                         new String[]{"mid",
                                                 Constants.staticmyuidstr},
                                         new String[]{"login_password",
@@ -467,15 +467,15 @@ public class userinfoeditActivitynew extends Activity {
                     ContentResolver resolver = getContentResolver();
                     try {
                         bmp = MediaStore.Images.Media.getBitmap(resolver, uri);
-                         imgportrait.setImageBitmap(bmp);
+                        imgportrait.setImageBitmap(bmp);
 
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
                                     resultImg = sendData(bmp);
-                                    Message message=new Message();
-                                    message.what=1;
+                                    Message message = new Message();
+                                    message.what = 1;
                                     handler.sendMessage(message);
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -510,15 +510,15 @@ public class userinfoeditActivitynew extends Activity {
                     if (bundle != null) {
                         final Bitmap photo = (Bitmap) bundle.get("data"); // get
                         // bitmap
-                         imgportrait.setImageBitmap(photo);
+                        imgportrait.setImageBitmap(photo);
 
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
                                     resultImg = sendData(photo);
-                                    Message message=new Message();
-                                    message.what=1;
+                                    Message message = new Message();
+                                    message.what = 1;
                                     handler.sendMessage(message);
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -527,9 +527,8 @@ public class userinfoeditActivitynew extends Activity {
                         }).start();
 
 
-
                         // spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment
                                 .getExternalStorageDirectory()
                                 + "/sglrBitmap/"
@@ -558,14 +557,14 @@ public class userinfoeditActivitynew extends Activity {
             // myTextView.setText("恭喜您，注册成功。您的用户名是："+Name);
             // System.out.println(Name);
 
-            String username3 = editname1.getText()+"";
-            String userinfo3 = userinfo1.getText()+"";
+            String username3 = editname1.getText() + "";
+            String userinfo3 = userinfo1.getText() + "";
 
             //向服务器提交更新昵称的请求
             if (Constants.staticLoginType.equals("qq") || Constants.staticLoginType.equals("weixin")) {
                 //三方用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         //new String[] { "login_password",Constants.staticpasswordstr },
                         new String[]{"tokey", Constants.statictokeystr},
@@ -578,7 +577,7 @@ public class userinfoeditActivitynew extends Activity {
             } else {
                 //普通用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"login_password", Constants.staticpasswordstr},
                         new String[]{"tokey", Constants.statictokeystr},
@@ -599,14 +598,14 @@ public class userinfoeditActivitynew extends Activity {
             // myTextView.setText("恭喜您，注册成功。您的用户名是："+Name);
             // System.out.println(Name);
             userinfo1.setText(intro);
-            String username3 = editname1.getText()+"";
-            String userinfo3 = userinfo1.getText()+"";
+            String username3 = editname1.getText() + "";
+            String userinfo3 = userinfo1.getText() + "";
 
             //向服务器提交更新昵称的请求
             if (Constants.staticLoginType.equals("qq") || Constants.staticLoginType.equals("weixin")) {
                 //三方用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         //new String[] { "login_password",Constants.staticpasswordstr },
                         new String[]{"tokey", Constants.statictokeystr},
@@ -619,7 +618,7 @@ public class userinfoeditActivitynew extends Activity {
             } else {
                 //普通用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"login_password", Constants.staticpasswordstr},
                         new String[]{"tokey", Constants.statictokeystr},
@@ -652,14 +651,14 @@ public class userinfoeditActivitynew extends Activity {
             }
 
 
-            String username3 = editname1.getText()+"";
-            String userinfo3 = userinfo1.getText()+"";
+            String username3 = editname1.getText() + "";
+            String userinfo3 = userinfo1.getText() + "";
 
             //修改用户性别
             if (Constants.staticLoginType.equals("qq") || Constants.staticLoginType.equals("weixin")) {
                 //三方用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         //new String[] { "login_password",Constants.staticpasswordstr },
                         new String[]{"tokey", Constants.statictokeystr},
@@ -672,7 +671,7 @@ public class userinfoeditActivitynew extends Activity {
             } else {
                 //普通用户登录
                 new SendInfoTaskedituserinfo().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppSaveProfile",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppSaveProfile",
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"login_password", Constants.staticpasswordstr},
                         new String[]{"tokey", Constants.statictokeystr},
@@ -777,12 +776,12 @@ public class userinfoeditActivitynew extends Activity {
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
                 String middlestr = "";
-                String datastr = map.get("data")+"";
+                String datastr = map.get("data") + "";
                 List<Map<String, Object>> datastrlists = JsonTools
-                        .listKeyMaps("["+datastr+"]");
+                        .listKeyMaps("[" + datastr + "]");
                 System.out.print(datastr);
                 for (Map<String, Object> datastrmap : datastrlists) {
-                    middlestr = datastrmap.get("middle")+"";
+                    middlestr = datastrmap.get("middle") + "";
                 }
                 ImageLoader.getInstance().displayImage(middlestr,
                         imgportrait);
@@ -826,7 +825,7 @@ public class userinfoeditActivitynew extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("true".equals(statusstr)) {
                     Constants.setStaticuname(editname1.getText().toString());
@@ -915,9 +914,9 @@ public class userinfoeditActivitynew extends Activity {
             String url = "?app=public&mod=AppFeedList&act=AppSaveAvatar&step=upload";
             long sjc = System.currentTimeMillis();
             int numcode = (int) ((Math.random() * 9 + 1) * 100000);
-            url = url+"&sjc=1"+ sjc + numcode;
+            url = url + "&sjc=1" + sjc + numcode;
             HttpPost httpPost = new HttpPost(
-                    Constants.Url+url);
+                    Constants.Url + url);
             MultipartEntity entity = new MultipartEntity(
                     HttpMultipartMode.BROWSER_COMPATIBLE);
             entity.addPart("mid", new StringBody(Constants.staticmyuidstr));

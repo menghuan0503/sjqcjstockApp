@@ -570,12 +570,12 @@ public class commentshortdisscussareaweiboActivity extends Activity implements V
                 attach_idBuilder.append("|");
             }
 
-            String bodystr1 = editcommentforweibo1.getText()+"";
+            String bodystr1 = editcommentforweibo1.getText() + "";
 
             if (bodystr1.length() > 140) {
                 CustomToast.makeText(getApplicationContext(), "短微博过140字,不能发布,请重试", Toast.LENGTH_LONG).show();
             } else {
-                new SendInfoTaskaddshortweibo().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed",
+                new SendInfoTaskaddshortweibo().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed",
                                 //new String[] { "login_email", "1061550505@qq.com" },
                                 //new String[] { "login_password", "12345678" },
                                 new String[]{"mid", Constants.staticmyuidstr},
@@ -904,7 +904,7 @@ public class commentshortdisscussareaweiboActivity extends Activity implements V
 
                          */
                         //spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment.getExternalStorageDirectory() + "/sglrBitmap/" + uuid + ".jpg";
                         saveImage(photo, envstr);
                     } else {
@@ -1024,7 +1024,7 @@ public class commentshortdisscussareaweiboActivity extends Activity implements V
 
              * */
 
-            HttpPost httpPost = new HttpPost(Constants.Url+"?app=public&mod=AppFeedList&act=AppUpload");
+            HttpPost httpPost = new HttpPost(Constants.Url + "?app=public&mod=AppFeedList&act=AppUpload");
 
             MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
             entity.addPart("mid", new StringBody(Constants.staticmyuidstr));
@@ -1073,14 +1073,14 @@ public class commentshortdisscussareaweiboActivity extends Activity implements V
 
 
             for (Map<String, Object> map : lists) {
-                String datastr = map.get("data")+"";
+                String datastr = map.get("data") + "";
                 List<Map<String, Object>> resstrlists = JsonTools.listKeyMaps(resstr);
                 for (Map<String, Object> resstrmap : resstrlists) {
-                    String data2str = resstrmap.get("data")+"";
+                    String data2str = resstrmap.get("data") + "";
                     List<Map<String, Object>> data2strlists = JsonTools.listKeyMaps("[" + data2str + "]");
                     for (Map<String, Object> data2strmap : data2strlists) {
-                        String uidstr = data2strmap.get("uid")+"";
-                        String attach_idstr = data2strmap.get("attach_id")+"";
+                        String uidstr = data2strmap.get("uid") + "";
+                        String attach_idstr = data2strmap.get("attach_id") + "";
                         //String datastr= map.get("data")+"";
                         //String datastr= map.get("data")+"";
 
@@ -1121,7 +1121,7 @@ public class commentshortdisscussareaweiboActivity extends Activity implements V
             //解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发短文成功", Toast.LENGTH_LONG).show();

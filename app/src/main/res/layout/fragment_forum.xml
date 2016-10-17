@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="股吧"
+                android:text="社区"
                 style="@style/top_title" />
 
             <ImageView
@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="打赏文章" />
+                        android:text="付费文章" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -32,7 +32,7 @@
                     android:id="@+id/bowen_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="打赏文章"
+                    android:text="付费文章"
                     style="@style/top_title" />
             </LinearLayout>
 
@@ -95,7 +95,7 @@
                 android:background="@color/color_ffffff"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:gravity="top"
-                android:hint="@string/bowen_gaisu"
+                android:hint="摘要（公开可见）"
                 android:lines="2" />
 
             <TextView

@@ -48,7 +48,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/shape3"
         android:gravity="center"
-        android:hint="输入打赏金额"
+        android:hint="输入打赏水晶币数量"
         android:textSize="16dp"
         android:textColorHint="@color/color_count"
         android:inputType="number" />

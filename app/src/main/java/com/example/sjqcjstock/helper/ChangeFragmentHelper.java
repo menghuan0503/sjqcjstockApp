@@ -2,6 +2,7 @@ package com.example.sjqcjstock.helper;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 /**
  * 用于帮助跳转携带一些信息
  */
@@ -25,6 +26,7 @@ public class ChangeFragmentHelper {
     public Fragment getTargetFragment() {
         return targetFragment;
     }
+
     public void setTargetFragment(Fragment targetFragment) {
         this.targetFragment = targetFragment;
     }

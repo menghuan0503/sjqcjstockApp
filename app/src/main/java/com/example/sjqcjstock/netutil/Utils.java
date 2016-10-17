@@ -1,6 +1,5 @@
 package com.example.sjqcjstock.netutil;
 
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -207,6 +207,19 @@ public class Utils {
             return "0.00";
         }
         str = str.replace("%", "");
+        double DStr = Double.valueOf(str);
+        DecimalFormat df = new DecimalFormat(format);
+        return df.format(DStr);
+    }
+
+    /**
+     * 格式化小數
+     */
+    public static String getNumberFormat1(String str) {
+        String format = "#########.##";
+        if (str == null || "".equals(str) || "null".equals(str)) {
+            return "0";
+        }
         double DStr = Double.valueOf(str);
         DecimalFormat df = new DecimalFormat(format);
         return df.format(DStr);
@@ -413,8 +426,8 @@ public class Utils {
                 weekNew += 52;
             }
             // 如果不为同一周就然后true进行追加数据
-            if (week != weekNew){
-                return  true;
+            if (week != weekNew) {
+                return true;
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -438,5 +451,41 @@ public class Utils {
         }
         return false;
     }
+
+    /**
+     * 替换字符串中的网址添加A标签
+     *
+     * @param str
+     * @return
+     */
+    public static String replaceWebUrl(List<String> strList, String str) {
+        if (null == str || "".equals(str)) return "";
+        if (strList == null) {
+            return str;
+        }
+        for (String url : strList) {
+            str = str.replace(url, "<a href = \"" + url + "\">网址</a>");
+        }
+        return str;
+    }
+
+    /**
+     * 替换字符串中替换网址为文字
+     *
+     * @param str
+     * @return
+     */
+//    public static String replaceWebUrlFont(JSONArray strList, String str) throws JSONException {
+//        if (null == str || "".equals(str)) return "";
+//        if (strList == null){
+//            return str;
+//        }
+//        String url = "";
+//        for (int i =0 ;i<strList.length() ;i++){
+//            url = strList.getString(i);
+//            str = str.replace(url,"<a href = \"" + url + "\">网址</a>");
+//        }
+//        return str;
+//    }
 
 }

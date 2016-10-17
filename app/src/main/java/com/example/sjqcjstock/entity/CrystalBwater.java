@@ -28,7 +28,7 @@ public class CrystalBwater {
     }
 
 
-   public class msgs {
+    public class msgs {
         private String id;
         private String uid;
         private String assist_uid;

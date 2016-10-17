@@ -133,7 +133,7 @@ public class personalnewsdetail extends Activity {
          * 进入聊天界面，需要请求的数据 参数： 全局用户id， list_id进行请求
          */
         new SendInfoTask().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=MessageDetail&mid="
+                Constants.Url + "?app=public&mod=AppFeedList&act=MessageDetail&mid="
                         + Constants.getStaticmyuidstr()
                         + "&id=" + list_idstr));
     }
@@ -149,7 +149,7 @@ public class personalnewsdetail extends Activity {
                 // list_id为空的时候，调用另外的接口发送数据
                 new SendInfoTaskaddpersonalletter()
                         .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppdoPost",
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppdoPost",
                                 new String[]{"mid", Constants.staticmyuidstr},
                                 new String[]{"login_password", Constants.staticpasswordstr},
                                 new String[]{"content", et_sendmessage.getText().toString()},
@@ -165,7 +165,7 @@ public class personalnewsdetail extends Activity {
 
             } else {
                 new SendInfoTaskreplypersonalletter().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppdoPost",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppdoPost",
                         new String[]{"id", list_idstr},
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"login_password", Constants.staticpasswordstr},
@@ -176,7 +176,7 @@ public class personalnewsdetail extends Activity {
                 //刷新列表参数：用户id，列表id
                 listpersonalnewsData.clear();
                 new SendInfoTaskrefresh().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=MessageDetail&mid="
+                        Constants.Url + "?app=public&mod=AppFeedList&act=MessageDetail&mid="
                                 + Constants.getStaticmyuidstr()
                                 + "&id="
                                 + list_idstr));
@@ -231,7 +231,7 @@ public class personalnewsdetail extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发送私信成功", Toast.LENGTH_LONG).show();
                     et_sendmessage.setText("");
@@ -263,19 +263,19 @@ public class personalnewsdetail extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("data")+"";
+                String statusstr = map.get("data") + "";
                 List<Map<String, Object>> statusstrlists = JsonTools.listKeyMaps("[" + statusstr + "]");
 
                 for (Map<String, Object> statusstrmap : statusstrlists) {
-                    String data2str = statusstrmap.get("data")+"";
+                    String data2str = statusstrmap.get("data") + "";
                     List<Map<String, Object>> data2strlists = JsonTools.listKeyMaps(data2str);
 
                     for (Map<String, Object> data2strmap : data2strlists) {
 
-                        String list_idstr = data2strmap.get("list_id")+"";
-                        String from_uidstr = data2strmap.get("from_uid")+"";
-                        String contentstr = data2strmap.get("content")+"";
-                        String mtimestr = data2strmap.get("mtime")+"";
+                        String list_idstr = data2strmap.get("list_id") + "";
+                        String from_uidstr = data2strmap.get("from_uid") + "";
+                        String contentstr = data2strmap.get("content") + "";
+                        String mtimestr = data2strmap.get("mtime") + "";
 
                         HashMap<String, Object> map2 = new HashMap<String, Object>();
                         map2.put("list_idstr", list_idstr);
@@ -283,12 +283,12 @@ public class personalnewsdetail extends Activity {
                         map2.put("contentstr", contentstr);
                         map2.put("mtimestr", Utils.getStringtoDate(mtimestr));
 
-                        String user_infostr = data2strmap.get("user_info")+"";
+                        String user_infostr = data2strmap.get("user_info") + "";
                         List<Map<String, Object>> user_infostrlists = JsonTools.listKeyMaps("[" + user_infostr + "]");
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
-                            String uidstr = user_infostrmap.get("uid")+"";
-                            String unamestr = user_infostrmap.get("uname")+"";
-                            String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
+                            String uidstr = user_infostrmap.get("uid") + "";
+                            String unamestr = user_infostrmap.get("uname") + "";
+                            String avatar_middlestr = user_infostrmap.get("avatar_middle") + "";
 
                             map2.put("uidstr", uidstr);
                             map2.put("unamestr", unamestr);
@@ -338,24 +338,24 @@ public class personalnewsdetail extends Activity {
             }
             for (Map<String, Object> map : lists) {
                 if (statusstr == null) {
-                    statusstr = map.get("data")+"";
+                    statusstr = map.get("data") + "";
                     statusstrlists = JsonTools.listKeyMaps("[" + statusstr + "]");
                 }
                 for (Map<String, Object> statusstrmap : statusstrlists) {
 
                     if (data2str == null) {
-                        data2str = statusstrmap.get("data")+"";
+                        data2str = statusstrmap.get("data") + "";
                         data2strlists = JsonTools.listKeyMaps(data2str);
                     }
                     for (Map<String, Object> data2strmap : data2strlists) {
 
                         String list_idstr = data2strmap.get("list_id")
-                                +"";
+                                + "";
                         String from_uidstr = data2strmap.get("from_uid")
-                                +"";
+                                + "";
                         String contentstr = data2strmap.get("content")
-                                +"";
-                        String mtimestr = data2strmap.get("mtime")+"";
+                                + "";
+                        String mtimestr = data2strmap.get("mtime") + "";
 
                         // String from_uidstr= map.get("from_uid")+"";
                         // String mtimestr= map.get("mtime")+"";
@@ -378,16 +378,16 @@ public class personalnewsdetail extends Activity {
                         map2.put("mtimestr", mtimestr);
 
                         String user_infostr = data2strmap.get("user_info")
-                                +"";
+                                + "";
                         List<Map<String, Object>> user_infostrlists = JsonTools
                                 .listKeyMaps("[" + user_infostr + "]");
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
                             String uidstr = user_infostrmap.get("uid")
-                                    +"";
+                                    + "";
                             String unamestr = user_infostrmap.get("uname")
-                                    +"";
+                                    + "";
                             String avatar_middlestr = user_infostrmap.get(
-                                    "avatar_middle")+"";
+                                    "avatar_middle") + "";
 
                             map2.put("uidstr", uidstr);
                             map2.put("unamestr", unamestr);
@@ -432,7 +432,7 @@ public class personalnewsdetail extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发送私信成功", Toast.LENGTH_LONG).show();
@@ -463,12 +463,12 @@ public class personalnewsdetail extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
-                String datastr = map.get("data")+"";
+                String statusstr = map.get("status") + "";
+                String datastr = map.get("data") + "";
                 if ("1".equals(statusstr)) {
                     List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
-                        list_idstr = datastrmap.get("list_id")+"";
+                        list_idstr = datastrmap.get("list_id") + "";
                     }
                 }
                 if ("0".equals(statusstr)) {

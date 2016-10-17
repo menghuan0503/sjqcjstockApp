@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +23,6 @@ import com.example.sjqcjstock.view.stocks.MACandleStickChart;
 import com.example.sjqcjstock.view.stocks.StickChart;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**

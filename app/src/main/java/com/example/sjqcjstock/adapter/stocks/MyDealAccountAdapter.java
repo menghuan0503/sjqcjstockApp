@@ -12,9 +12,6 @@ import com.example.sjqcjstock.Activity.stocks.BusinessActivity;
 import com.example.sjqcjstock.Activity.stocks.TransactionDetailActivity;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.entity.stocks.StocksInfo;
-import com.example.sjqcjstock.netutil.ViewUtil;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +29,10 @@ public class MyDealAccountAdapter extends BaseAdapter {
         super();
         this.context = context;
     }
+
     public void setlistData(ArrayList<StocksInfo> listData) {
         if (listData != null) {
-            this.listData = (List<StocksInfo>)listData.clone();
+            this.listData = (List<StocksInfo>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -72,33 +70,33 @@ public class MyDealAccountAdapter extends BaseAdapter {
             holder.purchase = (TextView) convertView.findViewById(R.id.purchase_tv);
             holder.sellOut = (TextView) convertView.findViewById(R.id.sell_out_tv);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.name_code.setText(listData.get(position).getName()+"  "+listData.get(position).getCode());
+        holder.name_code.setText(listData.get(position).getName() + "  " + listData.get(position).getCode());
 
         holder.transactionDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,TransactionDetailActivity.class);
+                Intent intent = new Intent(context, TransactionDetailActivity.class);
                 context.startActivity(intent);
             }
         });
         holder.purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,BusinessActivity.class);
-                intent.putExtra("type","0");
-                intent.putExtra("code","000001");
+                Intent intent = new Intent(context, BusinessActivity.class);
+                intent.putExtra("type", "0");
+                intent.putExtra("code", "000001");
                 context.startActivity(intent);
             }
         });
         holder.sellOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,BusinessActivity.class);
-                intent.putExtra("type","1");
-                intent.putExtra("code","000001");
+                Intent intent = new Intent(context, BusinessActivity.class);
+                intent.putExtra("type", "1");
+                intent.putExtra("code", "000001");
                 context.startActivity(intent);
             }
         });

@@ -25,18 +25,18 @@ public class RewardMessageAdapter extends BaseAdapter {
     private RewardMessage rewardMessage;
     private Context context;
 
-    public RewardMessageAdapter( Context context){
+    public RewardMessageAdapter(Context context) {
         this.context = context;
     }
 
-    public void setRewardMessage(RewardMessage rewardMessage){
+    public void setRewardMessage(RewardMessage rewardMessage) {
         this.rewardMessage = rewardMessage;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return rewardMessage == null?0:rewardMessage.getData().size();
+        return rewardMessage == null ? 0 : rewardMessage.getData().size();
     }
 
     @Override
@@ -56,13 +56,13 @@ public class RewardMessageAdapter extends BaseAdapter {
     }
 
     // 追加数据
-    public void setAddList(List<RewardMessage.datas> data){
+    public void setAddList(List<RewardMessage.datas> data) {
         rewardMessage.getData().addAll(data);
         notifyDataSetChanged();
     }
 
     // 绘制Item的函数
-    public View makeItemView(RewardMessage.datas data ) {
+    public View makeItemView(RewardMessage.datas data) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 使用View的对象itemView与R.layout.item关联

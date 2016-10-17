@@ -77,7 +77,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     // 保存订单状态订单号(用于控制)
                     SharedPreferences.Editor editorIsLogin = getSharedPreferences("Recharge", MODE_PRIVATE).edit();
                     // 订单状态1为未处理0为处理
-                    editorIsLogin.putString("order_type","0");
+                    editorIsLogin.putString("order_type", "0");
                 }
                 selectOrder();
             } else {
@@ -85,7 +85,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 // 保存订单状态订单号(用于控制)
                 SharedPreferences.Editor editorIsLogin = getSharedPreferences("Recharge", MODE_PRIVATE).edit();
                 // 订单状态1为未处理0为处理
-                editorIsLogin.putString("order_type","0");
+                editorIsLogin.putString("order_type", "0");
                 editorIsLogin.commit();
             }
         }
@@ -96,7 +96,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
      */
     private void selectOrder() {
         new SelectOrder()
-                .execute(new TaskParams(Constants.queryOrder+"&uid="+Constants.staticmyuidstr+"&out_trade_no="+Constants.orderNumber
+                .execute(new TaskParams(Constants.queryOrder + "&uid=" + Constants.staticmyuidstr + "&out_trade_no=" + Constants.orderNumber
                 ));
     }
 
@@ -119,21 +119,21 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     String status = json.getString("status");
                     String info = json.getString("info");
                     String data = json.getString("data");
-                    if("1".equals(status)){
+                    if ("1".equals(status)) {
                         resultTv.setText("恭喜你购买水晶币成功！");
-                        resultCount.setText("当前水晶币个数为"+data+"个");
+                        resultCount.setText("当前水晶币个数为" + data + "个");
                         resultCount.setVisibility(View.VISIBLE);
-                        Constants.shuijinbiCount  = data;
+                        Constants.shuijinbiCount = data;
                         // 保存订单状态订单号(用于控制)
                         SharedPreferences.Editor editorIsLogin = getSharedPreferences("Recharge", MODE_PRIVATE).edit();
                         // 订单状态1为未处理0为处理
-                        editorIsLogin.putString("order_type","0");
+                        editorIsLogin.putString("order_type", "0");
                         editorIsLogin.commit();
-                        if(RechargeActivity.instance!=null){
+                        if (RechargeActivity.instance != null) {
                             // 打开微信支付成功后关闭支付页面
                             RechargeActivity.instance.finish();
                         }
-                    }else{
+                    } else {
                         CustomToast.makeText(getApplicationContext(), info, Toast.LENGTH_LONG)
                                 .show();
                         resultTv.setText("对不起你购买水晶币失败！");

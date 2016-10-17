@@ -1,9 +1,7 @@
 package com.example.sjqcjstock.fragment.stocks;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +49,7 @@ public class FragmentTransactionList extends Fragment {
 
         myScrollView = (MyScrollView) view.findViewById(R.id.myScrollView);
         listAdapter = new MyDealAccountAdapter(getActivity());
-        listView = (SoListView)view.findViewById(
+        listView = (SoListView) view.findViewById(
                 R.id.list_view);
         listView.setAdapter(listAdapter);
 

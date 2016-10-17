@@ -17,7 +17,7 @@ import com.example.sjqcjstock.app.ExitApplication;
  * 买卖页面的Activity
  * Created by Administrator on 2016/8/10.
  */
-public class BusinessActivity extends Activity{
+public class BusinessActivity extends Activity {
 
     // 页面标题
     private TextView titleName;
@@ -113,76 +113,88 @@ public class BusinessActivity extends Activity{
         numberBuy3 = (TextView) findViewById(R.id.number_buy_3);
         numberBuy4 = (TextView) findViewById(R.id.number_buy_4);
         numberBuy5 = (TextView) findViewById(R.id.number_buy_5);
-        if ("1".equals(type)){
+        if ("1".equals(type)) {
             titleName.setText("模拟盘-卖出");
-            ((Button)findViewById(R.id.confirm_business)).setText("卖出");
-            ((Button)findViewById(R.id.confirm_business1)).setText("市场卖出");
-        }else{
+            ((Button) findViewById(R.id.confirm_business)).setText("卖出");
+            ((Button) findViewById(R.id.confirm_business1)).setText("市场卖出");
+        } else {
             titleName.setText("模拟盘-买入");
-            ((Button)findViewById(R.id.confirm_business)).setText("买入");
-            ((Button)findViewById(R.id.confirm_business1)).setText("市场买入");
+            ((Button) findViewById(R.id.confirm_business)).setText("买入");
+            ((Button) findViewById(R.id.confirm_business1)).setText("市场买入");
         }
     }
 
     /**
      * 增加价格的方法
+     *
      * @param view
      */
-    public void priceRaise(View view){}
+    public void priceRaise(View view) {
+    }
 
     /**
      * 减少价格的方法
+     *
      * @param view
      */
-    public void priceReduce(View view){}
+    public void priceReduce(View view) {
+    }
 
     /**
      * 四分之一的价格
+     *
      * @param view
      */
-    public void numberQuarter(View view){}
+    public void numberQuarter(View view) {
+    }
 
     /**
      * 二分之一的价格
+     *
      * @param view
      */
-    public void numberAhalf(View view){}
+    public void numberAhalf(View view) {
+    }
 
     /**
      * 全部的价格
+     *
      * @param view
      */
-    public void numberAll(View view){}
+    public void numberAll(View view) {
+    }
 
     /**
      * 确认买卖的方法
+     *
      * @param view
      */
-    public void confirmBusiness(View view){
+    public void confirmBusiness(View view) {
         showDialog("0");
     }
 
     /**
      * 市场价的买卖方法
+     *
      * @param view
      */
-    public void confirmBusiness1(View view){
+    public void confirmBusiness1(View view) {
         showDialog("1");
     }
 
     /**
      * 弹出显示确认的dialog
      */
-    private void showDialog(String str){
+    private void showDialog(String str) {
 
         View viewDialog = LayoutInflater.from(this).inflate(R.layout.dialog_business, null);
         TextView dialogTitle = (TextView) viewDialog.findViewById(R.id.dialog_title);
         Button dialogConfirm = (Button) viewDialog.findViewById(R.id.dialog_confirm);
 
-        if ("1".equals(type)){
+        if ("1".equals(type)) {
             dialogTitle.setText("委托卖出确认");
             dialogConfirm.setText("确认卖出");
-        }else{
+        } else {
             dialogTitle.setText("委托买入确认");
             dialogConfirm.setText("确认买入");
         }

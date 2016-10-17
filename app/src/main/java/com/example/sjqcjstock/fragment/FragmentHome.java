@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -173,11 +171,11 @@ public class FragmentHome extends Fragment {
                 try {
                     String avatar_middle = new JSONObject(result).getJSONObject("data").getString("avatar_middle");
                     String userGroup = new JSONObject(result).getJSONObject("data").getString("user_group");
-                    if (userGroup.length()>10) {
+                    if (userGroup.length() > 10) {
                         userGroup = userGroup.substring(userGroup.lastIndexOf("{"));
                         userGroup = userGroup.substring(0, userGroup.indexOf("}") + 1);
                         Constants.userType = new JSONObject(userGroup).getString("user_group_id");
-                    }else{
+                    } else {
                         Constants.userType = "1";
                     }
                     Constants.headImg = avatar_middle;
@@ -606,8 +604,8 @@ public class FragmentHome extends Fragment {
                                     .toString();
                         }
                         // 用户名
-                        String unamestr = datastrmap.get("uname")+"";
-                        String uidstr = datastrmap.get("uid")+"";
+                        String unamestr = datastrmap.get("uname") + "";
+                        String uidstr = datastrmap.get("uid") + "";
                         HashMap<String, String> map2 = new HashMap<String, String>();
                         map2.put("currentPrice", currentPricestr);
                         map2.put("increase", increasestr);
@@ -865,7 +863,7 @@ public class FragmentHome extends Fragment {
         protected void onPostExecute(String result) {
             // 先获取缓存
             globalSwfStr = mCache.getAsString("globalSwf");
-            if (globalSwfStr == null){
+            if (globalSwfStr == null) {
                 globalSwfStr = "";
             }
             if (result == null || "".equals(result)) {
@@ -894,7 +892,7 @@ public class FragmentHome extends Fragment {
                 // mh 应该是要去找缓存的
                 e.printStackTrace();
                 return;
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return;
             }

@@ -23,13 +23,13 @@ public class CustomPopupWindow extends PopupWindow {
 
     public CustomPopupWindow(final Context context) {
         super(context);
-        view = LayoutInflater.from(context).inflate(R.layout.dialog_sang, null);   
-        
+        view = LayoutInflater.from(context).inflate(R.layout.dialog_sang, null);
+
         iv_dialogDismiss = (ImageView) view.findViewById(R.id.iv_dialogDismiss);
         et_inputCount = (EditText) view.findViewById(R.id.et_inputCount);
         tv_restCount = (TextView) view.findViewById(R.id.tv_restCount);
         bt_ok = (Button) view.findViewById(R.id.bt_ok);
-                
+
         iv_dialogDismiss.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -37,7 +37,7 @@ public class CustomPopupWindow extends PopupWindow {
                 dismiss();
             }
         });
-        
+
         bt_ok.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

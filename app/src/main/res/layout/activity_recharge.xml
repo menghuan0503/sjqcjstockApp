@@ -73,7 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="55dp"
             android:background="@drawable/shape2"
             android:inputType="number"
             android:gravity="center"
@@ -107,11 +106,12 @@
         <TextView
             android:id="@+id/pay_money_tv"
             android:layout_width="match_parent"
+            android:layout_marginLeft="35dp"
             android:layout_height="25dp"
             android:textColor="@color/red"
             android:textSize="14dp"
             android:gravity="center"
-            android:text="10.0元"/>
+            android:text="10元"/>
 
     </LinearLayout>
 
@@ -268,7 +268,7 @@
         android:layout_marginTop="40dp"
         android:background="@color/color_toptitle"
         android:onClick="onClickRecharge"
-        android:text="确认支付"
+        android:text="确认充值"
         android:textColor="@color/color_ffffff" />
 
 </LinearLayout>

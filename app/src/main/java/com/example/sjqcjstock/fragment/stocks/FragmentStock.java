@@ -10,8 +10,6 @@ import android.widget.ListView;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.adapter.stocks.StockAdapter;
 import com.example.sjqcjstock.entity.stocks.StocksInfo;
-import com.example.sjqcjstock.netutil.ViewUtil;
-import com.example.sjqcjstock.view.SoListView;
 
 import java.util.ArrayList;
 
@@ -38,12 +36,13 @@ public class FragmentStock extends Fragment {
 
     /**
      * 控件的绑定
+     *
      * @param view
      */
     private void findView(View view) {
 
         stockAdapter = new StockAdapter(getActivity());
-        stockListView = (ListView)view.findViewById(
+        stockListView = (ListView) view.findViewById(
                 R.id.stock_list);
         stockListView.setAdapter(stockAdapter);
 

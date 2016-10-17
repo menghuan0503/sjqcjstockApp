@@ -18,7 +18,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- *  点击图片放大的Activity
+ * 点击图片放大的Activity
  * Created by Administrator on 2016/7/29.
  */
 public class ShowWebImageActivity extends Activity {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -23,8 +24,6 @@ import com.example.sjqcjstock.netutil.HttpUtil;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.view.CustomToast;
 import com.example.sjqcjstock.view.PullToRefreshLayout;
-
-import org.w3c.dom.Text;
 
 
 /**
@@ -76,7 +75,7 @@ public class systemMessageListActivity extends Activity {
                 finish();
             }
         });
-        ((TextView)findViewById(R.id.title_name)).setText("系统公告");
+        ((TextView) findViewById(R.id.title_name)).setText("系统消息");
         adapter = new systemMessageAdapter(systemMessageListActivity.this);
         messageListView = (ListView) findViewById(R.id.system_message_list);
         messageListView.setAdapter(adapter);
@@ -128,7 +127,7 @@ public class systemMessageListActivity extends Activity {
     }
 
     private void geneItems() {
-        new SendSystemMessageTask().execute(new TaskParams(Constants.systemMessagedUrl+"&uid="+ Constants.staticmyuidstr));
+        new SendSystemMessageTask().execute(new TaskParams(Constants.systemMessagedUrl + "&uid=" + Constants.staticmyuidstr));
     }
 
     private class SendSystemMessageTask extends AsyncTask<TaskParams, Void, String> {
@@ -148,6 +147,7 @@ public class systemMessageListActivity extends Activity {
                 if (systemMessageStr.equals("")) {
                     systemMessageStr = result;
                 }
+                Log.e("mh123",result);
                 systemMessage = JSON.parseObject(result, SystemMessage.class);
                 if ("1".equals(systemMessage.getStatus())) {
                     if (current == 1) {

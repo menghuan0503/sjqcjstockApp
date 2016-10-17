@@ -9,13 +9,11 @@ import android.view.Window;
 import android.widget.ScrollView;
 
 import com.example.sjqcjstock.R;
-import com.example.sjqcjstock.adapter.stocks.MyDealAccountAdapter;
 import com.example.sjqcjstock.adapter.stocks.TransactionDetailAdapter;
 import com.example.sjqcjstock.app.ExitApplication;
 import com.example.sjqcjstock.constant.Constants;
 import com.example.sjqcjstock.entity.stocks.StocksInfo;
 import com.example.sjqcjstock.netutil.ViewUtil;
-import com.example.sjqcjstock.view.PullableScrollView;
 import com.example.sjqcjstock.view.SoListView;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ import java.util.ArrayList;
  * 当前持仓成交明细
  * Created by Administrator on 2016/8/15.
  */
-public class TransactionDetailActivity extends Activity{
+public class TransactionDetailActivity extends Activity {
 
     // 股票的List
     private SoListView listView;
@@ -66,7 +64,7 @@ public class TransactionDetailActivity extends Activity{
         });
         myScrollView = (ScrollView) findViewById(R.id.myScrollView);
         listAdapter = new TransactionDetailAdapter(this);
-        listView = (SoListView)findViewById(
+        listView = (SoListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(listAdapter);
 
@@ -109,23 +107,25 @@ public class TransactionDetailActivity extends Activity{
 
     /**
      * 卖出按钮事件
+     *
      * @param view
      */
-    public void sellClick(View view){
-        Intent intent = new Intent(this,BusinessActivity.class);
-        intent.putExtra("type","1");
-        intent.putExtra("code","0000001");
+    public void sellClick(View view) {
+        Intent intent = new Intent(this, BusinessActivity.class);
+        intent.putExtra("type", "1");
+        intent.putExtra("code", "0000001");
         startActivity(intent);
     }
 
     /**
      * 买入按钮事件
+     *
      * @param view
      */
-    public void buyClick(View view){
-        Intent intent = new Intent(this,BusinessActivity.class);
-        intent.putExtra("type","0");
-        intent.putExtra("code","0000001");
+    public void buyClick(View view) {
+        Intent intent = new Intent(this, BusinessActivity.class);
+        intent.putExtra("type", "0");
+        intent.putExtra("code", "0000001");
         startActivity(intent);
     }
 }

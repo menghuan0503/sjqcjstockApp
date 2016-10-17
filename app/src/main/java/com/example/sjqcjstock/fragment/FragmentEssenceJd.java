@@ -125,7 +125,7 @@ public class FragmentEssenceJd extends Fragment {
      */
     private void getData() {
         SendInfoTaskloadmore task = new SendInfoTaskloadmore();
-        task.execute(new TaskParams(Constants.Url+"?app=index&mod=Index&act=Appindex",
+        task.execute(new TaskParams(Constants.Url + "?app=index&mod=Index&act=Appindex",
                         new String[]{"position", "2"},
                         new String[]{"p", String.valueOf(current)}
                 )
@@ -166,7 +166,7 @@ public class FragmentEssenceJd extends Fragment {
                         String comment_countstr = supermanmap.get("comment_count").toString();
                         String imageurl = save_pathstr + save_namestr;
                         HashMap<String, String> map2 = new HashMap<String, String>();
-                        String authentication = supermanmap.get("authentication")+"";
+                        String authentication = supermanmap.get("authentication") + "";
                         map2.put("isVip", authentication);
                         map2.put("weibo_titlestr", weibo_titlestr);
                         map2.put("username", namestr);

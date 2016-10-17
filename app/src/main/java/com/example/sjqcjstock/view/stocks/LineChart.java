@@ -28,7 +28,6 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
-import android.graphics.PointF;
 import android.util.AttributeSet;
 
 import com.example.sjqcjstock.entity.stocks.LineEntity;
@@ -112,7 +111,7 @@ public class LineChart extends GridChart {
      */
     protected void drawLines(Canvas canvas) {
         //  两点间的距离
-        float lineLength = ((super.getWidth() - super.getAxisMarginLeft() - super.getAxisMarginRight()) / (this.getMaxPointNum()+2));
+        float lineLength = ((super.getWidth() - super.getAxisMarginLeft() - super.getAxisMarginRight()) / (this.getMaxPointNum() + 2));
         // 起始点的X
         float startX;
         //起始点的Y
@@ -169,15 +168,15 @@ public class LineChart extends GridChart {
                             path.lineTo(startX, valueY);
 
                             // 先画背景颜色
-                            if (!line.isBackger()){
+                            if (!line.isBackger()) {
                                 Path paths = new Path();
                                 paths.addPath(path);
-                                paths.lineTo(startX,super.getHeight()-super.getAxisMarginBottom());
-                                paths.lineTo(super.getAxisMarginLeft(),super.getHeight()-super.getAxisMarginBottom());
-                                paths.lineTo(super.getAxisMarginLeft(),super.getHeight()-super.getAxisMarginBottom());
+                                paths.lineTo(startX, super.getHeight() - super.getAxisMarginBottom());
+                                paths.lineTo(super.getAxisMarginLeft(), super.getHeight() - super.getAxisMarginBottom());
+                                paths.lineTo(super.getAxisMarginLeft(), super.getHeight() - super.getAxisMarginBottom());
                                 paths.close();
                                 Paint mPaints = new Paint();
-                                mPaints.setColor(Color.rgb(242,244,246));
+                                mPaints.setColor(Color.rgb(242, 244, 246));
                                 mPaints.setStyle(Paint.Style.FILL);
                                 mPaints.setAlpha(127);
                                 canvas.drawPath(paths, mPaints);

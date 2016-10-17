@@ -3,7 +3,6 @@ package com.example.sjqcjstock.Activity.stocks;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -14,7 +13,7 @@ import com.example.sjqcjstock.app.ExitApplication;
  * 模拟盘交易查询
  * Created by Administrator on 2016/8/10.
  */
-public class QueryActivity extends Activity{
+public class QueryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,34 +41,38 @@ public class QueryActivity extends Activity{
 
     /**
      * 当日交易
+     *
      * @param view
      */
-    public void dayDealClick(View view){
-        startActivity(new Intent(this,DayDealActivity.class));
+    public void dayDealClick(View view) {
+        startActivity(new Intent(this, DayDealActivity.class));
     }
 
     /**
      * 当日委托
+     *
      * @param view
      */
-    public void dayCommissionClick(View view){
-        startActivity(new Intent(this,DayCommissionActivity.class));
+    public void dayCommissionClick(View view) {
+        startActivity(new Intent(this, DayCommissionActivity.class));
     }
 
     /**
      * 历史交易
+     *
      * @param view
      */
-    public void historyDealClick(View view){
-        startActivity(new Intent(this,HistoryDealActivity.class));
+    public void historyDealClick(View view) {
+        startActivity(new Intent(this, HistoryDealActivity.class));
     }
 
     /**
      * 历史委托
+     *
      * @param view
      */
-    public void historyCommissionClick(View view){
-        startActivity(new Intent(this,HistoryCommissionActivity.class));
+    public void historyCommissionClick(View view) {
+        startActivity(new Intent(this, HistoryCommissionActivity.class));
     }
 
 }

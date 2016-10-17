@@ -98,7 +98,7 @@
                         android:id="@+id/text_bd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="每日比赛榜单"
+                        android:text="比赛排行榜"
                         android:textColor="@color/color_toptitle"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -120,7 +120,7 @@
                         android:id="@+id/text_sk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="实况报道"
+                        android:text="赛况报道"
                         android:textStyle="bold" />
                 </LinearLayout>
 

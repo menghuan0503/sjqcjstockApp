@@ -25,38 +25,37 @@ package com.example.sjqcjstock.interfaces;
 import com.example.sjqcjstock.view.stocks.GridChart;
 
 /**
- * 
  * <p>touch事件发生后，支持对外发送事件消息的此类对象接口</p>
  *
- * @author menghuan 
- * @version v1.0 2013/12/27 17:57:32 
+ * @author menghuan
+ * @version v1.0 2013/12/27 17:57:32
  * @see ITouchEventResponse
  */
 public interface ITouchEventNotify {
 
-	/**
-	 * <p>通知全部ITouchEventResponse响应对象</p>
-	 * @param chart
-	 * <p>源头对象</p>
-	 */
-	public void notifyEventAll(GridChart chart);
-	
-	/**
-	 * <p>增加ITouchEventResponse响应对象</p>
-	 * @param notify
-	 * <p>对象</p>
-	 */
-	public void addNotify(ITouchEventResponse notify);
-	
-	/**
-	 * <p>删除ITouchEventResponse响应对象</p>
-	 * @param i
-	 * <p>index</p>
-	 */
-	public void removeNotify(int i);
-	
-	/**
-	 * <p>删除全部ITouchEventResponse响应对象</p>
-	 */
-	public void removeAllNotify();
+    /**
+     * <p>通知全部ITouchEventResponse响应对象</p>
+     *
+     * @param chart <p>源头对象</p>
+     */
+    public void notifyEventAll(GridChart chart);
+
+    /**
+     * <p>增加ITouchEventResponse响应对象</p>
+     *
+     * @param notify <p>对象</p>
+     */
+    public void addNotify(ITouchEventResponse notify);
+
+    /**
+     * <p>删除ITouchEventResponse响应对象</p>
+     *
+     * @param i <p>index</p>
+     */
+    public void removeNotify(int i);
+
+    /**
+     * <p>删除全部ITouchEventResponse响应对象</p>
+     */
+    public void removeAllNotify();
 }

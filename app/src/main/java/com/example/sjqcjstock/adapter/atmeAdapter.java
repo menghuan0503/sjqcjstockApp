@@ -3,6 +3,7 @@ package com.example.sjqcjstock.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +17,7 @@ import com.example.sjqcjstock.Activity.addcommentweiboActivity;
 import com.example.sjqcjstock.Activity.forumnotedetailActivity;
 import com.example.sjqcjstock.Activity.stocks.UserDetailNewActivity;
 import com.example.sjqcjstock.R;
+import com.example.sjqcjstock.constant.Constants;
 import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.ViewUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -99,7 +101,7 @@ public class atmeAdapter extends BaseAdapter {
         //TextView contentbody1=(TextView)convertView.findViewById(R.id.contentbody1);
         holder.contentbody1.setText((String) listData.get(position).get("feed_content"));
 //		
-        holder.sourceusername1.setText((String) listData.get(position).get("uname"));
+        holder.sourceusername1.setText((String) listData.get(position).get("unames"));
 
         //TextView originalnotecontent1=(TextView)convertView.findViewById(R.id.originalnotecontent1);
         //if("repost".equals((String)listData.get(position).get("type"))){
@@ -115,11 +117,9 @@ public class atmeAdapter extends BaseAdapter {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-                //sad
                 Intent intent = new Intent(context.getApplicationContext(), forumnotedetailActivity.class);
                 intent.putExtra("weibo_id", (String) listData.get(position).get("atfeed_id"));
                 intent.putExtra("uid", (String) listData.get(position).get("atfeed_uid"));
-
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -165,11 +165,32 @@ public class atmeAdapter extends BaseAdapter {
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
+                String content = listData.get(position).get("feed_content");
+                if (content.length() > 3 && Constants.microBlogShare.equals(content.substring(0, 4))) {
+                    return;
+                }
                 try {
                     Intent intent = new Intent(context.getApplicationContext(), forumnotedetailActivity.class);
                     intent.putExtra("weibo_id", (String) listData.get(position).get("feed_id"));
                     intent.putExtra("uid", (String) listData.get(position).get("uid"));
+
+                    Log.e("mh123",listData.get(position).get("type").toString()+"----------");
+
+                    // 传递转发微博的信息
+                    if ("repost".equals(listData.get(position).get("type").toString())) {
+                        intent.putExtra(
+                                "sourceweibo_id",
+                                listData.get(position)
+                                        .get("atfeed_id").toString());
+                        intent.putExtra("sourceuid", listData
+                                .get(position).get("atfeed_uid")
+                                .toString());
+                        // 转发类型
+                        intent.putExtra(
+                                "type",
+                                listData.get(position)
+                                        .get("type").toString());
+                    }
 
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
@@ -179,7 +200,7 @@ public class atmeAdapter extends BaseAdapter {
             }
         });
 
-        String isVip =  listData.get(position).get(
+        String isVip = listData.get(position).get(
                 "isVip");
         String isVipSource = listData.get(position).get(
                 "isVipSource");

@@ -12,68 +12,69 @@ import com.example.sjqcjstock.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class buyorsellstockAdapter extends BaseAdapter{
+public class buyorsellstockAdapter extends BaseAdapter {
 
-	private Context context;
-	private ArrayList<HashMap<String,Object>> listData;
+    private Context context;
+    private ArrayList<HashMap<String, Object>> listData;
 
-	
-	public buyorsellstockAdapter(Context context,ArrayList<HashMap<String,Object>> listData) {
-		super();
-		this.context = context;
-		this.listData=listData;
-			
-	}
-	
-	public void setlistData(ArrayList<HashMap<String,Object>> listData){
-		this.listData=listData;
-	}
 
-	private String [] imagesUrl;
-	public void setImagesUrl(String[] imagesUrl) {
-		this.imagesUrl = imagesUrl;
-	}
+    public buyorsellstockAdapter(Context context, ArrayList<HashMap<String, Object>> listData) {
+        super();
+        this.context = context;
+        this.listData = listData;
 
-	@Override
-	public int getCount() {
-		return listData.size();
-	}
+    }
 
-	@Override
-	public Object getItem(int position) {
-		return listData.get(position);
-	}
+    public void setlistData(ArrayList<HashMap<String, Object>> listData) {
+        this.listData = listData;
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    private String[] imagesUrl;
 
-	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		//动态加载布局
-		LayoutInflater mInflater=LayoutInflater.from(context);
-		ViewHolder holder;
+    public void setImagesUrl(String[] imagesUrl) {
+        this.imagesUrl = imagesUrl;
+    }
 
-		
-		if(convertView==null){
-			convertView=mInflater.inflate(R.layout.list_item_buyorsellstock, null);
-			
-			holder = new ViewHolder();
+    @Override
+    public int getCount() {
+        return listData.size();
+    }
 
-			holder.shoptype1 = (TextView)convertView.findViewById(R.id.shoptype1);
-	        holder.shopname1 = (TextView)convertView.findViewById(R.id.shopname1);
-	        holder.tradeprice1 = (TextView)convertView.findViewById(R.id.tradeprice1);
-	        holder.tradecount1 = (TextView)convertView.findViewById(R.id.tradecount1);
+    @Override
+    public Object getItem(int position) {
+        return listData.get(position);
+    }
 
-	        convertView.setTag(holder);
-		}else{
-			holder = (ViewHolder)convertView.getTag();
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-		}
-		//String str=(String)listData.get(position).get("max_assetsstr");
-		//
-		
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        //动态加载布局
+        LayoutInflater mInflater = LayoutInflater.from(context);
+        ViewHolder holder;
+
+
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.list_item_buyorsellstock, null);
+
+            holder = new ViewHolder();
+
+            holder.shoptype1 = (TextView) convertView.findViewById(R.id.shoptype1);
+            holder.shopname1 = (TextView) convertView.findViewById(R.id.shopname1);
+            holder.tradeprice1 = (TextView) convertView.findViewById(R.id.tradeprice1);
+            holder.tradecount1 = (TextView) convertView.findViewById(R.id.tradecount1);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+
+        }
+        //String str=(String)listData.get(position).get("max_assetsstr");
+        //
+
 //		ImageView image=(ImageView)convertView.findViewById(R.id.user_image);
 //		 // image.setBackgroundResource((Integer)listData.get(position).get("friend_image"));
 //		  ImageLoader.getInstance().displayImage((String)listData.get(position).
@@ -95,30 +96,30 @@ public class buyorsellstockAdapter extends BaseAdapter{
 //			}
 //		  });
 //		
-		//TextView username=(TextView)convertView.findViewById(R.id.weibo_titlestr);
-		//username.setText((String)listData.get(position).get("shopstr"));
-		
-		//TextView shoptype1=(TextView)convertView.findViewById(R.id.shoptype1);
-		holder.shoptype1.setText((String)listData.get(position).get("shopstr"));
-		
-		//TextView shopname1=(TextView)convertView.findViewById(R.id.shopname1);
-		holder.shopname1.setText((String)listData.get(position).get("shopnamestr"));
+        //TextView username=(TextView)convertView.findViewById(R.id.weibo_titlestr);
+        //username.setText((String)listData.get(position).get("shopstr"));
+
+        //TextView shoptype1=(TextView)convertView.findViewById(R.id.shoptype1);
+        holder.shoptype1.setText((String) listData.get(position).get("shopstr"));
+
+        //TextView shopname1=(TextView)convertView.findViewById(R.id.shopname1);
+        holder.shopname1.setText((String) listData.get(position).get("shopnamestr"));
 ////		
-		//TextView tradeprice1=(TextView)convertView.findViewById(R.id.tradeprice1);
-		holder.tradeprice1.setText((String)listData.get(position).get("shopmoneystr"));
-		
-		//TextView tradecount1=(TextView)convertView.findViewById(R.id.tradecount1);
-		holder.tradecount1.setText((String)listData.get(position).get("shopnumstr"));
-		
+        //TextView tradeprice1=(TextView)convertView.findViewById(R.id.tradeprice1);
+        holder.tradeprice1.setText((String) listData.get(position).get("shopmoneystr"));
+
+        //TextView tradecount1=(TextView)convertView.findViewById(R.id.tradecount1);
+        holder.tradecount1.setText((String) listData.get(position).get("shopnumstr"));
+
 //		
 //		CheckBox check=(CheckBox)convertView.findViewById(R.id.selected);
-		
+
 //		//判断用户是否已被选择，如被选择，则复选框为勾选，如未选择则复选框为可选
 //		if((Boolean) listData.get(position).get("selected")){
 //			state.put(position,true);
 //			
 //		}
-		
+
 //		check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 //			
 //			@Override
@@ -131,13 +132,13 @@ public class buyorsellstockAdapter extends BaseAdapter{
 //				}
 //			}
 //		});
-		
+
 //		check.setChecked((state.get(position)==null?false:true));
-		
-		return convertView;
-	}
-	
-	static class ViewHolder {
+
+        return convertView;
+    }
+
+    static class ViewHolder {
         TextView shoptype1;
         TextView shopname1;
         TextView tradeprice1;

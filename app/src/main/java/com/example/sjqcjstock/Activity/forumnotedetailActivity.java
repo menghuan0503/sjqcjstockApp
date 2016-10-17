@@ -15,7 +15,6 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -26,8 +25,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -98,7 +95,7 @@ public class forumnotedetailActivity extends Activity implements
     private Object introduction;
     // 获取查看的水晶币
     private String rewardStr;
-    // 判断文章类型是否受打赏文章（0：不是）
+    // 判断文章类型是否受付费文章（0：不是）
     private String state;
     // 判断是否是打赏过的文章
     private Object payState;
@@ -107,7 +104,7 @@ public class forumnotedetailActivity extends Activity implements
     // 主体控件
     private LinearLayout mailTextLl;
     // 获取控件
-    // 打赏文章的说明tv
+    // 付费文章的说明tv
     private TextView rewardExplain;
     // 摘要的TextView
     private TextView coment;
@@ -137,6 +134,7 @@ public class forumnotedetailActivity extends Activity implements
     private TextView repostcomment_count1;
     private TextView repostusername1;
     private TextView repostweibocomment1;
+    private TextView reward1;
     private LinearLayout repostuser1;
     private LinearLayout repostlin1;
     private ImageView praiseimageView1;
@@ -277,7 +275,7 @@ public class forumnotedetailActivity extends Activity implements
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 点击头像跳转到个人中心
-                String userId = ((TextView) view.findViewById(R.id.head_uid_tv)).getText()+"";
+                String userId = ((TextView) view.findViewById(R.id.head_uid_tv)).getText() + "";
                 Intent intent = new Intent(forumnotedetailActivity.this,
                         UserDetailNewActivity.class);
                 intent.putExtra("uid", userId);
@@ -288,10 +286,8 @@ public class forumnotedetailActivity extends Activity implements
         iv_sang = (ImageView) findViewById(R.id.iv_sang);
         iv_sang.setOnClickListener(new iv_sang_listener());
 
-//		wb_summary = (WebView) findViewById(R.id.wb_summary);
         coment = (TextView) findViewById(R.id.coment);
         rewardExplain = (TextView) findViewById(R.id.reward_explain);
-        // comentwebview=(WebView)findViewById(R.id.comentwebview);
         username1 = (TextView) findViewById(R.id.username1);
         create_time1 = (TextView) findViewById(R.id.create_time1);
         repost_count1 = (TextView) findViewById(R.id.repost_count1);
@@ -303,12 +299,8 @@ public class forumnotedetailActivity extends Activity implements
         praise1 = (ImageView) findViewById(R.id.praise1);
         cellectloge1_img = (ImageView) findViewById(R.id.cellectloge1_img);
         transpond1 = (LinearLayout) findViewById(R.id.transpond1);
-//        transpondedit1 = (LinearLayout) findViewById(R.id.transpondedit1);
-//        addtranspondcomment1 = (EditText) findViewById(R.id.addtranspondcomment1);
         collectnote1 = (LinearLayout) findViewById(R.id.collectnote1);
         cellectloge1 = (TextView) findViewById(R.id.cellectloge1);
-//        submittranspond1 = (Button) findViewById(R.id.submittranspond1);
-//        factimgs = (ImageView) findViewById(R.id.factimgs);
         commentweibo1 = (LinearLayout) findViewById(R.id.commentweibo1);
         wv_ad_tv = (WebView) findViewById(R.id.wv_ad);
         goback1 = (LinearLayout) findViewById(R.id.goback1);
@@ -329,6 +321,7 @@ public class forumnotedetailActivity extends Activity implements
 
         repostusername1 = (TextView) findViewById(R.id.repostusername1);
         repostweibocomment1 = (TextView) findViewById(R.id.repostweibocomment1);
+        reward1 = (TextView) findViewById(R.id.reward1);
         praiseimageView1 = (ImageView) findViewById(R.id.praiseimageView1);
         share1 = (LinearLayout) findViewById(R.id.share1);
 
@@ -374,7 +367,7 @@ public class forumnotedetailActivity extends Activity implements
 
         // 获取微博详细信息
         new SendInfoTasknotedetail().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=Profile&act=Appfeed",
+                Constants.Url + "?app=public&mod=Profile&act=Appfeed",
                 new String[]{"feed_id", weiboidstr},
                 new String[]{"mid", Constants.staticmyuidstr}
         ));
@@ -411,7 +404,7 @@ public class forumnotedetailActivity extends Activity implements
                                     pickcommentoptions1.setVisibility(View.GONE);
                                     new SendInfoTaskdeleteweibo()
                                             .execute(new TaskParams(
-                                                    Constants.Url+"?app=public&mod=AppFeedList&act=Appdelcomment",
+                                                    Constants.Url + "?app=public&mod=AppFeedList&act=Appdelcomment",
                                                     new String[]{"mid", Constants.staticmyuidstr},
                                                     new String[]{"login_password", Constants.staticpasswordstr},
                                                     new String[]{"comment_id", (String) listreplyinfoData.get(currentposition).get("comment_id")}
@@ -467,7 +460,6 @@ public class forumnotedetailActivity extends Activity implements
     }
 
     class pickuserinfo2_listener implements OnClickListener {
-
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
@@ -475,7 +467,6 @@ public class forumnotedetailActivity extends Activity implements
                     UserDetailNewActivity.class);
             intent.putExtra("uid", uidstr);
             startActivity(intent);
-
         }
 
     }
@@ -517,7 +508,7 @@ public class forumnotedetailActivity extends Activity implements
                 // geneItems();
                 // mAdapter.notifyDataSetChanged();
                 new SendInfoTaskpraise().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg",
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"login_password", Constants.staticpasswordstr},
                         new String[]{"feed_id", weiboidstr}
@@ -528,7 +519,7 @@ public class forumnotedetailActivity extends Activity implements
                     return;
                 }
                 new SendInfoTaskcancelpraise().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg", new String[]{"mid",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg", new String[]{"mid",
                         Constants.staticmyuidstr},
                         new String[]{"login_password",
                                 Constants.staticpasswordstr}, new String[]{
@@ -577,9 +568,9 @@ public class forumnotedetailActivity extends Activity implements
             // TODO Auto-generated method stub
             Intent intent = new Intent(forumnotedetailActivity.this,
                     UserDetailNewActivity.class);
-            if(uidstr==null ||"".equals(uidstr) || "1".equals(uidstr)){
+            if (uidstr == null || "".equals(uidstr) || "1".equals(uidstr)) {
                 intent.putExtra("uid", touid);
-            }else {
+            } else {
                 intent.putExtra("uid", uidstr);
             }
             startActivity(intent);
@@ -602,37 +593,6 @@ public class forumnotedetailActivity extends Activity implements
         }
 
     }
-//
-//    class factimgs_listener implements OnClickListener {
-//
-//        @Override
-//        public void onClick(View arg0) {
-//            // TODO Auto-generated method stub
-//            // transpondedit1.setVisibility(View.GONE);
-//            /**
-//             * //模拟回退按钮 try{ Runtime runtime=Runtime.getRuntime();
-//             * runtime.exec("input keyevent " + KeyEvent.KEYCODE_BACK);
-//             * }catch(IOException e){ // Log.e("Exception when doBack",
-//             * e.toString()); }
-//             */
-//        }
-//    }
-
-//    class submittranspond1_listener implements OnClickListener {
-//
-//        @Override
-//        public void onClick(View arg0) {
-//            // TODO Auto-generated method stub
-//            transpondedit1.setVisibility(View.GONE);
-//            new SendInfoTasktranspond().execute(new TaskParams(
-//                    Constants.Url+"?app=public&mod=AppFeedList&act=AppForward",
-//                    new String[]{"mid", Constants.staticmyuidstr},
-//                    new String[]{"feed_id", weiboidstr},
-//                    new String[]{"login_password", Constants.staticpasswordstr},
-//                    new String[]{"body", " 转发好贴"}
-//            ));
-//        }
-//    }
 
     class iv_sang_listener implements OnClickListener {
 
@@ -649,7 +609,7 @@ public class forumnotedetailActivity extends Activity implements
             rl_dialogDismiss = (RelativeLayout) view.findViewById(R.id.rl_dialogDismiss);
             et_inputCount = (EditText) view.findViewById(R.id.et_inputCount);
 
-            // 判断是否是打赏文章在判断是否是被打赏过的如果打赏过就可以随意输入否则只能默认最低数不能输入
+            // 判断是否是付费文章在判断是否是被打赏过的如果打赏过就可以随意输入否则只能默认最低数不能输入
             if ("1".equals(state) && payState != null && payState.toString().equals("0")) {
                 // 设置当前打赏的水晶币
                 et_inputCount.setText(rewardStr);
@@ -676,8 +636,8 @@ public class forumnotedetailActivity extends Activity implements
             bt_ok.setOnClickListener(new OnClickListener() {
 
                 public void onClick(View v) {
-                    sjbCount = et_inputCount.getText()+"";
-                    if("".equals(sjbCount.trim())){
+                    sjbCount = et_inputCount.getText() + "";
+                    if ("".equals(sjbCount.trim())) {
                         CustomToast.makeText(getApplicationContext(), "请输入打赏水晶币数。", Toast.LENGTH_LONG)
                                 .show();
                         return;
@@ -693,8 +653,8 @@ public class forumnotedetailActivity extends Activity implements
                         return;
                     }
 
-                    if(!((CheckBox)view.findViewById(R.id.sang_agreement_ck)).isChecked()){
-                        CustomToast.makeText(getApplicationContext(), "请阅读订阅文章及兑换协议", Toast.LENGTH_LONG).show();
+                    if (!((CheckBox) view.findViewById(R.id.sang_agreement_ck)).isChecked()) {
+                        CustomToast.makeText(getApplicationContext(), "请阅读付费阅读及打赏协议", Toast.LENGTH_LONG).show();
                         return;
                     }
 
@@ -714,7 +674,7 @@ public class forumnotedetailActivity extends Activity implements
                 @Override
                 public void onClick(View v) {
                     // 跳转到水晶币协议页面
-                    Intent intent = new Intent(forumnotedetailActivity.this,AgreementActivity.class);
+                    Intent intent = new Intent(forumnotedetailActivity.this, AgreementActivity.class);
                     startActivity(intent);
                 }
             });
@@ -722,7 +682,7 @@ public class forumnotedetailActivity extends Activity implements
                 @Override
                 public void onClick(View v) {
                     // 跳转到充值页面
-                    Intent intent = new Intent(forumnotedetailActivity.this,RechargeActivity.class);
+                    Intent intent = new Intent(forumnotedetailActivity.this, RechargeActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -746,7 +706,7 @@ public class forumnotedetailActivity extends Activity implements
             if ("0".equals(Collectionstr)) {
                 new SendInfoTaskcellectweibo()
                         .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=AddCollection", new String[]{
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=AddCollection", new String[]{
                                         "mid", Constants.staticmyuidstr},
                                         new String[]{"login_password",
                                                 Constants.staticpasswordstr},
@@ -757,22 +717,16 @@ public class forumnotedetailActivity extends Activity implements
             } else {
                 new SendInfoTaskcancelcellectweibo()
                         .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=DelCollection", new String[]{
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=DelCollection", new String[]{
                                         "mid", Constants.staticmyuidstr},
                                         new String[]{"login_password",
                                                 Constants.staticpasswordstr},
                                         new String[]{"feed_id", weiboidstr}
-
                                 )
-
                         );
-
                 Collectionstr = "0";
-
             }
-
         }
-
     }
 
     @Override
@@ -794,57 +748,6 @@ public class forumnotedetailActivity extends Activity implements
 
         }
     }
-
-    // 解决ScrollView和ListView的冲突问题
-
-    // 计算ListView的总高度并设置
-
-//    /**
-//     * @param listView
-//     */
-//
-//    private void setListViewHeightBasedOnChildren(ListView listView) {
-//        ListAdapter listAdapter = listView.getAdapter();
-//        if (listAdapter == null) {
-//            return;
-//        }
-//
-//        int totalHeight = 0;
-//
-//        for (int i = 0; i < listAdapter.getCount(); i++) {
-//            View listItem = listAdapter.getView(i, null, listView);
-//            int desiredWidth = MeasureSpec.makeMeasureSpec(listView.getWidth(),
-//                    MeasureSpec.AT_MOST);
-//            listItem.measure(desiredWidth, 0);
-//            // listItem.measure(0, 0);
-//            totalHeight += listItem.getMeasuredHeight() + 50;
-//        }
-//
-//        ViewGroup.LayoutParams params = listView.getLayoutParams();
-//
-//        params.height = totalHeight
-//                + (listView.getDividerHeight() * (listAdapter.getCount() - 1))
-//                + 100;
-//        // params.height=totalHeight;
-//        listView.setLayoutParams(params);
-//    }
-
-//    private void setListViewHeightBasedOnChildren2(ListView listView) {
-//        ListAdapter listAdapter = listView.getAdapter();
-//        if (listAdapter == null) {
-//            return;
-//        }
-//        int totalHeight = 0;
-//        for (int i = 0; i < replyinfoAdapter.getCount(); i++) {
-//            View mView = replyinfoAdapter.getView(i, null, listView);
-//            mView.measure(0, 0);
-//            totalHeight += mView.getMeasuredHeight() + 15;
-//        }
-//        ViewGroup.LayoutParams params = listView.getLayoutParams();
-//        params.height = totalHeight + (listView.getDividerHeight() * (replyinfoAdapter.getCount() - 1));
-//        listView.setLayoutParams(params);
-//        listView.requestLayout();
-//    }
 
     private class SendInfoTasknotedetail extends AsyncTask<TaskParams, Void, String> {
 
@@ -880,27 +783,28 @@ public class forumnotedetailActivity extends Activity implements
                         return;
                     }
                     if (statusstr == null) {
-                        statusstr = map.get("data")+"";
+                        statusstr = map.get("data").toString();
                         weibolists = JsonTools.listKeyMaps("[" + statusstr + "]");
                     }
                     for (Map<String, Object> weibomap : weibolists) {
                         //该字段用于获取微博详情
-                        String feedinfostr = weibomap.get("feedinfo")+"";
+                        String feedinfostr = weibomap.get("feedinfo") + "";
                         List<Map<String, Object>> feedinfoList = JsonTools.listKeyMaps("[" + feedinfostr + "]");
                         JSONObject jsonuserinfo = null;
                         try {
-                            jsonuserinfo = new JSONObject(weibomap.get("userinfo").toString());
+                            jsonuserinfo = new JSONObject(weibomap.get("userinfo") + "");
                             // 被打赏微博的用户ID
                             touid = jsonuserinfo.getString("uid");
-                            unamestr = jsonuserinfo.get("uname")+"";
+                            unamestr = jsonuserinfo.get("uname") + "";
                             String avatar_middlestr = jsonuserinfo.get("avatar_middle")
-                                    +"";
+                                    + "";
                             username1.setText(unamestr);
                             ImageLoader.getInstance().displayImage(avatar_middlestr,
                                     headimg1, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
-
+                            String userGroup = jsonuserinfo.getString("user_group");
+                            userGroup = userGroup.replace("\\", "");
                             // 显示Vip标识的
-                            ViewUtil.setUpVip(weibomap.get("user_group")+"",vipImg);
+                            ViewUtil.setUpVip(userGroup + "", vipImg);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -909,15 +813,15 @@ public class forumnotedetailActivity extends Activity implements
 
                             String feed_titlestr;
                             //微博每个字段的内容
-                            feed_idstr = userCreditmap.get("feed_id")+"";
-                            String typestr = userCreditmap.get("type")+"";
-                            String publish_timestr = userCreditmap.get("publish_time")+"";
+                            feed_idstr = userCreditmap.get("feed_id") + "";
+                            String typestr = userCreditmap.get("type") + "";
+                            String publish_timestr = userCreditmap.get("publish_time") + "";
 
-                            comment_countstr = userCreditmap.get("comment_count")+"";
-                            repost_countstr = userCreditmap.get("repost_count")+"";
-                            digg_countstr = userCreditmap.get("digg_count")+"";
-                            Collectionstr = userCreditmap.get("Collection")+"";
-                            is_digg = userCreditmap.get("is_digg")+"";
+                            comment_countstr = userCreditmap.get("comment_count") + "";
+                            repost_countstr = userCreditmap.get("repost_count") + "";
+                            digg_countstr = userCreditmap.get("digg_count") + "";
+                            Collectionstr = userCreditmap.get("Collection") + "";
+                            is_digg = userCreditmap.get("is_digg") + "";
                             introduction = userCreditmap.get("introduction");
                             //判断是否已经收藏
                             if ("1".equals(Collectionstr)) {
@@ -937,7 +841,7 @@ public class forumnotedetailActivity extends Activity implements
                             if ("postimage".equals(typestr)) {
                                 //获取图片的地址，http://www.sjqcj.com/data/upload/  +  解析attach_url得到的地址，即可获得图片
                                 if (userCreditmap.get("attach_url") != null) {
-                                    String attach_url = userCreditmap.get("attach_url")+"";
+                                    String attach_url = userCreditmap.get("attach_url") + "";
                                     // 解析短微博图片地址
                                     attach_url = attach_url.substring(1, attach_url.length() - 1);
                                     String[] attach_urlstrs = attach_url.split(",");
@@ -954,9 +858,12 @@ public class forumnotedetailActivity extends Activity implements
 
 
                             //微博的内容
-                            String contentstr = userCreditmap.get("feed_content_android")+"";
+                            String contentstr = userCreditmap.get("feed_content_android") + "";
+                            //微博中添加的网址
+                            List<String> contentUrl = (List<String>) userCreditmap.get("feed_content_android_url");
 
-                            contentSt = Html.fromHtml(contentstr)+"";
+                            contentSt = Html.fromHtml(contentstr) + "";
+
                             contentstr = " <html><head><style type=\"text/css\">body{font-size:16px;}</style>   <script type=\"text/javascript\">         	  function getimg(th) { 	var btsrc=th.src;		getimage.getImageView(btsrc); 	  }	 </script></head><body>" + contentstr;
                             //处理微博内容的标题，【】里面的内容为#4471BC色
                             contentstr = contentstr.replace("<feed-titlestyle='display:none'>", "<font color=\"#4471BC\" >【");
@@ -970,7 +877,7 @@ public class forumnotedetailActivity extends Activity implements
                             int count = contentstr.indexOf("【") + 1;
                             if (count > 0) {
                                 titelStr = contentstr.substring(count, contentstr.indexOf("】"));
-                                contentSt = Html.fromHtml(contentstr.substring(contentstr.indexOf("】") + 1))+"";
+                                contentSt = Html.fromHtml(contentstr.substring(contentstr.indexOf("】") + 1)) + "";
                             } else {
                                 titelStr = unamestr + ":";
                             }
@@ -989,18 +896,18 @@ public class forumnotedetailActivity extends Activity implements
                             comment_count1.setText(comment_countstr);
                             Object stateObj = userCreditmap.get("state");
                             stateObj = stateObj == null ? 0 : stateObj;
-                            state = stateObj+"";
+                            state = stateObj + "";
                             // 是否是打赏了的文章 0:未打赏 1：打赏
                             payState = userCreditmap.get("PayState");
                             if (!"0".equals(state)) {
                                 rewardExplain.setVisibility(View.VISIBLE);
-                                rewardStr = userCreditmap.get("reward")+"";
+                                rewardStr = userCreditmap.get("reward") + "";
                                 feed_titlestr = contentstr.substring(contentstr.indexOf("<font color=\"#4471BC\" >【"), contentstr.indexOf("】</font>") + 8);
                                 feed_titlestr = feed_titlestr.replaceFirst("【", " ");
                                 feed_titlestr = feed_titlestr.replaceFirst("】", " ");
-                                // 是打赏文章
+                                // 是付费文章
                                 feedtitle.setText(Html.fromHtml(feed_titlestr));
-                                titelStr = feedtitle.getText()+"";
+                                titelStr = feedtitle.getText() + "";
                                 // 显示需要打赏水晶币数量
                                 rewardTv.setText(rewardStr);
                                 rewardTv.setVisibility(View.VISIBLE);
@@ -1008,15 +915,15 @@ public class forumnotedetailActivity extends Activity implements
                                     // 如果是自己的文章就直接显示已经阅读过了
                                     payState = "1";
                                 }
-                                contentSt = introduction+"";
-                                contentstr = contentstr.substring(0, contentstr.indexOf("】</font><br/>") + 13) + "概况：" + introduction + "<br/>" + contentstr.substring(contentstr.indexOf("】</font><br/>") + 13);
+                                contentSt = introduction + "";
+                                contentstr = contentstr.substring(0, contentstr.indexOf("】</font><br/>") + 13) + "摘要：" + introduction + "<br/>" + contentstr.substring(contentstr.indexOf("】</font><br/>") + 13);
                                 if (payState == null || "0".equals(payState.toString())) {
 
                                     // --------- 给管理人员用的不用进行打赏就可以阅读文章（注释掉是給管理员用的）
                                     wv_ad_tv.setVisibility(View.GONE);
 
-                                    // 显示概述
-                                    coment.setText("概况：" + introduction);
+                                    // 显示摘要
+                                    coment.setText("摘要：" + introduction);
                                     coment.setVisibility(View.VISIBLE);
                                     feedtitle.setVisibility(View.VISIBLE);
                                 } else {
@@ -1024,7 +931,7 @@ public class forumnotedetailActivity extends Activity implements
                                     coment.setVisibility(View.GONE);
                                     feedtitle.setVisibility(View.GONE);
                                     // 修改说明语句
-                                    rewardExplain.setText("本文是打赏文章，您已阅读");
+                                    rewardExplain.setText("本文是付费文章，您已阅读");
                                 }
                             } else {
                                 wv_ad_tv.setVisibility(View.VISIBLE);
@@ -1035,7 +942,7 @@ public class forumnotedetailActivity extends Activity implements
                             contentstr = contentstr.replaceFirst("】", "");
                             //内容+图片的地址拼接，作为WebView的内容
                             if (postimgsbdstr != null) {
-                                contentstr = contentstr + "<br/><br/>" + postimgsbdstr+"";
+                                contentstr = contentstr + "<br/><br/>" + postimgsbdstr + "";
                             }
                             contentstr = contentstr + "</body></html>";
                             //全文
@@ -1044,27 +951,27 @@ public class forumnotedetailActivity extends Activity implements
 
                             // 给WebView添加js交互接口类(用于图片点击放大)
                             wv_ad_tv.addJavascriptInterface(new JavascriptInterface(forumnotedetailActivity.this), "imagelistner");
-                            wv_ad_tv.setWebViewClient(new ImageWebViewClient(wv_ad_tv));
+
+                            wv_ad_tv.setWebViewClient(new ImageWebViewClient(wv_ad_tv, forumnotedetailActivity.this));
+
+                            if (contentUrl != null) {
+                                contentstr = Utils.replaceWebUrl(contentUrl, contentstr);
+                            }
+
                             wv_ad_tv.loadDataWithBaseURL(null, contentstr, "text/html", "utf-8", null);
 
                             wv_ad_tv.setWebChromeClient(new WebChromeClient() {
                                 public void onProgressChanged(WebView view, int newProgress) {
-                                    if (newProgress>95){
+                                    if (newProgress > 95) {
                                         findViewById(R.id.web_jiazai_xianshi).setVisibility(View.VISIBLE);
                                     }
                                 }
                             });
 
-
-
-//                            Log.e("mh:---",contentstr);
-//                            Spanned charSequence = Html.fromHtml(contentstr, ImageUtil.getImageGetter1(), null);
-//                            wv_ad_tv.setText(charSequence);
-
                             // 打赏水晶的人数
-                            reward_count = userCreditmap.get("reward_count")+"";
+                            reward_count = userCreditmap.get("reward_count") + "";
                             // 打赏水晶的数量
-                            amount_count = userCreditmap.get("amount_count")+"";
+                            amount_count = userCreditmap.get("amount_count") + "";
                             // 获取打赏水晶的人的信息集合
                             asslist = JsonTools.listKeyMaps(userCreditmap.get("asslist").toString());
                             if (Constants.staticmyuidstr.equals(touid) || "0".equals(state)) {
@@ -1115,16 +1022,21 @@ public class forumnotedetailActivity extends Activity implements
                                 repostrepost_count1.setText(repost_countstr);
                                 repostdigg_count1.setText(digg_countstr);
                                 repostcomment_count1.setText(comment_countstr);
-                                repostweibocomment1.setText(contentstr);
+                                repostweibocomment1.setText(Html.fromHtml(contentstr));
 
                                 int count = contentstr.indexOf("【") + 1;
                                 if (count > 0) {
                                     titelStr = contentstr.substring(count, contentstr.indexOf("】"));
-                                    contentSt = Html.fromHtml(contentstr.substring(contentstr.indexOf("】") + 1))+"";
+                                    contentSt = Html.fromHtml(contentstr.substring(contentstr.indexOf("】") + 1)) + "";
                                 }
-                                Object introductionObj = jsonObject.get("introduction");
-                                if (introductionObj != null && !"null".equals(introductionObj.toString())) {
-                                    contentSt = introductionObj+"";
+
+                                String introductionObj = jsonObject.optString("introduction");
+                                if (!"".equals(introductionObj.trim()) && !"null".equals(introductionObj)) {
+                                    contentstr = "摘要：" + introductionObj + "";
+                                    repostweibocomment1.setText(contentstr);
+                                    reward1.setText(jsonObject.getString(
+                                            "reward"));
+                                    reward1.setVisibility(View.VISIBLE);
                                 }
 
                             } catch (JSONException e) {
@@ -1137,7 +1049,8 @@ public class forumnotedetailActivity extends Activity implements
                             try {
                                 JSONObject jsonObject = new JSONObject(repostUserinfoStr.toString());
                                 repostusername1.setText(jsonObject.getString("uname"));
-                                String userGroup = jsonObject.get("user_group") + "";
+                                String userGroup = jsonObject.getString("user_group");
+                                userGroup = userGroup.replace("\\", "");
                                 ViewUtil.setUpVip(userGroup, vipImgSource);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -1185,7 +1098,7 @@ public class forumnotedetailActivity extends Activity implements
 
                 for (Map<String, Object> map : lists2) {
                     if (statusstr2 == null) {
-                        statusstr2 = map.get("data")+"";
+                        statusstr2 = map.get("data") + "";
                         if ("".equals(statusstr2)) {
                             // 表示没有评论
                             return;
@@ -1195,7 +1108,7 @@ public class forumnotedetailActivity extends Activity implements
                     }
                     for (Map<String, Object> datamap : datalists2) {
                         if (datastr2 == null) {
-                            datastr2 = datamap.get("data")+"";
+                            datastr2 = datamap.get("data") + "";
                             if (datamap.get("count") != null) {
                                 count = Integer.valueOf(datamap.get("count").toString());
                             }
@@ -1209,14 +1122,14 @@ public class forumnotedetailActivity extends Activity implements
                         }
                         for (Map<String, Object> weibomap : weibolists2) {
 
-                            String ctimestr = weibomap.get("ctime")+"";
+                            String ctimestr = weibomap.get("ctime") + "";
                             String contentstr = weibomap.get("content")
-                                    +"";
+                                    + "";
                             String storeystr = weibomap.get("storey")
-                                    +"";
+                                    + "";
 
                             String comment_idstr = weibomap.get("comment_id")
-                                    +"";
+                                    + "";
 
                             contentstr = contentstr.replace("'__THEME__/image/expression/miniblog/", "\"");
                             contentstr = contentstr.replace(".gif'", "\"");
@@ -1237,7 +1150,7 @@ public class forumnotedetailActivity extends Activity implements
                             map3.put("comment_id", comment_idstr);
 
                             String user_infostr = weibomap.get("user_info")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> user_infolists = JsonTools
                                     .listKeyMaps("[" + user_infostr + "]");
 
@@ -1248,22 +1161,22 @@ public class forumnotedetailActivity extends Activity implements
                                 if (user_infomap.get("uid") == null) {
                                     uidstr = "";
                                 } else {
-                                    uidstr = user_infomap.get("uid")+"";
+                                    uidstr = user_infomap.get("uid") + "";
                                 }
                                 if (user_infomap.get("uname") == null) {
                                     unamestr2 = "暂无";
                                 } else {
                                     unamestr2 = user_infomap.get("uname")
-                                            +"";
+                                            + "";
                                 }
                                 if (user_infomap.get("avatar_middle") == null) {
                                     avatar_middlestr2 = "http://www.sjqcj.com/data/upload/avatar/2a/2d/16/original_100_100.jpg?v1446619149";
                                 } else {
                                     avatar_middlestr2 = user_infomap.get(
-                                            "avatar_middle")+"";
+                                            "avatar_middle") + "";
                                 }
 
-                                String userGroup = user_infomap.get("user_group")+"";
+                                String userGroup = user_infomap.get("user_group") + "";
                                 map3.put("isVip", userGroup);
                                 map3.put("uid", uidstr);
                                 map3.put("uname", unamestr2);
@@ -1274,12 +1187,12 @@ public class forumnotedetailActivity extends Activity implements
                     }
                 }
                 replyinfoAdapter.notifyDataSetChanged();
-                if (current == 1){
+//                if (current == 1) {
                     // 评论大于两页就不用滚动到顶部去
                     // 滚动到顶部
                     ViewUtil.setListViewHeightBasedOnChildren(replyinfolistview);
                     myScrollView.smoothScrollTo(0, 0);
-                }
+//                }
                 if (listreplyinfoData.size() >= count) {
                     xlistviewFooterContent.setVisibility(View.GONE);
                 }
@@ -1313,9 +1226,9 @@ public class forumnotedetailActivity extends Activity implements
                 // 解析json字符串获得List<Map<String,Object>>
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
-                    String infostr = map.get("info")+"";
-                    String statusstr = map.get("status")+"";
-                    String datastr = map.get("data")+"";
+                    String infostr = map.get("info") + "";
+                    String statusstr = map.get("status") + "";
+                    String datastr = map.get("data") + "";
 
                     is_digg = "1";
                 }
@@ -1355,8 +1268,8 @@ public class forumnotedetailActivity extends Activity implements
                 // 解析json字符串获得List<Map<String,Object>>
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
-                    String infostr = map.get("info")+"";
-                    String statusstr = map.get("status")+"";
+                    String infostr = map.get("info") + "";
+                    String statusstr = map.get("status") + "";
 
                     if ("1".equals(statusstr)) {
                         is_digg = "0";
@@ -1374,33 +1287,10 @@ public class forumnotedetailActivity extends Activity implements
 
     }
 
-    // web页面设置
-    private final class Contact {
-        // JavaScript调用此方法拨打电话
-        public void call(String phone) {
-            // startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +
-            // phone)));
-            CustomToast.makeText(forumnotedetailActivity.this, phone,
-                    Toast.LENGTH_LONG).show();
-        }
-
-//        // Html调用此方法传递数据
-//        public void showcontacts() {
-//            String json = "[{\"name\":\"zxx\", \"amount\":\"9999999\", \"phone\":\"18600012345\"}]";
-//            // 调用JS中的方法
-//            comentwebview.loadUrl("javascript:show('" + json + "')");
-//        }
-
-//        public void toast(String str) {
-//            CustomToast.makeText(forumnotedetailActivity.this,
-//                    "aaaaaaaaaaaa  --- " + str, Toast.LENGTH_LONG).show();
-//        }
-    }
-
     //onResume()时，调用该方法获取微博的数据
     private void geneItemsnotedetail() {
         new SendInfoTasknotedetail().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=Profile&act=Appfeed",
+                Constants.Url + "?app=public&mod=Profile&act=Appfeed",
                 new String[]{"feed_id", weiboidstr},
                 new String[]{"mid", Constants.staticmyuidstr}
         ));
@@ -1409,7 +1299,7 @@ public class forumnotedetailActivity extends Activity implements
     //获取评论列表信息
     private void geneItems() {
         new SendInfoTasknotereplylist().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=Profile&act=AppComment&p="
+                Constants.Url + "?app=public&mod=Profile&act=AppComment&p="
                         + current,
                 new String[]{"feed_id", weiboidstr}
         ));
@@ -1507,7 +1397,7 @@ public class forumnotedetailActivity extends Activity implements
                     coment.setVisibility(View.GONE);
                     feedtitle.setVisibility(View.GONE);
                     // 修改说明语句
-                    rewardExplain.setText("本文是打赏文章，您已阅读");
+                    rewardExplain.setText("本文是付费文章，您已阅读");
                 } else {
                     // 失败
                     CustomToast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG)
@@ -1535,7 +1425,7 @@ public class forumnotedetailActivity extends Activity implements
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
                 if ("1".equals(statusstr)) {
                     refercommentreply();
                 }

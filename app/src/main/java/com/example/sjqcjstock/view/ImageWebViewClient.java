@@ -1,6 +1,9 @@
 package com.example.sjqcjstock.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -11,14 +14,26 @@ public class ImageWebViewClient extends WebViewClient {
 
     private WebView webView;
 
-    public ImageWebViewClient(WebView webView){
+    private Context context;
+
+    public ImageWebViewClient(WebView webView) {
         this.webView = webView;
+    }
+
+    public ImageWebViewClient(WebView webView, Context context) {
+        this.webView = webView;
+        this.context = context;
     }
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-        return super.shouldOverrideUrlLoading(view, url);
+        // 打开系统浏览器加载网页
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url = Uri.parse(url);
+        intent.setData(content_url);
+        context.startActivity(intent);
+        return true;
     }
 
     @Override

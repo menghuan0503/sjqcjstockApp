@@ -82,8 +82,8 @@ public class DynamicExpertAdapter extends BaseAdapter {
                 Intent intent = new Intent(context.getApplicationContext(),
                         UserDetailNewActivity.class);
                 // 要修改的
-                intent.putExtra("uid","26364");
-                intent.putExtra("type","1");
+                intent.putExtra("uid", "26364");
+                intent.putExtra("type", "1");
                 context.startActivity(intent);
             }
         });
@@ -95,7 +95,7 @@ public class DynamicExpertAdapter extends BaseAdapter {
                 Intent intent = new Intent(context.getApplicationContext(),
                         BusinessActivity.class);
                 // 要修改的
-                intent.putExtra("type","0");
+                intent.putExtra("type", "0");
                 context.startActivity(intent);
             }
         });

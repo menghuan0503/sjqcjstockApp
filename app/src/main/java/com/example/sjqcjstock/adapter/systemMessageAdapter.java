@@ -23,18 +23,18 @@ public class systemMessageAdapter extends BaseAdapter {
     private SystemMessage systemMessage;
     private Context context;
 
-    public systemMessageAdapter(Context context){
+    public systemMessageAdapter(Context context) {
         this.context = context;
     }
 
-    public void setSystemMessage(SystemMessage systemMessage){
+    public void setSystemMessage(SystemMessage systemMessage) {
         this.systemMessage = systemMessage;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return systemMessage == null?0:systemMessage.getData().size();
+        return systemMessage == null ? 0 : systemMessage.getData().size();
     }
 
     @Override
@@ -54,13 +54,13 @@ public class systemMessageAdapter extends BaseAdapter {
     }
 
     // 追加数据
-    public void setAddList(List<SystemMessage.datas> data){
+    public void setAddList(List<SystemMessage.datas> data) {
         systemMessage.getData().addAll(data);
         notifyDataSetChanged();
     }
 
     // 绘制Item的函数
-    public View makeItemView(SystemMessage.datas data ) {
+    public View makeItemView(SystemMessage.datas data) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 使用View的对象itemView与R.layout.item关联

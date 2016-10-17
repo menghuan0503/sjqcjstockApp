@@ -1,7 +1,6 @@
 package com.example.sjqcjstock.netutil;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,10 +10,6 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * 一些视图的共通处理方法
  * Created by Administrator on 2016/5/25.
@@ -22,28 +17,30 @@ import org.json.JSONObject;
 public class ViewUtil {
 
     /**
-     *  判断值设置字体颜色
-     * @param tv 需要设置的字体
+     * 判断值设置字体颜色
+     *
+     * @param tv  需要设置的字体
      * @param str 判断的值
      */
-    public static void setViewColor(TextView tv,String str){
+    public static void setViewColor(TextView tv, String str) {
         str = Utils.getNumberFormat(str);
         float floatCount = Float.valueOf(str);
-        if(floatCount>0){
+        if (floatCount > 0) {
             tv.setTextColor(Color.RED);
-            tv.setText("+"+str+"%");
-        }else if (floatCount<0){
-            tv.setTextColor(Color.rgb(139,195,74));
-            tv.setText(str+"%");
-        }else{
-            tv.setTextColor(Color.rgb(51,51,51));
-            tv.setText(str+"%");
+            tv.setText("+" + str + "%");
+        } else if (floatCount < 0) {
+            tv.setTextColor(Color.rgb(139, 195, 74));
+            tv.setText(str + "%");
+        } else {
+            tv.setTextColor(Color.rgb(51, 51, 51));
+            tv.setText(str + "%");
         }
     }
 
 
     /**
      * 获取listView动态高度
+     *
      * @param listView
      */
     public static void setListViewHeightBasedOnChildren(ListView listView) {
@@ -66,22 +63,23 @@ public class ViewUtil {
 
     /**
      * 处理该用户是否是VIP 并委托设置图像
+     *
      * @param str
      * @param imageView
      */
-    public static void setUpVip(String str, ImageView imageView){
-        if (str == null){
+    public static void setUpVip(String str, ImageView imageView) {
+        if (str == null) {
             return;
         }
-        if (str.length()>10){
+        if (str.length() > 10) {
             imageView.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             imageView.setVisibility(View.GONE);
             return;
         }
-            str = str.substring(str.lastIndexOf("http"));
-            str = str.substring(0,str.indexOf("\""));
-        if (str.length()>10)
+        str = str.substring(str.lastIndexOf("http"));
+        str = str.substring(0, str.indexOf("\""));
+        if (str.length() > 10)
             ImageLoader.getInstance().displayImage(str,
                     imageView, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
     }

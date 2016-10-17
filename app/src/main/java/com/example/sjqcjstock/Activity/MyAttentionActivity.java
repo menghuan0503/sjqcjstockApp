@@ -83,6 +83,10 @@ public class MyAttentionActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 try {
+                    String content = myattentioncommonnoteData.get(arg2).get("content");
+                    if (content.length() > 3 && Constants.microBlogShare.equals(content.substring(0, 4))) {
+                        return;
+                    }
                     Intent intent = new Intent(MyAttentionActivity.this, forumnotedetailActivity.class);
                     intent.putExtra("weibo_id", (String) myattentioncommonnoteData.get(arg2).get("feed_id"));
                     intent.putExtra("uid", (String) myattentioncommonnoteData.get(arg2).get("uid"));
@@ -133,7 +137,7 @@ public class MyAttentionActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        if(loadMoreFollowingList != null && loadMoreFollowingList.size()>0){
+        if (loadMoreFollowingList != null && loadMoreFollowingList.size() > 0) {
             // 做缓存
             mCache.put("LoadMoreFollowingx", Utils.getListMapStr(loadMoreFollowingList));
         }
@@ -142,7 +146,7 @@ public class MyAttentionActivity extends Activity {
 
     private void geneItemattention() {
         new SendInfoTaskmyweiboattentionlistloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=FeedListMini&act=loadMore",
+                Constants.Url + "?app=public&mod=FeedListMini&act=loadMore",
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"id", Constants.staticmyuidstr},
                 new String[]{"type", "following"},
@@ -207,11 +211,11 @@ public class MyAttentionActivity extends Activity {
                     if (map.get("diggArr") == null) {
                         diggArrstr = "";
                     } else {
-                        diggArrstr = map.get("diggArr")+"";
+                        diggArrstr = map.get("diggArr") + "";
 
                     }
                     if (attentiondatastr2 == null) {
-                        attentiondatastr2 = map.get("data")+"";
+                        attentiondatastr2 = map.get("data") + "";
                         attentiondatastrlists2 = JsonTools.listKeyMaps(attentiondatastr2);
                     }
                     if (attentiondatastrlists2 == null) {
@@ -226,21 +230,21 @@ public class MyAttentionActivity extends Activity {
                         String introduction = "";
                         // 水晶币个数
                         String reward = "";
-                        // 是否是打赏文章 0 ：不是
+                        // 是否是付费文章 0 ：不是
                         String state = "0";
 
                         String isdigg = "0";// isdigg为0为未点赞为1为已点赞
                         // String diggArrstr= map.get("diggArr")+"";
 
-                        String feed_idstr = datastrmap.get("feed_id")+"";
+                        String feed_idstr = datastrmap.get("feed_id") + "";
 
                         if (diggArrstr.contains(feed_idstr)) {
                             isdigg = "1";
                         }
-                        String typestr = datastrmap.get("type")+"";
+                        String typestr = datastrmap.get("type") + "";
 
                         // String bodystr= datastrmap.get("body")+"";
-                        String contentstr = datastrmap.get("body")+"";
+                        String contentstr = datastrmap.get("body") + "";
 
                         contentstr = contentstr.replace("【",
                                 "<font color=\"#4471BC\" >【");
@@ -291,22 +295,22 @@ public class MyAttentionActivity extends Activity {
                                     contentstr.indexOf("◆"));
 
                             String api_sourcestr = datastrmap.get("api_source")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> api_sourcestrlists = JsonTools
                                     .listKeyMaps("[" + api_sourcestr + "]");
 
                             for (Map<String, Object> api_sourcestrmap : api_sourcestrlists) {
                                 if (api_sourcestrmap.get("reward") != null)
-                                    reward = api_sourcestrmap.get("reward")+"";
+                                    reward = api_sourcestrmap.get("reward") + "";
                                 if (api_sourcestrmap.get("state") != null)
-                                    state = api_sourcestrmap.get("state")+"";
+                                    state = api_sourcestrmap.get("state") + "";
 
                                 String source_feed_idstr = api_sourcestrmap
-                                        .get("feed_id")+"";
+                                        .get("feed_id") + "";
                                 String source_user_infostr = api_sourcestrmap
-                                        .get("source_user_info")+"";
+                                        .get("source_user_info") + "";
                                 String source_contentstr = api_sourcestrmap
-                                        .get("source_content")+"";
+                                        .get("source_content") + "";
                                 // String source_titlestr=
                                 // api_sourcestrmap.get("source_title")+"";
 
@@ -329,13 +333,13 @@ public class MyAttentionActivity extends Activity {
                                 // map2.put("source_titlestr", source_titlestr);
 
 
-                                // 先判断是否是打赏文章如果是就获取概要
+                                // 先判断是否是付费文章如果是就获取概要
                                 if ("1".equals(state.toString())) {
-                                    String gaiyao = api_sourcestrmap.get("zy")+"";
+                                    String gaiyao = api_sourcestrmap.get("zy") + "";
                                     source_contentstr = "<font color=\"#4471BC\" >" + source_contentstr.substring(source_contentstr.indexOf("【"), source_contentstr.indexOf("】") + 1) + "</font><Br/>" + gaiyao;
                                 }
                                 map2.put("source_feed_idstr", source_feed_idstr);
-                                map2.put("source_contentstr",source_contentstr);
+                                map2.put("source_contentstr", source_contentstr);
 
                                 List<Map<String, Object>> source_user_infostrlists = JsonTools
                                         .listKeyMaps("[" + source_user_infostr
@@ -343,9 +347,9 @@ public class MyAttentionActivity extends Activity {
                                 for (Map<String, Object> source_user_infostrmap : source_user_infostrlists) {
                                     String ctimestr;
                                     String sourceuidstr = source_user_infostrmap
-                                            .get("uid")+"";
+                                            .get("uid") + "";
                                     String sourceunamestr = source_user_infostrmap
-                                            .get("uname")+"";
+                                            .get("uname") + "";
                                     // if(source_user_infostrmap.get("ctime")==null){
                                     // ctimestr="";
                                     // }else{
@@ -353,8 +357,8 @@ public class MyAttentionActivity extends Activity {
                                     // source_user_infostrmap.get("ctime")+"";
                                     // }
                                     String avatar_middlestr = source_user_infostrmap
-                                            .get("avatar_middle")+"";
-                                    String userGroup = source_user_infostrmap.get("user_group")+"";
+                                            .get("avatar_middle") + "";
+                                    String userGroup = source_user_infostrmap.get("user_group") + "";
                                     map2.put("isVipSource", userGroup);
                                     map2.put("sourceuidstr", sourceuidstr);
                                     map2.put("sourceuname", sourceunamestr);
@@ -366,14 +370,14 @@ public class MyAttentionActivity extends Activity {
                         } else {
                             // 获取打赏相关的数据
                             if (datastrmap.get("introduction") != null) {
-                                introduction = datastrmap.get("introduction")+"";
+                                introduction = datastrmap.get("introduction") + "";
                             }
                             if (null != datastrmap.get("reward"))
-                                reward = datastrmap.get("reward")+"";
+                                reward = datastrmap.get("reward") + "";
                             if (null != datastrmap.get("state"))
-                                state = datastrmap.get("state")+"";
+                                state = datastrmap.get("state") + "";
 
-                            // 如果是打赏文章就有概要 显示内容为标题+概要
+                            // 如果是付费文章就有概要 显示内容为标题+概要
                             if (!"0".equals(state)) {
                                 contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
                             }
@@ -384,27 +388,27 @@ public class MyAttentionActivity extends Activity {
 
                         // 是否转发
                         String is_repoststr = datastrmap.get("is_repost")
-                                +"";
+                                + "";
 
                         String publish_timestr = datastrmap.get("publish_time")
-                                +"";
+                                + "";
                         if (datastrmap.get("digg_count") == null) {
                             digg_countstr = "0";
                         } else {
                             digg_countstr = datastrmap.get("digg_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("comment_count") == null) {
                             comment_countstr = "0";
                         } else {
                             comment_countstr = datastrmap.get("comment_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("repost_count") == null) {
                             repost_countstr = "0";
                         } else {
                             repost_countstr = datastrmap.get("repost_count")
-                                    +"";
+                                    + "";
 
                         }
 
@@ -416,7 +420,7 @@ public class MyAttentionActivity extends Activity {
                         if (datastrmap.get("attach_url") == null) {
                             attach_urlstr = "";
                         } else {
-                            attach_urlstr = datastrmap.get("attach_url")+"";
+                            attach_urlstr = datastrmap.get("attach_url") + "";
                             // 解析短微博图片地址
                             attach_urlstr = attach_urlstr.substring(1, attach_urlstr.length() - 1);
 
@@ -473,7 +477,7 @@ public class MyAttentionActivity extends Activity {
                         }
 
                         map2.put("feed_id", feed_idstr);
-                        map2.put("content",contentstr);
+                        map2.put("content", contentstr);
                         map2.put("create", publish_timestr);
                         map2.put("digg_count", digg_countstr);
                         map2.put("comment_count", comment_countstr);
@@ -485,15 +489,15 @@ public class MyAttentionActivity extends Activity {
                         if (datastrmap.get("user_info") == null) {
                             user_infostr = "";
                         } else {
-                            user_infostr = datastrmap.get("user_info")+"";
+                            user_infostr = datastrmap.get("user_info") + "";
                         }
                         List<Map<String, Object>> user_infostrlists = JsonTools.listKeyMaps("[" + user_infostr + "]");
 
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
-                            String uidstr = user_infostrmap.get("uid")+"";
-                            String unamestr = user_infostrmap.get("uname")+"";
-                            String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
-                            String userGroup = user_infostrmap.get("user_group")+"";
+                            String uidstr = user_infostrmap.get("uid") + "";
+                            String unamestr = user_infostrmap.get("uname") + "";
+                            String avatar_middlestr = user_infostrmap.get("avatar_middle") + "";
+                            String userGroup = user_infostrmap.get("user_group") + "";
                             map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);

@@ -35,7 +35,7 @@ public class myattentionuserAdapter extends BaseAdapter {
 
     public void setlistData(ArrayList<HashMap<String, Object>> listData) {
         if (listData != null) {
-            this.listData = (ArrayList<HashMap<String,Object>>) listData.clone();
+            this.listData = (ArrayList<HashMap<String, Object>>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -66,7 +66,7 @@ public class myattentionuserAdapter extends BaseAdapter {
         ImageView image = (ImageView) convertView.findViewById(R.id.user_image);
         ImageLoader.getInstance().displayImage((String) listData.get(position).
                         get("avatar_middle"),
-                image, ImageUtil.getOption(),ImageUtil.getAnimateFirstDisplayListener());
+                image, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
         TextView username = (TextView) convertView.findViewById(R.id.username);
         username.setText((String) listData.get(position).get("uname"));
         TextView detailcomment = (TextView) convertView.findViewById(R.id.detailcomment);
@@ -87,8 +87,8 @@ public class myattentionuserAdapter extends BaseAdapter {
         });
 
         ImageView vipImg = (ImageView) convertView.findViewById(R.id.vip_img);
-        String isVip =  listData.get(position).get(
-                "isVip")+"";
+        String isVip = listData.get(position).get(
+                "isVip") + "";
         ViewUtil.setUpVip(isVip, vipImg);
         return convertView;
     }

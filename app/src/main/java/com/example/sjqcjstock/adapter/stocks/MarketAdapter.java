@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sjqcjstock.R;
@@ -28,9 +27,10 @@ public class MarketAdapter extends BaseAdapter {
         super();
         this.context = context;
     }
+
     public void setlistData(ArrayList<StocksInfo> listData) {
         if (listData != null) {
-            this.listData = (List<StocksInfo>)listData.clone();
+            this.listData = (List<StocksInfo>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -62,13 +62,13 @@ public class MarketAdapter extends BaseAdapter {
             holder.spotPrice = (TextView) convertView.findViewById(R.id.shares_price);
             holder.highsLows = (TextView) convertView.findViewById(R.id.shares_rose);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(listData.get(position).getName());
         holder.code.setText(listData.get(position).getCode());
         holder.spotPrice.setText(listData.get(position).getSpotPrice());
-        ViewUtil.setViewColor(holder.highsLows,listData.get(position).getHighsLows());
+        ViewUtil.setViewColor(holder.highsLows, listData.get(position).getHighsLows());
 
         return convertView;
     }

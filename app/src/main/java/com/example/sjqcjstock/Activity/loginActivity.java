@@ -113,13 +113,13 @@ public class loginActivity extends Activity {
                     openidstr = "";
 
                     for (Map<String, Object> map : reponsestrlists) {
-                        access_tokenstr = map.get("access_token")+"";
-                        openidstr = map.get("openid")+"";
+                        access_tokenstr = map.get("access_token") + "";
+                        openidstr = map.get("openid") + "";
                     }
 
                     new SendInfoTaskqqthirdlogin()
                             .execute(new TaskParams(
-                                    Constants.Url+"?app=index&mod=Index&act=app_w3g_no_register_display",
+                                    Constants.Url + "?app=index&mod=Index&act=app_w3g_no_register_display",
                                     new String[]{"type", "qq"},
                                     new String[]{"tokey", openidstr}
                             ));
@@ -130,7 +130,7 @@ public class loginActivity extends Activity {
                             List<Map<String, Object>> lists = JsonTools.listKeyMaps(responsestr);
                             for (Map<String, Object> map : lists) {
                                 // 获取qq昵称
-                                nicknamestr = map.get("nickname")+"";
+                                nicknamestr = map.get("nickname") + "";
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -219,7 +219,7 @@ public class loginActivity extends Activity {
             // 防止二次第三方的影响
             Constants.isDefault = true;
             new SendInfoTaskForCommonUserLogin().execute(new TaskParams(
-                    Constants.Url+"?app=public&mod=Passport&act=AppLogin",
+                    Constants.Url + "?app=public&mod=Passport&act=AppLogin",
                     new String[]{"login_email", fillphone1.getText().toString()},
                     new String[]{"login_password", fillpassword1.getText().toString()},
                     new String[]{"login_remember", "1"}
@@ -282,6 +282,7 @@ public class loginActivity extends Activity {
                 public void onError(UiError e) {
                     // TODO Auto-generated method stub
                 }
+
                 @Override
                 public void onComplete(final Object response) {
                     Message msg = new Message();
@@ -322,7 +323,7 @@ public class loginActivity extends Activity {
 
         @Override
         public void onComplete(Object response) {
-            reponsestr = response+"";
+            reponsestr = response + "";
             doComplete((JSONObject) response);
         }
 
@@ -363,19 +364,19 @@ public class loginActivity extends Activity {
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
 
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("status")+"";
+                    String statusstr = map.get("status") + "";
 
                     if (!"1".equals(statusstr)) {
                         CustomToast.makeText(getApplicationContext(), "用户名或密码错误,请重试", Toast.LENGTH_LONG).show();
                     } else {
                         String unamestr;
-                        String infostr = map.get("info")+"";
-                        String uidstr = map.get("uid")+"";
+                        String infostr = map.get("info") + "";
+                        String uidstr = map.get("uid") + "";
 
                         if (map.get("name") == null) {
                             unamestr = "";
                         } else {
-                            unamestr = map.get("name")+"";
+                            unamestr = map.get("name") + "";
                         }
                         /** 向SharedPreferemces中存储数据 */
 
@@ -435,8 +436,8 @@ public class loginActivity extends Activity {
                 result = "[" + result + "]";
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("status")+"";
-                    String datastr = map.get("data")+"";
+                    String statusstr = map.get("status") + "";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
                     // 0，未绑定
@@ -444,7 +445,7 @@ public class loginActivity extends Activity {
                         //注册的时候一下参数都需要
                         new SendInfoTaskForNickName()
                                 .execute(new TaskParams(
-                                        Constants.Url+"?app=index&mod=Index&act=AppdoOtherStep",
+                                        Constants.Url + "?app=index&mod=Index&act=AppdoOtherStep",
                                         new String[]{"email", openidstr.substring(0, 9) + "@qq.com"},
                                         new String[]{"password", openidstr.substring(0, 9)},
                                         new String[]{"uname", nicknamestr},
@@ -454,7 +455,7 @@ public class loginActivity extends Activity {
                         // 已经绑定
                     } else {
                         for (Map<String, Object> datastrmap : datastrlists) {
-                            String midstr = datastrmap.get("mid")+"";
+                            String midstr = datastrmap.get("mid") + "";
                             // 密码未修改
                             Constants.isDefault = false;
                             /** 向SharedPreferemces中存储数据 */
@@ -515,8 +516,8 @@ public class loginActivity extends Activity {
                 for (Map<String, Object> map : lists) {
                     // 判断是否登录成功 1代表成功，其他代表失败
 
-                    String statusstr = map.get("status")+"";
-                    String datastr = map.get("data")+"";
+                    String statusstr = map.get("status") + "";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
 
@@ -535,7 +536,7 @@ public class loginActivity extends Activity {
                     } else {
                         for (Map<String, Object> datastrmap : datastrlists) {
 
-                            String midstr = datastrmap.get("mid")+"";
+                            String midstr = datastrmap.get("mid") + "";
 
                             /** 向SharedPreferemces中存储数据 */
                             // 获得编辑器

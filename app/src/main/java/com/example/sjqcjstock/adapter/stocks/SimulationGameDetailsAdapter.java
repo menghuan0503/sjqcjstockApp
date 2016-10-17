@@ -68,7 +68,7 @@ public class SimulationGameDetailsAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.ranking.setText(position+1+"");
+        holder.ranking.setText(position + 1 + "");
         holder.name.setText(listData.get(position).getName());
         // 没写完
 

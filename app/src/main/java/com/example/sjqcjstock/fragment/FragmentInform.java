@@ -70,7 +70,7 @@ public class FragmentInform extends Fragment {
         if (!hidden) {
             geneItems();
         } else {
-            if(appNewsList!=null && appNewsList.size()>0){
+            if (appNewsList != null && appNewsList.size() > 0) {
                 // 做缓存
                 mCache.put("AppNewsx", Utils.getListMapStr(appNewsList));
             }
@@ -188,7 +188,7 @@ public class FragmentInform extends Fragment {
 
     private void geneItems() {
         new SendInfoTaskloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=Profile&act=AppNewsZx&p="
+                Constants.Url + "?app=public&mod=Profile&act=AppNewsZx&p="
                         + String.valueOf(current)
         ));
     }

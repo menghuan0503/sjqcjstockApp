@@ -23,7 +23,6 @@ import com.example.sjqcjstock.view.stocks.MACandleStickChart;
 import com.example.sjqcjstock.view.stocks.StickChart;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -67,9 +66,9 @@ public class FragmentMonthMap extends Fragment {
     // 滑动后的结束点
     private int offsetEnd = 0;
     // 当前的最新数据
-    private String strKmap ="";
+    private String strKmap = "";
 
-    public FragmentMonthMap(String code,String strKmap) {
+    public FragmentMonthMap(String code, String strKmap) {
         this.code = code;
         this.strKmap = strKmap;
     }
@@ -292,7 +291,7 @@ public class FragmentMonthMap extends Fragment {
             volAll.add(new StickEntity(volume, type, time));
         }
 
-        if (!"".equals(strKmap)){
+        if (!"".equals(strKmap)) {
             strS = strKmap.split("\\|");
             if (Utils.isTimeOne(strS[6])) {
                 valueK = Float.valueOf(strS[1]);
@@ -445,7 +444,7 @@ public class FragmentMonthMap extends Fragment {
         @Override
         public boolean onTouch(View view, MotionEvent event) {
             // 如果不满初始值就不能滑动
-            if (ohlcAll.size() < maxSticksNum){
+            if (ohlcAll.size() < maxSticksNum) {
                 return false;
             }
             if (event.getY() > 0

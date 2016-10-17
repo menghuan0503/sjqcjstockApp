@@ -89,41 +89,41 @@ public class IwillselectstockActivity extends Activity {
             if (Utils.isFastDoubleClick()) {
                 return;
             }
-            String one = onecode1.getText()+"";
-            String two = twocode1.getText()+"";
-            String one_voteStr = one_vote1.getText()+"";
-            String two_voteStr = two_vote1.getText()+"";
-            if("".equals(one)){
+            String one = onecode1.getText() + "";
+            String two = twocode1.getText() + "";
+            String one_voteStr = one_vote1.getText() + "";
+            String two_voteStr = two_vote1.getText() + "";
+            if ("".equals(one)) {
                 CustomToast.makeText(getApplicationContext(), "请输入第一只股票代码",
                         Toast.LENGTH_LONG).show();
                 onecode1.requestFocus();
                 return;
             }
-            if(one.length()!=6){
+            if (one.length() != 6) {
                 CustomToast.makeText(getApplicationContext(), "输入的第一只股票代码有误",
                         Toast.LENGTH_LONG).show();
                 onecode1.requestFocus();
                 return;
             }
-            if("".equals(one_voteStr)){
+            if ("".equals(one_voteStr)) {
                 CustomToast.makeText(getApplicationContext(), "请输入第一只选股理由",
                         Toast.LENGTH_LONG).show();
                 one_vote1.requestFocus();
                 return;
             }
-            if("".equals(two)){
+            if ("".equals(two)) {
                 CustomToast.makeText(getApplicationContext(), "请输入第二只股票代码",
                         Toast.LENGTH_LONG).show();
                 twocode1.requestFocus();
                 return;
             }
-            if(two.length()!=6){
+            if (two.length() != 6) {
                 CustomToast.makeText(getApplicationContext(), "输入的第二只股票代码有误",
                         Toast.LENGTH_LONG).show();
                 twocode1.requestFocus();
                 return;
             }
-            if("".equals(two_voteStr)){
+            if ("".equals(two_voteStr)) {
                 CustomToast.makeText(getApplicationContext(), "请输入第二只选股理由",
                         Toast.LENGTH_LONG).show();
                 two_vote1.requestFocus();
@@ -132,7 +132,7 @@ public class IwillselectstockActivity extends Activity {
             dialog.show();
             new SendInfoTask()
                     .execute(new TaskParams(
-                            Constants.Url+"?app=public&mod=AppFeedList&act=Appaddbattol",
+                            Constants.Url + "?app=public&mod=AppFeedList&act=Appaddbattol",
                             new String[]{"mid", Constants.staticmyuidstr},
                             new String[]{"login_password", Constants.staticpasswordstr},
                             new String[]{"tokey", Constants.statictokeystr},
@@ -163,13 +163,13 @@ public class IwillselectstockActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
                 if ("1".equals(statusstr)) {
                     if (map.get("body") != null) {
-                        String bodystr = map.get("body")+"";
+                        String bodystr = map.get("body") + "";
                         new SendInfoTaskaddlongweibo()
                                 .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed",
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed",
                                         new String[]{"mid", Constants.staticmyuidstr},
                                         new String[]{"login_password", Constants.staticpasswordstr},
                                         new String[]{"tokey", Constants.statictokeystr},
@@ -180,11 +180,11 @@ public class IwillselectstockActivity extends Activity {
                                 ));
                     }
                 } else {
-                    if(map.get("info")==null){
+                    if (map.get("info") == null) {
                         CustomToast.makeText(getApplicationContext(), "参赛失败",
                                 Toast.LENGTH_LONG).show();
-                    }else{
-                        String infostr = map.get("info")+"";
+                    } else {
+                        String infostr = map.get("info") + "";
                         CustomToast.makeText(getApplicationContext(), infostr,
                                 Toast.LENGTH_LONG).show();
                     }
@@ -213,7 +213,7 @@ public class IwillselectstockActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "参赛成功",
                             Toast.LENGTH_LONG).show();

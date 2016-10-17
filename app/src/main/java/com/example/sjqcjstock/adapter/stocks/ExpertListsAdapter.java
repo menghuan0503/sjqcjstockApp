@@ -67,7 +67,7 @@ public class ExpertListsAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(listData.get(position).getName());
-        holder.ranking.setText(position+1+"");
+        holder.ranking.setText(position + 1 + "");
         // 没写完
 
         return convertView;

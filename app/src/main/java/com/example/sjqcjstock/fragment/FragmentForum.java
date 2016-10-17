@@ -53,7 +53,7 @@ public class FragmentForum extends Fragment implements ViewPager.OnPageChangeLis
     private FragmentAllWeibo allWeibo;
     private FragmentRewardWeibo rewardWeibo;
     // 判断哪个显示true为全部文章显示
-    private boolean isShow= true;
+    private boolean isShow = true;
     // 是否是第一次打开这个页面
     private boolean isFisrt = true;
 
@@ -65,17 +65,18 @@ public class FragmentForum extends Fragment implements ViewPager.OnPageChangeLis
         initLine(view);
         return view;
     }
+
     @Override
     public void onStart() {
         super.onStart();
         //是否刷新股吧列表。0为刷新，1为不刷新
-        if(!isFisrt){
+        if (!isFisrt) {
             if ("0".equals(Constants.isreferforumlist)) {
                 // 打赏和全部都刷新
-                if(rewardWeibo!=null){
+                if (rewardWeibo != null) {
                     rewardWeibo.onHiddenChanged(false);
                 }
-                if(allWeibo!=null){
+                if (allWeibo != null) {
                     allWeibo.onHiddenChanged(false);
                 }
                 Constants.isreferforumlist = "1";
@@ -103,6 +104,7 @@ public class FragmentForum extends Fragment implements ViewPager.OnPageChangeLis
         mViewPager.setOffscreenPageLimit(1);
         mDatas = new ArrayList<Fragment>();
     }
+
     /**
      * 初始化fragment
      */
@@ -225,20 +227,20 @@ public class FragmentForum extends Fragment implements ViewPager.OnPageChangeLis
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            if(isShow){
-                if(allWeibo!=null){
+            if (isShow) {
+                if (allWeibo != null) {
                     allWeibo.onHiddenChanged(hidden);
                 }
-            }else{
-                if(rewardWeibo!=null){
+            } else {
+                if (rewardWeibo != null) {
                     rewardWeibo.onHiddenChanged(hidden);
                 }
             }
-        }else{
-            if(rewardWeibo!=null){
+        } else {
+            if (rewardWeibo != null) {
                 rewardWeibo.onHiddenChanged(hidden);
             }
-            if(allWeibo!=null){
+            if (allWeibo != null) {
                 allWeibo.onHiddenChanged(hidden);
             }
         }

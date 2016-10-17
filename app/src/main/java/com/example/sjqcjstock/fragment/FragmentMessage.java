@@ -1,22 +1,27 @@
-package com.example.sjqcjstock.Activity;
+package com.example.sjqcjstock.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.sjqcjstock.Activity.atmeActivity;
+import com.example.sjqcjstock.Activity.personalnewsActivity;
+import com.example.sjqcjstock.Activity.recivecommentActivity;
+import com.example.sjqcjstock.Activity.rewardMessageActivity;
+import com.example.sjqcjstock.Activity.sendedcommentActivity;
+import com.example.sjqcjstock.Activity.systemMessageListActivity;
 import com.example.sjqcjstock.R;
-import com.example.sjqcjstock.app.ExitApplication;
 import com.example.sjqcjstock.constant.Constants;
 
 /**
- * 消息的主体页面
+ * 消息页  以后不要的
  */
-public class ActivityMessage extends Activity implements OnClickListener {
+public class FragmentMessage extends Fragment implements View.OnClickListener {
     // 收到的评论
     private LinearLayout pickrecivecomment1;
     // 发出的评论
@@ -33,34 +38,37 @@ public class ActivityMessage extends Activity implements OnClickListener {
     private TextView messageCountTv1, messageCountTv2, messageCountTv3, messageCountTv4, messageCountTv5, messageCountTv6;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.fragment_message3);
-        ExitApplication.getInstance().addActivity(this);
-        initView();
+        Bundle bundle = getArguments();
+        if (null != bundle) {
+        }
     }
 
-    private void initView() {
-        findViewById(R.id.goback1).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_message3, null);
+
+        initView(view);
+        showMessage();
+        return view;
+    }
+
+    private void initView(View view) {
         // TODO Auto-generated method stub
-        pickrecivecomment1 = (LinearLayout) findViewById(R.id.pickrecivecomment1);
-        picksendcomment1 = (LinearLayout) findViewById(R.id.picksendcomment1);
-        pickpersonalnews1 = (LinearLayout) findViewById(R.id.pickpersonalnews1);
-        systemMessage = (LinearLayout) findViewById(R.id.system_message);
-        rewardMessage = (LinearLayout) findViewById(R.id.reward_message);
-        pickatmecomment1 = (LinearLayout) findViewById(R.id.pickatmecomment1);
-        messageCountTv1 = (TextView) findViewById(R.id.message1_count_tv);
-        messageCountTv2 = (TextView) findViewById(R.id.message2_count_tv);
-        messageCountTv3 = (TextView) findViewById(R.id.message3_count_tv);
-        messageCountTv4 = (TextView) findViewById(R.id.message4_count_tv);
-        messageCountTv5 = (TextView) findViewById(R.id.message5_count_tv);
-        messageCountTv6 = (TextView) findViewById(R.id.message6_count_tv);
+        pickrecivecomment1 = (LinearLayout) view.findViewById(R.id.pickrecivecomment1);
+        picksendcomment1 = (LinearLayout) view.findViewById(R.id.picksendcomment1);
+        pickpersonalnews1 = (LinearLayout) view.findViewById(R.id.pickpersonalnews1);
+        systemMessage = (LinearLayout) view.findViewById(R.id.system_message);
+        rewardMessage = (LinearLayout) view.findViewById(R.id.reward_message);
+        pickatmecomment1 = (LinearLayout) view.findViewById(R.id.pickatmecomment1);
+        messageCountTv1 = (TextView) view.findViewById(R.id.message1_count_tv);
+        messageCountTv2 = (TextView) view.findViewById(R.id.message2_count_tv);
+        messageCountTv3 = (TextView) view.findViewById(R.id.message3_count_tv);
+        messageCountTv4 = (TextView) view.findViewById(R.id.message4_count_tv);
+        messageCountTv5 = (TextView) view.findViewById(R.id.message5_count_tv);
+        messageCountTv6 = (TextView) view.findViewById(R.id.message6_count_tv);
         // 绑定点击事件
         pickrecivecomment1.setOnClickListener(this);
         picksendcomment1.setOnClickListener(this);
@@ -71,8 +79,13 @@ public class ActivityMessage extends Activity implements OnClickListener {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
+        showMessage();
+    }
+
+    // 显示消息条数的方法
+    public void showMessage() {
         if (Constants.unreadCountInfo != null && Constants.unreadCountInfo.getStatus().equals("1")) {
             int comment = Constants.unreadCountInfo.getData().getUnread_comment();
             String commentStr = comment + "";
@@ -149,34 +162,45 @@ public class ActivityMessage extends Activity implements OnClickListener {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.pickatmecomment1:
-                intent = new Intent(this, atmeActivity.class);
-                Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_atme());
-                Constants.unreadCountInfo.getData().setUnread_atme(0);
+                intent = new Intent(getActivity(), atmeActivity.class);
+                if (Constants.unreadCountInfo != null) {
+                    Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_atme());
+                    Constants.unreadCountInfo.getData().setUnread_atme(0);
+                }
                 break;
             case R.id.pickpersonalnews1:
-                intent = new Intent(this, personalnewsActivity.class);
-                Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_message());
-                Constants.unreadCountInfo.getData().setUnread_message(0);
+                intent = new Intent(getActivity(), personalnewsActivity.class);
+                if (Constants.unreadCountInfo != null) {
+                    Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_message());
+                    Constants.unreadCountInfo.getData().setUnread_message(0);
+                }
                 break;
             case R.id.pickrecivecomment1:
                 // 收到的评论
-                intent = new Intent(this, recivecommentActivity.class);
-                Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_comment());
-                Constants.unreadCountInfo.getData().setUnread_comment(0);
+                intent = new Intent(getActivity(), recivecommentActivity.class);
+
+                if (Constants.unreadCountInfo != null) {
+                    Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getUnread_comment());
+                    Constants.unreadCountInfo.getData().setUnread_comment(0);
+                }
                 break;
             case R.id.picksendcomment1:
                 //  发出的评论
-                intent = new Intent(this, sendedcommentActivity.class);
+                intent = new Intent(getActivity(), sendedcommentActivity.class);
                 break;
             case R.id.reward_message:
-                intent = new Intent(this, rewardMessageActivity.class);
-                Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Integer.valueOf(Constants.unreadCountInfo.getData().getUnread_notify()));
-                Constants.unreadCountInfo.getData().setUnread_notify("0");
+                intent = new Intent(getActivity(), rewardMessageActivity.class);
+                if (Constants.unreadCountInfo != null) {
+                    Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Integer.valueOf(Constants.unreadCountInfo.getData().getUnread_notify()));
+                    Constants.unreadCountInfo.getData().setUnread_notify("0");
+                }
                 break;
             case R.id.system_message:
-                intent = new Intent(this, systemMessageListActivity.class);
-                Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getSys_message());
-                Constants.unreadCountInfo.getData().setSys_message(0);
+                intent = new Intent(getActivity(), systemMessageListActivity.class);
+                if (Constants.unreadCountInfo != null) {
+                    Constants.unreadCountInfo.getData().setUnread_total(Constants.unreadCountInfo.getData().getUnread_total() - Constants.unreadCountInfo.getData().getSys_message());
+                    Constants.unreadCountInfo.getData().setSys_message(0);
+                }
                 break;
         }
         if (intent != null) {
@@ -184,3 +208,4 @@ public class ActivityMessage extends Activity implements OnClickListener {
         }
     }
 }
+

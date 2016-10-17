@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * 牛人列表页面
  */
-public class supermanlistActivity extends BaseActivity{
+public class supermanlistActivity extends BaseActivity {
     private LinearLayout goback1;
     // 定义List集合容器
     private supermanActivityAdapter supermanAdapter;
@@ -94,7 +94,7 @@ public class supermanlistActivity extends BaseActivity{
             }
 
         });
-        ptrl = ((PullToRefreshLayout)findViewById(
+        ptrl = ((PullToRefreshLayout) findViewById(
                 R.id.refresh_view));
         // 添加上下拉刷新事件
         ptrl.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
@@ -106,6 +106,7 @@ public class supermanlistActivity extends BaseActivity{
                 current = 1;
                 geneItems();
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -148,7 +149,7 @@ public class supermanlistActivity extends BaseActivity{
                         break;
                     }
 
-                    String statusstr = map.get("data")+"";
+                    String statusstr = map.get("data") + "";
 
                     List<Map<String, Object>> supermanlists = JsonTools
                             .listKeyMaps(statusstr);
@@ -162,25 +163,25 @@ public class supermanlistActivity extends BaseActivity{
                         if (supermanmap.get("uid") == null) {
                             uidstr = "";
                         } else {
-                            uidstr = supermanmap.get("uid")+"";
+                            uidstr = supermanmap.get("uid") + "";
                         }
                         if (supermanmap.get("uname") == null) {
                             unamestr = "该用户已不存在";
                         } else {
-                            unamestr = supermanmap.get("uname")+"";
+                            unamestr = supermanmap.get("uname") + "";
                         }
                         if (supermanmap.get("save_path") == null) {
                             save_pathstr = "";
                         } else {
                             save_pathstr = supermanmap.get("save_path")
-                                    +"";
+                                    + "";
                         }
 
                         String followstr;
                         if (supermanmap.get("follow") == null) {
                             followstr = "";
                         } else {
-                            followstr = supermanmap.get("follow")+"";
+                            followstr = supermanmap.get("follow") + "";
                         }
 
                         List<Map<String, Object>> followingstrlists = JsonTools
@@ -190,18 +191,18 @@ public class supermanlistActivity extends BaseActivity{
                         String followerstr = "";
                         for (Map<String, Object> followingstrmap : followingstrlists) {
                             followingstr = followingstrmap.get("following")
-                                    +"";
+                                    + "";
                             followerstr = followingstrmap.get("follower")
-                                    +"";
+                                    + "";
 
 
                         }
 
                         if (supermanmap.get("intro") != null) {
-                            introstr = supermanmap.get("intro")+"";
+                            introstr = supermanmap.get("intro") + "";
                         }
                         HashMap<String, String> map2 = new HashMap<String, String>();
-                        String authentication = supermanmap.get("authentication")+"";
+                        String authentication = supermanmap.get("authentication") + "";
                         map2.put("isVip", authentication);
                         map2.put("username", unamestr);
                         map2.put("uid", uidstr);
@@ -224,7 +225,7 @@ public class supermanlistActivity extends BaseActivity{
 
     private void geneItems() {
         new SendInfoTaskloadmore().execute(new TaskParams(
-                        Constants.Url+"?app=index&mod=Index&act=APPUserSort",
+                        Constants.Url + "?app=index&mod=Index&act=APPUserSort",
                         // new String[] { "position", "2"},
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"p", String.valueOf(current)}

@@ -70,14 +70,10 @@ public class ImageControlView extends ImageView {
     /**
      * 初始化图片
      *
-     * @param bitmap
-     *            要显示的图片
-     * @param contentW
-     *            内容区域宽度
-     * @param contentH
-     *            内容区域高度
-     * @param topHeight
-     *            状态栏高度和标题栏高度之和
+     * @param bitmap    要显示的图片
+     * @param contentW  内容区域宽度
+     * @param contentH  内容区域高度
+     * @param topHeight 状态栏高度和标题栏高度之和
      */
     public void imageInit(Bitmap bitmap, int contentW, int contentH,
                           int topHeight, ICustomMethod iCustomMethod) {
@@ -204,10 +200,8 @@ public class ImageControlView extends ImageView {
     /**
      * 图片放大缩小
      *
-     * @param x
-     *            点击点X坐标
-     * @param y
-     *            点击点Y坐标
+     * @param x 点击点X坐标
+     * @param y 点击点Y坐标
      */
     private void changeSize(float x, float y) {
         if (isBig) {
@@ -269,8 +263,7 @@ public class ImageControlView extends ImageView {
     /**
      * 获取变换矩阵中X轴偏移量和Y轴偏移量
      *
-     * @param matrix
-     *            变换矩阵
+     * @param matrix 变换矩阵
      * @return
      */
     private float[] getTranslateXY(Matrix matrix) {

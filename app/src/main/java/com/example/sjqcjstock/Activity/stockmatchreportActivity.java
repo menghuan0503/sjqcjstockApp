@@ -142,22 +142,22 @@ public class stockmatchreportActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists) {
                     if (keysvaluemapstr == null) {
-                        keysvaluemapstr = map.get("data")+"";
+                        keysvaluemapstr = map.get("data") + "";
                         keysvaluemaplists = JsonTools.listKeyMaps("[" + keysvaluemapstr + "]");
                     }
                     for (Map<String, Object> keysvaluemap : keysvaluemaplists) {
                         if (keysvaluemapstr2 == null) {
-                            keysvaluemapstr2 = keysvaluemap.get("data")+"";
+                            keysvaluemapstr2 = keysvaluemap.get("data") + "";
                             keysvaluemaplists2 = JsonTools.listKeyMaps(keysvaluemapstr2);
                         }
                         for (Map<String, Object> keysvaluemap2 : keysvaluemaplists2) {
                             //标题
-                            String course_titlestr = keysvaluemap2.get("course_title")+"";
+                            String course_titlestr = keysvaluemap2.get("course_title") + "";
 //                            //链接地址
-                            String course_urlstr = keysvaluemap2.get("course_url")+"";
-                            String weibo_id = course_urlstr.substring(course_urlstr.lastIndexOf("/")+1);
-                                    //创建时间
-                            String create_timestr = keysvaluemap2.get("create_time")+"";
+                            String course_urlstr = keysvaluemap2.get("course_url") + "";
+                            String weibo_id = course_urlstr.substring(course_urlstr.lastIndexOf("/") + 1);
+                            //创建时间
+                            String create_timestr = keysvaluemap2.get("create_time") + "";
 //                            //是否显示
 //                            String statusstr = keysvaluemap2.get("status")+"";
                             create_timestr = CalendarUtil.formatDateTime(Utils.getStringtoDate(create_timestr));
@@ -177,7 +177,7 @@ public class stockmatchreportActivity extends Activity {
     }
 
     private void geneItems() {
-        new SendInfoTasktodayuprankingloadmore().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppNewsBallot&p=" + String.valueOf(current)
+        new SendInfoTasktodayuprankingloadmore().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppNewsBallot&p=" + String.valueOf(current)
                 )
         );
     }

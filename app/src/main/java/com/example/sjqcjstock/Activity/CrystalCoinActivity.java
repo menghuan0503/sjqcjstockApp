@@ -23,7 +23,7 @@ import org.json.JSONObject;
  * 水晶币页面
  * Created by Administrator on 2016/6/24.
  */
-public class CrystalCoinActivity extends Activity{
+public class CrystalCoinActivity extends Activity {
 
     // 水晶币个数
     private TextView shuijinbicount1;
@@ -62,14 +62,14 @@ public class CrystalCoinActivity extends Activity{
     /**
      * 水晶币的单击事件
      */
-    public void OnClickCrystalCoin(View view){
+    public void OnClickCrystalCoin(View view) {
         startActivity(new Intent(CrystalCoinActivity.this, CrystalBwaterActivity.class));
     }
 
     /**
      * 充值的单击事件
      */
-    public void OnClickRecharge(View view){
+    public void OnClickRecharge(View view) {
         //充值的单机事件
         startActivity(new Intent(CrystalCoinActivity.this, RechargeActivity.class));
     }

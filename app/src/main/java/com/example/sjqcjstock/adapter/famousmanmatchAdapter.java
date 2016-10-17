@@ -131,8 +131,8 @@ public class famousmanmatchAdapter extends BaseAdapter {
         holder.weekscore1.setText((CharSequence) listData.get(position).get("list_price"));
         holder.stockname1.setText((String) listData.get(position).get("shares_name"));
         holder.shares2_name.setText((String) listData.get(position).get("shares2_name"));
-        holder.stockprice1.setText(Utils.getNumberFormat(listData.get(position).get("price")+""));
-        holder.stockprice2.setText(Utils.getNumberFormat(listData.get(position).get("price2")+""));
+        holder.stockprice1.setText(Utils.getNumberFormat(listData.get(position).get("price") + ""));
+        holder.stockprice2.setText(Utils.getNumberFormat(listData.get(position).get("price2") + ""));
 
         ViewUtil.setViewColor(holder.uprange1, listData.get(position).get("integration3").toString());
         ViewUtil.setViewColor(holder.uprange2, listData.get(position).get("integration4").toString());
@@ -141,10 +141,10 @@ public class famousmanmatchAdapter extends BaseAdapter {
     }
 
 
-        static class ViewHolder {
-            ImageView image;
-            TextView famousmanname1;
-            TextView weekscore1;
+    static class ViewHolder {
+        ImageView image;
+        TextView famousmanname1;
+        TextView weekscore1;
         TextView stockname1;
         TextView shares2_name;
         TextView stockprice1;

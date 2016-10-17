@@ -70,7 +70,7 @@ public class RewardListAcitivity extends Activity {
         rewardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String uId = ((TextView) view.findViewById(R.id.user_id_tv)).getText()+"";
+                String uId = ((TextView) view.findViewById(R.id.user_id_tv)).getText() + "";
                 // 跳转到个人中心页面
                 Intent intent = new Intent(RewardListAcitivity.this, UserDetailNewActivity.class);
                 intent.putExtra("uid", uId);

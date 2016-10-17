@@ -1,15 +1,12 @@
 package com.example.sjqcjstock.adapter.stocks;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.sjqcjstock.Activity.stocks.BusinessActivity;
-import com.example.sjqcjstock.Activity.stocks.TransactionDetailActivity;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.entity.stocks.StocksInfo;
 
@@ -29,9 +26,10 @@ public class StockAdapter extends BaseAdapter {
         super();
         this.context = context;
     }
+
     public void setlistData(ArrayList<StocksInfo> listData) {
         if (listData != null) {
-            this.listData = (List<StocksInfo>)listData.clone();
+            this.listData = (List<StocksInfo>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -64,7 +62,7 @@ public class StockAdapter extends BaseAdapter {
             holder.rose = (TextView) convertView.findViewById(R.id.rose_tv);
             holder.number = (TextView) convertView.findViewById(R.id.number_tv);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(listData.get(position).getName());

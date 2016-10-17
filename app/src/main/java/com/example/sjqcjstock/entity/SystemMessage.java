@@ -6,7 +6,7 @@ import java.util.List;
  * 系统消息的实体类
  * Created by Administrator on 2016/5/4.
  */
-public class SystemMessage {
+public class    SystemMessage {
     private String status;
     private String msg;
     private List<datas> data;

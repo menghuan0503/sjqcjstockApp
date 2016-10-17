@@ -14,43 +14,43 @@ import java.util.HashMap;
 
 public class famousmanmatchActivity extends Activity {
 
-	private ImageView goback1;
+    private ImageView goback1;
 
-	// 名人组列表页面
+    // 名人组列表页面
 
-	// famousmanmatchAdapter famousmanmatchAdapter;
+    // famousmanmatchAdapter famousmanmatchAdapter;
 
-	// ListView listView;
+    // ListView listView;
 
-	// 定义List集合容器
+    // 定义List集合容器
 
-	famousmanmatchAdapter famousmanmatchAdapter;
+    famousmanmatchAdapter famousmanmatchAdapter;
 
-	// hotstockAdapter hotstockAdapter;
+    // hotstockAdapter hotstockAdapter;
 
-	essencematchAdapter essencematchAdapter;
+    essencematchAdapter essencematchAdapter;
 
-	// 定义于数据库同步的字段集合
-	// private String[] name;
-	ArrayList<HashMap<String, Object>> listfamousmanmatchData;
-	// ArrayList<HashMap<String,Object>> listhotstockData;
-	ArrayList<HashMap<String, Object>> listessencematchData;
+    // 定义于数据库同步的字段集合
+    // private String[] name;
+    ArrayList<HashMap<String, Object>> listfamousmanmatchData;
+    // ArrayList<HashMap<String,Object>> listhotstockData;
+    ArrayList<HashMap<String, Object>> listessencematchData;
 
-	// 获取我是否已关注用户的标识
+    // 获取我是否已关注用户的标识
 
-	// 名人集合
-	ListView famousmanlistview;
-	// 精英集合
-	ListView essencelistview;
+    // 名人集合
+    ListView famousmanlistview;
+    // 精英集合
+    ListView essencelistview;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
 
-		// 将Activity反复链表
-		ExitApplication.getInstance().addActivity(this);
+        // 将Activity反复链表
+        ExitApplication.getInstance().addActivity(this);
 
-	}
+    }
 
 }

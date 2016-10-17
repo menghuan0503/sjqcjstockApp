@@ -22,7 +22,7 @@ import com.example.sjqcjstock.netutil.ImageUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class totalrankingnewActivity extends FragmentActivity  implements ViewPager.OnPageChangeListener {
+public class totalrankingnewActivity extends FragmentActivity implements ViewPager.OnPageChangeListener {
 
     private LinearLayout goback1;
     // 两个个滑动页面
@@ -37,7 +37,9 @@ public class totalrankingnewActivity extends FragmentActivity  implements ViewPa
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
-    /** 当前视图宽度 **/
+    /**
+     * 当前视图宽度
+     **/
     private Integer viewPagerW = 0;
     private int mScreen1_4;
     private ImageView img_line;
@@ -90,6 +92,7 @@ public class totalrankingnewActivity extends FragmentActivity  implements ViewPa
             public int getCount() {
                 return mDatas == null ? 0 : mDatas.size();
             }
+
             @Override
             public Fragment getItem(int position) {
                 return mDatas.get(position);
@@ -105,7 +108,7 @@ public class totalrankingnewActivity extends FragmentActivity  implements ViewPa
      */
     private void initLine() {
         img_line = (ImageView) findViewById(R.id.img_line);
-        mScreen1_4 = ImageUtil.getScreenWidth(this)/ 2;
+        mScreen1_4 = ImageUtil.getScreenWidth(this) / 2;
         ViewGroup.LayoutParams lp = img_line.getLayoutParams();
         lp.width = mScreen1_4;
         img_line.setLayoutParams(lp);
@@ -143,7 +146,6 @@ public class totalrankingnewActivity extends FragmentActivity  implements ViewPa
      * 点击文字进行切换
      *
      * @author wuxl
-     *
      */
     public class MyOnClickListenser implements View.OnClickListener {
 

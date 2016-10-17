@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import com.example.sjqcjstock.constant.ACache;
 import com.example.sjqcjstock.constant.Constants;
 import com.example.sjqcjstock.netutil.CalendarUtil;
 import com.example.sjqcjstock.netutil.HttpUtil;
-import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.JsonTools;
 import com.example.sjqcjstock.netutil.TaskParams;
 import com.example.sjqcjstock.netutil.Utils;
@@ -69,8 +67,8 @@ public class FragmentRewardWeibo extends Fragment {
         if (!hidden) {
             // 自动下拉刷新
             ptrl.autoRefresh();
-        }else{
-            if(subscribeListS != null && subscribeListS.size()>0){
+        } else {
+            if (subscribeListS != null && subscribeListS.size() > 0) {
                 // 做缓存
                 mCache.put("SubscribeListx", Utils.getListMapStr(subscribeListS));
             }
@@ -156,6 +154,7 @@ public class FragmentRewardWeibo extends Fragment {
             //调用共通方法获取网络数据
             return HttpUtil.doInBackground(params);
         }
+
         @Override
         protected void onPostExecute(String result) {
             String digg_countstr = "";
@@ -164,14 +163,9 @@ public class FragmentRewardWeibo extends Fragment {
             String isdigg = "0";
             String feed_idstr = "";
             String contentstr = "";
-            String source_feed_idstr = "";
-            String source_user_infostr = "";
-            String source_contentstr = "";
-            String sourceuidstr = "";
-            String sourceunamestr = "";
             // 打赏的水晶币
             String reward = "";
-            // 是否是打赏文章
+            // 是否是付费文章
             Object state = null;
             // 概要
             String introduction = "";
@@ -233,40 +227,6 @@ public class FragmentRewardWeibo extends Fragment {
                         String feed_datastr =
                                 datastrmap.get("feed_data").toString();
 
-                        // 正则表达式处理 去Html代码
-                        // String regex ="\\<[^\\>]+\\>";
-                        // contentstr = contentstr.replaceAll (regex, "");
-                        // contentstr=contentstr.replace("\\", "\\\\");
-                        // contentstr=contentstr.replace("\t", "\\t");
-                        // contentstr=contentstr.replace("\n", "\\n");
-                        //
-                        //
-
-                        // contentstr.replace("<br/>","").replace("<feed-titlestyle='display:none'>","<font color=\"#89B1E0\" >【")
-                        // .replace("</feed-title>", "】</font><Br/>").replaceAll
-                        // (regex, "").replace("\n\n\n", "")
-                        // .replace("\t", "").replace("\n", "");
-
-                        // contentstr.replace("<br/>","").replace("<feed-titlestyle='display:none'>","fontsing1")
-                        // .replace("</feed-title>", "fontsing2").replaceAll
-                        // (regex, "").replace("fontsing1",
-                        // "<font color=\"#89B1E0\" >【").
-                        // replace("\n\n\n", "").replace("fontsing2",
-                        // "】</font><Br/>")
-                        // .replace("\t", "").replace("\n", "");
-
-                        // contentstr=contentstr.replace("<feed-titlestyle='display:none'>","<font color=\"#89B1E0\" >【");
-                        // contentstr=contentstr.replace("</feed-title>",
-                        // "】</font><Br/>");
-
-                        // contentstr=contentstr.replace("<feed-titlestyle='display:none'>","fontsing1");
-                        // contentstr=contentstr.replace("</feed-title>",
-                        // "fontsing2");
-
-                        // contentstr=" <html><head><style type=\"text/css\">a{TEXT-DECORATION:none}</style></head><body>"+contentstr;
-
-                        // contentstr=contentstr.replace("<feed-titlestyle='display:none'>","<font color=\"#89B1E0\" >【");
-                        // contentstr=contentstr.replace("</feed-title>","】</font><Br/>");
 
                         contentstr = contentstr.replace(">【", "><font color=\"#4471BC\" >【");
                         contentstr = contentstr.replace("】<", "】</font><Br/><");
@@ -292,45 +252,6 @@ public class FragmentRewardWeibo extends Fragment {
 
 
                         map2.put("type", typestr);
-                        // 这个条件里面的可以不要 在打赏文里不能出现转发文
-//                        if ("repost".equals(typestr)) {
-//                            contentstr = contentstr.substring(0, contentstr.indexOf("◆"));
-//                            String api_sourcestr = datastrmap.get("api_source").toString();
-//                            List<Map<String, Object>> api_sourcestrlists = JsonTools.listKeyMaps("[" + api_sourcestr + "]");
-//
-//                            for (Map<String, Object> api_sourcestrmap : api_sourcestrlists) {
-//
-//                                source_feed_idstr = api_sourcestrmap.get("feed_id").toString();
-//                                source_user_infostr = api_sourcestrmap.get("source_user_info").toString();
-//                                source_contentstr = api_sourcestrmap.get("source_content").toString();
-//                                String regex2 = "\\<[^\\>]+\\>";
-//                                source_contentstr = source_contentstr.replaceAll(regex2, "");
-//
-//                                source_contentstr = source_contentstr.replace("\t", "");
-//                                source_contentstr = source_contentstr.replace("\n", "");
-//
-//                                CharSequence charSequence = Html.fromHtml(source_contentstr, ImageUtil.getImageGetter(getResources()),null);
-//
-//                                map2.put("source_feed_idstr", source_feed_idstr);
-//
-//                                map2.put("source_contentstr", charSequence.toString());
-//                                // map2.put("source_titlestr", source_titlestr);
-//
-//                                List<Map<String, Object>> source_user_infostrlists = JsonTools.listKeyMaps("[" + source_user_infostr + "]");
-//                                for (Map<String, Object> source_user_infostrmap : source_user_infostrlists) {
-//
-//                                    // String ctimestr;
-//                                    sourceuidstr = source_user_infostrmap.get(
-//                                            "uid").toString();
-//                                    sourceunamestr = source_user_infostrmap.get("uname").toString();
-//                                    avatar_middlestr = source_user_infostrmap.get("avatar_middle").toString();
-//
-//                                    map2.put("sourceuidstr", sourceuidstr);
-//                                    map2.put("sourceuname", sourceunamestr);
-//                                    map2.put("sourceavatar_middlestr", avatar_middlestr);
-//                                }
-//                            }
-//                        }
 
                         String publish_timestr = datastrmap.get("publish_time").toString();
                         if (datastrmap.get("digg_count") == null) {
@@ -367,20 +288,13 @@ public class FragmentRewardWeibo extends Fragment {
                         if ("".equals(contentstr)) {
                             contentstr = "//";
                         }
-                        CharSequence charSequence = "";
 
-                        // 如果是打赏文章就有概要 显示内容为标题+概要
+                        // 如果是付费文章就有概要 显示内容为标题+概要
                         if (!"".equals(introduction)) {
-                            contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
-                        }
-                        try {
-                            charSequence = Html.fromHtml(contentstr, ImageUtil.getImageGetter(getResources()), null);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>摘要：" + introduction;
                         }
                         map2.put("feed_id", feed_idstr);
-                        map2.put("content", charSequence.toString());
+                        map2.put("content", contentstr);
                         map2.put("create", publish_timestr);
                         map2.put("digg_count", digg_countstr);
                         map2.put("comment_count", comment_countstr);
@@ -388,8 +302,8 @@ public class FragmentRewardWeibo extends Fragment {
                         map2.put("isdigg", isdigg);
                         // 保存水晶币到map
                         map2.put("reward", reward);
-                        if (state!=null) {
-                            // 保存是否是打赏文章
+                        if (state != null) {
+                            // 保存是否是付费文章
                             map2.put("state", state.toString());
                         }
                         // 保存概要

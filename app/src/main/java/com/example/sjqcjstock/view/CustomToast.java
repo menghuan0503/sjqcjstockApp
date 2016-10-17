@@ -17,7 +17,7 @@ import com.example.sjqcjstock.netutil.HttpUtil;
  * 重写Toast
  * Created by Administrator on 2016/5/17.
  */
-public class CustomToast extends Toast{
+public class CustomToast extends Toast {
     /**
      * Construct an empty Toast object.  You must call {@link #setView} before you
      * can call {@link #show}.
@@ -29,6 +29,7 @@ public class CustomToast extends Toast{
 
         super(context);
     }
+
     public static Toast makeText(Context context, String text, int duration) {
         Toast result = new Toast(context);
         //获取LayoutInflater对象
@@ -36,10 +37,10 @@ public class CustomToast extends Toast{
         //由layout文件创建一个View对象
         View layout = inflater.inflate(R.layout.custom_toast, null);
         TextView textView = (TextView) layout.findViewById(R.id.text0);
-        if ("".equals(text)){
-            if (HttpUtil.isNetworkAvailable(context)){
-                text=Constants.noData;
-            }else{
+        if ("".equals(text)) {
+            if (HttpUtil.isNetworkAvailable(context)) {
+                text = Constants.noData;
+            } else {
                 text = Constants.noNetwork;
             }
         }

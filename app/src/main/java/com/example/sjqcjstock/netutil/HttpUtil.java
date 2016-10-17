@@ -201,9 +201,9 @@ public class HttpUtil {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setConnectTimeout(6000);
-			conn.setReadTimeout(6000);
+            conn.setReadTimeout(6000);
             out = conn.getOutputStream();
-            Log.e("mh-con34n:-", "+" +conn.getRequestMethod());
+//            Log.e("mh-con34n:-", "+" + conn.getRequestMethod());
             String paramsstr = tp.getEncodeParams();
             out.write(paramsstr.getBytes());
             out.flush();
@@ -213,7 +213,7 @@ public class HttpUtil {
                 in = conn.getInputStream();
                 resstr = HttpUtil.changeInputStream2((in));
             }
-            if("".equals(resstr)){
+            if ("".equals(resstr)) {
                 resstr = null;
             }
             Log.e("mh-resstr:-", "+" + resstr);
@@ -225,7 +225,7 @@ public class HttpUtil {
 //            Log.e("网络关闭出错了！Exception", e.getMessage()+"");
             resstr = null;
             e.printStackTrace();
-        }  finally {
+        } finally {
             try {
                 if (out != null)
                     out.close();
@@ -249,8 +249,8 @@ public class HttpUtil {
         OutputStream out = null;
         InputStream in = null;
         String resstr = null;
-        Log.e("mh-URl:-", "+" + tp.getUrl());
-        Log.e("mh-Params:-", "+" + tp.getEncodeParams());
+//        Log.e("mh-URl:-", "+" + tp.getUrl());
+//        Log.e("mh-Params:-", "+" + tp.getEncodeParams());
         try {
             conn = (HttpURLConnection) new URL(tp.getUrl()).openConnection();
             // POST GET
@@ -263,17 +263,17 @@ public class HttpUtil {
                 in = conn.getInputStream();
                 resstr = HttpUtil.changeInputStream2((in));
             }
-            if("".equals(resstr)){
+            if ("".equals(resstr)) {
                 resstr = null;
             }
-            Log.e("mh-resstr:-", "+" + resstr);
+//            Log.e("mh-resstr:-", "+" + resstr);
         } catch (IOException e) {
             resstr = null;
             e.printStackTrace();
         } catch (Exception e) {
             resstr = null;
             e.printStackTrace();
-        }  finally {
+        } finally {
             try {
                 if (out != null)
                     out.close();
@@ -320,12 +320,13 @@ public class HttpUtil {
 
     /**
      * 微信支付调用网络的方法
+     *
      * @param url
      * @return
      */
     public static byte[] httpGet(final String url) {
         if (url == null || url.length() == 0) {
-            Log.e("wxzfmh", "httpGet, url is null");
+//            Log.e("wxzfmh", "httpGet, url is null");
             return null;
         }
 
@@ -335,14 +336,14 @@ public class HttpUtil {
         try {
             HttpResponse resp = httpClient.execute(httpGet);
             if (resp.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-                Log.e("wxzfmh", "httpGet fail, status code = " + resp.getStatusLine().getStatusCode());
+//                Log.e("wxzfmh", "httpGet fail, status code = " + resp.getStatusLine().getStatusCode());
                 return null;
             }
 
             return EntityUtils.toByteArray(resp.getEntity());
 
         } catch (Exception e) {
-            Log.e("wxzfmh", "httpGet exception, e = " + e.getMessage());
+//            Log.e("wxzfmh", "httpGet exception, e = " + e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -379,9 +380,9 @@ public class HttpUtil {
      */
     public static String getPhoneIp() {
         try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
                 NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                     InetAddress inetAddress = enumIpAddr.nextElement();
                     if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
                         // if (!inetAddress.isLoopbackAddress() && inetAddress
@@ -397,26 +398,26 @@ public class HttpUtil {
 
     /**
      * 获取网络股票信息数据
+     *
      * @return
      */
-    public static String getIntentData(String url){
+    public static String getIntentData(String url) {
         String strDta = "";
         try {
             URL uri = new URL(url);//注意，这里的URL地址必须为网络地址，
             URLConnection ucon = uri.openConnection();
             InputStream is = ucon.getInputStream();
             BufferedInputStream bis = new BufferedInputStream(is);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(bis,"GBK"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(bis, "GBK"));
             StringBuffer result = new StringBuffer();
             while (reader.ready()) {
-                result.append((char)reader.read());
+                result.append((char) reader.read());
             }
             strDta = result.toString();
-            Log.e("mhresult--- ",strDta);
+            Log.e("mhresult--- ", strDta);
             reader.close();
-        } catch(Exception e) {
-            Log.e("mh",e.toString());
-            Log.e("mh",e.getMessage());
+        } catch (Exception e) {
+            Log.e("mh", e.getMessage());
         }
         return strDta;
     }

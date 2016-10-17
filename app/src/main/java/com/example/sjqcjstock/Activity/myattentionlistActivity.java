@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * 我关注的用户的页面
  */
-public class myattentionlistActivity extends Activity{
+public class myattentionlistActivity extends Activity {
 
     private LinearLayout goback1;
     // 定义List集合容器
@@ -67,7 +67,7 @@ public class myattentionlistActivity extends Activity{
         // 获取intent数据
         Intent intent = getIntent();
         uidstr = intent.getStringExtra("uidstr");
-        if(uidstr==null || "".equals(uidstr.trim())){
+        if (uidstr == null || "".equals(uidstr.trim())) {
             uidstr = Constants.staticmyuidstr;
         }
         goback1 = (LinearLayout) findViewById(R.id.goback1);
@@ -109,6 +109,7 @@ public class myattentionlistActivity extends Activity{
                 // 加载请求数据
                 geneItems();
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -129,7 +130,7 @@ public class myattentionlistActivity extends Activity{
 
     private void geneItems() {
         new SendInfoTaskmyattentionloadmore().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppFollowing",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppFollowing",
                         new String[]{"mid", uidstr},
                         new String[]{"p", String.valueOf(current)}
                 )
@@ -163,39 +164,39 @@ public class myattentionlistActivity extends Activity{
                 // 解析json字符串获得List<Map<String,Object>>
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
-                    String datastr = map.get("data")+"";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
                         String followGroupListstr = datastrmap.get(
-                                "followGroupList")+"";
+                                "followGroupList") + "";
                         List<Map<String, Object>> followGroupListstrlists = JsonTools
                                 .listKeyMaps("[" + followGroupListstr + "]");
 
                         for (Map<String, Object> followGroupListstrmap : followGroupListstrlists) {
                             String data2str = followGroupListstrmap.get("data")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> data2strlists = JsonTools
                                     .listKeyMaps(data2str);
                             for (Map<String, Object> data2strmap : data2strlists) {
                                 String introstr;
 
                                 String uidstr = data2strmap.get("uid")
-                                        +"";
+                                        + "";
                                 String unamestr = data2strmap.get("uname")
-                                        +"";
+                                        + "";
                                 if (data2strmap.get("intro") == null) {
                                     introstr = "暂无简介";
                                 } else {
                                     introstr = data2strmap.get("intro")
-                                            +"";
+                                            + "";
                                 }
                                 String avatar_middlestr = data2strmap.get(
-                                        "avatar_middle")+"";
+                                        "avatar_middle") + "";
 
                                 HashMap<String, Object> map2 = new HashMap<String, Object>();
 
-                                String userGroup = data2strmap.get("user_group")+"";
+                                String userGroup = data2strmap.get("user_group") + "";
                                 map2.put("isVip", userGroup);
                                 map2.put("uid", uidstr);
                                 map2.put("uname", unamestr);

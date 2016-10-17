@@ -28,7 +28,7 @@ import com.example.sjqcjstock.view.PullToRefreshLayout;
  * 水晶币流动页面
  * Created by Administrator on 2016/5/6.
  */
-public class CrystalBwaterActivity extends Activity{
+public class CrystalBwaterActivity extends Activity {
 
     // 加载系统消息
     private ListView crystalBwaterListView;
@@ -73,7 +73,7 @@ public class CrystalBwaterActivity extends Activity{
         crystalBwaterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String userId = ((TextView) view.findViewById(R.id.bwater_id_tv)).getText()+"";
+                String userId = ((TextView) view.findViewById(R.id.bwater_id_tv)).getText() + "";
                 // 跳转到个人中心
                 Intent intent = new Intent(CrystalBwaterActivity.this, UserDetailNewActivity.class);
                 intent.putExtra("uid", userId);

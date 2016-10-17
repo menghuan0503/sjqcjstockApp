@@ -33,10 +33,12 @@ public class commonnoteAdapter extends BaseAdapter {
     private String isdigg;
     private Context context;
     private ArrayList<HashMap<String, String>> listData;
+
     public commonnoteAdapter(Context context) {
         super();
         this.context = context;
     }
+
     public void setlistData(ArrayList<HashMap<String, String>> listData) {
         if (listData != null) {
             this.listData = (ArrayList<HashMap<String, String>>) listData.clone();
@@ -120,6 +122,7 @@ public class commonnoteAdapter extends BaseAdapter {
                     "sourceuname"));
 
             CharSequence charSequence = Html.fromHtml(listData.get(position).get("source_contentstr"), ImageUtil.getImageGetter(context.getResources()), null);
+
             holder.repostweibocomment1.setText(charSequence);
 
             if (stateObj != null && !"0".equals(stateObj.toString())) {
@@ -274,7 +277,7 @@ public class commonnoteAdapter extends BaseAdapter {
                         return;
                     }
                     new SendInfoTaskpraise().execute(new TaskParams(
-                                    Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg", new String[]{
+                                    Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg", new String[]{
                                     "mid", Constants.staticmyuidstr},
                                     new String[]{"login_password",
                                             Constants.staticpasswordstr},
@@ -301,7 +304,7 @@ public class commonnoteAdapter extends BaseAdapter {
 
                     isdigg = "1";
                     listData.get(position).put("isdigg", isdigg);
-                     notifyDataSetChanged();
+                    notifyDataSetChanged();
 
                     // refer();
                     // listData.get(position).put("isdigg", isdigg);
@@ -313,7 +316,7 @@ public class commonnoteAdapter extends BaseAdapter {
                         return;
                     }
                     new SendInfoTaskcancelpraise().execute(new TaskParams(
-                            Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg", new String[]{
+                            Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg", new String[]{
                             "mid", Constants.staticmyuidstr},
                             new String[]{"login_password",
                                     Constants.staticpasswordstr},
@@ -355,13 +358,13 @@ public class commonnoteAdapter extends BaseAdapter {
                     Intent intent = new Intent(context.getApplicationContext(), transpondweiboActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     if (listData.get(position).get("source_contentstr") == null) {
-                        intent.putExtra("feed_id",listData.get(position).get("feed_id"));
-                        intent.putExtra("feeduid",listData.get(position).get("uid"));
+                        intent.putExtra("feed_id", listData.get(position).get("feed_id"));
+                        intent.putExtra("feeduid", listData.get(position).get("uid"));
                     } else {
                         intent.putExtra("feed_id", listData.get(position).get("feed_id"));
                         intent.putExtra("feeduid", listData.get(position).get("uid"));
                         intent.putExtra("content", (CharSequence) listData.get(position).get("content"));
-                        intent.putExtra("uname",  listData.get(position).get("uname"));
+                        intent.putExtra("uname", listData.get(position).get("uname"));
                     }
                     context.startActivity(intent);
                 } catch (Exception e) {

@@ -31,7 +31,7 @@ import java.util.Map;
  * 股王争霸赛实况报道页面
  * Created by Administrator on 2016/6/13.
  */
-public class FragmentReport extends Fragment{
+public class FragmentReport extends Fragment {
     // 定义List集合容器
     private gwzbmatchreportAdapter gwzbAdapter;
     // 定义于数据库同步的字段集合
@@ -62,7 +62,7 @@ public class FragmentReport extends Fragment{
                     public void onItemClick(AdapterView<?> arg0, View arg1,
                                             int arg2, long arg3) {
                         try {
-                            Intent intent = new Intent(getActivity(),forumnotedetailActivity.class);
+                            Intent intent = new Intent(getActivity(), forumnotedetailActivity.class);
                             intent.putExtra("weibo_id",
                                     (String) listgwzbmatchreportData.get(arg2)
                                             .get("starcraft_url"));
@@ -144,7 +144,7 @@ public class FragmentReport extends Fragment{
 
     private void geneItems() {
         new SendInfoTasktodayuprankingloadmore().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppStarcraft"
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppStarcraft"
                 )
         );
     }

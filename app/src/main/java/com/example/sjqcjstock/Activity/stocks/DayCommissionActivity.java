@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.adapter.stocks.CommissionAdapter;
-import com.example.sjqcjstock.adapter.stocks.DealAdapter;
 import com.example.sjqcjstock.app.ExitApplication;
 import com.example.sjqcjstock.entity.stocks.StocksInfo;
 import com.example.sjqcjstock.view.PullToRefreshLayout;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
  * 当日委托信息查询页面
  * Created by Administrator on 2016/8/11.
  */
-public class DayCommissionActivity extends Activity{
+public class DayCommissionActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -53,7 +52,7 @@ public class DayCommissionActivity extends Activity{
         });
 
         commissionAdapter = new CommissionAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(commissionAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

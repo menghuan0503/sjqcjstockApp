@@ -444,11 +444,11 @@ public class discussareaActivity extends Activity {
                     if (map.get("diggArr") == null) {
                         diggArrstr = "";
                     } else {
-                        diggArrstr = map.get("diggArr")+"";
+                        diggArrstr = map.get("diggArr") + "";
 
                     }
                     if (datastr2 == null) {
-                        datastr2 = map.get("data")+"";
+                        datastr2 = map.get("data") + "";
                         datastrlists2 = JsonTools.listKeyMaps(datastr2);
                     }
                     if (datastrlists2 == null) {
@@ -461,14 +461,14 @@ public class discussareaActivity extends Activity {
 
                         String isdigg = "0";// isdigg为0为未点赞为1为已点赞
                         String feed_idstr = datastrlists2.get(i).get("feed_id")
-                                +"";
+                                + "";
                         if (diggArrstr.contains(feed_idstr)) {
                             isdigg = "1";
                         }
                         String typestr = datastrlists2.get(i).get("type")
-                                +"";
+                                + "";
                         String contentstr = datastrlists2.get(i).get("content")
-                                +"";
+                                + "";
 
                         contentstr = contentstr
                                 .replace("<feed-titlestyle='display:none'>",
@@ -501,18 +501,18 @@ public class discussareaActivity extends Activity {
                         map2.put("type", typestr);
                         if ("repost".equals(typestr)) {
                             String api_sourcestr = datastrlists2.get(i)
-                                    .get("api_source")+"";
+                                    .get("api_source") + "";
                             List<Map<String, Object>> api_sourcestrlists = JsonTools
                                     .listKeyMaps("[" + api_sourcestr + "]");
 
                             for (Map<String, Object> api_sourcestrmap : api_sourcestrlists) {
 
                                 String source_feed_idstr = api_sourcestrmap
-                                        .get("feed_id")+"";
+                                        .get("feed_id") + "";
                                 String source_user_infostr = api_sourcestrmap
-                                        .get("source_user_info")+"";
+                                        .get("source_user_info") + "";
                                 String source_contentstr = api_sourcestrmap
-                                        .get("source_content")+"";
+                                        .get("source_content") + "";
                                 // 正则表达式处理 去Html代码
                                 String regex2 = "\\<[^\\>]+\\>";
                                 source_contentstr = source_contentstr
@@ -539,17 +539,17 @@ public class discussareaActivity extends Activity {
                                 for (Map<String, Object> source_user_infostrmap : source_user_infostrlists) {
                                     String ctimestr;
                                     String sourceuidstr = source_user_infostrmap
-                                            .get("uid")+"";
+                                            .get("uid") + "";
                                     String sourceunamestr = source_user_infostrmap
-                                            .get("uname")+"";
+                                            .get("uname") + "";
                                     if (source_user_infostrmap.get("ctime") == null) {
                                         ctimestr = "";
                                     } else {
                                         ctimestr = source_user_infostrmap.get(
-                                                "ctime")+"";
+                                                "ctime") + "";
                                     }
                                     String avatar_middlestr = source_user_infostrmap
-                                            .get("avatar_middle")+"";
+                                            .get("avatar_middle") + "";
                                     map2.put("sourceuidstr", sourceuidstr);
                                     map2.put("sourceuname", sourceunamestr);
                                     map2.put("sourceuctime", ctimestr);
@@ -561,27 +561,27 @@ public class discussareaActivity extends Activity {
 
                         // 是否转发
                         String is_repoststr = datastrlists2.get(i)
-                                .get("is_repost")+"";
+                                .get("is_repost") + "";
 
                         String publish_timestr = datastrlists2.get(i)
-                                .get("publish_time")+"";
+                                .get("publish_time") + "";
                         if (datastrlists2.get(i).get("digg_count") == null) {
                             digg_countstr = "0";
                         } else {
                             digg_countstr = datastrlists2.get(i)
-                                    .get("digg_count")+"";
+                                    .get("digg_count") + "";
                         }
                         if (datastrlists2.get(i).get("comment_count") == null) {
                             comment_countstr = "0";
                         } else {
                             comment_countstr = datastrlists2.get(i)
-                                    .get("comment_count")+"";
+                                    .get("comment_count") + "";
                         }
                         if (datastrlists2.get(i).get("repost_count") == null) {
                             repost_countstr = "0";
                         } else {
                             repost_countstr = datastrlists2.get(i)
-                                    .get("repost_count")+"";
+                                    .get("repost_count") + "";
 
                         }
                         String attach_urlstr;
@@ -589,7 +589,7 @@ public class discussareaActivity extends Activity {
                             attach_urlstr = "";
                         } else {
                             attach_urlstr = datastrlists2.get(i)
-                                    .get("attach_url")+"";
+                                    .get("attach_url") + "";
                             // 解析短微博图片地址
                             attach_urlstr = attach_urlstr.substring(1,
                                     attach_urlstr.length() - 1);
@@ -628,18 +628,18 @@ public class discussareaActivity extends Activity {
                         } else {
 
                             user_infostr = datastrlists2.get(i)
-                                    .get("user_info")+"";
+                                    .get("user_info") + "";
                         }
                         List<Map<String, Object>> user_infostrlists = JsonTools
                                 .listKeyMaps("[" + user_infostr + "]");
 
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
                             String uidstr = user_infostrmap.get("uid")
-                                    +"";
+                                    + "";
                             String unamestr = user_infostrmap.get("uname")
-                                    +"";
+                                    + "";
                             String avatar_middlestr = user_infostrmap.get(
-                                    "avatar_middle")+"";
+                                    "avatar_middle") + "";
 
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);
@@ -660,7 +660,7 @@ public class discussareaActivity extends Activity {
     private void geneItems() {
         AsyncTask<TaskParams, Void, String> task = new SendInfoTaskloadmore();
         task.execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppContent&act=render&p="
+                        Constants.Url + "?app=public&mod=AppContent&act=render&p="
                                 + String.valueOf(current),
                         // new String[] { "position", "2"},
                         new String[]{"mid", Constants.staticmyuidstr}, new String[]{

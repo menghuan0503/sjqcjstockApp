@@ -58,7 +58,7 @@ public class sendedcommentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return  listData == null?0:listData.size();
+        return listData == null ? 0 : listData.size();
     }
 
     @Override
@@ -278,7 +278,7 @@ public class sendedcommentAdapter extends BaseAdapter {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                new SendInfoTaskdeleteweibo().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=Appdelcomment",
+                                new SendInfoTaskdeleteweibo().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=Appdelcomment",
                                                 new String[]{"mid", Constants.staticmyuidstr},
                                                 new String[]{"login_password", Constants.staticpasswordstr},
                                                 new String[]{"comment_id", (String) listData.get(position).get("comment_id")}
@@ -393,7 +393,7 @@ public class sendedcommentAdapter extends BaseAdapter {
 
 //		check.setChecked((state.get(position)==null?false:true));
 
-        String isVip =  listData.get(position).get(
+        String isVip = listData.get(position).get(
                 "isVip");
         String isVipSource = listData.get(position).get(
                 "isVipSource");
@@ -440,7 +440,7 @@ public class sendedcommentAdapter extends BaseAdapter {
         TextView originalnotecontent1;
         TextView contenttimes1;
         TextView sourceusername1;
-//        TextView repost_count3;
+        //        TextView repost_count3;
 //        TextView digg_count3;
 //        TextView comment_count3;
 //        ImageView commentreply1;

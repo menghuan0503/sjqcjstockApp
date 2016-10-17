@@ -114,7 +114,7 @@ public class FragmentEssenceFs extends Fragment {
     private void getData() {
         SendInfoTaskmyweibolistloadmore task = new SendInfoTaskmyweibolistloadmore();
         task.execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppContent&act=render",
+                Constants.Url + "?app=public&mod=AppContent&act=render",
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"cid", "8"},
                 new String[]{"p", String.valueOf(current)}
@@ -155,7 +155,7 @@ public class FragmentEssenceFs extends Fragment {
             // 获取水晶币个数
             String reward = "";
             List<Map<String, Object>> gbqblists2 = null;
-            String  datastr2 = null;
+            String datastr2 = null;
             List<Map<String, Object>> datastrlists2 = null;
             if (result == null) {
                 CustomToast.makeText(getActivity(), "", Toast.LENGTH_LONG).show();
@@ -202,7 +202,7 @@ public class FragmentEssenceFs extends Fragment {
                         String contentstr = "";
                         introduction = "";
                         state = datastrmap.get("state");
-                        // 先判断是否是打赏文章如果是就获取概要
+                        // 先判断是否是付费文章如果是就获取概要
                         if (state != null && "1".equals(state.toString())) {
                             reward = datastrmap.get("reward").toString();
                             Object introd = datastrmap.get("introduction");
@@ -264,7 +264,7 @@ public class FragmentEssenceFs extends Fragment {
                                 source_contentstr = source_contentstr.replace("\t", "");
                                 source_contentstr = source_contentstr.replace("\n", "");
                                 state = api_sourcestrmap.get("state");
-                                // 先判断是否是打赏文章如果是就获取概要
+                                // 先判断是否是付费文章如果是就获取概要
                                 if (state != null && "1".equals(state.toString())) {
                                     if (api_sourcestrmap.get("reward") != null) {
                                         reward = api_sourcestrmap.get("reward").toString();
@@ -329,54 +329,54 @@ public class FragmentEssenceFs extends Fragment {
                             contentstr = "//";
                         }
                         CharSequence charSequence = "";
-                        // 如果是打赏文章就有概要 显示内容为标题+概要
+                        // 如果是付费文章就有概要 显示内容为标题+概要
                         if (!"".equals(introduction)) {
                             contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
                         }
-                            try {
-                                charSequence = Html.fromHtml(contentstr, ImageUtil.getImageGetter(getResources()), null);
-                            } catch (Exception e) {
-                                // TODO: handle exception
-                                e.printStackTrace();
-                            } finally {
+                        try {
+                            charSequence = Html.fromHtml(contentstr, ImageUtil.getImageGetter(getResources()), null);
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            e.printStackTrace();
+                        } finally {
 
-                            }
-                            if (state!=null) {
-                                map2.put("state", state.toString());
-                            }
-                            map2.put("reward", reward);
-                            map2.put("feed_id", feed_idstr);
-                            map2.put("content", charSequence.toString());
-                            map2.put("create", publish_timestr);
-                            map2.put("digg_count", digg_countstr);
-                            map2.put("comment_count", comment_countstr);
-                            map2.put("repost_count", repost_countstr);
-                            map2.put("isdigg", isdigg);
-
-                            map2.put("attach_url", attach_urlstr);
-                            // String user_infostr;
-                            if (datastrmap.get("user_info") == null) {
-                                user_infostr = "";
-                            } else {
-
-                                user_infostr = datastrmap.get("user_info")
-                                        .toString();
-                            }
-                            List<Map<String, Object>> user_infostrlists = JsonTools
-                                    .listKeyMaps("[" + user_infostr + "]");
-
-                            for (Map<String, Object> user_infostrmap : user_infostrlists) {
-                                String uidstr = user_infostrmap.get("uid").toString();
-                                String unamestr = user_infostrmap.get("uname").toString();
-                                String avatar_middlestr2 = user_infostrmap.get("avatar_middle").toString();
-                                String userGroup = user_infostrmap.get("user_group").toString();
-                                map2.put("isVip", userGroup);
-                                map2.put("uid", uidstr);
-                                map2.put("uname", unamestr);
-                                map2.put("avatar_middle", avatar_middlestr2);
-                            }
-                            listessenceData.add(map2);
                         }
+                        if (state != null) {
+                            map2.put("state", state.toString());
+                        }
+                        map2.put("reward", reward);
+                        map2.put("feed_id", feed_idstr);
+                        map2.put("content", charSequence.toString());
+                        map2.put("create", publish_timestr);
+                        map2.put("digg_count", digg_countstr);
+                        map2.put("comment_count", comment_countstr);
+                        map2.put("repost_count", repost_countstr);
+                        map2.put("isdigg", isdigg);
+
+                        map2.put("attach_url", attach_urlstr);
+                        // String user_infostr;
+                        if (datastrmap.get("user_info") == null) {
+                            user_infostr = "";
+                        } else {
+
+                            user_infostr = datastrmap.get("user_info")
+                                    .toString();
+                        }
+                        List<Map<String, Object>> user_infostrlists = JsonTools
+                                .listKeyMaps("[" + user_infostr + "]");
+
+                        for (Map<String, Object> user_infostrmap : user_infostrlists) {
+                            String uidstr = user_infostrmap.get("uid").toString();
+                            String unamestr = user_infostrmap.get("uname").toString();
+                            String avatar_middlestr2 = user_infostrmap.get("avatar_middle").toString();
+                            String userGroup = user_infostrmap.get("user_group").toString();
+                            map2.put("isVip", userGroup);
+                            map2.put("uid", uidstr);
+                            map2.put("uname", unamestr);
+                            map2.put("avatar_middle", avatar_middlestr2);
+                        }
+                        listessenceData.add(map2);
+                    }
                     commonnoteAdapter.setlistData(listessenceData);
                     // 千万别忘了告诉控件刷新完毕了哦！
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);

@@ -37,7 +37,7 @@ import java.util.Map;
 /**
  * 我的订阅页面
  */
-public class mysubscribeActivity extends Activity{
+public class mysubscribeActivity extends Activity {
 
     private LinearLayout goback1;
     // 定义List集合容器
@@ -91,6 +91,7 @@ public class mysubscribeActivity extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+
                 Intent intent = new Intent(mysubscribeActivity.this,
                         forumnotedetailActivity.class);
                 intent.putExtra("weibo_id", (String) listmycellectData.get(position).get("feed_id"));
@@ -130,7 +131,7 @@ public class mysubscribeActivity extends Activity{
 
     @Override
     protected void onDestroy() {
-        if(mySubscribeList != null && mySubscribeList.size()>0){
+        if (mySubscribeList != null && mySubscribeList.size() > 0) {
             // 做缓存
             mCache.put("MySubscribex", Utils.getListMapStr(mySubscribeList));
         }
@@ -164,7 +165,7 @@ public class mysubscribeActivity extends Activity{
                 if ("1".equals(isreferlist)) {
                     mySubscribeList = (ArrayList<HashMap<String, String>>) listmycellectData.clone();
                 }
-            }else{
+            } else {
                 // 千万别忘了告诉控件刷新完毕了哦！加载失败
                 ptrl.refreshFinish(PullToRefreshLayout.FAIL);
             }
@@ -204,18 +205,18 @@ public class mysubscribeActivity extends Activity{
                     String introduction = "";
                     // 水晶币个数
                     String reward = "";
-                    // 是否是打赏文章 0 ：不是
+                    // 是否是付费文章 0 ：不是
                     String state = "0";
                     // 获取点赞标识的数组
                     String diggArrstr;
                     if (map.get("diggArr") == null) {
                         diggArrstr = "";
                     } else {
-                        diggArrstr = map.get("diggArr")+"";
+                        diggArrstr = map.get("diggArr") + "";
 
                     }
                     if (data2str2 == null) {
-                        data2str2 = map.get("data")+"";
+                        data2str2 = map.get("data") + "";
                         data2strlists2 = JsonTools.listKeyMaps(data2str2);
                     }
                     for (Map<String, Object> datastrmap : data2strlists2) {
@@ -224,13 +225,13 @@ public class mysubscribeActivity extends Activity{
                         String repost_countstr = "";
                         String isdigg = "0";// isdigg为0为未点赞为1为已点赞
                         String feed_idstr = datastrmap.get("feed_id")
-                                +"";
+                                + "";
 
                         if (diggArrstr.contains(feed_idstr)) {
                             isdigg = "1";
                         }
-                        String typestr = datastrmap.get("type")+"";
-                        String contentstr = datastrmap.get("body")+"";
+                        String typestr = datastrmap.get("type") + "";
+                        String contentstr = datastrmap.get("body") + "";
                         contentstr = contentstr.replace("【",
                                 "<font color=\"#0054AA\" >【");
                         contentstr = contentstr.replace("】", "】</font><Br/>");
@@ -254,11 +255,11 @@ public class mysubscribeActivity extends Activity{
                         map2.put("type", typestr);
                         // 获取打赏相关的数据
                         if (datastrmap.get("introduction") != null) {
-                            introduction = datastrmap.get("introduction")+"";
+                            introduction = datastrmap.get("introduction") + "";
                         }
-                        reward = datastrmap.get("reward")+"";
-                        state = datastrmap.get("state")+"";
-                        // 如果是打赏文章就有概要 显示内容为标题+概要
+                        reward = datastrmap.get("reward") + "";
+                        state = datastrmap.get("state") + "";
+                        // 如果是付费文章就有概要 显示内容为标题+概要
                         if (!"0".equals(state)) {
                             contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
                         }
@@ -266,24 +267,24 @@ public class mysubscribeActivity extends Activity{
                         map2.put("state", state);
 
                         String publish_timestr = datastrmap.get("publish_time")
-                                +"";
+                                + "";
                         if (datastrmap.get("digg_count") == null) {
                             digg_countstr = "0";
                         } else {
                             digg_countstr = datastrmap.get("digg_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("comment_count") == null) {
                             comment_countstr = "0";
                         } else {
                             comment_countstr = datastrmap.get("comment_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("repost_count") == null) {
                             repost_countstr = "0";
                         } else {
                             repost_countstr = datastrmap.get("repost_count")
-                                    +"";
+                                    + "";
 
                         }
                         if (contentstr.contains("feed_img_lists")) {
@@ -296,7 +297,7 @@ public class mysubscribeActivity extends Activity{
                             attach_urlstr = "";
                         } else {
                             attach_urlstr = datastrmap.get("attach_url")
-                                    +"";
+                                    + "";
                             // 解析短微博图片地址
                             attach_urlstr = attach_urlstr.substring(1,
                                     attach_urlstr.length() - 1);
@@ -320,16 +321,16 @@ public class mysubscribeActivity extends Activity{
                             user_infostr = "";
                         } else {
                             user_infostr = datastrmap.get("user_info")
-                                    +"";
+                                    + "";
                         }
                         List<Map<String, Object>> user_infostrlists = JsonTools.listKeyMaps("[" + user_infostr + "]");
 
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
                             String uidstr = user_infostrmap.get("uid")
-                                    +"";
-                            String unamestr = user_infostrmap.get("uname")+"";
-                            String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
-                            String userGroup = user_infostrmap.get("user_group")+"";
+                                    + "";
+                            String unamestr = user_infostrmap.get("uname") + "";
+                            String avatar_middlestr = user_infostrmap.get("avatar_middle") + "";
+                            String userGroup = user_infostrmap.get("user_group") + "";
                             map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);

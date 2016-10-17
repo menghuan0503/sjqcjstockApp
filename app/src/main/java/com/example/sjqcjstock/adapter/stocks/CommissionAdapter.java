@@ -17,7 +17,7 @@ import java.util.List;
  * 委托查询的Adapter
  * Created by Administrator on 2016/8/11.
  */
-public class CommissionAdapter extends BaseAdapter{
+public class CommissionAdapter extends BaseAdapter {
 
     private List<StocksInfo> listData;
     private Context context;

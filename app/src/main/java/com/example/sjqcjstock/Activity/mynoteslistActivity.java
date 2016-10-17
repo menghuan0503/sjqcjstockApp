@@ -104,6 +104,10 @@ public class mynoteslistActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 try {
+                    String content = listusercommonnoteData.get(position).get("content");
+                    if (content.length() > 3 && Constants.microBlogShare.equals(content.substring(0, 4))) {
+                        return;
+                    }
                     Intent intent = new Intent(mynoteslistActivity.this,
                             forumnotedetailActivity.class);
                     // 传递发布微博的信息
@@ -172,7 +176,7 @@ public class mynoteslistActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        if(loadMoreMyfeedList != null && loadMoreMyfeedList.size()>0){
+        if (loadMoreMyfeedList != null && loadMoreMyfeedList.size() > 0) {
             // 做缓存
             mCache.put("loadMoreMyfeedx", Utils.getListMapStr(loadMoreMyfeedList));
         }
@@ -181,7 +185,7 @@ public class mynoteslistActivity extends Activity {
 
     private void geneItems() {
         new SendInfoTaskloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=FeedListMini&act=loadMore",
+                Constants.Url + "?app=public&mod=FeedListMini&act=loadMore",
                 new String[]{"type", "myfeed"},
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"id", Constants.staticmyuidstr},
@@ -199,7 +203,7 @@ public class mynoteslistActivity extends Activity {
                 if ("1".equals(isreferlist)) {
                     loadMoreMyfeedList = (ArrayList<HashMap<String, String>>) listusercommonnoteData.clone();
                 }
-            }else{
+            } else {
                 // 千万别忘了告诉控件刷新完毕了哦！加载失败
                 ptrl.refreshFinish(PullToRefreshLayout.FAIL);
             }
@@ -242,11 +246,11 @@ public class mynoteslistActivity extends Activity {
                     if (map.get("diggArr") == null) {
                         diggArrstr = "";
                     } else {
-                        diggArrstr = map.get("diggArr")+"";
+                        diggArrstr = map.get("diggArr") + "";
                     }
 
                     if (datastr2 == null) {
-                        datastr2 = map.get("data")+"";
+                        datastr2 = map.get("data") + "";
                         datastrlists2 = JsonTools.listKeyMaps(datastr2);
                     }
                     if (datastrlists2 == null) {
@@ -259,17 +263,17 @@ public class mynoteslistActivity extends Activity {
                         String repost_countstr = "";
 
                         String isdigg = "0";// isdigg为0为未点赞为1为已点赞
-                        if(datastrmap.get("feed_id")==null){
+                        if (datastrmap.get("feed_id") == null) {
                             mHandler.sendEmptyMessage(0);
                             return;
                         }
                         String feed_idstr = datastrmap.get("feed_id")
-                                +"";
+                                + "";
                         if (diggArrstr.contains(feed_idstr)) {
                             isdigg = "1";
                         }
-                        String typestr = datastrmap.get("type")+"";
-                        String contentstr = datastrmap.get("body")+"";
+                        String typestr = datastrmap.get("type") + "";
+                        String contentstr = datastrmap.get("body") + "";
                         contentstr = contentstr.replace("【",
                                 "<font color=\"#4471BC\" >【");
                         contentstr = contentstr.replace("】", "】</font>");
@@ -298,22 +302,21 @@ public class mynoteslistActivity extends Activity {
                             contentstr = contentstr.substring(0, contentstr.indexOf("◆"));
 
                             String api_sourcestr = datastrmap.get("api_source")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> api_sourcestrlists = JsonTools
                                     .listKeyMaps("[" + api_sourcestr + "]");
 
                             for (Map<String, Object> api_sourcestrmap : api_sourcestrlists) {
                                 String source_contentstr;
-
                                 String source_feed_idstr = api_sourcestrmap
-                                        .get("feed_id")+"";
+                                        .get("feed_id") + "";
                                 String source_user_infostr = api_sourcestrmap
-                                        .get("source_user_info")+"";
+                                        .get("source_user_info") + "";
                                 if (api_sourcestrmap.get("source_content") == null) {
                                     source_contentstr = "该内容已不存在";
                                 } else {
                                     source_contentstr = api_sourcestrmap.get(
-                                            "source_content")+"";
+                                            "source_content") + "";
                                 }
                                 source_contentstr = source_contentstr.replace(
                                         "<feed-titlestyle='display:none'>",
@@ -337,8 +340,7 @@ public class mynoteslistActivity extends Activity {
                                         "\n", "");
 
                                 map2.put("source_feed_idstr", source_feed_idstr);
-
-                                map2.put("source_contentstr",source_contentstr);
+                                map2.put("source_contentstr", source_contentstr);
 
                                 List<Map<String, Object>> source_user_infostrlists = JsonTools
                                         .listKeyMaps("[" + source_user_infostr
@@ -346,18 +348,18 @@ public class mynoteslistActivity extends Activity {
                                 for (Map<String, Object> source_user_infostrmap : source_user_infostrlists) {
                                     String ctimestr;
                                     String sourceuidstr = source_user_infostrmap
-                                            .get("uid")+"";
+                                            .get("uid") + "";
                                     String sourceunamestr = source_user_infostrmap
-                                            .get("uname")+"";
+                                            .get("uname") + "";
                                     if (source_user_infostrmap.get("ctime") == null) {
                                         ctimestr = "";
                                     } else {
                                         ctimestr = source_user_infostrmap.get(
-                                                "ctime")+"";
+                                                "ctime") + "";
                                     }
                                     String avatar_middlestr = source_user_infostrmap
-                                            .get("avatar_middle")+"";
-                                    String userGroup = source_user_infostrmap.get("user_group")+"";
+                                            .get("avatar_middle") + "";
+                                    String userGroup = source_user_infostrmap.get("user_group") + "";
                                     map2.put("isVipSource", userGroup);
                                     map2.put("sourceuidstr", sourceuidstr);
                                     map2.put("sourceuname", sourceunamestr);
@@ -368,24 +370,24 @@ public class mynoteslistActivity extends Activity {
                             }
                         }
                         String publish_timestr = datastrmap.get("publish_time")
-                                +"";
+                                + "";
                         if (datastrmap.get("digg_count") == null) {
                             digg_countstr = "0";
                         } else {
                             digg_countstr = datastrmap.get("digg_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("comment_count") == null) {
                             comment_countstr = "0";
                         } else {
                             comment_countstr = datastrmap.get("comment_count")
-                                    +"";
+                                    + "";
                         }
                         if (datastrmap.get("repost_count") == null) {
                             repost_countstr = "0";
                         } else {
                             repost_countstr = datastrmap.get("repost_count")
-                                    +"";
+                                    + "";
                         }
                         if (contentstr.contains("feed_img_lists")) {
                             contentstr = contentstr.substring(0, contentstr.indexOf("feed_img_lists"));
@@ -395,7 +397,7 @@ public class mynoteslistActivity extends Activity {
                             attach_urlstr = "";
                         } else {
                             attach_urlstr = datastrmap.get("attach_url")
-                                    +"";
+                                    + "";
                             // 解析短微博图片地址
                             attach_urlstr = attach_urlstr.substring(1,
                                     attach_urlstr.length() - 1);
@@ -406,6 +408,7 @@ public class mynoteslistActivity extends Activity {
                         if ("".equals(contentstr)) {
                             contentstr = "//";
                         }
+
                         map2.put("feed_id", feed_idstr);
                         map2.put("content", contentstr);
                         map2.put("create", publish_timestr);
@@ -419,14 +422,14 @@ public class mynoteslistActivity extends Activity {
                             user_infostr = "";
                         } else {
                             user_infostr = datastrmap.get("user_info")
-                                    +"";
+                                    + "";
                         }
                         List<Map<String, Object>> user_infostrlists = JsonTools.listKeyMaps("[" + user_infostr + "]");
                         for (Map<String, Object> user_infostrmap : user_infostrlists) {
-                            String uidstr = user_infostrmap.get("uid")+"";
-                            String unamestr = user_infostrmap.get("uname")+"";
-                            String avatar_middlestr = user_infostrmap.get("avatar_middle")+"";
-                            String userGroup = user_infostrmap.get("user_group")+"";
+                            String uidstr = user_infostrmap.get("uid") + "";
+                            String unamestr = user_infostrmap.get("uname") + "";
+                            String avatar_middlestr = user_infostrmap.get("avatar_middle") + "";
+                            String userGroup = user_infostrmap.get("user_group") + "";
                             map2.put("isVip", userGroup);
                             map2.put("uid", uidstr);
                             map2.put("uname", unamestr);

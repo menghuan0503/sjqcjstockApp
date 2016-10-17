@@ -53,10 +53,9 @@ public class modifypasswordActivity extends Activity {
         goback1.setOnClickListener(new goback3_listener());
         modifiedsubmit1.setOnClickListener(new modifiedsubmit1_listener());
         titleName = (TextView) findViewById(R.id.title_name);
-        if (Constants.isDefault){
+        if (Constants.isDefault) {
             titleName.setText("修改密码");
-        }
-        else{
+        } else {
             titleName.setText("设置密码");
             findViewById(R.id.oldpassword_ll).setVisibility(View.GONE);
         }
@@ -68,7 +67,7 @@ public class modifypasswordActivity extends Activity {
         @Override
         public void onClick(View arg0) {
 
-            if (!newpassword2.getText().toString().equals( renewpassword2.getText().toString())){
+            if (!newpassword2.getText().toString().equals(renewpassword2.getText().toString())) {
                 CustomToast.makeText(getApplicationContext(), "对不起两次输入的密码不一致", Toast.LENGTH_LONG).show();
                 renewpassword2.setText("");
                 return;
@@ -79,22 +78,22 @@ public class modifypasswordActivity extends Activity {
             // 登陆类型
             String type = Constants.getStaticLoginType();
             // 原始密码
-            String oldPassWord = oldpassword1.getText()+"";
-            if (Constants.isDefault){
+            String oldPassWord = oldpassword1.getText() + "";
+            if (Constants.isDefault) {
                 token = "";
                 type = "";
-            }else{
+            } else {
                 // 第三方登录的时候传一个假密码 不能为空就行
                 oldPassWord = "jiade";
             }
-            new SendInfoTask().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppdoModifyPassword",
+            new SendInfoTask().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppdoModifyPassword",
                             //new String[] { "login_email", "1061550505@qq.com" },
                             //new String[] { "login_password", "12345678" },
                             new String[]{"mid", Constants.staticmyuidstr},
                             new String[]{"login_password", Constants.staticpasswordstr},
-                            new String[]{"tokey",token },
-                            new String[]{"type",type},
-                            new String[]{"oldpassword",oldPassWord},
+                            new String[]{"tokey", token},
+                            new String[]{"type", type},
+                            new String[]{"oldpassword", oldPassWord},
                             new String[]{"password", newpassword2.getText().toString()},
                             new String[]{"repassword", renewpassword2.getText().toString()}
                     )
@@ -133,18 +132,18 @@ public class modifypasswordActivity extends Activity {
             //解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
-                    if (Constants.isDefault){
+                    if (Constants.isDefault) {
                         CustomToast.makeText(getApplicationContext(), "修改密码成功", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         CustomToast.makeText(getApplicationContext(), "设置密码成功", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    if (Constants.isDefault){
+                    if (Constants.isDefault) {
                         CustomToast.makeText(getApplicationContext(), "修改密码失败,请重试", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         CustomToast.makeText(getApplicationContext(), "设置密码失败,请重试", Toast.LENGTH_LONG).show();
                     }
                 }

@@ -68,7 +68,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/color_ffffff"
             android:gravity="top"
-            android:hint=""
+            android:hint="正文"
             android:lineSpacingMultiplier="1.2"
             android:maxLength="20000"
             android:paddingLeft="5dp"

@@ -300,7 +300,7 @@ public class discussareanoteAdapter extends BaseAdapter {
                     }
                     //geneItems();
                     //mAdapter.notifyDataSetChanged();
-                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg",
+                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},
@@ -329,7 +329,7 @@ public class discussareanoteAdapter extends BaseAdapter {
                     if (Utils.isFastDoubleClick2()) {
                         return;
                     }
-                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg",
+                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},

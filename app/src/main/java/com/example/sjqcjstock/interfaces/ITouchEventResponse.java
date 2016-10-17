@@ -25,19 +25,18 @@ package com.example.sjqcjstock.interfaces;
 import com.example.sjqcjstock.view.stocks.GridChart;
 
 /**
- * 
  * <p>支持响应事件消息的此类对象接口</p>
  *
- * @author limc 
- * @version v1.0 2013/05/30 17:57:32 
+ * @author limc
+ * @version v1.0 2013/05/30 17:57:32
  * @see ITouchEventNotify
  */
 public interface ITouchEventResponse {
-	
-	/**
-	 * <p>响应通知</p>
-	 * @param chart
-	 * <p>源头对象</p>
-	 */
-	public void notifyEvent(GridChart chart);
+
+    /**
+     * <p>响应通知</p>
+     *
+     * @param chart <p>源头对象</p>
+     */
+    public void notifyEvent(GridChart chart);
 }

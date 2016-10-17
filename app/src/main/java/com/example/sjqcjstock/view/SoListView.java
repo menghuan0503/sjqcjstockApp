@@ -12,8 +12,11 @@ public class SoListView extends ListView {
     public SoListView(Context context) {
         super(context);
     }
-    public SoListView(Context context,AttributeSet as) {
-        super(context,as);  }
+
+    public SoListView(Context context, AttributeSet as) {
+        super(context, as);
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,

@@ -75,7 +75,7 @@ public class informdetailActivity extends Activity {
 
     private void network() {
         new SendInfoTask().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=Profile&act=Appnews",
+                        Constants.Url + "?app=public&mod=Profile&act=Appnews",
                         new String[]{"news_id", news_idstr}
                 )
         );
@@ -102,17 +102,17 @@ public class informdetailActivity extends Activity {
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
 
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("data")+"";
+                    String statusstr = map.get("data") + "";
 
                     List<Map<String, Object>> informlists = JsonTools
                             .listKeyMaps("[" + statusstr + "]");
 
                     for (Map<String, Object> informmap : informlists) {
                         String informmapstr = informmap.get("news_title")
-                                +"";
+                                + "";
                         String news_contentstr = informmap.get("news_content")
-                                +"";
-                        String createdstr = informmap.get("created")+"";
+                                + "";
+                        String createdstr = informmap.get("created") + "";
 
                         // 将时间戳转换成date
                         SimpleDateFormat formatter = new SimpleDateFormat(

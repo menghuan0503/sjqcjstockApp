@@ -467,6 +467,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
             getImageFromCamera();
         }
     }
+
     class atsb2_listener implements OnClickListener {
         @Override
         public void onClick(View arg0) {
@@ -488,7 +489,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
                 attach_idBuilder.append(attach_idstr);
                 attach_idBuilder.append("|");
             }
-            String bodystr1 = editcommentforweibo1.getText()+"";
+            String bodystr1 = editcommentforweibo1.getText() + "";
 
             if ("".equals(bodystr1.trim())) {
                 CustomToast.makeText(getApplicationContext(), "正文不能为空", Toast.LENGTH_SHORT).show();
@@ -497,7 +498,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
             } else {
                 new SendInfoTaskaddshortweibo()
                         .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed",
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed",
                                 new String[]{"mid", Constants.staticmyuidstr},
                                 new String[]{"login_password", Constants.staticpasswordstr},
                                 new String[]{"tokey", Constants.statictokeystr},
@@ -781,7 +782,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
                          * block e.printStackTrace(); }
                          */
                         // spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment
                                 .getExternalStorageDirectory()
                                 + "/sglrBitmap/"
@@ -906,7 +907,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
             long sjc = System.currentTimeMillis();
             int numcode = (int) ((Math.random() * 9 + 1) * 100000);
             HttpPost httpPost = new HttpPost(
-                    Constants.Url+"?app=public&mod=AppFeedList&act=AppUpload&sjc="
+                    Constants.Url + "?app=public&mod=AppFeedList&act=AppUpload&sjc="
                             + "1" + sjc + numcode);
 
             MultipartEntity entity = new MultipartEntity(
@@ -960,17 +961,17 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(resstr);
 
             for (Map<String, Object> map : lists) {
-                String datastr = map.get("data")+"";
+                String datastr = map.get("data") + "";
                 List<Map<String, Object>> resstrlists = JsonTools
                         .listKeyMaps(resstr);
                 for (Map<String, Object> resstrmap : resstrlists) {
-                    String data2str = resstrmap.get("data")+"";
+                    String data2str = resstrmap.get("data") + "";
                     List<Map<String, Object>> data2strlists = JsonTools
                             .listKeyMaps("[" + data2str + "]");
                     for (Map<String, Object> data2strmap : data2strlists) {
-                        String uidstr = data2strmap.get("uid")+"";
+                        String uidstr = data2strmap.get("uid") + "";
                         String attach_idstr = data2strmap.get("attach_id")
-                                +"";
+                                + "";
                         // String datastr= map.get("data")+"";
                         // String datastr= map.get("data")+"";
 
@@ -1011,7 +1012,7 @@ public class commentshortweiboActivity extends Activity implements ViewFactory,
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发短文成功", Toast.LENGTH_LONG).show();

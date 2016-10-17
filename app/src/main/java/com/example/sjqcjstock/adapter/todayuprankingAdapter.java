@@ -37,7 +37,7 @@ public class todayuprankingAdapter extends BaseAdapter {
 
     public void setlistData(ArrayList<HashMap<String, String>> listData) {
         if (listData != null) {
-            this.listData = (ArrayList<HashMap<String,String>>) listData.clone();
+            this.listData = (ArrayList<HashMap<String, String>>) listData.clone();
             notifyDataSetChanged();
         }
     }
@@ -101,14 +101,13 @@ public class todayuprankingAdapter extends BaseAdapter {
         });
 
 
-
         String currentPrice = listData.get(position).get("currentPrice");
-        if(currentPrice==null|| "".equals(currentPrice) || Double.valueOf(currentPrice)==0){
+        if (currentPrice == null || "".equals(currentPrice) || Double.valueOf(currentPrice) == 0) {
             holder.increasestr.setText("—");
             holder.currentPrice.setText("—");
-            holder.increasestr.setTextColor(Color.rgb(51,51,51));
-        }else{
-            ViewUtil.setViewColor(holder.increasestr,listData.get(position).get("increase")+"");
+            holder.increasestr.setTextColor(Color.rgb(51, 51, 51));
+        } else {
+            ViewUtil.setViewColor(holder.increasestr, listData.get(position).get("increase") + "");
             holder.currentPrice.setText(Utils.getNumberFormat(currentPrice));
         }
 

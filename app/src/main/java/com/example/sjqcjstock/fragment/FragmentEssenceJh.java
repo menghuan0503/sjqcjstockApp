@@ -46,6 +46,7 @@ public class FragmentEssenceJh extends Fragment {
     private int current = 1;
     // 模块的标识
     private String category = "3";
+
     public FragmentEssenceJh(String category) {
         this.category = category;
     }
@@ -112,7 +113,7 @@ public class FragmentEssenceJh extends Fragment {
      */
     private void getData() {
         SendInfoTaskloadmore task = new SendInfoTaskloadmore();
-        task.execute(new TaskParams(Constants.Url+"?app=index&mod=Index&act=Appindex&position=2&category="+category+"&p="+String.valueOf(current))
+        task.execute(new TaskParams(Constants.Url + "?app=index&mod=Index&act=Appindex&position=2&category=" + category + "&p=" + String.valueOf(current))
         );
     }
 
@@ -149,7 +150,7 @@ public class FragmentEssenceJh extends Fragment {
                         String weibo_idstr = supermanmap.get("weibo_id").toString();
                         String uidstr = supermanmap.get("uid").toString();
                         ctimestr = CalendarUtil.formatDateTime(Utils.getStringtoDate(ctimestr));
-                        String authentication = supermanmap.get("authentication")+"";
+                        String authentication = supermanmap.get("authentication") + "";
                         map2.put("isVip", authentication);
                         map2.put("weibo_titlestr", weibo_titlestr);
                         map2.put("username", namestr);

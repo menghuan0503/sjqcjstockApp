@@ -120,7 +120,7 @@ public class totalessencerankinglistActivity extends Activity {
 
         });
          */
-        new SendInfoTask().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppBallot"));
+        new SendInfoTask().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppBallot"));
 
     }
 
@@ -174,7 +174,7 @@ public class totalessencerankinglistActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists) {
                     if (statusstr == null) {
-                        statusstr = map.get("data")+"";
+                        statusstr = map.get("data") + "";
                         statusstrlists = JsonTools.listKeyMaps("[" + statusstr + "]");
                     }
                     for (Map<String, Object> statusstrmap : statusstrlists) {
@@ -184,7 +184,7 @@ public class totalessencerankinglistActivity extends Activity {
                         //名人总积分榜
                         if (jy_max_ballotstr == null) {
 
-                            jy_max_ballotstr = statusstrmap.get("jy_max_ballot")+"";
+                            jy_max_ballotstr = statusstrmap.get("jy_max_ballot") + "";
                             jy_max_ballotstrlists = JsonTools.listKeyMaps(jy_max_ballotstr);
                         }
                         int g = 0;
@@ -196,39 +196,39 @@ public class totalessencerankinglistActivity extends Activity {
 
                             //荐股id
 
-                            String ballot_idstr = jy_max_ballotstrmap.get("ballot_id")+"";
+                            String ballot_idstr = jy_max_ballotstrmap.get("ballot_id") + "";
                             //用户id
-                            String uidstr = jy_max_ballotstrmap.get("uid")+"";
+                            String uidstr = jy_max_ballotstrmap.get("uid") + "";
                             //股票编码
-                            String sharesstr = jy_max_ballotstrmap.get("shares")+"";
+                            String sharesstr = jy_max_ballotstrmap.get("shares") + "";
                             //股票名字
-                            String shares_namestr = jy_max_ballotstrmap.get("shares_name")+"";
+                            String shares_namestr = jy_max_ballotstrmap.get("shares_name") + "";
 
                             //第二只股票编码
-                            String shares2str = jy_max_ballotstrmap.get("shares2")+"";
+                            String shares2str = jy_max_ballotstrmap.get("shares2") + "";
                             //第二只股票的名称
-                            String shares2_namestr = jy_max_ballotstrmap.get("shares2_name")+"";
+                            String shares2_namestr = jy_max_ballotstrmap.get("shares2_name") + "";
 
                             //当前价1
-                            String pricestr = jy_max_ballotstrmap.get("price")+"";
+                            String pricestr = jy_max_ballotstrmap.get("price") + "";
                             //当前价2
-                            String price2str = jy_max_ballotstrmap.get("price2")+"";
+                            String price2str = jy_max_ballotstrmap.get("price2") + "";
 
                             //第1只最高涨幅
-                            String integration3str = jy_max_ballotstrmap.get("integration1")+"";
+                            String integration3str = jy_max_ballotstrmap.get("integration1") + "";
 
                             //第2只最高涨幅
-                            String integration4str = jy_max_ballotstrmap.get("integration2")+"";
+                            String integration4str = jy_max_ballotstrmap.get("integration2") + "";
 
                             //周积分
-                            String list_pricestr = jy_max_ballotstrmap.get("integration")+"";
+                            String list_pricestr = jy_max_ballotstrmap.get("integration") + "";
 
                             //总积分
-                            String ballot_jifenstr = jy_max_ballotstrmap.get("ballot_jifen")+"";
+                            String ballot_jifenstr = jy_max_ballotstrmap.get("ballot_jifen") + "";
 
-                            String unamestr = jy_max_ballotstrmap.get("uname")+"";
+                            String unamestr = jy_max_ballotstrmap.get("uname") + "";
 
-                            String weeklystr = jy_max_ballotstrmap.get("weekly")+"";
+                            String weeklystr = jy_max_ballotstrmap.get("weekly") + "";
 
 
                             integration3str = integration3str + "%";

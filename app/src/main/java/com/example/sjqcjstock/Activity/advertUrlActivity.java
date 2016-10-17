@@ -12,8 +12,9 @@ import com.example.sjqcjstock.R;
  * 广告展示的URL
  * Created by Administrator on 2016/5/7.
  */
-public class advertUrlActivity extends Activity{
+public class advertUrlActivity extends Activity {
     private WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

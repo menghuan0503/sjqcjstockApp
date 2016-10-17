@@ -1,7 +1,6 @@
 package com.example.sjqcjstock.Activity.stocks;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
  * 模拟比赛详情列表
  * Created by Administrator on 2016/8/17.
  */
-public class SimulationGameDetailsActivity extends Activity{
+public class SimulationGameDetailsActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -56,7 +55,7 @@ public class SimulationGameDetailsActivity extends Activity{
         });
         topTitle = (TextView) findViewById(R.id.top_title_tv);
         sgdAdapter = new SimulationGameDetailsAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(sgdAdapter);
 

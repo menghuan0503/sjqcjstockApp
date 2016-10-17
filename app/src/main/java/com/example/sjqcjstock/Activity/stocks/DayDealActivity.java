@@ -1,14 +1,12 @@
 package com.example.sjqcjstock.Activity.stocks;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.sjqcjstock.Activity.forumnotedetailActivity;
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.adapter.stocks.DealAdapter;
 import com.example.sjqcjstock.app.ExitApplication;
@@ -21,7 +19,7 @@ import java.util.ArrayList;
  * 当日交易信息查询页面
  * Created by Administrator on 2016/8/11.
  */
-public class DayDealActivity extends Activity{
+public class DayDealActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -53,7 +51,7 @@ public class DayDealActivity extends Activity{
             }
         });
         dealAdapter = new DealAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(dealAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

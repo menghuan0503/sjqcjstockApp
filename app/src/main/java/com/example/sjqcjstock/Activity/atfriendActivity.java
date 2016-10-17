@@ -78,10 +78,10 @@ public class atfriendActivity extends Activity {
         btSearch.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                inputstr = searchfriends.getText()+"";
+                inputstr = searchfriends.getText() + "";
                 listatfrientData.clear();
                 new SendInfoTaskalluser().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=search",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=search",
                         new String[]{"mid", Constants.staticmyuidstr},
                         new String[]{"type", "at"},
                         new String[]{"key", inputstr}
@@ -137,7 +137,7 @@ public class atfriendActivity extends Activity {
                     listatfrientData.clear();
                     current = 1;
                     geneItems();
-                }else{
+                } else {
                     // 千万别忘了告诉控件刷新完毕了哦！
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                 }
@@ -149,7 +149,7 @@ public class atfriendActivity extends Activity {
                 if ("".equals(inputstr.trim())) {
                     current++;
                     geneItems();
-                }else{
+                } else {
                     // 千万别忘了告诉控件刷新完毕了哦！
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                 }
@@ -202,16 +202,16 @@ public class atfriendActivity extends Activity {
                     if (map.get("data") == null) {
 
                     } else {
-                        String datastr = map.get("data")+"";
+                        String datastr = map.get("data") + "";
                         List<Map<String, Object>> datastrlists = JsonTools
                                 .listKeyMaps(datastr);
                         for (Map<String, Object> datastrmap : datastrlists) {
 //                            String search_keystr;
 //                            String uidstr = datastrmap.get("uid")+"";
                             String unamestr = datastrmap.get("uname")
-                                    +"";
+                                    + "";
                             String avatar_smallstr = datastrmap.get(
-                                    "avatar_small")+"";
+                                    "avatar_small") + "";
 //                            if (datastrmap.get("search_key") == null) {
 //                                search_keystr = "";
 //                            } else {
@@ -219,7 +219,7 @@ public class atfriendActivity extends Activity {
 //                                        +"";
 //                            }
                             HashMap<String, Object> map2 = new HashMap<String, Object>();
-                            String userGroup = datastrmap.get("user_group")+"";
+                            String userGroup = datastrmap.get("user_group") + "";
                             map2.put("isVip", userGroup);
                             map2.put("avatar_middlestr", avatar_smallstr);
                             map2.put("unamestr", unamestr);
@@ -261,27 +261,27 @@ public class atfriendActivity extends Activity {
                 // 解析json字符串获得List<Map<String,Object>>
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
                 for (Map<String, Object> map : lists) {
-                    String datastr = map.get("data")+"";
+                    String datastr = map.get("data") + "";
                     List<Map<String, Object>> datastrlists = JsonTools
                             .listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
                         String groupusersstr = datastrmap.get("groupusers")
-                                +"";
+                                + "";
                         List<Map<String, Object>> groupusersstrlists = JsonTools
                                 .listKeyMaps("[" + groupusersstr + "]");
 
                         for (Map<String, Object> groupusersstrmap : groupusersstrlists) {
                             String group2str = groupusersstrmap.get("group-2")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> group2strlists = JsonTools
                                     .listKeyMaps(group2str);
                             for (Map<String, Object> group2strmap : group2strlists) {
                                 String avatar_middlestr = group2strmap.get(
-                                        "avatar_middle")+"";
+                                        "avatar_middle") + "";
                                 String unamestr = group2strmap.get("uname")
-                                        +"";
+                                        + "";
                                 HashMap<String, Object> map2 = new HashMap<String, Object>();
-                                String userGroup = datastrmap.get("user_group")+"";
+                                String userGroup = datastrmap.get("user_group") + "";
                                 map2.put("isVip", userGroup);
                                 map2.put("avatar_middlestr", avatar_middlestr);
                                 map2.put("unamestr", unamestr);
@@ -299,7 +299,7 @@ public class atfriendActivity extends Activity {
 
     private void geneItems() {
         new SendInfoTaskloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=AppFriendGroup&p="
+                Constants.Url + "?app=public&mod=AppFeedList&act=AppFriendGroup&p="
                         + String.valueOf(current),
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"login_password", Constants.staticpasswordstr}

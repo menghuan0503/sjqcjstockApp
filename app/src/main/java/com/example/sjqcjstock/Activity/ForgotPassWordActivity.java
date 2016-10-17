@@ -72,7 +72,7 @@ public class ForgotPassWordActivity extends Activity {
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (!Utils.isMobileNO(fillphonecode1.getText()+"")) {
+                    if (!Utils.isMobileNO(fillphonecode1.getText() + "")) {
                         CustomToast.makeText(getApplicationContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -87,11 +87,11 @@ public class ForgotPassWordActivity extends Activity {
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
-            String pass1 = fillpassword1.getText()+"".trim();
-            String pass2 = fillpassword2.getText()+"".trim();
+            String pass1 = fillpassword1.getText() + "".trim();
+            String pass2 = fillpassword2.getText() + "".trim();
             ;
-            String phone = fillphonecode1.getText()+"".trim();
-            String code = fillregistercode1.getText()+"".trim();
+            String phone = fillphonecode1.getText() + "".trim();
+            String code = fillregistercode1.getText() + "".trim();
             if (!Utils.isMobileNO(phone)) {
                 CustomToast.makeText(getApplicationContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                 return;
@@ -104,7 +104,7 @@ public class ForgotPassWordActivity extends Activity {
                 CustomToast.makeText(getApplicationContext(), "请输入确认密码", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (pass1.length()<6 || pass1.length()>15) {
+            if (pass1.length() < 6 || pass1.length() > 15) {
                 CustomToast.makeText(getApplicationContext(), "请输大于6位或小于15位的密码", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -116,13 +116,13 @@ public class ForgotPassWordActivity extends Activity {
                 CustomToast.makeText(getApplicationContext(), "请输入验证码", Toast.LENGTH_SHORT).show();
                 return;
             }
-                if (!verificationstr.equals(code)) {
+            if (!verificationstr.equals(code)) {
                 CustomToast.makeText(getApplicationContext(), "你输入的验证码不正确", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // 修改密码
-            new ResetPassword().execute(new TaskParams(Constants.Url+"?app=public&mod=Passport&act=AppDoResetPassword",
+            new ResetPassword().execute(new TaskParams(Constants.Url + "?app=public&mod=Passport&act=AppDoResetPassword",
                             new String[]{"phone", phone},
                             new String[]{"password", pass1},
                             new String[]{"repassword", pass2}
@@ -135,13 +135,13 @@ public class ForgotPassWordActivity extends Activity {
     class shortmessage1_listener implements View.OnClickListener {
         @Override
         public void onClick(View arg0) {
-            if (!Utils.isMobileNO(fillphonecode1.getText()+"")) {
+            if (!Utils.isMobileNO(fillphonecode1.getText() + "")) {
                 CustomToast.makeText(getApplicationContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                 return;
             }
             // 获取验证码
-            new SendInfoTaskverify().execute(new TaskParams(Constants.Url+"?app=public&mod=Register&act=modifyVerification",
-                            new String[]{"phone", fillphonecode1.getText()+""}
+            new SendInfoTaskverify().execute(new TaskParams(Constants.Url + "?app=public&mod=Register&act=modifyVerification",
+                            new String[]{"phone", fillphonecode1.getText() + ""}
                     )
             );
         }
@@ -168,9 +168,9 @@ public class ForgotPassWordActivity extends Activity {
                     String infostr;
                     String statusstr;
                     String datastr;
-                    statusstr = map.get("status")+"";
-                    infostr = map.get("msg")+"";
-                    datastr = map.get("data")+"";
+                    statusstr = map.get("status") + "";
+                    infostr = map.get("msg") + "";
+                    datastr = map.get("data") + "";
 
                     if ("1".equals(statusstr)) {
                         CustomToast.makeText(getApplicationContext(), "验证码发送成功", Toast.LENGTH_LONG).show();
@@ -184,8 +184,8 @@ public class ForgotPassWordActivity extends Activity {
                     timeCountUtil.start();
                     List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
-                        verify_idstr = datastrmap.get("id")+"";
-                        verificationstr = datastrmap.get("verification")+"";
+                        verify_idstr = datastrmap.get("id") + "";
+                        verificationstr = datastrmap.get("verification") + "";
                     }
                 }
             }
@@ -211,8 +211,8 @@ public class ForgotPassWordActivity extends Activity {
                 for (Map<String, Object> map : lists) {
                     String msgstr;
                     String statusstr;
-                    statusstr = map.get("status")+"";
-                    msgstr = map.get("msg")+"";
+                    statusstr = map.get("status") + "";
+                    msgstr = map.get("msg") + "";
 
                     if ("1".equals(statusstr)) {
                         CustomToast.makeText(getApplicationContext(), msgstr, Toast.LENGTH_LONG).show();

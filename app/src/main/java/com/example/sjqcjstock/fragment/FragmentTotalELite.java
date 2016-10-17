@@ -30,20 +30,20 @@ import java.util.Map;
  */
 public class FragmentTotalELite extends Fragment
 
-    {
-        // 定义List集合容器
-        private totalrankingfamousAdapter adapter;
-        //定义于数据库同步的字段集合
-        private ArrayList<HashMap<String, Object>> listData;
-        // 上下拉刷新控件
-        private PullToRefreshLayout ptrl;
-        // 加载的ListView
-        private ListView listView;
-        //访问页数控制
-        private int current=1;
+{
+    // 定义List集合容器
+    private totalrankingfamousAdapter adapter;
+    //定义于数据库同步的字段集合
+    private ArrayList<HashMap<String, Object>> listData;
+    // 上下拉刷新控件
+    private PullToRefreshLayout ptrl;
+    // 加载的ListView
+    private ListView listView;
+    //访问页数控制
+    private int current = 1;
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_total_jy, container, false);
         findView(view);
         // 自动下拉刷新
@@ -51,11 +51,11 @@ public class FragmentTotalELite extends Fragment
         return view;
     }
 
-        /**
-         * 控件的加载和初始化
-         *
-         * @param view
-         */
+    /**
+     * 控件的加载和初始化
+     *
+     * @param view
+     */
     private void findView(View view) {
         listData = new ArrayList<HashMap<String, Object>>();
         adapter = new totalrankingfamousAdapter(getActivity());
@@ -74,6 +74,7 @@ public class FragmentTotalELite extends Fragment
                 current = 1;
                 getData();
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -83,10 +84,10 @@ public class FragmentTotalELite extends Fragment
         });
     }
 
-    private void getData(){
+    private void getData() {
         new SendInfoTaskfamousranking()
                 .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppTopBallot&type=2&p="+current
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppTopBallot&type=2&p=" + current
                         )
                 );
     }

@@ -25,152 +25,139 @@ package com.example.sjqcjstock.entity.stocks;
  * <p>
  * CCSStickChart保存柱条表示用的高低值的实体对象
  * </p>
- * 
+ *
  * @author menghuan
  * @version v1.0 2013/12/26 12:24:49
  */
 public class StickEntity {
 
-	/**
-	 * <p>
-	 * 最高值
-	 * </p>
-	 * 
-	 */
-	private double high;
+    /**
+     * <p>
+     * 最高值
+     * </p>
+     */
+    private double high;
 
-	/**
-	 * <p>
-	 * 最低值
-	 * </p>
-	 * 
-	 */
-	private double low = 0;
+    /**
+     * <p>
+     * 最低值
+     * </p>
+     */
+    private double low = 0;
 
-	/**
-	 * <p>
-	 * 日期
-	 * </p>
-	 * 
-	 */
-	private String date;
+    /**
+     * <p>
+     * 日期
+     * </p>
+     */
+    private String date;
 
-	/**
-	 * 涨跌类型（1为涨 0为跌）
-	 */
-	private int type;
+    /**
+     * 涨跌类型（1为涨 0为跌）
+     */
+    private int type;
 
-	/**
-	 * 
-	 * <p>
-	 * StickEntityのコンストラクター
-	 * </p>
-	 * 
-	 * @param high
-	 *            <p>
-	 *            最高价
-	 *            </p>
-	 * @param low
-	 *            <p>
-	 *            最低值
-	 *            </p>
-	 * @param date
-	 *            <p>
-	 *            日期
-	 *            </p>
-	 */
-	public StickEntity(double high, double low, String date) {
-		super();
-		this.high = high;
-		this.low = low;
-		this.date = date;
-	}
+    /**
+     * <p>
+     * StickEntityのコンストラクター
+     * </p>
+     *
+     * @param high <p>
+     *             最高价
+     *             </p>
+     * @param low  <p>
+     *             最低值
+     *             </p>
+     * @param date <p>
+     *             日期
+     *             </p>
+     */
+    public StickEntity(double high, double low, String date) {
+        super();
+        this.high = high;
+        this.low = low;
+        this.date = date;
+    }
 
-	/**
-	 *
-	 * <p>
-	 * StickEntityのコンストラクター
-	 * </p>
-	 *
-	 * @param high
-	 *            <p>
-	 *            最高价
-	 *            </p>
-	 * @param type
-	 *            <p>
-	 *            最低值
-	 *            </p>
-	 * @param date
-	 *            <p>
-	 *            日期
-	 *            </p>
-	 */
-	public StickEntity(double high, int type, String date) {
-		super();
-		this.high = high;
-		this.type = type;
-		this.date = date;
-	}
+    /**
+     * <p>
+     * StickEntityのコンストラクター
+     * </p>
+     *
+     * @param high <p>
+     *             最高价
+     *             </p>
+     * @param type <p>
+     *             最低值
+     *             </p>
+     * @param date <p>
+     *             日期
+     *             </p>
+     */
+    public StickEntity(double high, int type, String date) {
+        super();
+        this.high = high;
+        this.type = type;
+        this.date = date;
+    }
 
-	/**
-	 * 
-	 * <p>
-	 * StickEntity类对象的构造函数
-	 * </p>
-	 * 
-	 */
-	public StickEntity() {
-		super();
-	}
+    /**
+     * <p>
+     * StickEntity类对象的构造函数
+     * </p>
+     */
+    public StickEntity() {
+        super();
+    }
 
-	/**
-	 * @return the high
-	 */
-	public double getHigh() {
-		return high;
-	}
+    /**
+     * @return the high
+     */
+    public double getHigh() {
+        return high;
+    }
 
-	/**
-	 * @param high
-	 *            the high to set
-	 */
-	public void setHigh(double high) {
-		this.high = high;
-	}
+    /**
+     * @param high the high to set
+     */
+    public void setHigh(double high) {
+        this.high = high;
+    }
 
-	/**
-	 * @return the low
-	 */
-	public double getLow() {
-		return low;
-	}
+    /**
+     * @return the low
+     */
+    public double getLow() {
+        return low;
+    }
 
-	/**
-	 * @param low
-	 *            the low to set
-	 */
-	public void setLow(double low) {
-		this.low = low;
-	}
+    /**
+     * @param low the low to set
+     */
+    public void setLow(double low) {
+        this.low = low;
+    }
 
-	/**
-	 * @return the date
-	 */
-	public String getDate() {
-		return date;
-	}
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
 
-	/**
-	 * @param date
-	 *            the date to set
-	 */
-	public void setDate(String date) {
-		this.date = date;
-	}
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public void setType(int type){this.type = type;}
-	public int getType() {
-		return type;
-	}
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
 
 }

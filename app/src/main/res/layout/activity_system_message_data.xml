@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="系统公告"
+            android:text="系统消息"
             style="@style/top_title" />
 
     </RelativeLayout>

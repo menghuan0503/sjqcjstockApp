@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,9 +36,9 @@ import java.util.TimerTask;
 public class FragmentTimeMap extends Fragment {
 
     // 买的控件
-     private TextView buy1p,buy1n,buy2p,buy2n,buy3p,buy3n,buy4p,buy4n,buy5p,buy5n;
+    private TextView buy1p, buy1n, buy2p, buy2n, buy3p, buy3n, buy4p, buy4n, buy5p, buy5n;
     // 卖的控件
-    private TextView sell1p,sell1n,sell2p,sell2n,sell3p,sell3n,sell4p,sell4n,sell5p,sell5n;
+    private TextView sell1p, sell1n, sell2p, sell2n, sell3p, sell3n, sell4p, sell4n, sell5p, sell5n;
     // 股票编号
     private String code = "";
     //柱状图数据
@@ -67,7 +66,7 @@ public class FragmentTimeMap extends Fragment {
     // 定时器
     private Timer timer;
 
-    public FragmentTimeMap(String code, String openF,Map<String, String> buySellMap) {
+    public FragmentTimeMap(String code, String openF, Map<String, String> buySellMap) {
         this.code = code;
         this.openF = Float.valueOf(openF);
         this.buySellMap = buySellMap;
@@ -104,27 +103,27 @@ public class FragmentTimeMap extends Fragment {
         machart.setOnTouchListener(new setOnTouchListener());
         stickchart.setOnTouchListener(new setOnTouchListener());
 
-        buy1p = (TextView)view.findViewById(R.id.price_buy_1);
-        buy1n = (TextView)view.findViewById(R.id.number_buy_1);
-        buy2p = (TextView)view.findViewById(R.id.price_buy_2);
-        buy2n = (TextView)view.findViewById(R.id.number_buy_2);
-        buy3p = (TextView)view.findViewById(R.id.price_buy_3);
-        buy3n = (TextView)view.findViewById(R.id.number_buy_3);
-        buy4p = (TextView)view.findViewById(R.id.price_buy_4);
-        buy4n = (TextView)view.findViewById(R.id.number_buy_4);
-        buy5p = (TextView)view.findViewById(R.id.price_buy_5);
-        buy5n = (TextView)view.findViewById(R.id.number_buy_5);
+        buy1p = (TextView) view.findViewById(R.id.price_buy_1);
+        buy1n = (TextView) view.findViewById(R.id.number_buy_1);
+        buy2p = (TextView) view.findViewById(R.id.price_buy_2);
+        buy2n = (TextView) view.findViewById(R.id.number_buy_2);
+        buy3p = (TextView) view.findViewById(R.id.price_buy_3);
+        buy3n = (TextView) view.findViewById(R.id.number_buy_3);
+        buy4p = (TextView) view.findViewById(R.id.price_buy_4);
+        buy4n = (TextView) view.findViewById(R.id.number_buy_4);
+        buy5p = (TextView) view.findViewById(R.id.price_buy_5);
+        buy5n = (TextView) view.findViewById(R.id.number_buy_5);
 
-        sell1p = (TextView)view.findViewById(R.id.price_sell_1);
-        sell1n = (TextView)view.findViewById(R.id.number_sell_1);
-        sell2p = (TextView)view.findViewById(R.id.price_sell_2);
-        sell2n = (TextView)view.findViewById(R.id.number_sell_2);
-        sell3p = (TextView)view.findViewById(R.id.price_sell_3);
-        sell3n = (TextView)view.findViewById(R.id.number_sell_3);
-        sell4p = (TextView)view.findViewById(R.id.price_sell_4);
-        sell4n = (TextView)view.findViewById(R.id.number_sell_4);
-        sell5p = (TextView)view.findViewById(R.id.price_sell_5);
-        sell5n = (TextView)view.findViewById(R.id.number_sell_5);
+        sell1p = (TextView) view.findViewById(R.id.price_sell_1);
+        sell1n = (TextView) view.findViewById(R.id.number_sell_1);
+        sell2p = (TextView) view.findViewById(R.id.price_sell_2);
+        sell2n = (TextView) view.findViewById(R.id.number_sell_2);
+        sell3p = (TextView) view.findViewById(R.id.price_sell_3);
+        sell3n = (TextView) view.findViewById(R.id.number_sell_3);
+        sell4p = (TextView) view.findViewById(R.id.price_sell_4);
+        sell4n = (TextView) view.findViewById(R.id.number_sell_4);
+        sell5p = (TextView) view.findViewById(R.id.price_sell_5);
+        sell5n = (TextView) view.findViewById(R.id.number_sell_5);
 
         // 修改买卖信息
         updateBuySell(buySellMap);
@@ -169,7 +168,7 @@ public class FragmentTimeMap extends Fragment {
         lines.add(MA1);
 
 
-        List<String> ytitleInner = CountUtil.setYTitleInner(maxY,openF);
+        List<String> ytitleInner = CountUtil.setYTitleInner(maxY, openF);
         List<String> ytitle = new ArrayList<String>();
         ytitle.add("");
         ytitle.add("");
@@ -418,10 +417,10 @@ public class FragmentTimeMap extends Fragment {
     /**
      * 修改买卖量
      */
-    public void updateBuySell(Map<String, String> buySellMap){
+    public void updateBuySell(Map<String, String> buySellMap) {
 
-        if (buySellMap != null && buySellMap.size()>0){
-            if("1".equals(buySellMap.get("increaseType"))){
+        if (buySellMap != null && buySellMap.size() > 0) {
+            if ("1".equals(buySellMap.get("increaseType"))) {
                 buy1p.setTextColor(Color.RED);
                 buy2p.setTextColor(Color.RED);
                 buy3p.setTextColor(Color.RED);
@@ -432,17 +431,17 @@ public class FragmentTimeMap extends Fragment {
                 sell3p.setTextColor(Color.RED);
                 sell4p.setTextColor(Color.RED);
                 sell5p.setTextColor(Color.RED);
-            }else{
-                buy1p.setTextColor(Color.rgb(139,195,74));
-                buy2p.setTextColor(Color.rgb(139,195,74));
-                buy3p.setTextColor(Color.rgb(139,195,74));
-                buy4p.setTextColor(Color.rgb(139,195,74));
-                buy5p.setTextColor(Color.rgb(139,195,74));
-                sell1p.setTextColor(Color.rgb(139,195,74));
-                sell2p.setTextColor(Color.rgb(139,195,74));
-                sell3p.setTextColor(Color.rgb(139,195,74));
-                sell4p.setTextColor(Color.rgb(139,195,74));
-                sell5p.setTextColor(Color.rgb(139,195,74));
+            } else {
+                buy1p.setTextColor(Color.rgb(139, 195, 74));
+                buy2p.setTextColor(Color.rgb(139, 195, 74));
+                buy3p.setTextColor(Color.rgb(139, 195, 74));
+                buy4p.setTextColor(Color.rgb(139, 195, 74));
+                buy5p.setTextColor(Color.rgb(139, 195, 74));
+                sell1p.setTextColor(Color.rgb(139, 195, 74));
+                sell2p.setTextColor(Color.rgb(139, 195, 74));
+                sell3p.setTextColor(Color.rgb(139, 195, 74));
+                sell4p.setTextColor(Color.rgb(139, 195, 74));
+                sell5p.setTextColor(Color.rgb(139, 195, 74));
             }
             sell5p.setText(buySellMap.get("sell5P"));
             sell5n.setText(buySellMap.get("sell5N"));

@@ -6,8 +6,8 @@ import android.view.Window;
 
 import com.example.sjqcjstock.app.ExitApplication;
 
-public class feedbackActivity extends Activity{
-	
+public class feedbackActivity extends Activity {
+
 //	//获取控件
 //	private ImageView goback5;
 // 	private ImageView addfeedback1;
@@ -21,19 +21,19 @@ public class feedbackActivity extends Activity{
 //	feedbackAdapter feedbackAdapter;
 
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 //		setContentView(R.layout.feedbacklist);
-		
-		//将Activity反复链表
-	    ExitApplication.getInstance().addActivity(this);
-		
+
+        //将Activity反复链表
+        ExitApplication.getInstance().addActivity(this);
+
 //		initView();
-	}
+    }
 //
 //	private void initView() {
 //		// TODO Auto-generated method stub

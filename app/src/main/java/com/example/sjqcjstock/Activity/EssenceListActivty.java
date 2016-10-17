@@ -53,7 +53,9 @@ public class EssenceListActivty extends FragmentActivity implements ViewPager.On
     private int select_color;
     private int unselect_color;
     private int mScreen1_4;
-    /** 当前视图宽度 **/
+    /**
+     * 当前视图宽度
+     **/
     private Integer viewPagerW = 0;
 
     @Override
@@ -134,6 +136,7 @@ public class EssenceListActivty extends FragmentActivity implements ViewPager.On
             public int getCount() {
                 return mDatas == null ? 0 : mDatas.size();
             }
+
             @Override
             public Fragment getItem(int position) {
                 return mDatas.get(position);
@@ -203,7 +206,6 @@ public class EssenceListActivty extends FragmentActivity implements ViewPager.On
      * 点击文字进行切换
      *
      * @author wuxl
-     *
      */
     public class MyOnClickListenser implements View.OnClickListener {
 

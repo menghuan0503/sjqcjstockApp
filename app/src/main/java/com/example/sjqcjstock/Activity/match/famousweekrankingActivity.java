@@ -122,7 +122,7 @@ public class famousweekrankingActivity extends Activity {
         });
          */
 
-        new SendInfoTask().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppBallot"));
+        new SendInfoTask().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppBallot"));
 
     }
 
@@ -175,7 +175,7 @@ public class famousweekrankingActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists) {
                     if (statusstr == null) {
-                        statusstr = map.get("data")+"";
+                        statusstr = map.get("data") + "";
                         statusstrlists = JsonTools.listKeyMaps("[" + statusstr + "]");
                     }
                     for (Map<String, Object> statusstrmap : statusstrlists) {
@@ -184,7 +184,7 @@ public class famousweekrankingActivity extends Activity {
                         //精英组数据
 
                         if (ballot1str == null) {
-                            ballot1str = statusstrmap.get("ballot2")+"";
+                            ballot1str = statusstrmap.get("ballot2") + "";
 
 
                             ballot1strlists = JsonTools.listKeyMaps(ballot1str);
@@ -198,20 +198,20 @@ public class famousweekrankingActivity extends Activity {
                             String price2str;
                             //荐股id
 
-                            String ballot_idstr = ballot1strmap.get("ballot_id")+"";
+                            String ballot_idstr = ballot1strmap.get("ballot_id") + "";
                             //用户id
-                            String uidstr = ballot1strmap.get("uid")+"";
+                            String uidstr = ballot1strmap.get("uid") + "";
                             //股票编码
-                            String sharesstr = ballot1strmap.get("shares")+"";
+                            String sharesstr = ballot1strmap.get("shares") + "";
                             //股票名字
-                            String shares_namestr = ballot1strmap.get("shares_name")+"";
+                            String shares_namestr = ballot1strmap.get("shares_name") + "";
 
                             //第二只股票编码
-                            String shares2str = ballot1strmap.get("shares2")+"";
+                            String shares2str = ballot1strmap.get("shares2") + "";
                             //第二只股票的名称
-                            String shares2_namestr = ballot1strmap.get("shares2_name")+"";
+                            String shares2_namestr = ballot1strmap.get("shares2_name") + "";
 
-                            String weeklystr = ballot1strmap.get("weekly")+"";
+                            String weeklystr = ballot1strmap.get("weekly") + "";
 
 
                             if (ballot1strmap.get("price") == null) {
@@ -219,29 +219,29 @@ public class famousweekrankingActivity extends Activity {
                             } else {
                                 //当前价1
 
-                                pricestr = ballot1strmap.get("price")+"";
+                                pricestr = ballot1strmap.get("price") + "";
                             }
 
                             if (ballot1strmap.get("price2") == null) {
                                 price2str = "0";
                             } else {
                                 //当前价2
-                                price2str = ballot1strmap.get("price2")+"";
+                                price2str = ballot1strmap.get("price2") + "";
                             }
 
                             //第1只最高涨幅
-                            String integration3str = ballot1strmap.get("integration1")+"";
+                            String integration3str = ballot1strmap.get("integration1") + "";
 
                             //第2只最高涨幅
-                            String integration4str = ballot1strmap.get("integration2")+"";
+                            String integration4str = ballot1strmap.get("integration2") + "";
 
                             //周积分
-                            String list_pricestr = ballot1strmap.get("integration")+"";
+                            String list_pricestr = ballot1strmap.get("integration") + "";
 
                             //总积分
-                            String ballot_jifenstr = ballot1strmap.get("ballot_jifen")+"";
+                            String ballot_jifenstr = ballot1strmap.get("ballot_jifen") + "";
 
-                            String unamestr = ballot1strmap.get("uname")+"";
+                            String unamestr = ballot1strmap.get("uname") + "";
                             integration3str = integration3str + "%";
                             integration4str = integration4str + "%";
 

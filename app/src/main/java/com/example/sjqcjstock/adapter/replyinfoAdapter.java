@@ -119,9 +119,9 @@ public class replyinfoAdapter extends BaseAdapter {
 
         final ImageView vipImg = (ImageView) convertView
                 .findViewById(R.id.vip_img);
-        String isVip =  listData.get(position).get(
-                "isVip")+"";
-        ViewUtil.setUpVip(isVip,vipImg);
+        String isVip = listData.get(position).get(
+                "isVip") + "";
+        ViewUtil.setUpVip(isVip, vipImg);
         return convertView;
 
     }

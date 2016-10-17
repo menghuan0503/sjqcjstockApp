@@ -15,33 +15,32 @@ import com.example.sjqcjstock.netutil.Utils;
 import java.util.List;
 
 /**
- *
  * 加载水晶币流动的控制器
  * Created by Administrator on 2016/5/6.
  */
-public class CrystalBwaterAdapter extends BaseAdapter{
+public class CrystalBwaterAdapter extends BaseAdapter {
     // 要加载的数据集合
     private CrystalBwater crystalBwater;
     private Context context;
 
-    public CrystalBwaterAdapter(Context context){
+    public CrystalBwaterAdapter(Context context) {
         this.context = context;
     }
 
-    public void setCrystalBwater(CrystalBwater crystalBwater){
+    public void setCrystalBwater(CrystalBwater crystalBwater) {
         this.crystalBwater = crystalBwater;
         notifyDataSetChanged();
     }
 
     // 追加数据
-    public void setAddList(List<CrystalBwater.msgs> msg){
+    public void setAddList(List<CrystalBwater.msgs> msg) {
         crystalBwater.getMsg().addAll(msg);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return crystalBwater == null?0:crystalBwater.getMsg().size();
+        return crystalBwater == null ? 0 : crystalBwater.getMsg().size();
     }
 
     @Override
@@ -61,7 +60,7 @@ public class CrystalBwaterAdapter extends BaseAdapter{
     }
 
     // 绘制Item的函数
-    public View makeItemView(CrystalBwater.msgs msg ) {
+    public View makeItemView(CrystalBwater.msgs msg) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 使用View的对象itemView与R.layout.item关联
@@ -75,13 +74,13 @@ public class CrystalBwaterAdapter extends BaseAdapter{
         time.setText(Utils.getStringtoDate1(msg.getTime()));
         id.setText(msg.getAssist_uid());
         String type = msg.getType();
-        if("0".equals(type)){
-            typeTv.setText("充值："+msg.getAmount());
+        if ("0".equals(type)) {
+            typeTv.setText("充值：" + msg.getAmount());
             typeTv.setTextColor(Color.RED);
-        }else if("1".equals(type)){
-            typeTv.setText("打赏：-"+msg.getAmount());
-        }else if("2".equals(type)){
-            typeTv.setText("被打赏："+msg.getAmount());
+        } else if ("1".equals(type)) {
+            typeTv.setText("打赏：-" + msg.getAmount());
+        } else if ("2".equals(type)) {
+            typeTv.setText("被打赏：" + msg.getAmount());
             typeTv.setTextColor(Color.RED);
         }
         return itemView;

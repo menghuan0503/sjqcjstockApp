@@ -43,10 +43,9 @@ public class usersettingActivity extends Activity {
     protected void onResume() {
         super.onResume();
         // 如果当前是第三方登陆就设置密码（反之就是修改密码）
-        if (Constants.isDefault){
+        if (Constants.isDefault) {
             passwordTv.setText("修改密码");
-        }
-        else{
+        } else {
             passwordTv.setText("设置密码");
         }
     }
@@ -99,12 +98,12 @@ public class usersettingActivity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             //ExitApplication.getInstance().exit(usersettingActivity.this);
                             //获得编辑器
-					SharedPreferences.Editor editor=getSharedPreferences("loginInfo",MODE_PRIVATE).edit();//获得编辑这个文件的编辑器
-					//退出置空用户信息
-					//存储数据
+                            SharedPreferences.Editor editor = getSharedPreferences("loginInfo", MODE_PRIVATE).edit();//获得编辑这个文件的编辑器
+                            //退出置空用户信息
+                            //存储数据
                             // 保存登陆状体（1为登陆 0为退出）
-					editor.putString("isLogin","0");
-					editor.commit();
+                            editor.putString("isLogin", "0");
+                            editor.commit();
                             // 清除与该用户相关的缓存信息
                             // 缓存类
                             ACache mCache = ACache.get(usersettingActivity.this);
@@ -131,7 +130,7 @@ public class usersettingActivity extends Activity {
                             // 我的收藏微博
                             mCache.put("AppCollectionx", "");
                             // 我的微博
-                            mCache.put("loadMoreMyfeedx","");
+                            mCache.put("loadMoreMyfeedx", "");
                             Intent intent = new Intent(usersettingActivity.this, loginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);

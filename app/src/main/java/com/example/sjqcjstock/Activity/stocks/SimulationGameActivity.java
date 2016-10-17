@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * 模拟比赛列表
  * Created by Administrator on 2016/8/17.
  */
-public class SimulationGameActivity extends Activity{
+public class SimulationGameActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -54,7 +54,7 @@ public class SimulationGameActivity extends Activity{
             }
         });
         sgAdapter = new SimulationGameAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(sgAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,7 +62,7 @@ public class SimulationGameActivity extends Activity{
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
                 Intent intent = new Intent();
-                intent.setClass(SimulationGameActivity.this,SimulationGameDetailsActivity.class);
+                intent.setClass(SimulationGameActivity.this, SimulationGameDetailsActivity.class);
                 startActivity(intent);
             }
         });

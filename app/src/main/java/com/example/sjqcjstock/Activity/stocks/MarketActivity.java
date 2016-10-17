@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.adapter.stocks.MarketAdapter;
@@ -75,9 +73,9 @@ public class MarketActivity extends Activity {
 //                String code = ((TextView)view.findViewById(R.id.shares_code)).getText()+"";
 //                String name = ((TextView)view.findViewById(R.id.shares_name)).getText()+"";
                 Intent inten = new Intent();
-                inten.putExtra("code",listInfo.get(position).getCode());
-                inten.putExtra("name",listInfo.get(position).getName());
-                inten.putExtra("openF",listInfo.get(position).getOpenPrice());
+                inten.putExtra("code", listInfo.get(position).getCode());
+                inten.putExtra("name", listInfo.get(position).getName());
+                inten.putExtra("openF", listInfo.get(position).getOpenPrice());
                 inten.setClass(MarketActivity.this, SharesDetailedActivity.class);
                 startActivity(inten);
             }
@@ -88,46 +86,53 @@ public class MarketActivity extends Activity {
 
     /**
      * 买入按钮
+     *
      * @param view
      */
-    public void mairuClick(View view){
-        Intent intent = new Intent(this,BusinessActivity.class);
-        intent.putExtra("type","0");
+    public void mairuClick(View view) {
+        Intent intent = new Intent(this, BusinessActivity.class);
+        intent.putExtra("type", "0");
         startActivity(intent);
     }
 
     /**
      * 卖出按钮
+     *
      * @param view
      */
-    public void maichuClick(View view){
-        Intent intent = new Intent(this,BusinessActivity.class);
-        intent.putExtra("type","1");
+    public void maichuClick(View view) {
+        Intent intent = new Intent(this, BusinessActivity.class);
+        intent.putExtra("type", "1");
         startActivity(intent);
     }
+
     /**
      * 查询按钮
+     *
      * @param view
      */
-    public void chaxunClick(View view){
-        Intent intent = new Intent(this,QueryActivity.class);
+    public void chaxunClick(View view) {
+        Intent intent = new Intent(this, QueryActivity.class);
         startActivity(intent);
     }
+
     /**
      * 交易账户按钮
+     *
      * @param view
      */
-    public void zhanghuClick(View view){
-        Intent intent = new Intent(this,UserDetailNewActivity.class);
-        intent.putExtra("uid","11643");
+    public void zhanghuClick(View view) {
+        Intent intent = new Intent(this, UserDetailNewActivity.class);
+        intent.putExtra("uid", "11643");
         startActivity(intent);
     }
 
     /**
      * 模拟炒股首页
+     *
      * @param view
      */
-    public void analogHomeClick(View view){
+    public void analogHomeClick(View view) {
 
     }
 
@@ -175,7 +180,7 @@ public class MarketActivity extends Activity {
         // 每只股票的数据
         String[] shares = strData.split(";");
         for (String str : shares) {
-            if ("".equals(str.trim())){
+            if ("".equals(str.trim())) {
                 continue;
             }
             // 每只股票的详细数据
@@ -185,10 +190,9 @@ public class MarketActivity extends Activity {
             stocks.setCode(sharesMinute[2]);
             stocks.setSpotPrice(sharesMinute[3]);
             stocks.setOpenPrice(sharesMinute[4]);
-            if(sharesMinute.length<31){
+            if (sharesMinute.length < 31) {
                 stocks.setHighsLows("0");
-            }else
-            {
+            } else {
                 stocks.setHighsLows(sharesMinute[31]);
             }
             listInfo.add(stocks);

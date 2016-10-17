@@ -78,7 +78,7 @@ public class mycollectActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        if(appCollectionList != null && appCollectionList.size()>0){
+        if (appCollectionList != null && appCollectionList.size() > 0) {
             // 做缓存
             mCache.put("AppCollectionx", Utils.getListMapStr(appCollectionList));
         }
@@ -120,7 +120,7 @@ public class mycollectActivity extends Activity {
             }
         });
         String str = mCache.getAsString("AppCollectionx");
-         listmycellectData= Utils.getListMap(str);
+        listmycellectData = Utils.getListMap(str);
         usercommonnoteAdapter.setlistData(listmycellectData);
 
         ptrl = ((PullToRefreshLayout) findViewById(
@@ -159,7 +159,7 @@ public class mycollectActivity extends Activity {
 
     private void geneItems() {
         new SendInfoTaskmycolectloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=AppCollection",
+                Constants.Url + "?app=public&mod=AppFeedList&act=AppCollection",
                 // new String[] { "position", "2"},
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"login_password", Constants.staticpasswordstr},
@@ -217,7 +217,7 @@ public class mycollectActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists2) {
                     if (datastr2 == null) {
-                        datastr2 = map.get("data")+"";
+                        datastr2 = map.get("data") + "";
                         datastrlists2 = JsonTools.listKeyMaps("[" + datastr2 + "]");
                     }
                     String source_user_infostr = "";
@@ -239,11 +239,11 @@ public class mycollectActivity extends Activity {
                         if (datastrmap.get("diggArr") == null) {
                             diggArrstr = "";
                         } else {
-                            diggArrstr = datastrmap.get("diggArr")+"";
+                            diggArrstr = datastrmap.get("diggArr") + "";
 
                         }
                         if (data2str2 == null) {
-                            data2str2 = datastrmap.get("data")+"";
+                            data2str2 = datastrmap.get("data") + "";
                             data2strlists2 = JsonTools.listKeyMaps(data2str2);
                         }
                         for (Map<String, Object> data2strmap : data2strlists2) {
@@ -252,7 +252,7 @@ public class mycollectActivity extends Activity {
                             if (data2strmap.get("uname") == null) {
                                 unamestr2 = "";
                             } else {
-                                unamestr2 = data2strmap.get("uname")+"";
+                                unamestr2 = data2strmap.get("uname") + "";
                             }
 
                             String avatar_middle2;
@@ -260,10 +260,10 @@ public class mycollectActivity extends Activity {
                                 avatar_middle2 = "";
                             } else {
                                 avatar_middle2 = data2strmap.get("avatar_middle")
-                                        +"";
+                                        + "";
                             }
                             HashMap<String, String> map2 = new HashMap<String, String>();
-                            String userGroup = data2strmap.get("user_group")+"";
+                            String userGroup = data2strmap.get("user_group") + "";
                             map2.put("isVip", userGroup);
                             map2.put("uname", unamestr2);
                             map2.put("avatar_middle", avatar_middle2);
@@ -272,36 +272,36 @@ public class mycollectActivity extends Activity {
                                 source_datastr = "";
                             } else {
                                 source_datastr = data2strmap.get("source_data")
-                                        +"";
+                                        + "";
                             }
                             List<Map<String, Object>> source_datastrlists = JsonTools
                                     .listKeyMaps("[" + source_datastr + "]");
                             introduction = "";
                             state = data2strmap.get("state");
-                            // 先判断是否是打赏文章如果是就获取概要
+                            // 先判断是否是付费文章如果是就获取概要
                             if (state != null && "1".equals(state.toString())) {
-                                reward = data2strmap.get("reward")+"";
+                                reward = data2strmap.get("reward") + "";
                                 Object introd = data2strmap.get("abstract");
                                 if (introd != null && !"null".equals(introd.toString())) {
-                                    introduction = introd+"";
+                                    introduction = introd + "";
                                 }
                             }
 
                             for (Map<String, Object> source_datastrmap : source_datastrlists) {
                                 String isdigg = "0";// isdigg为0为未点赞为1为已点赞
                                 String feed_idstr = source_datastrmap
-                                        .get("feed_id")+"";
+                                        .get("feed_id") + "";
 
                                 if (diggArrstr.contains(feed_idstr)) {
                                     isdigg = "1";
                                 }
 
                                 String uidstr = source_datastrmap.get("uid")
-                                        +"";
+                                        + "";
                                 String typestr = source_datastrmap.get("type")
-                                        +"";
+                                        + "";
                                 String publish_timestr = source_datastrmap.get(
-                                        "publish_time")+"";
+                                        "publish_time") + "";
                                 String comment_countstr;
                                 String repost_countstr;
                                 String digg_countstr;
@@ -309,28 +309,28 @@ public class mycollectActivity extends Activity {
                                     comment_countstr = "0";
                                 } else {
                                     comment_countstr = source_datastrmap.get(
-                                            "comment_count")+"";
+                                            "comment_count") + "";
                                 }
                                 if (source_datastrmap.get("repost_count") == null) {
                                     repost_countstr = "0";
                                 } else {
                                     repost_countstr = source_datastrmap.get(
-                                            "repost_count")+"";
+                                            "repost_count") + "";
                                 }
 
                                 if (source_datastrmap.get("digg_count") == null) {
                                     digg_countstr = "0";
                                 } else {
                                     digg_countstr = source_datastrmap.get(
-                                            "digg_count")+"";
+                                            "digg_count") + "";
                                 }
-                                String contentstr = source_datastrmap.get("content")+"";
+                                String contentstr = source_datastrmap.get("content") + "";
                                 // 获得有图片的文本
                                 String attach_urlstr;
                                 if (datastrmap.get("attach_url") == null) {
                                     attach_urlstr = "";
                                 } else {
-                                    attach_urlstr = datastrmap.get("attach_url")+"";
+                                    attach_urlstr = datastrmap.get("attach_url") + "";
                                     // 解析短微博图片地址
                                     attach_urlstr = attach_urlstr.substring(1, attach_urlstr.length() - 1);
                                 }
@@ -350,13 +350,13 @@ public class mycollectActivity extends Activity {
                                 contentstr = contentstr.replace("[", "<img src=\"");
                                 contentstr = contentstr.replace("]", "\"   >");
                                 if ("repost".equals(typestr)) {
-                                    String api_sourcestr = data2strmap.get("api_source")+"";
+                                    String api_sourcestr = data2strmap.get("api_source") + "";
                                     List<Map<String, Object>> api_sourcestrlists = JsonTools.listKeyMaps("[" + api_sourcestr + "]");
                                     for (Map<String, Object> api_sourcestrmap : api_sourcestrlists) {
 
-                                        source_user_infostr = api_sourcestrmap.get("source_user_info")+"";
-                                        source_contentstr = api_sourcestrmap.get("source_content")+"";
-                                        source_feed_idstr = api_sourcestrmap.get("feed_id")+"";
+                                        source_user_infostr = api_sourcestrmap.get("source_user_info") + "";
+                                        source_contentstr = api_sourcestrmap.get("source_content") + "";
+                                        source_feed_idstr = api_sourcestrmap.get("feed_id") + "";
                                         source_contentstr = source_contentstr.replace("<feed-titlestyle='display:none'>", "fontsing1");
                                         source_contentstr = source_contentstr.replace("<feed-title style='display:none'>", "fontsing1");
                                         source_contentstr = source_contentstr.replace("</feed-title>", "fontsing2");
@@ -368,12 +368,12 @@ public class mycollectActivity extends Activity {
                                         source_contentstr = source_contentstr.replace("\t", "");
                                         source_contentstr = source_contentstr.replace("\n", "");
                                         state = api_sourcestrmap.get("state");
-                                        // 先判断是否是打赏文章如果是就获取概要
+                                        // 先判断是否是付费文章如果是就获取概要
                                         if (state != null && "1".equals(state.toString())) {
                                             if (api_sourcestrmap.get("reward") != null) {
-                                                reward = api_sourcestrmap.get("reward")+"";
+                                                reward = api_sourcestrmap.get("reward") + "";
                                             }
-                                            String gaiyao = api_sourcestrmap.get("zy")+"";
+                                            String gaiyao = api_sourcestrmap.get("zy") + "";
                                             source_contentstr = "<font color=\"#4471BC\" >" + source_contentstr.substring(source_contentstr.indexOf("【"), source_contentstr.indexOf("】") + 1) + "</font><Br/>" + gaiyao;
                                         }
 
@@ -383,10 +383,10 @@ public class mycollectActivity extends Activity {
                                         List<Map<String, Object>> source_user_infostrlists = JsonTools.listKeyMaps("[" + source_user_infostr + "]");
                                         for (Map<String, Object> source_user_infostrmap : source_user_infostrlists) {
 
-                                            sourceuidstr = source_user_infostrmap.get("uid")+"";
-                                            sourceunamestr = source_user_infostrmap.get("uname")+"";
-                                            avatar_middlestr = source_user_infostrmap.get("avatar_middle")+"";
-                                            userGroup = source_user_infostrmap.get("user_group")+"";
+                                            sourceuidstr = source_user_infostrmap.get("uid") + "";
+                                            sourceunamestr = source_user_infostrmap.get("uname") + "";
+                                            avatar_middlestr = source_user_infostrmap.get("avatar_middle") + "";
+                                            userGroup = source_user_infostrmap.get("user_group") + "";
                                             map2.put("isVipSource", userGroup);
                                             map2.put("sourceuidstr", sourceuidstr);
                                             map2.put("sourceuname", sourceunamestr);
@@ -399,13 +399,13 @@ public class mycollectActivity extends Activity {
                                     contentstr = "//";
                                 }
 //                                CharSequence charSequence = "";
-                                //  如果是打赏文章就有概要 显示内容为标题+概要
+                                //  如果是付费文章就有概要 显示内容为标题+概要
                                 if (!"".equals(introduction)) {
                                     contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
                                 }
                                 publish_timestr = CalendarUtil.formatDateTime(Utils.getStringtoDate(publish_timestr));
 
-                                if(state != null){
+                                if (state != null) {
                                     map2.put("state", state.toString());
                                 }
                                 map2.put("reward", reward);

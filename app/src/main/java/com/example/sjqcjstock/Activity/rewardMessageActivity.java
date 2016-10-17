@@ -80,7 +80,7 @@ public class rewardMessageActivity extends Activity {
         messageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String feedId = ((TextView) view.findViewById(R.id.feed_id_tv)).getText()+"";
+                String feedId = ((TextView) view.findViewById(R.id.feed_id_tv)).getText() + "";
                 if (!"0".equals(feedId)) {
                     // 跳转到对于的微博页面
                     Intent intent = new Intent(rewardMessageActivity.this, forumnotedetailActivity.class);

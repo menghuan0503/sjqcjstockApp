@@ -26,7 +26,7 @@ import org.json.JSONObject;
  * 协议页面
  * Created by Administrator on 2016/5/6.
  */
-public class AgreementActivity extends Activity{
+public class AgreementActivity extends Activity {
 
     // 主体内容
     private WebView bodyWv;
@@ -51,7 +51,7 @@ public class AgreementActivity extends Activity{
     /**
      * 控件的绑定
      */
-    private void findView(){
+    private void findView() {
         bodyWv = (WebView) findViewById(R.id.agreement_body_wv);
         titleTv = (TextView) findViewById(R.id.agreement_title_tv);
         rl_refresh_layout = (RelativeLayout) findViewById(R.id.rl_refresh_layout);
@@ -66,9 +66,9 @@ public class AgreementActivity extends Activity{
     /**
      * 数据的获取
      */
-    private void initData(){
+    private void initData() {
         String type = getIntent().getStringExtra("type");
-        if(type != null && !"".equals(type)){
+        if (type != null && !"".equals(type)) {
             serviceId = "8";
         }
         rl_refresh_layout.setVisibility(View.VISIBLE);
@@ -76,11 +76,13 @@ public class AgreementActivity extends Activity{
                 new String[]{"mid", Constants.staticmyuidstr}, new String[]{
                 "id", serviceId}));
     }
+
     private class SendAgreementTask extends AsyncTask<TaskParams, Void, String> {
         @Override
         protected String doInBackground(TaskParams... params) {
             return HttpUtil.doInBackground(params);
         }
+
         @Override
         protected void onPostExecute(String result) {
             if (result == null) {
@@ -91,7 +93,7 @@ public class AgreementActivity extends Activity{
             } else {
                 try {
                     JSONObject jsonObj = new JSONObject(result);
-                    if("1".equals(jsonObj.getString("status"))){
+                    if ("1".equals(jsonObj.getString("status"))) {
                         JSONObject data = jsonObj.getJSONObject("data");
                         String content = data.getString("content");
                         String title = data.getString("title");
@@ -101,7 +103,7 @@ public class AgreementActivity extends Activity{
                         bodyWv.setWebViewClient(new ImageWebViewClient(bodyWv));
                         bodyWv.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
 
-                    }else{
+                    } else {
                         CustomToast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG)
                                 .show();
                     }

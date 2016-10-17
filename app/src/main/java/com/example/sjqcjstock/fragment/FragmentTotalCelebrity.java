@@ -28,7 +28,7 @@ import java.util.Map;
  * 总积分榜名人组
  * Created by Administrator on 2016/6/14.
  */
-public class FragmentTotalCelebrity extends Fragment{
+public class FragmentTotalCelebrity extends Fragment {
     // 定义List集合容器
     private totalrankingfamousAdapter adapter;
     //定义于数据库同步的字段集合
@@ -38,7 +38,7 @@ public class FragmentTotalCelebrity extends Fragment{
     // 加载的ListView
     private ListView listView;
     //访问页数控制
-    private int current=1;
+    private int current = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class FragmentTotalCelebrity extends Fragment{
                 current = 1;
                 getData();
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -81,10 +82,10 @@ public class FragmentTotalCelebrity extends Fragment{
         });
     }
 
-    private void getData(){
+    private void getData() {
         new SendInfoTaskfamousranking()
                 .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppTopBallot&type=1&p="+current
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppTopBallot&type=1&p=" + current
                         )
                 );
     }

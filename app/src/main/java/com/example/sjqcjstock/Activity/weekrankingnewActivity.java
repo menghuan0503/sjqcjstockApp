@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * 周积分列表新
  */
-public class weekrankingnewActivity extends Activity{
+public class weekrankingnewActivity extends Activity {
 
     private LinearLayout goback1;
     // 定义于数据库同步的字段集合
@@ -79,7 +79,7 @@ public class weekrankingnewActivity extends Activity{
 
         new SendInfoTaskweekrankinglist()
                 .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppBallotWeek"
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppBallotWeek"
                         )
                 );
     }
@@ -108,7 +108,7 @@ public class weekrankingnewActivity extends Activity{
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
 
                 for (Map<String, Object> map : lists) {
-                    String datastr = map.get("data")+"";
+                    String datastr = map.get("data") + "";
 
                     Integer weeklycount = Integer.parseInt(datastr);
 

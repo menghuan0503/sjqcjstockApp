@@ -36,12 +36,12 @@ public class ImageUtil {
     private static DisplayImageOptions displayImageOptions;
     private static DisplayImageOptions displayImageOptions1 = null;
 
-    public static AnimateFirstDisplayListener getAnimateFirstDisplayListener(){
-        if (animateFirstDisplayListener == null){
+    public static AnimateFirstDisplayListener getAnimateFirstDisplayListener() {
+        if (animateFirstDisplayListener == null) {
             animateFirstDisplayListener = new AnimateFirstDisplayListener();
             return animateFirstDisplayListener;
-        }else{
-            return  animateFirstDisplayListener;
+        } else {
+            return animateFirstDisplayListener;
         }
     }
 
@@ -76,16 +76,17 @@ public class ImageUtil {
     public static ImageView getImageView(Context context, String url) {
         ImageView imageView = (ImageView) LayoutInflater.from(context).inflate(
                 R.layout.view_banner, null);
-        ImageLoader.getInstance().displayImage(url, imageView,getOptionLocal(),getAnimateFirstDisplayListener());
+        ImageLoader.getInstance().displayImage(url, imageView, getOptionLocal(), getAnimateFirstDisplayListener());
         return imageView;
     }
 
     /**
      * 获取图片的设置加载处理信息
+     *
      * @return
      */
-    public static DisplayImageOptions getOption(){
-        if (displayImageOptions==null){
+    public static DisplayImageOptions getOption() {
+        if (displayImageOptions == null) {
             displayImageOptions = new DisplayImageOptions.Builder().cacheInMemory()
                     .showImageOnLoading(R.mipmap.portrait2)//设置图片在下载期间显示的图片
                     .showImageForEmptyUri(R.mipmap.portrait2)
@@ -101,10 +102,11 @@ public class ImageUtil {
 
     /**
      * 获取图片的设置加载处理信息（图片缓存在本地 滚动图片的时候用）
+     *
      * @return
      */
-    public static DisplayImageOptions getOptionLocal(){
-        if (displayImageOptions1==null){
+    public static DisplayImageOptions getOptionLocal() {
+        if (displayImageOptions1 == null) {
             displayImageOptions1 = new DisplayImageOptions.Builder().cacheInMemory()
                     .showImageOnLoading(R.mipmap.nullimg)//设置图片在下载期间显示的图片
                     .showImageForEmptyUri(R.mipmap.nullimg)//设置图片Uri为空或是错误的时候显示的图  显示这个图片不对
@@ -121,10 +123,11 @@ public class ImageUtil {
 
     /**
      * TextView 显示图片的加载器
+     *
      * @param resources
      * @return
      */
-    public static Html.ImageGetter getImageGetter1(final Resources resources){
+    public static Html.ImageGetter getImageGetter1(final Resources resources) {
         Html.ImageGetter imageGetter = new Html.ImageGetter() {
             public Drawable getDrawable(String source) {
                 if (Constants.facemap2.get(source) != null) {
@@ -141,10 +144,11 @@ public class ImageUtil {
 
     /**
      * TextView 显示图片的加载器
+     *
      * @param resources
      * @return
      */
-    public static Html.ImageGetter getImageGetter(final Resources resources){
+    public static Html.ImageGetter getImageGetter(final Resources resources) {
         Html.ImageGetter imageGetter = new Html.ImageGetter() {
             public Drawable getDrawable(String source) {
                 if (Constants.facemap2.get(source) != null) {
@@ -163,9 +167,10 @@ public class ImageUtil {
 
     /**
      * TextView 显示图片的加载器
+     *
      * @return
      */
-    public static Html.ImageGetter getImageGetter1(){
+    public static Html.ImageGetter getImageGetter1() {
         Html.ImageGetter imageGetter = new Html.ImageGetter() {
             @Override
             public Drawable getDrawable(String source) {
@@ -173,8 +178,8 @@ public class ImageUtil {
                 try {
                     is = (InputStream) new URL(source).getContent();
                     Drawable d = Drawable.createFromStream(is, "src");
-                    d.setBounds(0, 0, d.getIntrinsicWidth()*2,
-                            d.getIntrinsicHeight()*2);
+                    d.setBounds(0, 0, d.getIntrinsicWidth() * 2,
+                            d.getIntrinsicHeight() * 2);
                     is.close();
                     return d;
                 } catch (Exception e) {

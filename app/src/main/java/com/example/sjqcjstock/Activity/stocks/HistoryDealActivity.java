@@ -1,22 +1,14 @@
 package com.example.sjqcjstock.Activity.stocks;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.example.sjqcjstock.R;
 import com.example.sjqcjstock.adapter.stocks.DealAdapter;
@@ -32,7 +24,7 @@ import java.util.Calendar;
  * 历史交易信息查询页面
  * Created by Administrator on 2016/8/11.
  */
-public class HistoryDealActivity extends Activity{
+public class HistoryDealActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -41,12 +33,12 @@ public class HistoryDealActivity extends Activity{
     // 显示加载的Adapter
     private DealAdapter dealAdapter;
     // 起始日期，截止日期
-    private TextView startDateTv,endDateTv;
-    private String startDate,endDate;
+    private TextView startDateTv, endDateTv;
+    private String startDate, endDate;
     // 起始年月日
-    private int  startYear,startMonth,startDay;
+    private int startYear, startMonth, startDay;
     // 截止年月日
-    private int endYear,endMonth,endDay;
+    private int endYear, endMonth, endDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +50,8 @@ public class HistoryDealActivity extends Activity{
         Calendar now = Calendar.getInstance();
         endYear = startYear = now.get(Calendar.YEAR);
         endMonth = startMonth = now.get(Calendar.MONTH) + 1;
-        endDay = startDay =  now.get(Calendar.DAY_OF_MONTH);
-        endDate = Utils.getStringDate(endYear,endMonth,endDay);
+        endDay = startDay = now.get(Calendar.DAY_OF_MONTH);
+        endDate = Utils.getStringDate(endYear, endMonth, endDay);
         findView();
     }
 
@@ -81,7 +73,7 @@ public class HistoryDealActivity extends Activity{
         endDateTv.setText(endDate);
 
         dealAdapter = new DealAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(dealAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,6 +93,7 @@ public class HistoryDealActivity extends Activity{
                 // 千万别忘了告诉控件刷新完毕了哦！
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -138,18 +131,19 @@ public class HistoryDealActivity extends Activity{
 
     /**
      * 修改起始时间
+     *
      * @param view
      */
-    public void updateStartTime(View view){
+    public void updateStartTime(View view) {
         new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener(){
+                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        if (year+monthOfYear+dayOfMonth<endYear+endMonth+endDay){
+                        if (year + monthOfYear + dayOfMonth < endYear + endMonth + endDay) {
                             startYear = year;
                             startMonth = monthOfYear;
                             startDay = dayOfMonth;
-                            startDate = Utils.getStringDate(startYear,startMonth,startDay);
+                            startDate = Utils.getStringDate(startYear, startMonth, startDay);
                             startDateTv.setText(startDate);
                         }
 
@@ -159,20 +153,21 @@ public class HistoryDealActivity extends Activity{
 
     /**
      * 修改截止时间
+     *
      * @param view
      */
-    public void updateEndTime(View view){
+    public void updateEndTime(View view) {
         new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener(){
+                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         endYear = year;
                         endMonth = monthOfYear;
                         endDay = dayOfMonth;
-                        endDate = Utils.getStringDate(endYear,endMonth,endDay);
+                        endDate = Utils.getStringDate(endYear, endMonth, endDay);
                         endDateTv.setText(endDate);
                     }
-                }, endYear,endMonth,endDay).show();
+                }, endYear, endMonth, endDay).show();
     }
 
 }

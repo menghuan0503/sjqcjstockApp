@@ -11,46 +11,46 @@ import com.example.sjqcjstock.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class hotstockAdapter extends BaseAdapter{
+public class hotstockAdapter extends BaseAdapter {
 
-	Context context;
-	ArrayList<HashMap<String,Object>> listData;
+    Context context;
+    ArrayList<HashMap<String, Object>> listData;
 
-	//记录checkbox的状态
-	public HashMap<Integer,Boolean> state=new HashMap<Integer,Boolean>();
-	
-	//构造函数
-	public hotstockAdapter(Context context,ArrayList<HashMap<String,Object>> listData){
-		this.context=context;
-		this.listData=listData;
-	}
-	
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return listData.size();
-	}
+    //记录checkbox的状态
+    public HashMap<Integer, Boolean> state = new HashMap<Integer, Boolean>();
 
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return listData.get(position);
-	}
+    //构造函数
+    public hotstockAdapter(Context context, ArrayList<HashMap<String, Object>> listData) {
+        this.context = context;
+        this.listData = listData;
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return listData.size();
+    }
 
-	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		//动态加载布局
-		LayoutInflater mInflater=LayoutInflater.from(context);
-		
-		convertView=mInflater.inflate(R.layout.list_item_hotstock, null);
-		
+    @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return listData.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        //动态加载布局
+        LayoutInflater mInflater = LayoutInflater.from(context);
+
+        convertView = mInflater.inflate(R.layout.list_item_hotstock, null);
+
 //		ImageView image=(ImageView)convertView.findViewById(R.id.friend_image);
 //		image.setBackgroundResource((Integer)listData.get(position).get("friend_image"));
 //		
@@ -60,17 +60,17 @@ public class hotstockAdapter extends BaseAdapter{
 //		TextView detailAddress=(TextView)convertView.findViewById(R.id.detailAddress);
 //		detailAddress.setText((String)listData.get(position).get("detailAddress"));
 //		
-		//TextView id=(TextView)convertView.findViewById(R.id.friend_id);
-		//id.setText((String)listData.get(position).get("friend_id"));
+        //TextView id=(TextView)convertView.findViewById(R.id.friend_id);
+        //id.setText((String)listData.get(position).get("friend_id"));
 //		
 //		CheckBox check=(CheckBox)convertView.findViewById(R.id.selected);
-		
+
 //		//判断用户是否已被选择，如被选择，则复选框为勾选，如未选择则复选框为可选
 //		if((Boolean) listData.get(position).get("selected")){
 //			state.put(position,true);
 //			
 //		}
-		
+
 //		check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 //			
 //			@Override
@@ -83,11 +83,11 @@ public class hotstockAdapter extends BaseAdapter{
 //				}
 //			}
 //		});
-		
+
 //		check.setChecked((state.get(position)==null?false:true));
-		
-		return convertView;
-	}
-	
+
+        return convertView;
+    }
+
 
 }

@@ -78,7 +78,7 @@ public class FragmentGwzbsList extends Fragment {
     private void getData() {
         new SendInfoTask()
                 .execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AppStarcraft"
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AppStarcraft"
                         )
                 );
     }
@@ -137,12 +137,12 @@ public class FragmentGwzbsList extends Fragment {
                                 assets_moneystr = "";
                             } else {
                                 assets_moneystr = starcraftstrmap.get(
-                                        "assets_money")+"";
+                                        "assets_money") + "";
                             }
                             String max_assetsstr = starcraftstrmap.get(
-                                    "max_assets")+"";
+                                    "max_assets") + "";
                             // 购买条数
-                            String countstr = starcraftstrmap.get("count")+"";
+                            String countstr = starcraftstrmap.get("count") + "";
 
                             // 头像url
                             String uidmd5str = Md5Util.getMd5(uidstr);

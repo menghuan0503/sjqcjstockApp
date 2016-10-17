@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchActivity extends Activity{
+public class SearchActivity extends Activity {
 
     private LinearLayout goback1;
     // 获取控件
@@ -97,11 +97,11 @@ public class SearchActivity extends Activity{
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(bt_search.getWindowToken(), 0);
 
-                inputstr = et_searchFriend.getText()+"";
+                inputstr = et_searchFriend.getText() + "";
                 listatfrientData.clear();
                 // 请求用户列表数据
                 new SendInfoTaskalluser().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=usersearch",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=usersearch",
                         //new String[] { "mid",Constants.staticmyuidstr },
                         //new String[] { "type", "at" },
                         new String[]{"key", inputstr},
@@ -115,7 +115,7 @@ public class SearchActivity extends Activity{
         searchAdapter = new com.example.sjqcjstock.adapter.SearchAdapter(
                 SearchActivity.this, SearchActivity.this);
         lv_searchResult.setAdapter(searchAdapter);
-        ptrl = ((PullToRefreshLayout)findViewById(
+        ptrl = ((PullToRefreshLayout) findViewById(
                 R.id.refresh_view));
         // 添加上下拉刷新事件
         ptrl.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
@@ -127,6 +127,7 @@ public class SearchActivity extends Activity{
                 page = 1;
                 geneItems();
             }
+
             // 下拉加载
             @Override
             public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
@@ -176,16 +177,16 @@ public class SearchActivity extends Activity{
                     if (map.get("data") == null) {
 
                     } else {
-                        String datastr = map.get("data")+"";
+                        String datastr = map.get("data") + "";
                         List<Map<String, Object>> datastrlists = JsonTools
                                 .listKeyMaps(datastr);
 
                         for (Map<String, Object> datastrmap : datastrlists) {
-                            String uidstr = datastrmap.get("uid")+"";
+                            String uidstr = datastrmap.get("uid") + "";
                             String unamestr = datastrmap.get("uname")
-                                    +"";
+                                    + "";
                             String avatar_smallstr = datastrmap.get(
-                                    "avatar_small")+"";
+                                    "avatar_small") + "";
                             HashMap<String, Object> map2 = new HashMap<String, Object>();
                             map2.put("uid", uidstr);
                             map2.put("avatar_middlestr", avatar_smallstr);
@@ -203,7 +204,7 @@ public class SearchActivity extends Activity{
 
     private void geneItems() {
         new SendInfoTaskalluser().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=usersearch",
+                Constants.Url + "?app=public&mod=AppFeedList&act=usersearch",
                 new String[]{"key", inputstr},
                 new String[]{"p", String.valueOf(page)}
         ));

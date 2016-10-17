@@ -173,7 +173,7 @@ public class usermycommonnoteAdapter extends BaseAdapter {
                             public void onClick(DialogInterface dialog, int which) {
                                 // TODO Auto-generated method stub
 
-                                new SendInfoTaskdeleteweibo().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AppremoveFeed",
+                                new SendInfoTaskdeleteweibo().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AppremoveFeed",
                                                 //new String[] { "login_email", "1061550505@qq.com" },
                                                 //new String[] { "login_password", "12345678" },
                                                 //new String[] { "P", "1" },
@@ -295,7 +295,7 @@ public class usermycommonnoteAdapter extends BaseAdapter {
 
                     //geneItems();
                     //mAdapter.notifyDataSetChanged();
-                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg",
+                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},
@@ -329,7 +329,7 @@ public class usermycommonnoteAdapter extends BaseAdapter {
 
                     //geneItems();
                     //mAdapter.notifyDataSetChanged();                     //http://www.sjqcj.com/index.php?app=public&mod=AppFeedList&act=DelDigg
-                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg",
+                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},

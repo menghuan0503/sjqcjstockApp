@@ -7,36 +7,37 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/color_toptitle" >
+        android:background="@color/color_toptitle">
 
         <include
+            layout="@layout/head_back_reuse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            layout="@layout/head_back_reuse" />
+            android:visibility="gone" />
 
         <TextView
+            style="@style/top_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="搜索"
-            style="@style/top_title" />
+            android:text="消息" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/pickrecivecomment1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_ffffff"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,14 +53,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:textColor="@color/white"
-                android:visibility="gone"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <Button
                 style="@style/arrow_img"
@@ -78,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_ffffff"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,14 +95,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:textColor="@color/white"
-                android:visibility="gone"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <Button
                 style="@style/arrow_img"
@@ -111,33 +112,33 @@
         </LinearLayout>
 
         <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="1px"-->
-            <!--android:background="@drawable/line" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@drawable/line" />-->
 
         <!--<LinearLayout-->
-            <!--android:id="@+id/pickatme1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="@color/color_ffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:visibility="gone" >-->
+        <!--android:id="@+id/pickatme1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/color_ffffff"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:visibility="gone" >-->
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:paddingLeft="20dp"-->
-                <!--android:text=" @到我的" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:text=" @到我的" />-->
 
-            <!--<Button-->
-                <!--style="@style/GreenButton"-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:background="@drawable/gracearrow1" />-->
+        <!--<Button-->
+        <!--style="@style/GreenButton"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="@drawable/gracearrow1" />-->
 
 
         <!--</LinearLayout>-->
@@ -152,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_ffffff"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -168,14 +169,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:textColor="@color/white"
-                android:visibility="gone"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <Button
                 style="@style/arrow_img"
@@ -193,7 +194,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_ffffff"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -209,14 +210,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:textColor="@color/white"
-                android:visibility="gone"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <Button
                 style="@style/arrow_img"
@@ -229,53 +230,12 @@
             android:layout_height="1px"
             android:background="@drawable/line" />
 
-    <LinearLayout
-        android:id="@+id/reward_message"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_ffffff"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:paddingLeft="12dp"
-            android:text="打赏消息"
-            android:textColor="#444444" />
-
-        <TextView
-            android:id="@+id/message5_count_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/bg_round_textview"
-            android:textColor="@color/white"
-            android:visibility="gone"/>
-
-        <Button
-            style="@style/arrow_img"
-            android:layout_gravity="center"
-            android:clickable="false" />
-
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@drawable/line" />
         <LinearLayout
-            android:id="@+id/system_message"
+            android:id="@+id/reward_message"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_ffffff"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -283,22 +243,22 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingLeft="12dp"
-                android:text="系统公告"
+                android:text="打赏消息"
                 android:textColor="#444444" />
 
             <TextView
-                android:id="@+id/message6_count_tv"
+                android:id="@+id/message5_count_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:textColor="@color/white"
-                android:visibility="gone"/>
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <Button
                 style="@style/arrow_img"
@@ -312,6 +272,48 @@
             android:layout_height="1px"
             android:background="@drawable/line" />
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/system_message"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="系统消息"
+                android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/message6_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_round_textview"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <Button
+                style="@style/arrow_img"
+                android:layout_gravity="center"
+                android:clickable="false" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/line" />
+
+    </LinearLayout>
 
 </LinearLayout>

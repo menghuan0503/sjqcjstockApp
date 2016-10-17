@@ -48,9 +48,9 @@ public class systemMessageActivity extends Activity {
         String title = intent.getStringExtra("title");
         String body = intent.getStringExtra("body");
         bodyTv.setText(body);
-        if(title == null || "".equals(title.trim())){
+        if (title == null || "".equals(title.trim())) {
             titleNameTv.setVisibility(View.GONE);
-        }else{
+        } else {
             titleNameTv.setText(title);
         }
 

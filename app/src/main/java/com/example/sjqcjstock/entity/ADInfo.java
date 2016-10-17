@@ -4,44 +4,44 @@ package com.example.sjqcjstock.entity;
  * 描述：广告信息</br>
  */
 public class ADInfo {
-	
-	String id = "";
-	String url = "";
-	String content = "";
-	String type = "";
 
-	public String getId() {
-		return id;
-	}
+    String id = "";
+    String url = "";
+    String content = "";
+    String type = "";
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getContent() {
-		return content;
-		
-		
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
 
-	public String getType() {
-		return type;
-	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

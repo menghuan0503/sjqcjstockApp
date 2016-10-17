@@ -24,7 +24,7 @@ import java.util.Calendar;
  * 历史委托信息查询页面
  * Created by Administrator on 2016/8/11.
  */
-public class HistoryCommissionActivity extends Activity{
+public class HistoryCommissionActivity extends Activity {
 
     // 上下拉刷新控件
     private PullToRefreshLayout ptrl;
@@ -33,12 +33,12 @@ public class HistoryCommissionActivity extends Activity{
     // 显示加载的Adapter
     private CommissionAdapter commissionAdapter;
     // 起始日期，截止日期
-    private TextView startDateTv,endDateTv;
-    private String startDate,endDate;
+    private TextView startDateTv, endDateTv;
+    private String startDate, endDate;
     // 起始年月日
-    private int  startYear,startMonth,startDay;
+    private int startYear, startMonth, startDay;
     // 截止年月日
-    private int endYear,endMonth,endDay;
+    private int endYear, endMonth, endDay;
 
 
     @Override
@@ -51,8 +51,8 @@ public class HistoryCommissionActivity extends Activity{
         Calendar now = Calendar.getInstance();
         endYear = startYear = now.get(Calendar.YEAR);
         endMonth = startMonth = now.get(Calendar.MONTH) + 1;
-        endDay = startDay =  now.get(Calendar.DAY_OF_MONTH);
-        endDate = Utils.getStringDate(endYear,endMonth,endDay);
+        endDay = startDay = now.get(Calendar.DAY_OF_MONTH);
+        endDate = Utils.getStringDate(endYear, endMonth, endDay);
 
         findView();
     }
@@ -76,7 +76,7 @@ public class HistoryCommissionActivity extends Activity{
         endDateTv.setText(endDate);
 
         commissionAdapter = new CommissionAdapter(this);
-        listView = (ListView)findViewById(
+        listView = (ListView) findViewById(
                 R.id.list_view);
         listView.setAdapter(commissionAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -133,18 +133,19 @@ public class HistoryCommissionActivity extends Activity{
 
     /**
      * 修改起始时间
+     *
      * @param view
      */
-    public void updateStartTime(View view){
+    public void updateStartTime(View view) {
         new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener(){
+                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        if (year+monthOfYear+dayOfMonth<endYear+endMonth+endDay){
+                        if (year + monthOfYear + dayOfMonth < endYear + endMonth + endDay) {
                             startYear = year;
                             startMonth = monthOfYear;
                             startDay = dayOfMonth;
-                            startDate = Utils.getStringDate(startYear,startMonth,startDay);
+                            startDate = Utils.getStringDate(startYear, startMonth, startDay);
                             startDateTv.setText(startDate);
                         }
                     }
@@ -153,19 +154,20 @@ public class HistoryCommissionActivity extends Activity{
 
     /**
      * 修改截止时间
+     *
      * @param view
      */
-    public void updateEndTime(View view){
+    public void updateEndTime(View view) {
         new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener(){
+                new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         endYear = year;
                         endMonth = monthOfYear;
                         endDay = dayOfMonth;
-                        endDate = Utils.getStringDate(endYear,endMonth,endDay);
+                        endDate = Utils.getStringDate(endYear, endMonth, endDay);
                         endDateTv.setText(endDate);
                     }
-                }, endYear,endMonth,endDay).show();
+                }, endYear, endMonth, endDay).show();
     }
 }

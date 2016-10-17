@@ -90,7 +90,7 @@ public class supermanAdapter extends BaseAdapter {
         }
 
         TextView username = (TextView) convertView.findViewById(R.id.username);
-        username.setText( listData.get(position).get("username"));
+        username.setText(listData.get(position).get("username"));
         //
         TextView detailcomment = (TextView) convertView
                 .findViewById(R.id.detailcomment);
@@ -101,8 +101,8 @@ public class supermanAdapter extends BaseAdapter {
         final TextView attentionuser1 = (TextView) convertView
                 .findViewById(R.id.attentionuser1);
 
-        followingstr =  listData.get(position).get("following");
-        followerstr =  listData.get(position).get("follower");
+        followingstr = listData.get(position).get("following");
+        followerstr = listData.get(position).get("follower");
         if ("1".equals(followingstr) && "1".equals(followerstr)) {
             attentionuser1.setText("相互关注");
             attentionuser1.setTextColor(attentionuser1.getResources().getColor(R.color.color_toptitle));
@@ -124,7 +124,7 @@ public class supermanAdapter extends BaseAdapter {
                             || Constants.staticLoginType.equals("qq")) {
                         new SendInfoTaskfollowsb()
                                 .execute(new TaskParams(
-                                        Constants.Url+"?app=public&mod=AppFeedList&act=AddFollow",
+                                        Constants.Url + "?app=public&mod=AppFeedList&act=AddFollow",
                                         new String[]{"mid", Constants.staticmyuidstr},
                                         new String[]{"tokey", Constants.statictokeystr},
                                         new String[]{"type", Constants.staticLoginType},
@@ -132,7 +132,7 @@ public class supermanAdapter extends BaseAdapter {
                     } else {
                         // 普通用户登录请求数据
                         new SendInfoTaskfollowsb().execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=AddFollow", new String[]{
+                                Constants.Url + "?app=public&mod=AppFeedList&act=AddFollow", new String[]{
                                 "mid", Constants.staticmyuidstr},
                                 new String[]{"login_password", Constants.staticpasswordstr},
                                 new String[]{"tokey", Constants.statictokeystr},
@@ -156,7 +156,7 @@ public class supermanAdapter extends BaseAdapter {
                 } else {
                     new SendInfoTaskfollowcancelsb()
                             .execute(new TaskParams(
-                                            Constants.Url+"?app=public&mod=AppFeedList&act=DelFollow",
+                                            Constants.Url + "?app=public&mod=AppFeedList&act=DelFollow",
                                             new String[]{"mid",
                                                     Constants.staticmyuidstr},
                                             new String[]{"login_password",
@@ -184,7 +184,7 @@ public class supermanAdapter extends BaseAdapter {
         });
         ImageView vipImg = (ImageView) convertView.findViewById(R.id.vip_img);
         String isVip = listData.get(position).get(
-                "isVip")+"";
+                "isVip") + "";
         ViewUtil.setUpVip(isVip, vipImg);
         return convertView;
     }

@@ -38,7 +38,7 @@ import java.util.Set;
  *
  * @author Administrator
  */
-public class personalnewsActivity extends Activity{
+public class personalnewsActivity extends Activity {
 
     // 获取控件
     private LinearLayout goback1;
@@ -84,7 +84,7 @@ public class personalnewsActivity extends Activity{
 
     @Override
     protected void onDestroy() {
-        if(messageList != null && messageList.size()>0){
+        if (messageList != null && messageList.size() > 0) {
             // 做缓存
             mCache.put("Messagex", Utils.getListMapStr(messageList));
         }
@@ -199,7 +199,7 @@ public class personalnewsActivity extends Activity{
 
                 for (Map<String, Object> map : lists) {
                     if (datastr == null) {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                         datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
                     }
                     for (Map<String, Object> datastrmap : datastrlists) {
@@ -208,19 +208,19 @@ public class personalnewsActivity extends Activity{
                         } else {
                             if (data2str == null) {
                                 //将data里面的数据取出来，解析一下放到data集合里面，在进行解析
-                                data2str = datastrmap.get("data")+"";
+                                data2str = datastrmap.get("data") + "";
                                 data2strlists = JsonTools.listKeyMaps(data2str);
                             }
                             for (Map<String, Object> data2strmap : data2strlists) {
                                 //获取list_id参数
-                                String list_idstr = data2strmap.get("list_id")+"";
+                                String list_idstr = data2strmap.get("list_id") + "";
                                 // 创建时间
-                                String mtimestr = data2strmap.get("mtime")+"";
+                                String mtimestr = data2strmap.get("mtime") + "";
 
                                 // 最后修改时间
-                                String list_ctimestr = data2strmap.get("list_ctime")+"";
-                                String member_uidstr = data2strmap.get("member_uid")+"";
-                                String from_uidstr = data2strmap.get("from_uid")+"";
+                                String list_ctimestr = data2strmap.get("list_ctime") + "";
+                                String member_uidstr = data2strmap.get("member_uid") + "";
+                                String from_uidstr = data2strmap.get("from_uid") + "";
 
                                 list_ctimestr = CalendarUtil.formatDateTime(Utils.getStringtoDate(list_ctimestr));
 
@@ -229,15 +229,15 @@ public class personalnewsActivity extends Activity{
                                 map2.put("list_idstr", list_idstr);
 
                                 //通过last_message获取用户的信息
-                                String last_messagestr = data2strmap.get("last_message")+"";
+                                String last_messagestr = data2strmap.get("last_message") + "";
                                 List<Map<String, Object>> last_messagestrlists = JsonTools.listKeyMaps("[" + last_messagestr + "]");
 
                                 for (Map<String, Object> last_messagestrmap : last_messagestrlists) {
-                                    String contentstr = last_messagestrmap.get("content")+"";
+                                    String contentstr = last_messagestrmap.get("content") + "";
                                     map2.put("contentstr", contentstr);
 
                                     // 私信者的信息
-                                    String user_infostr = last_messagestrmap.get("user_info")+"";
+                                    String user_infostr = last_messagestrmap.get("user_info") + "";
                                     List<Map<String, Object>> user_infostrlists = JsonTools.listKeyMaps("[" + user_infostr + "]");
 
                                     //如果用户信息为false，则该用户不存在
@@ -247,13 +247,13 @@ public class personalnewsActivity extends Activity{
                                     for (Map<String, Object> user_infostrmap : user_infostrlists) {
 
                                         //获取目标用户的相关信息  id、name
-                                        String uidstr = user_infostrmap.get("uid")+"";
-                                        String fromunamestr = user_infostrmap.get("uname")+"";
+                                        String uidstr = user_infostrmap.get("uid") + "";
+                                        String fromunamestr = user_infostrmap.get("uname") + "";
 
                                         if (Constants.staticmyuidstr.equals(uidstr)) {
 
                                         } else {
-                                            String userGroup = user_infostrmap.get("user_group")+"";
+                                            String userGroup = user_infostrmap.get("user_group") + "";
                                             map2.put("isVip", userGroup);
                                             map2.put("unamestr", fromunamestr);
                                             map2.put("uidstr", uidstr);
@@ -264,7 +264,7 @@ public class personalnewsActivity extends Activity{
                                     }
                                 }
 
-                                if(!isRn){
+                                if (!isRn) {
                                     // 如果用户不存在就跳过当前消息体继续处理下一条消息体
                                     isRn = true;
                                     continue;
@@ -276,21 +276,21 @@ public class personalnewsActivity extends Activity{
                                 if (data2strmap.get("to_user_info") == null) {
                                     to_user_infostr = "";
                                 } else {
-                                    to_user_infostr = data2strmap.get("to_user_info")+"";
+                                    to_user_infostr = data2strmap.get("to_user_info") + "";
                                 }
                                 List<Map<String, Object>> to_user_infostrlists = JsonTools.listKeyMaps("[" + to_user_infostr + "]");
                                 for (Map<String, Object> to_user_infostrmap : to_user_infostrlists) {
                                     Set<String> touserinfokey = to_user_infostrmap.keySet();
                                     for (String key : touserinfokey) {
-                                        String to_user_infostrmapstr = to_user_infostrmap.get(key)+"";
+                                        String to_user_infostrmapstr = to_user_infostrmap.get(key) + "";
                                         if ("false".equals(to_user_infostrmapstr)) {
                                             map2.put("unamestr", "该用户已不存在");
                                         }
                                         List<Map<String, Object>> to_user_infostrmapstrlists = JsonTools.listKeyMaps("[" + to_user_infostrmapstr + "]");
                                         for (Map<String, Object> to_user_infostrmapstrmap : to_user_infostrmapstrlists) {
-                                            String uidstr = to_user_infostrmapstrmap.get("uid")+"";
-                                            String unamestr = to_user_infostrmapstrmap.get("uname")+"";
-                                            String avatar_middlestr = to_user_infostrmapstrmap.get("avatar_middle")+"";
+                                            String uidstr = to_user_infostrmapstrmap.get("uid") + "";
+                                            String unamestr = to_user_infostrmapstrmap.get("uname") + "";
+                                            String avatar_middlestr = to_user_infostrmapstrmap.get("avatar_middle") + "";
                                             if (Constants.staticmyuidstr.equals(uidstr)) {
 
                                             } else {
@@ -324,7 +324,7 @@ public class personalnewsActivity extends Activity{
 
     private void geneItems() {
         new SendInfoTask().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=Message&mid="
+                Constants.Url + "?app=public&mod=AppFeedList&act=Message&mid="
                         + Constants.staticmyuidstr + "&p="
                         + String.valueOf(current)
         ));

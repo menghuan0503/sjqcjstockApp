@@ -110,7 +110,7 @@
                 android:layout_width="72dp"
                 android:layout_height="30dp"
                 android:background="@color/color_toptitle"
-                android:text="打赏文章"
+                android:text="付费文章"
                 android:textColor="@color/color_ffffff"
                 android:textSize="14dp" />
 

@@ -3,6 +3,7 @@ package com.example.sjqcjstock.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 打赏文章的适配器
+ * 付费文章的适配器
  */
 public class myattentioncommonnoteAdapter extends BaseAdapter {
 
@@ -109,11 +110,11 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
         holder.shortweibolay2.setVisibility(View.GONE);
         holder.shortweibolay3.setVisibility(View.GONE);
 
-        if ("repost".equals( listData.get(position).get("type"))) {
+        if ("repost".equals(listData.get(position).get("type"))) {
             //LinearLayout repostlin1=(LinearLayout)convertView.findViewById(R.id.repostlin1);
             holder.repostlin1.setVisibility(View.VISIBLE);
             //TextView repostusername1=(TextView)convertView.findViewById(R.id.repostusername1);
-            holder.repostusername1.setText( listData.get(position).get("sourceuname"));
+            holder.repostusername1.setText(listData.get(position).get("sourceuname"));
             //TextView repostweibocomment1=(TextView)convertView.findViewById(R.id.repostweibocomment1);
             holder.repostweibocomment1.setText(listData.get(position).get("source_contentstr"));
             holder.repostlin1.setOnClickListener(new OnClickListener() {
@@ -153,7 +154,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
                 // TODO Auto-generated method stub
                 try {
                     Intent intent = new Intent(context.getApplicationContext(), UserDetailNewActivity.class);
-                    intent.putExtra("uid",listData.get(position).get("uid"));
+                    intent.putExtra("uid", listData.get(position).get("uid"));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -179,7 +180,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
                 // TODO Auto-generated method stub
                 try {
                     Intent intent = new Intent(context.getApplicationContext(), UserDetailNewActivity.class);
-                    intent.putExtra("uid",listData.get(position).get("uid"));
+                    intent.putExtra("uid", listData.get(position).get("uid"));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -192,22 +193,28 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
 
             }
         });
-
-
         //TextView feedtitle=(TextView)convertView.findViewById(R.id.feedtitle);
         //feedtitle.setText((String)listData.get(position).get("titlestr"));
-
         Object stateObj = listData.get(position).get("state");
         if (stateObj != null && !"0".equals(stateObj.toString())) {
             // 设置并显示水晶币个数
             holder.rewardTv.setText(listData.get(position).get("reward").toString());
             holder.rewardTv.setVisibility(View.VISIBLE);
         }
+        String contentstr = listData.get(position).get("content");
+        CharSequence charSequence = "";
+        try {
+            charSequence = Html.fromHtml(contentstr, ImageUtil.getImageGetter(context.getResources()), null);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // 如果是打赏微博这里显示的就是概要而不是正文
-        holder.weibocomment1.setText(listData.get(position).get("content"));
+        holder.weibocomment1.setText(charSequence);
 
         //TextView username=(TextView)convertView.findViewById(R.id.username1);
-        holder.username.setText( listData.get(position).get("uname"));
+        holder.username.setText(listData.get(position).get("uname"));
 
         //TextView weibocomment1=(TextView)convertView.findViewById(R.id.weibocomment1);
 
@@ -225,7 +232,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
                 // TODO Auto-generated method stub
                 try {
                     Intent intent = new Intent(context.getApplicationContext(), UserDetailNewActivity.class);
-                    intent.putExtra("uid",listData.get(position).get("sourceuidstr"));
+                    intent.putExtra("uid", listData.get(position).get("sourceuidstr"));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } catch (Exception e) {
@@ -256,7 +263,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
 
         //LinearLayout pickdigg3=(LinearLayout)convertView.findViewById(R.id.pickdigg3);
 
-        isdigg =listData.get(position).get("isdigg");
+        isdigg = listData.get(position).get("isdigg");
 
         if ("1".equals(isdigg)) {
             holder.pickdigg2.setImageResource(R.mipmap.praise6_l);
@@ -285,7 +292,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
 
                     //geneItems();
                     //mAdapter.notifyDataSetChanged();
-                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=AddDigg",
+                    new SendInfoTaskpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=AddDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},
@@ -315,7 +322,7 @@ public class myattentioncommonnoteAdapter extends BaseAdapter {
                     }
                     //geneItems();
                     //mAdapter.notifyDataSetChanged();                     //http://www.sjqcj.com/index.php?app=public&mod=AppFeedList&act=DelDigg
-                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url+"?app=public&mod=AppFeedList&act=DelDigg",
+                    new SendInfoTaskcancelpraise().execute(new TaskParams(Constants.Url + "?app=public&mod=AppFeedList&act=DelDigg",
                                     new String[]{"mid", Constants.staticmyuidstr},
                                     new String[]{"login_password", Constants.staticpasswordstr},
                                     new String[]{"tokey", Constants.statictokeystr},

@@ -48,7 +48,7 @@ public class addnoteActivity extends Activity {
         public void onClick(View arg0) {
             new SendInfoTask()
                     .execute(new TaskParams(
-                                    Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed", new String[]{
+                                    Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed", new String[]{
                                     "mid", Constants.staticmyuidstr},
                                     new String[]{"login_password",
                                             Constants.staticpasswordstr},

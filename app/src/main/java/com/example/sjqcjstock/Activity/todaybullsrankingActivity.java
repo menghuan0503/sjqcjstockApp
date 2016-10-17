@@ -117,7 +117,7 @@ public class todaybullsrankingActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists2) {
                     if (datastr2 == null) {
-                        datastr2 = map.get("data")+"";
+                        datastr2 = map.get("data") + "";
                         datastrlists2 = JsonTools.listKeyMaps(datastr2);
                     }
                     if (datastrlists2 == null) {
@@ -125,23 +125,23 @@ public class todaybullsrankingActivity extends Activity {
                     }
                     for (Map<String, Object> datastrmap : datastrlists2) {
                         // 涨幅
-                        String increasestr = datastrmap.get("increase")+"";
+                        String increasestr = datastrmap.get("increase") + "";
                         // 最新价
-                        String currentPricestr = datastrmap.get("currentPrice")+"";
+                        String currentPricestr = datastrmap.get("currentPrice") + "";
                         // 股票名
                         String ballot_namestr;
                         if (datastrmap.get("ballot_name") == null) {
                             ballot_namestr = "暂无";
                         } else {
                             ballot_namestr = datastrmap.get("ballot_name")
-                                    +"";
+                                    + "";
                         }
                         // 用户名
-                        String unamestr = datastrmap.get("uname")+"";
-                        String uidstr = datastrmap.get("uid")+"";
+                        String unamestr = datastrmap.get("uname") + "";
+                        String uidstr = datastrmap.get("uid") + "";
                         HashMap<String, String> map2 = new HashMap<String, String>();
                         map2.put("currentPrice", currentPricestr);
-                        map2.put("increase",increasestr);
+                        map2.put("increase", increasestr);
                         map2.put("ballot_name", ballot_namestr);
                         map2.put("uname", unamestr);
                         map2.put("uidimg",
@@ -158,7 +158,7 @@ public class todaybullsrankingActivity extends Activity {
 
     private void geneItems() {
         new SendInfoTasktodayuprankingloadmore().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppTodayBallot&group=today",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppTodayBallot&group=today",
                         new String[]{"p", String.valueOf(current)}
                 )
         );

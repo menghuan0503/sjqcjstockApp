@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * 收到的评论页面
  */
-public class recivecommentActivity extends Activity{
+public class recivecommentActivity extends Activity {
 
     private LinearLayout goback1;
     private ListView xlistView2;
@@ -55,7 +55,7 @@ public class recivecommentActivity extends Activity{
 
     @Override
     protected void onDestroy() {
-        if(myCommentList != null && myCommentList.size()>0){
+        if (myCommentList != null && myCommentList.size() > 0) {
             // 做缓存
             mCache.put("MyCommentx", Utils.getListMapStr(myCommentList));
         }
@@ -124,9 +124,10 @@ public class recivecommentActivity extends Activity{
             System.gc();
         }
     }
+
     private void geneItems() {
         new SendInfoTask().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=MyComment",
+                Constants.Url + "?app=public&mod=AppFeedList&act=MyComment",
                 new String[]{"type", "receive"},
                 new String[]{"mid", Constants.staticmyuidstr}, new String[]{
                 "login_password", Constants.staticpasswordstr},
@@ -144,7 +145,7 @@ public class recivecommentActivity extends Activity{
                 if ("1".equals(isreferlist)) {
                     myCommentList = (ArrayList<HashMap<String, String>>) listrecivecommentData.clone();
                 }
-            }else{
+            } else {
                 // 千万别忘了告诉控件刷新完毕了哦！加载失败
                 ptrl.refreshFinish(PullToRefreshLayout.FAIL);
             }
@@ -152,7 +153,7 @@ public class recivecommentActivity extends Activity{
         }
     };
 
-    private  class SendInfoTask extends AsyncTask<TaskParams, Void, String> {
+    private class SendInfoTask extends AsyncTask<TaskParams, Void, String> {
 
         @Override
         protected String doInBackground(TaskParams... params) {
@@ -181,22 +182,22 @@ public class recivecommentActivity extends Activity{
                 }
                 for (Map<String, Object> map : lists) {
                     if (datastr == null) {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                         datastrlists = JsonTools.listKeyMaps("[" + datastr
                                 + "]");
                     }
                     for (Map<String, Object> datastrmap : datastrlists) {
                         if (data2str == null) {
-                            data2str = datastrmap.get("data")+"";
+                            data2str = datastrmap.get("data") + "";
                             data2strlists = JsonTools.listKeyMaps(data2str);
                         }
                         for (Map<String, Object> data2strmap : data2strlists) {
                             String comment_idstr = data2strmap
-                                    .get("comment_id")+"";
+                                    .get("comment_id") + "";
                             String ctimestr = data2strmap.get("ctime")
-                                    +"";
+                                    + "";
                             String contentstr = data2strmap.get("content")
-                                    +"";
+                                    + "";
                             ctimestr = CalendarUtil.formatDateTime(Utils
                                     .getStringtoDate(ctimestr));
                             contentstr = contentstr.replace("\t", "");
@@ -212,7 +213,7 @@ public class recivecommentActivity extends Activity{
                             map2.put("comment_id", comment_idstr);
                             // user_info 回复用户信息
                             String user_infostr = data2strmap.get("user_info")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> user_infostrlists = JsonTools
                                     .listKeyMaps("[" + user_infostr + "]");
 
@@ -224,21 +225,21 @@ public class recivecommentActivity extends Activity{
                                     unamestr = "该用户已不存在";
                                 } else {
                                     unamestr = user_infostrmap.get("uname")
-                                            +"";
+                                            + "";
                                 }
                                 if (user_infostrmap.get("avatar_middle") == null) {
                                     avatar_middlestr = "";
                                 } else {
                                     avatar_middlestr = user_infostrmap.get(
-                                            "avatar_middle")+"";
+                                            "avatar_middle") + "";
                                 }
                                 if (user_infostrmap.get("uid") == null) {
                                     uidstr = "";
                                 } else {
                                     uidstr = user_infostrmap.get("uid")
-                                            +"";
+                                            + "";
                                 }
-                                String userGroup = user_infostrmap.get("user_group")+"";
+                                String userGroup = user_infostrmap.get("user_group") + "";
                                 map2.put("isVip", userGroup);
                                 map2.put("contentunamestr", unamestr);
                                 map2.put("avatar_middlestr", avatar_middlestr);
@@ -246,7 +247,7 @@ public class recivecommentActivity extends Activity{
                             }
 
                             String sourceInfostr = data2strmap
-                                    .get("sourceInfo")+"";
+                                    .get("sourceInfo") + "";
                             List<Map<String, Object>> sourceInfolists = JsonTools
                                     .listKeyMaps("[" + sourceInfostr + "]");
                             for (Map<String, Object> sourceInfostrmap : sourceInfolists) {
@@ -259,25 +260,25 @@ public class recivecommentActivity extends Activity{
                                 String reward = "";
                                 if (state != null && "1".equals(state.toString())) {
                                     if (sourceInfostrmap.get("reward") != null)
-                                        reward = sourceInfostrmap.get("reward")+"";
+                                        reward = sourceInfostrmap.get("reward") + "";
                                     if (sourceInfostrmap.get("abstract") != null)
-                                        introduction = sourceInfostrmap.get("abstract")+"";
+                                        introduction = sourceInfostrmap.get("abstract") + "";
                                 }
 
                                 map2.put("reward", reward);
-                                if(state!=null){
+                                if (state != null) {
                                     map2.put("state", state.toString());
                                 }
 
 
                                 String publish_timestr = sourceInfostrmap.get(
-                                        "publish_time")+"";
+                                        "publish_time") + "";
 
                                 publish_timestr = CalendarUtil
                                         .formatDateTime(Utils
                                                 .getStringtoDate(publish_timestr));
                                 String source_content = sourceInfostrmap.get(
-                                        "source_content")+"";
+                                        "source_content") + "";
 
                                 source_content = source_content.replace("<feed-title style='display:none'>", "feedtitleqian");
                                 source_content = source_content.replace("</feed-title>", "feedtitlehou");
@@ -303,9 +304,9 @@ public class recivecommentActivity extends Activity{
                                         "");
 
                                 if (state != null && "1".equals(state.toString())) {
-                                    source_content = "<font color=\"#4471BC\" >" + source_content.substring(source_content.indexOf("【"), source_content.indexOf("】") + 1) + "</font><Br/>概况：" + introduction;
+                                    source_content = "<font color=\"#4471BC\" >" + source_content.substring(source_content.indexOf("【"), source_content.indexOf("】") + 1) + "</font><Br/>摘要：" + introduction;
                                 }
-                                map2.put("source_content",source_content);
+                                map2.put("source_content", source_content);
                                 map2.put("publish_timestr", publish_timestr);
                                 map2.put("sourceunamestr", sourceInfostrmap
                                         .get("uname").toString());
@@ -317,7 +318,7 @@ public class recivecommentActivity extends Activity{
                                 map2.put("sourcefeed_id",
                                         sourceInfostrmap.get("feed_id")
                                                 .toString());
-                                String userGroup = sourceInfostrmap.get("user_group")+"";
+                                String userGroup = sourceInfostrmap.get("user_group") + "";
                                 map2.put("isVipSource", userGroup);
                             }
                             listrecivecommentData.add(map2);

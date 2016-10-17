@@ -107,10 +107,10 @@ public class commentrewardweiboActivity extends Activity {
     private TextView bowenTitleTv;
     //写文章的标题输入框
     private EditText editcomtitleforweibo1;
-    // 写概述的输入框
+    // 写摘要的输入框
     private RelativeLayout summaryRel;
     private EditText summaryEdi;
-    // 写概述还能输入多少字
+    // 写摘要还能输入多少字
     private TextView inputNumberWords;
     // 富文本编辑器里面显示的说明文字
     public TextView shareFreshTingsTx;
@@ -121,6 +121,7 @@ public class commentrewardweiboActivity extends Activity {
     private CheckBox weiboAgreementCk;
     // 协议的跳转链接
     private TextView weiboAgreementTv;
+
     // 用于RichTextEditor回调的方法
     public void getRichTextEditorforced() {
         facegridView1.setVisibility(View.GONE);
@@ -129,6 +130,7 @@ public class commentrewardweiboActivity extends Activity {
     public void editortodown() {
         editor.fullScroll(ScrollView.FOCUS_DOWN);
     }
+
     // 用于RichTextEditor回调 ScrollView到达顶部
     public void editortotop() {
         // editor.fullScroll(33);
@@ -154,7 +156,7 @@ public class commentrewardweiboActivity extends Activity {
         shareFreshTingsTx = (TextView) findViewById(R.id.share_fresh_tings_tx);
         downlinear3 = (LinearLayout) findViewById(R.id.downlinear3);
         rystalCoinEdi = (EditText) findViewById(R.id.rystal_coin_edi);
-        // 绑定概述输入状态的变化
+        // 绑定摘要输入状态的变化
         summaryEdi.addTextChangedListener(watcher);
         weiboAgreementCk = (CheckBox) findViewById(R.id.weibo_agreement_ck);
         weiboAgreementTv = (TextView) findViewById(R.id.weibo_agreement_tv);
@@ -477,9 +479,9 @@ public class commentrewardweiboActivity extends Activity {
         @Override
         public void onClick(View arg0) {
 
-            if ("".equals(editcomtitleforweibo1.getText().toString().trim()) && "".equals(summaryEdi.getText().toString().trim()) &&"".equals(longweibobody.toString().trim())) {
+            if ("".equals(editcomtitleforweibo1.getText().toString().trim()) && "".equals(summaryEdi.getText().toString().trim()) && "".equals(longweibobody.toString().trim())) {
                 // 打赏文
-                Intent intent = new Intent(commentrewardweiboActivity.this,commentshortweiboActivity.class);
+                Intent intent = new Intent(commentrewardweiboActivity.this, commentshortweiboActivity.class);
                 startActivity(intent);
                 commentrewardweiboActivity.this.finish();
                 return;
@@ -492,7 +494,7 @@ public class commentrewardweiboActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    Intent intent = new Intent(commentrewardweiboActivity.this,commentshortweiboActivity.class);
+                                    Intent intent = new Intent(commentrewardweiboActivity.this, commentshortweiboActivity.class);
                                     startActivity(intent);
                                     commentrewardweiboActivity.this.finish();
                                 }
@@ -543,9 +545,9 @@ public class commentrewardweiboActivity extends Activity {
             List<EditData> editList = editor.buildEditData();
             dealEditData(editList);
             // 标题
-            String title = editcomtitleforweibo1.getText()+"";
+            String title = editcomtitleforweibo1.getText() + "";
             // 简介
-            String summary = summaryEdi.getText()+"";
+            String summary = summaryEdi.getText() + "";
             //打赏的水晶币
             String rystalCoin = rystalCoinEdi.getText().toString().trim();
             if ("".equals(title)) {
@@ -553,10 +555,10 @@ public class commentrewardweiboActivity extends Activity {
                 return;
             }
             if ("".equals(summary)) {
-                CustomToast.makeText(getApplicationContext(), "概述不能为空", Toast.LENGTH_LONG).show();
+                CustomToast.makeText(getApplicationContext(), "摘要不能为空", Toast.LENGTH_LONG).show();
                 return;
-            }else if (summary.length()>140) {
-                CustomToast.makeText(getApplicationContext(), "概述超长了", Toast.LENGTH_LONG).show();
+            } else if (summary.length() > 140) {
+                CustomToast.makeText(getApplicationContext(), "摘要超长了", Toast.LENGTH_LONG).show();
                 return;
             }
             Object zhengwen = editor.lastFocusEdit.getText();
@@ -568,7 +570,7 @@ public class commentrewardweiboActivity extends Activity {
                 CustomToast.makeText(getApplicationContext(), "请输入需打赏水晶数量", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (!weiboAgreementCk.isChecked()){
+            if (!weiboAgreementCk.isChecked()) {
                 CustomToast.makeText(getApplicationContext(), "请阅读并同意协议", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -578,7 +580,7 @@ public class commentrewardweiboActivity extends Activity {
             titlebuilder.append("<feed-title style='display:none'>");
             titlebuilder.append(title);
             titlebuilder.append("</feed-title>");
-            String longweibobodystr = longweibobody+"";
+            String longweibobodystr = longweibobody + "";
             longweibobodystr = longweibobodystr
                     .replace(
                             "[",
@@ -591,7 +593,7 @@ public class commentrewardweiboActivity extends Activity {
             // 发送打赏微博
             new SendInfoTaskaddlongweibo()
                     .execute(new TaskParams(
-                            Constants.Url+"?app=public&mod=AppFeedList&act=AppPostFeed",
+                            Constants.Url + "?app=public&mod=AppFeedList&act=AppPostFeed",
                             new String[]{"mid", Constants.staticmyuidstr},
                             new String[]{"login_password", Constants.staticpasswordstr},
                             new String[]{"tokey", Constants.statictokeystr},
@@ -793,7 +795,7 @@ public class commentrewardweiboActivity extends Activity {
                         }
 
                         // spath :生成图片取个名字和路径包含类型
-                        String uuid = UUID.randomUUID()+"";
+                        String uuid = UUID.randomUUID() + "";
                         String envstr = Environment
                                 .getExternalStorageDirectory()
                                 + "/sglrBitmap/"
@@ -847,7 +849,7 @@ public class commentrewardweiboActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
+                String statusstr = map.get("status") + "";
 
                 if ("1".equals(statusstr)) {
                     CustomToast.makeText(getApplicationContext(), "发长文成功", Toast.LENGTH_LONG).show();
@@ -924,26 +926,26 @@ public class commentrewardweiboActivity extends Activity {
     /**
      * @Override public boolean dispatchTouchEvent(MotionEvent ev) { // TODO
      * Auto-generated method stub
-     * <p>
+     * <p/>
      * if (ev.getAction() == MotionEvent.ACTION_DOWN) { View v =
      * getCurrentFocus();
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * // if (isineditarea(editcommentforweibo1, ev)) { //
      * //CustomToast.makeText(getApplicationContext(), "事情edit焦点", 1) // //
      * .show(); // LinearLayout01.setVisibility(View.GONE); // // }
-     * <p>
+     * <p/>
      * //if(isineditarea(LinearLayout01, ev)==false){
      * //LinearLayout01.setVisibility(View.VISIBLE);
-     * <p>
+     * <p/>
      * //}
-     * <p>
+     * <p/>
      * return super.dispatchTouchEvent(ev); } //
      * 必不可少，否则所有的组件都不会有TouchEvent了 if
      * (getWindow().superDispatchTouchEvent(ev)) { return true; }
      * return onTouchEvent(ev); }
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * //判断是否离开edit区域的方法 public boolean isineditarea(View v,
      * MotionEvent event) { if (v != null && (v instanceof EditText))
      * { int[] leftTop = { 0, 0 }; //获取输入框当前的location位置
@@ -1002,7 +1004,7 @@ public class commentrewardweiboActivity extends Activity {
             long sjc = System.currentTimeMillis();
             int numcode = (int) ((Math.random() * 9 + 1) * 100000);
             HttpPost httpPost = new HttpPost(
-                    Constants.Url+"?app=public&mod=AppFeedList&act=saveEditorImg&dir=image&sjc="
+                    Constants.Url + "?app=public&mod=AppFeedList&act=saveEditorImg&dir=image&sjc="
                             + "1" + sjc + numcode);
             MultipartEntity entity = new MultipartEntity(
                     HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -1057,8 +1059,8 @@ public class commentrewardweiboActivity extends Activity {
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(resstr);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
-                urlstr = map.get("url")+"";
+                String statusstr = map.get("status") + "";
+                urlstr = map.get("url") + "";
             }
 
             // 返回图片url
@@ -1100,19 +1102,19 @@ public class commentrewardweiboActivity extends Activity {
     }
 
     /**
-     * 绑定概述输入字数事件
+     * 绑定摘要输入字数事件
      */
     private TextWatcher watcher = new TextWatcher() {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             int number = 140 - s.length();
-            if (number >= 0) {if(number == 140){
-                inputNumberWords.setText("你可以输入" + number + "字");
-            }
-            else{
-                inputNumberWords.setText("你还可以输入" + number + "字");
-            }
+            if (number >= 0) {
+                if (number == 140) {
+                    inputNumberWords.setText("你可以输入" + number + "字");
+                } else {
+                    inputNumberWords.setText("你还可以输入" + number + "字");
+                }
                 inputNumberWords.setTextColor(inputNumberWords.getResources().getColor(R.color.color_999999));
             } else {
                 inputNumberWords.setTextColor(inputNumberWords.getResources().getColor(R.color.red));

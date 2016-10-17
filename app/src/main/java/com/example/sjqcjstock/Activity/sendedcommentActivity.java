@@ -133,7 +133,7 @@ public class sendedcommentActivity extends Activity {
 
     private void geneItems() {
         new SendInfoTask().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=MyComment", new String[]{"type", "send"},
+                Constants.Url + "?app=public&mod=AppFeedList&act=MyComment", new String[]{"type", "send"},
                 new String[]{"mid", Constants.staticmyuidstr}, new String[]{
                 "login_password", Constants.staticpasswordstr},
                 new String[]{"p", String.valueOf(current)}));
@@ -190,13 +190,13 @@ public class sendedcommentActivity extends Activity {
                 }
                 for (Map<String, Object> map : lists) {
                     if (datastr == null) {
-                        datastr = map.get("data")+"";
+                        datastr = map.get("data") + "";
                         datastrlists = JsonTools.listKeyMaps("[" + datastr
                                 + "]");
                     }
                     for (Map<String, Object> datastrmap : datastrlists) {
                         if (data2str == null) {
-                            data2str = datastrmap.get("data")+"";
+                            data2str = datastrmap.get("data") + "";
                             data2strlists = JsonTools.listKeyMaps(data2str);
                         }
                         if (data2strlists == null) {
@@ -205,11 +205,11 @@ public class sendedcommentActivity extends Activity {
                         for (Map<String, Object> data2strmap : data2strlists) {
                             String app_detail_summarystr;
                             String comment_idstr = data2strmap
-                                    .get("comment_id")+"";
+                                    .get("comment_id") + "";
                             String ctimestr = data2strmap.get("ctime")
-                                    +"";
+                                    + "";
                             String contentstr = data2strmap.get("content")
-                                    +"";
+                                    + "";
 
                             Object sourceInfo = data2strmap.get("sourceInfo");
                             if (sourceInfo == null) {
@@ -224,7 +224,7 @@ public class sendedcommentActivity extends Activity {
                             if (sourceContent == null) {
                                 app_detail_summarystr = "";
                             } else {
-                                app_detail_summarystr = sourceContent+"";
+                                app_detail_summarystr = sourceContent + "";
 
 
                                 app_detail_summarystr = app_detail_summarystr.replace("<feed-titlestyle='display:none'>", "feedtitleqian");
@@ -247,24 +247,24 @@ public class sendedcommentActivity extends Activity {
                             map2.put("comment_id", comment_idstr);
                             // user_info 回复用户信息
                             String user_infostr = data2strmap.get("user_info")
-                                    +"";
+                                    + "";
                             List<Map<String, Object>> user_infostrlists = JsonTools
                                     .listKeyMaps("[" + user_infostr + "]");
                             String unamestr2 = "";
                             for (Map<String, Object> user_infostrmap : user_infostrlists) {
                                 String uidstr = user_infostrmap.get("uid")
-                                        +"";
+                                        + "";
                                 unamestr2 = user_infostrmap.get("uname")
-                                        +"";
+                                        + "";
                                 String avatar_middlestr = user_infostrmap.get(
-                                        "avatar_middle")+"";
+                                        "avatar_middle") + "";
                                 String replyctimestr = user_infostrmap.get(
-                                        "ctime")+"";
+                                        "ctime") + "";
 
                                 replyctimestr = CalendarUtil
                                         .formatDateTime(Utils
                                                 .getStringtoDate(replyctimestr));
-                                String userGroup = user_infostrmap.get("user_group")+"";
+                                String userGroup = user_infostrmap.get("user_group") + "";
                                 map2.put("isVip", userGroup);
                                 map2.put("replyctimestr", replyctimestr);
                                 map2.put("contentunamestr", unamestr2);
@@ -284,18 +284,18 @@ public class sendedcommentActivity extends Activity {
                             // sourceuser_info 回复用户信息
 
                             String sourceInfostr = data2strmap
-                                    .get("sourceInfo")+"";
+                                    .get("sourceInfo") + "";
                             List<Map<String, Object>> sourceInfolists = JsonTools
                                     .listKeyMaps("[" + sourceInfostr + "]");
                             for (Map<String, Object> sourceInfostrmap : sourceInfolists) {
 
                                 String feed_idstr = sourceInfostrmap.get(
-                                        "feed_id")+"";
+                                        "feed_id") + "";
 
                                 String uidstr = sourceInfostrmap.get("uid")
-                                        +"";
+                                        + "";
                                 String unamestr = sourceInfostrmap.get("uname")
-                                        +"";
+                                        + "";
                                 // 获取概要
                                 String introduction = "";
                                 // 判断是否是打赏微博
@@ -304,19 +304,19 @@ public class sendedcommentActivity extends Activity {
                                 String reward = "";
                                 if (state != null && !"null".equals(state.toString())) {
                                     if (sourceInfostrmap.get("reward") != null)
-                                        reward = sourceInfostrmap.get("reward")+"";
+                                        reward = sourceInfostrmap.get("reward") + "";
                                     if (sourceInfostrmap.get("abstract") != null)
-                                        introduction = sourceInfostrmap.get("abstract")+"";
+                                        introduction = sourceInfostrmap.get("abstract") + "";
                                 }
                                 if (state != null && "1".equals(state.toString())) {
                                     if ("".equals(app_detail_summarystr)) {
-                                        app_detail_summarystr = "概况：" + introduction;
+                                        app_detail_summarystr = "摘要：" + introduction;
                                     } else {
                                         int conunt = app_detail_summarystr.indexOf("【");
                                         if (conunt < 1) {
-                                            app_detail_summarystr = "概况：" + introduction;
+                                            app_detail_summarystr = "摘要：" + introduction;
                                         } else {
-                                            app_detail_summarystr = "<font color=\"#4471BC\" >" + app_detail_summarystr.substring(app_detail_summarystr.indexOf("【"), app_detail_summarystr.indexOf("】") + 1) + "</font><Br/>概况：" + introduction;
+                                            app_detail_summarystr = "<font color=\"#4471BC\" >" + app_detail_summarystr.substring(app_detail_summarystr.indexOf("【"), app_detail_summarystr.indexOf("】") + 1) + "</font><Br/>摘要：" + introduction;
                                         }
                                     }
                                 }
@@ -325,13 +325,13 @@ public class sendedcommentActivity extends Activity {
                                     map2.put("state", state.toString());
                                 }
 
-                                String userGroup = sourceInfostrmap.get("user_group")+"";
+                                String userGroup = sourceInfostrmap.get("user_group") + "";
                                 map2.put("isVipSource", userGroup);
                                 map2.put("sourceunamestr", unamestr);
                                 map2.put("sourceuidstr", uidstr);
                                 map2.put("sourcefeed_id", feed_idstr);
                             }
-                            map2.put("app_detail_summarystr",app_detail_summarystr);
+                            map2.put("app_detail_summarystr", app_detail_summarystr);
                             listsendedcommentData.add(map2);
                         }
                     }

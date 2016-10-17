@@ -71,7 +71,7 @@ public class addcommentweiboActivity extends Activity {
     private static final int REQUEST_CODE_CAPTURE_CAMEIA = 2; // 照相获取
 
     // 图文混排
-     private SpannableStringBuilder spannable;
+    private SpannableStringBuilder spannable;
 
     // 获取控件
     private RelativeLayout LinearLayout01;
@@ -306,7 +306,7 @@ public class addcommentweiboActivity extends Activity {
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
 
-            if (editcommentforweibo1.getText().toString().length()>140) {
+            if (editcommentforweibo1.getText().toString().length() > 140) {
                 CustomToast.makeText(getApplicationContext(), "评论超长了", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -732,10 +732,9 @@ public class addcommentweiboActivity extends Activity {
             // TODO Auto-generated method stub
             int number = 140 - s.length();
             if (number >= 0) {
-                if(number == 140){
+                if (number == 140) {
                     inputNumberWords.setText("你可以输入" + number + "字");
-                }
-                else{
+                } else {
                     inputNumberWords.setText("你还可以输入" + number + "字");
                 }
                 inputNumberWords.setTextColor(inputNumberWords.getResources().getColor(R.color.color_999999));

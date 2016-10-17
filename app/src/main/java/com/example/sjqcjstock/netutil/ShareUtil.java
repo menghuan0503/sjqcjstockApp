@@ -16,16 +16,17 @@ public class ShareUtil {
 
     /**
      * 分享文章的
+     *
      * @param context
-     * @param id 微博id
-     * @param title 最多30个字符
-     * @param str 最多40个字符
+     * @param id      微博id
+     * @param title   最多30个字符
+     * @param str     最多40个字符
      */
-    public static void showShare(Context context,String id,String title,String str) {
-        if(str.length()>40){
-            str = str.substring(0,39);
+    public static void showShare(Context context, String id, String title, String str) {
+        if (str.length() > 40) {
+            str = str.substring(0, 39);
         }
-        String url = Constants.shareArticle+id;
+        String url = Constants.shareArticle + id;
         ShareSDK.initSDK(context);
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权

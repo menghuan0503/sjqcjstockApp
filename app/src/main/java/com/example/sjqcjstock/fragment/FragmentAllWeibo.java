@@ -70,12 +70,12 @@ public class FragmentAllWeibo extends Fragment {
         return view;
     }
 
-    public void onHiddenChanged(boolean hidden){
+    public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
             // 自动下拉刷新
             ptrl.autoRefresh();
-        }else{
-            if(loadMoreList != null && loadMoreList.size()>0){
+        } else {
+            if (loadMoreList != null && loadMoreList.size() > 0) {
                 // 做缓存
                 mCache.put("loadMorex", Utils.getListMapStr(loadMoreList));
             }
@@ -104,6 +104,10 @@ public class FragmentAllWeibo extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 try {
+                    String content = listessenceData.get(arg2).get("content");
+                    if (content.length() > 3 && Constants.microBlogShare.equals(content.substring(0, 4))) {
+                        return;
+                    }
                     Intent intent = new Intent(getActivity(), forumnotedetailActivity.class);
                     // 传递发布微博的信息
                     intent.putExtra("weibo_id", listessenceData.get(arg2).get("feed_id").toString());
@@ -154,10 +158,10 @@ public class FragmentAllWeibo extends Fragment {
     private void getData() {
         //在onCreateView()中直接直接请求数据，请求置顶列表的数据
         new SendInfoTasktopweibolist().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=AppFeedList&act=Left_feed_top"
+                Constants.Url + "?app=public&mod=AppFeedList&act=Left_feed_top"
         ));
         new SendInfoTaskmyweibolistloadmore().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=FeedListMini&act=loadMore",
+                Constants.Url + "?app=public&mod=FeedListMini&act=loadMore",
                 new String[]{"mid", Constants.staticmyuidstr},
                 new String[]{"id", Constants.staticmyuidstr},
                 new String[]{"type", "all"},
@@ -227,7 +231,7 @@ public class FragmentAllWeibo extends Fragment {
                         datastr2 = map.get("data").toString();
                         datastrlists2 = JsonTools.listKeyMaps(datastr2);
                     }
-                    if(datastrlists2 == null){
+                    if (datastrlists2 == null) {
                         datastrlists2 = new ArrayList<Map<String, Object>>();
                     }
                     for (Map<String, Object> datastrmap : datastrlists2) {
@@ -241,9 +245,10 @@ public class FragmentAllWeibo extends Fragment {
                         String typestr = datastrmap.get("type").toString();
                         // 获取为本类容
                         String contentstr = "";
+                        List<String> contentstrUrl = null;
                         introduction = "";
                         state = datastrmap.get("state");
-                        // 先判断是否是打赏文章如果是就获取概要
+                        // 先判断是否是付费文章如果是就获取概要
                         if (state != null && "1".equals(state.toString())) {
                             reward = datastrmap.get("reward").toString();
                             Object introd = datastrmap.get("introduction");
@@ -255,6 +260,8 @@ public class FragmentAllWeibo extends Fragment {
                             contentstr = "内容无空";
                         } else {
                             contentstr = datastrmap.get("body").toString();
+                            // 获取要替换的网址
+                            contentstrUrl = (List<String>) datastrmap.get("body_feed_content_android_url");
                         }
 
                         contentstr = contentstr.replace("【", "<font color=\"#4471BC\" >【");
@@ -290,6 +297,7 @@ public class FragmentAllWeibo extends Fragment {
 
                                 source_user_infostr = api_sourcestrmap.get("source_user_info").toString();
                                 source_contentstr = api_sourcestrmap.get("source_content").toString();
+
                                 source_feed_idstr = api_sourcestrmap.get("feed_id").toString();
                                 source_contentstr = source_contentstr.replace("<feed-titlestyle='display:none'>", "fontsing1");
                                 source_contentstr = source_contentstr.replace("<feed-title style='display:none'>", "fontsing1");
@@ -302,7 +310,7 @@ public class FragmentAllWeibo extends Fragment {
                                 source_contentstr = source_contentstr.replace("\t", "");
                                 source_contentstr = source_contentstr.replace("\n", "");
                                 state = api_sourcestrmap.get("state");
-                                // 先判断是否是打赏文章如果是就获取概要
+                                // 先判断是否是付费文章如果是就获取概要
                                 if (state != null && "1".equals(state.toString())) {
                                     if (api_sourcestrmap.get("reward") != null) {
                                         reward = api_sourcestrmap.get("reward").toString();
@@ -310,7 +318,6 @@ public class FragmentAllWeibo extends Fragment {
                                     String gaiyao = api_sourcestrmap.get("zy").toString();
                                     source_contentstr = "<font color=\"#4471BC\" >" + source_contentstr.substring(source_contentstr.indexOf("【"), source_contentstr.indexOf("】") + 1) + "</font><Br/>" + gaiyao;
                                 }
-
                                 map2.put("source_contentstr", source_contentstr);
                                 map2.put("source_feed_idstr", source_feed_idstr);
 
@@ -366,12 +373,11 @@ public class FragmentAllWeibo extends Fragment {
                         if ("".equals(contentstr)) {
                             contentstr = "//";
                         }
-                        // 如果是打赏文章就有概要 显示内容为标题+概要
+                        // 如果是付费文章就有概要 显示内容为标题+概要
                         if (!"".equals(introduction)) {
                             contentstr = "<font color=\"#4471BC\" >" + contentstr.substring(contentstr.indexOf("【"), contentstr.indexOf("】") + 1) + "</font><Br/>" + introduction;
                         }
-                        if (state!=null)
-                        {
+                        if (state != null) {
                             map2.put("state", state.toString());
                         }
                         map2.put("reward", reward);

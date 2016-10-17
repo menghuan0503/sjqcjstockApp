@@ -60,7 +60,8 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
     private LinearLayout myattentionuserlist1;
     private LinearLayout myfansuserlist1;
     private LinearLayout goback1;
-    private Button followersign1;;
+    private Button followersign1;
+    ;
     private String followerstr;
     private String followingstr;
     // 获取自己的id信息
@@ -87,7 +88,9 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
     private int select_color;
     private int unselect_color;
     private int mScreen1_4;
-    /** 当前视图宽度 **/
+    /**
+     * 当前视图宽度
+     **/
     private Integer viewPagerW = 0;
 
     @Override
@@ -113,7 +116,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
         myuid = getSharedPreferences("userinfo", MODE_PRIVATE).getString("userid", "");
         // 获取intent的数据
         uidstr = getIntent().getStringExtra("uid");
-        if (myuid.equals(uidstr)){
+        if (myuid.equals(uidstr)) {
             findViewById(R.id.private_letter_follow_ll).setVisibility(View.GONE);
             findViewById(R.id.line_iv).setVisibility(View.GONE);
         }
@@ -139,7 +142,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
         followersign1.setOnClickListener(new followersign1_listener());
         // 从网络获取用户详细信息
         new SendInfoTasksuserinfodetail().execute(new TaskParams(
-                Constants.Url+"?app=public&mod=Profile&act=AppUser",
+                Constants.Url + "?app=public&mod=Profile&act=AppUser",
                 new String[]{"mid", uidstr},
                 new String[]{"id", myuid}
         ));
@@ -179,7 +182,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                     return;
                 }
                 new SendInfoTaskfollowsb().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AddFollow", new String[]{"mid",
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AddFollow", new String[]{"mid",
                         Constants.staticmyuidstr},
                         new String[]{"login_password",
                                 Constants.staticpasswordstr}, new String[]{
@@ -196,7 +199,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                     return;
                 }
                 new SendInfoTaskfollowcancelsb().execute(new TaskParams(
-                                Constants.Url+"?app=public&mod=AppFeedList&act=DelFollow", new String[]{"mid",
+                                Constants.Url + "?app=public&mod=AppFeedList&act=DelFollow", new String[]{"mid",
                                 Constants.staticmyuidstr},
                                 new String[]{"login_password",
                                         Constants.staticpasswordstr}, new String[]{
@@ -221,6 +224,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
         }
 
     }
+
     class myattentionuserlist1_listener implements OnClickListener {
         @Override
         public void onClick(View arg0) {
@@ -237,7 +241,7 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
             new SendInfoTaskForChatIsExist().execute(new TaskParams(
-                    Constants.Url+"?app=public&mod=AppFeedList&act=Messages",
+                    Constants.Url + "?app=public&mod=AppFeedList&act=Messages",
                     new String[]{"mid", Constants.staticmyuidstr},
                     new String[]{"cid", uidstr}));
         }
@@ -264,15 +268,15 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                 List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
 
                 for (Map<String, Object> map : lists) {
-                    String statusstr = map.get("data")+"";
+                    String statusstr = map.get("data") + "";
                     statusstr = "[" + statusstr + "]";
                     List<Map<String, Object>> weibolists = JsonTools.listKeyMaps(statusstr);
 
                     for (Map<String, Object> weibomap : weibolists) {
                         String introstr;
-                        unamestr = weibomap.get("uname")+"";
-                        String avatar_middlestr = weibomap.get("avatar_middle")+"";
-                        String Userdatastr = weibomap.get("Userdata")+"";
+                        unamestr = weibomap.get("uname") + "";
+                        String avatar_middlestr = weibomap.get("avatar_middle") + "";
+                        String Userdatastr = weibomap.get("Userdata") + "";
                         List<Map<String, Object>> Userdatastrlists = JsonTools.listKeyMaps("[" + Userdatastr + "]");
 
                         for (Map<String, Object> Userdatamap : Userdatastrlists) {
@@ -282,13 +286,13 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                             if (Userdatamap.get("following_count") == null) {
                                 following_countstr = "0";
                             } else {
-                                following_countstr = Userdatamap.get("following_count")+"";
+                                following_countstr = Userdatamap.get("following_count") + "";
                             }
 
                             if (Userdatamap.get("follower_count") == null) {
                                 follower_countstr = "0";
                             } else {
-                                follower_countstr = Userdatamap.get("follower_count")+"";
+                                follower_countstr = Userdatamap.get("follower_count") + "";
                             }
 //
 //                            if (Userdatamap.get("weibo_count") == null) {
@@ -299,11 +303,11 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                             following_count2.setText(following_countstr);
                             follower_count2.setText(follower_countstr);
                         }
-                        String followstr = weibomap.get("follow")+"";
+                        String followstr = weibomap.get("follow") + "";
                         List<Map<String, Object>> followstrlists = JsonTools.listKeyMaps("[" + followstr + "]");
                         for (Map<String, Object> followstrmap : followstrlists) {
-                            followingstr = followstrmap.get("following")+"";
-                            followerstr = followstrmap.get("follower")+"";// 0是未关注,1是已关注
+                            followingstr = followstrmap.get("following") + "";
+                            followerstr = followstrmap.get("follower") + "";// 0是未关注,1是已关注
                             if ("0".equals(followingstr)) {
                                 followersign1.setText(" + 关注");
                             } else {
@@ -315,24 +319,24 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
                             }
                         }
                         //空指针异常
-                        String sexstr = weibomap.get("sex")+"";
+                        String sexstr = weibomap.get("sex") + "";
                         if (weibomap.get("intro") == null) {
                             introstr = "暂无简介";
                         } else {
-                            introstr = weibomap.get("intro")+"";
+                            introstr = weibomap.get("intro") + "";
                         }
-                            if ("1".equals(sexstr)) {
-                                usersex1.setImageResource(R.mipmap.nan);
-                            } else {
-                                usersex1.setImageResource(R.mipmap.nv);
-                            }
-                            username2.setText(unamestr);
-                            userintro1.setText(introstr);
+                        if ("1".equals(sexstr)) {
+                            usersex1.setImageResource(R.mipmap.nan);
+                        } else {
+                            usersex1.setImageResource(R.mipmap.nv);
+                        }
+                        username2.setText(unamestr);
+                        userintro1.setText(introstr);
 
                         ImageLoader.getInstance().displayImage(avatar_middlestr,
                                 headimg2, ImageUtil.getOption(), ImageUtil.getAnimateFirstDisplayListener());
 
-                        ViewUtil.setUpVip(weibomap.get("user_group")+"",vipImg);
+                        ViewUtil.setUpVip(weibomap.get("user_group") + "", vipImg);
                     }
                 }
             }
@@ -394,12 +398,12 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
             // 解析json字符串获得List<Map<String,Object>>
             List<Map<String, Object>> lists = JsonTools.listKeyMaps(result);
             for (Map<String, Object> map : lists) {
-                String statusstr = map.get("status")+"";
-                String datastr = map.get("data")+"";
+                String statusstr = map.get("status") + "";
+                String datastr = map.get("data") + "";
                 if ("1".equals(statusstr)) {
                     List<Map<String, Object>> datastrlists = JsonTools.listKeyMaps("[" + datastr + "]");
                     for (Map<String, Object> datastrmap : datastrlists) {
-                        list_idstr = datastrmap.get("list_id")+"";
+                        list_idstr = datastrmap.get("list_id") + "";
                     }
                     Intent intent = new Intent(UserDetailNewActivity.this, personalnewsdetail.class);
                     intent.putExtra("uidstr", uidstr);
@@ -426,13 +430,15 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
         FragmentTransactionList transaction = new FragmentTransactionList();
         FragmentStock stock = new FragmentStock();
         mDatas.add(microBlog);
-        mDatas.add(transaction);
-        mDatas.add(stock);
+        // 以后要要的
+//        mDatas.add(transaction);
+//        mDatas.add(stock);
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public int getCount() {
                 return mDatas == null ? 0 : mDatas.size();
             }
+
             @Override
             public Fragment getItem(int position) {
                 return mDatas.get(position);
@@ -489,7 +495,6 @@ public class UserDetailNewActivity extends FragmentActivity implements ViewPager
      * 点击文字进行切换
      *
      * @author wuxl
-     *
      */
     public class MyOnClickListenser implements View.OnClickListener {
 

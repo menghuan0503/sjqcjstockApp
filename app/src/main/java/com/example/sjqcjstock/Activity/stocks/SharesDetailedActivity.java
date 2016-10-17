@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,7 +25,6 @@ import com.example.sjqcjstock.fragment.stocks.FragmentWeekMap;
 import com.example.sjqcjstock.netutil.HttpUtil;
 import com.example.sjqcjstock.netutil.ImageUtil;
 import com.example.sjqcjstock.netutil.Utils;
-import com.example.sjqcjstock.netutil.ViewUtil;
 import com.example.sjqcjstock.view.stocks.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -358,7 +356,7 @@ public class SharesDetailedActivity extends FragmentActivity implements ViewPage
             // 流通市值
             stocksInfo.setCirculationarketValue(sharesMinute[44]);
             // 拼接要用的价格信息
-            strK = Utils.getNowDate1()+"|"+sharesMinute[5]+"|"+sharesMinute[3]+"|"+sharesMinute[33]+"|"+sharesMinute[34]+"|"+sharesMinute[6]+"|"+sharesMinute[30];
+            strK = Utils.getNowDate1() + "|" + sharesMinute[5] + "|" + sharesMinute[3] + "|" + sharesMinute[33] + "|" + sharesMinute[34] + "|" + sharesMinute[6] + "|" + sharesMinute[30];
             buySellMap.put("buy1P", sharesMinute[9]);
             buySellMap.put("buy1N", sharesMinute[10]);
             buySellMap.put("buy2P", sharesMinute[11]);
@@ -396,9 +394,9 @@ public class SharesDetailedActivity extends FragmentActivity implements ViewPage
      */
     private void initFragment(String openF) {
         timeMap = new FragmentTimeMap(code, openF, buySellMap);
-        dayMap = new FragmentDayMap(code,strK);
-        weekMap = new FragmentWeekMap(code,strK);
-        monthMap = new FragmentMonthMap(code,strK);
+        dayMap = new FragmentDayMap(code, strK);
+        weekMap = new FragmentWeekMap(code, strK);
+        monthMap = new FragmentMonthMap(code, strK);
         mDatas.add(timeMap);
         mDatas.add(dayMap);
         mDatas.add(weekMap);

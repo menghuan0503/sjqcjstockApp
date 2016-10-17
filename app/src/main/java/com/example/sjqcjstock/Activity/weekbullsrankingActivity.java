@@ -113,20 +113,20 @@ public class weekbullsrankingActivity extends Activity {
 
                 for (Map<String, Object> map : lists2) {
                     if (datastr2 == null) {
-                        datastr2 = map.get("data")+"";
+                        datastr2 = map.get("data") + "";
 
                         datastrlists2 = JsonTools.listKeyMaps(datastr2);
                     }
 
-                    if(datastrlists2 == null){
+                    if (datastrlists2 == null) {
                         datastrlists2 = new ArrayList<Map<String, Object>>();
                     }
                     for (Map<String, Object> datastrmap : datastrlists2) {
 
                         // 涨幅
-                        String increasestr = datastrmap.get("increase")+"";
+                        String increasestr = datastrmap.get("increase") + "";
                         // 最新价
-                        String currentPricestr = datastrmap.get("currentPrice")+"";
+                        String currentPricestr = datastrmap.get("currentPrice") + "";
 
                         // 股票名
                         String ballot_namestr;
@@ -134,12 +134,12 @@ public class weekbullsrankingActivity extends Activity {
                             ballot_namestr = "暂无";
                         } else {
                             ballot_namestr = datastrmap.get("ballot_name")
-                                    +"";
+                                    + "";
                         }
                         // 用户名
-                        String unamestr = datastrmap.get("uname")+"";
+                        String unamestr = datastrmap.get("uname") + "";
 
-                        String uidstr = datastrmap.get("uid")+"";
+                        String uidstr = datastrmap.get("uid") + "";
                         HashMap<String, String> map2 = new HashMap<String, String>();
 
                         map2.put("increase", increasestr);
@@ -162,7 +162,7 @@ public class weekbullsrankingActivity extends Activity {
     private void geneItems() {
         // 不用分页吗？请奇怪 mh
         new SendInfoTaskthisweekuprankingloadmore().execute(new TaskParams(
-                        Constants.Url+"?app=public&mod=AppFeedList&act=AppTodayBallot&group=week"
+                        Constants.Url + "?app=public&mod=AppFeedList&act=AppTodayBallot&group=week"
                 )
         );
     }
